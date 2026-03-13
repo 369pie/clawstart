@@ -25,7 +25,7 @@ ClawStart exists to reduce that friction.
 - Windows and macOS packaging scripts
 - a Linux Beta installer path
 - fixture-based installer validation
-- GitHub Pages, release, and validation workflows
+- optional GitHub workflows for Pages, release, and validation
 
 ## Primary user flow
 
@@ -54,8 +54,10 @@ ClawStart exists to reduce that friction.
 
 ```text
 .
+├── docs/
 ├── .github/workflows/
 ├── installer/
+├── scripts/
 └── site/
 ```
 
@@ -89,9 +91,29 @@ Current validation coverage includes:
 
 ## Release and deployment
 
-- Pages deployment: `.github/workflows/pages.yml`
-- Installer validation: `.github/workflows/installer-validation.yml`
-- Build and release: `.github/workflows/release.yml`
+- No-Actions Pages path: sync `site/` into `docs/`, then publish from `main /docs`
+- Optional Pages workflow: `.github/workflows/pages.yml`
+- Optional installer validation workflow: `.github/workflows/installer-validation.yml`
+- Optional build and release workflow: `.github/workflows/release.yml`
+
+If your GitHub Actions quota is limited, the recommended order is:
+
+1. run local validation scripts
+2. sync `site/` into `docs/`
+3. publish GitHub Pages from `main /docs`
+4. create releases manually until Actions quota is available again
+
+## GitHub Actions strategy
+
+For the public repository, the recommended Actions policy is:
+
+- use only standard GitHub-hosted runners
+- avoid larger runners
+- keep all workflows manual with `workflow_dispatch`
+- keep Pages branch deployment as the default publishing path
+- keep validation and release workflows as low-frequency tools
+- keep artifact retention short
+- set time limits on jobs so accidental reruns do not burn time unnecessarily
 
 The release workflow is expected to publish stable aliases such as:
 

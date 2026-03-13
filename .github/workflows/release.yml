@@ -1,8 +1,6 @@
 name: Build & Release ClawStart
 
 on:
-  push:
-    tags: ['v*']
   workflow_dispatch:
     inputs:
       version:
@@ -12,9 +10,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   build-windows:
     runs-on: windows-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Build Windows package
@@ -27,9 +30,11 @@ jobs:
         with:
           name: windows-package
           path: dist/ClawStart-Windows-*.zip
+          retention-days: 1
 
   build-macos-arm:
     runs-on: macos-14
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Build macOS ARM package
@@ -41,9 +46,11 @@ jobs:
         with:
           name: macos-arm-package
           path: dist/ClawStart-macOS-Apple-Silicon-*.tar.gz
+          retention-days: 1
 
   build-macos-intel:
     runs-on: macos-13
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Build macOS Intel package
@@ -55,10 +62,12 @@ jobs:
         with:
           name: macos-intel-package
           path: dist/ClawStart-macOS-Intel-*.tar.gz
+          retention-days: 1
 
   release:
     needs: [build-windows, build-macos-arm, build-macos-intel]
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -96,7 +105,7 @@ jobs:
             3. 双击启动器运行
             4. 首次运行按引导配置模型
 
-            详细教程：https://nicekate.github.io/openlola/start.html
+            详细教程：https://369pie.github.io/clawstart/start.html
           files: dist/*
           draft: false
           prerelease: false

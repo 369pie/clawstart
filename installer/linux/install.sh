@@ -102,7 +102,7 @@ write_workspace_files() {
 ## 你现在可以做什么
 1. 运行 `launch.sh`
 2. 按终端提示完成模型配置
-3. 如果失败，先看 https://nicekate.github.io/openlola/troubleshooting.html
+3. 如果失败，先看 https://369pie.github.io/clawstart/troubleshooting.html
 EOF
 
     cat > "$CLAWSTART_HOME/launch.sh" <<EOF
@@ -124,7 +124,7 @@ ClawStart Linux Beta
 1. 运行 ./launch.sh
 2. 按提示完成模型配置
 3. 如果卡在权限、Git、网络或 npm 错误，先看排障页：
-   https://nicekate.github.io/openlola/troubleshooting.html
+   https://369pie.github.io/clawstart/troubleshooting.html
 
 说明：
 - 安装内容默认放在 ~/.clawstart-linux-beta
@@ -163,7 +163,7 @@ main() {
     echo "下一步："
     echo "  1. cd \"$CLAWSTART_HOME\""
     echo "  2. ./launch.sh"
-    echo "  3. 如遇问题，查看 https://nicekate.github.io/openlola/troubleshooting.html"
+    echo "  3. 如遇问题，查看 https://369pie.github.io/clawstart/troubleshooting.html"
 }
 
 main "$@"

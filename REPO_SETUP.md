@@ -8,7 +8,7 @@ This directory is prepared as the initial content for the future public reposito
 
 - public website pages
 - installer scripts
-- GitHub workflows
+- optional GitHub workflows
 - public README draft
 
 ## Not included
@@ -40,3 +40,31 @@ git add .
 git commit -m "Initial public release"
 git push -u origin main
 ```
+
+## GitHub web setup checklist
+
+After the first push, finish these steps in the GitHub web UI:
+
+1. Open repository settings and confirm the default branch is `main`.
+2. If you do not want to spend GitHub Actions quota, run `bash scripts/sync-site-to-docs.sh`, commit the generated `docs/` directory, then set `Settings -> Pages -> Build and deployment -> Source` to `Deploy from a branch`, `Branch = main`, `Folder = /docs`.
+3. If Actions quota is available and you prefer workflow deployment, set `Settings -> Pages -> Build and deployment -> Source` to `GitHub Actions`.
+4. In `About`, paste the short description and topics from `GITHUB-LAUNCH-COPY.md`.
+5. If you are using Actions, rerun the initial `Deploy ClawStart to GitHub Pages` workflow after Pages is enabled.
+6. If you are not using Actions, run local checks instead:
+   - `bash installer/verify-diagnose-fixtures.sh`
+   - `bash installer/linux/verify-install-fixtures.sh`
+7. In the repository home page, confirm:
+   - the README renders correctly
+   - the MIT license badge is visible
+   - the Pages site URL is reachable
+8. When the first release is ready, create a GitHub Release using the draft copy in `GITHUB-LAUNCH-COPY.md`.
+
+## Recommended Actions policy
+
+For `369pie/clawstart`, the safest default is:
+
+- publish the website from `main /docs`
+- use only standard runners (`ubuntu-latest`, `windows-latest`, `macos-latest`)
+- do not use larger runners
+- keep workflows manual unless you later confirm you want auto-runs
+- keep release artifacts short-lived

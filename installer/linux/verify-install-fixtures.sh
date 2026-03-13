@@ -20,7 +20,7 @@ assert_contains() {
     local file="$1"
     local pattern="$2"
     local message="$3"
-    if ! rg -q --fixed-strings -- "$pattern" "$file"; then
+    if ! grep -Fq -- "$pattern" "$file"; then
         echo "FAIL: $message"
         echo "  file: $file"
         echo "  expected: $pattern"
