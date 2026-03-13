@@ -35,6 +35,24 @@ GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+download_runtime() {
+    local url="$1"
+    local dest="$2"
+    local tmp="${dest}.part"
+
+    mkdir -p "$(dirname "$dest")"
+    rm -f "$tmp"
+    curl -fL --retry 3 --retry-delay 2 --progress-bar -o "$tmp" "$url"
+
+    if [ ! -s "$tmp" ]; then
+        echo "Failed to download runtime from: $url" >&2
+        rm -f "$tmp"
+        exit 1
+    fi
+
+    mv "$tmp" "$dest"
+}
+
 echo ""
 echo -e "${CYAN}ClawStart macOS beta package builder${NC}"
 echo -e "  version: ${VERSION} | target: ${TARGET_ARCH}"
@@ -47,8 +65,12 @@ mkdir -p "$DEST" "$OUTPUT_DIR"
 echo "  [2/6] Preparing Node.js runtime..."
 NODE_CACHE="$PROJECT_ROOT/build/.cache/node-${NODE_VERSION}-${NODE_ARCH}.tar.gz"
 if [ ! -f "$NODE_CACHE" ]; then
-    mkdir -p "$(dirname "$NODE_CACHE")"
-    curl -L --progress-bar -o "$NODE_CACHE" "$NODE_URL"
+    download_runtime "$NODE_URL" "$NODE_CACHE"
+fi
+
+if [ ! -s "$NODE_CACHE" ]; then
+    echo "Missing Node.js runtime archive: $NODE_CACHE" >&2
+    exit 1
 fi
 
 mkdir -p "$DEST/runtime/node"
