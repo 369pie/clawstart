@@ -5,4 +5,4 @@ Allow: /
 Disallow: /funnel.html
 Disallow: /_archive/
 
-Sitemap: https://369pie.github.io/clawstart/sitemap.xml
+Sitemap: https://useclawstart.com/sitemap.xml

@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://369pie.github.io/clawstart/</loc>
+    <loc>https://useclawstart.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/download.html</loc>
+    <loc>https://useclawstart.com/download.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/windows.html</loc>
+    <loc>https://useclawstart.com/windows.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/macos.html</loc>
+    <loc>https://useclawstart.com/macos.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/start.html</loc>
+    <loc>https://useclawstart.com/start.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/troubleshooting.html</loc>
+    <loc>https://useclawstart.com/troubleshooting.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/tutorial.html</loc>
+    <loc>https://useclawstart.com/tutorial.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/resources.html</loc>
+    <loc>https://useclawstart.com/resources.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/linux.html</loc>
+    <loc>https://useclawstart.com/linux.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.45</priority>
   </url>
   <url>
-    <loc>https://369pie.github.io/clawstart/about.html</loc>
+    <loc>https://useclawstart.com/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
