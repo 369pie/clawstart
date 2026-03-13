@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills 指南 - ClawStart | 第一次安装 Skill 的最短路径</title>
+  <meta name="description" content="ClawStart Skills 指南：帮普通用户理解什么是 Skill、去哪里找、怎么安装，以及安装失败后怎么排查。">
+  <meta name="keywords" content="OpenClaw Skills,ClawStart Skill安装,Skill教程,怎么装Skill,Skill排障">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/tutorial-skills.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Skills 指南 - ClawStart">
+  <meta property="og:description" content="第一次安装 Skill 的最短路径，从理解 Skill 到真正装上用起来。">
+  <meta property="og:url" content="https://useclawstart.com/tutorial-skills.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skills 指南 - ClawStart">
+  <meta name="twitter:description" content="什么是 Skill、去哪里找、怎么装，以及安装失败该怎么办。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ClawStart Skills 指南",
+    "url": "https://useclawstart.com/tutorial-skills.html",
+    "description": "帮助 ClawStart 用户完成第一次 Skill 安装。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Skills 指南</h1>
+      <p>第一次只装一个最有用的 Skill。不要一开始收藏一堆，先装上、先用起来、先确认它真有价值。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>这页适合谁</strong>
+        适合已经完成首启、能够正常对话，但想让 ClawStart 具备更明确能力的用户。
+      </div>
+
+      <p class="section-title mt-8">先理解一个概念</p>
+      <h2 class="text-h2 mb-4">什么是 Skill</h2>
+      <p class="text-body mb-4">你可以把 Skill 理解成“给 AI 助手额外安装的能力包”。装了 Skill 之后，它不只是会聊天，还能更稳定地完成某类动作，比如天气查询、Git 操作、文件整理、内容处理。</p>
+
+      <div class="tutorial-outcome-grid mt-8">
+        <article class="tutorial-outcome">
+          <h3>搜索类 Skill</h3>
+          <p>适合想让它查天气、查资料、查某类外部信息的用户。</p>
+        </article>
+        <article class="tutorial-outcome">
+          <h3>工作类 Skill</h3>
+          <p>适合写作、内容整理、办公总结、团队协作这些高频任务。</p>
+        </article>
+        <article class="tutorial-outcome">
+          <h3>开发类 Skill</h3>
+          <p>适合看 Git、跑检查、分析代码和整理技术资料的用户。</p>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">第一步</p>
+      <h2 class="text-h2 mb-4">先选一个马上就会用到的 Skill</h2>
+      <p class="text-body mb-4">第一次不要装十个，先装一个。推荐优先顺序：搜索类、文件类、Git 类、写作类。</p>
+
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">🌦️</div>
+          <h3>搜索 / 查询类</h3>
+          <p>适合第一次感受“装了 Skill 以后有什么变化”的用户，反馈最直观。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>文件 / 整理类</h3>
+          <p>适合办公和内容用户，最容易形成“以后我会继续用”的复用感。</p>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">第二步</p>
+      <h2 class="text-h2 mb-4">用最短路径安装第一个 Skill</h2>
+      <div class="code-block"><span class="comment"># 搜索你想要的 Skill</span>
+openclaw skills search weather
+
+<span class="comment"># 安装第一个 Skill</span>
+openclaw skills install weather
+
+<span class="comment"># 查看已安装 Skill</span>
+openclaw skills list</div>
+      <div class="success-box">
+        成功标准：你能在已安装列表里看到它，并且在对话里调用它。
+      </div>
+
+      <p class="section-title mt-12">第三步</p>
+      <h2 class="text-h2 mb-4">装好以后立刻用一次</h2>
+      <p class="text-body mb-4">安装成功后不要停在“我已经装上了”，直接用一次，才能判断这个 Skill 是不是值得保留。</p>
+      <div class="code-block"><span class="comment"># 安装了 weather Skill 以后</span>
+北京今天天气怎么样？
+
+<span class="comment"># 安装了 git 相关 Skill 以后</span>
+帮我看看这个仓库最近 5 次提交都做了什么</div>
+
+      <p class="section-title mt-12">常见问题</p>
+      <h2 class="text-h2 mb-6">第一次装 Skill 最容易卡在这几类地方</h2>
+      <div class="tutorial-link-list">
+        <article class="tutorial-link-item">
+          <div>
+            <h3>搜得到，但装不上</h3>
+            <p>通常是网络、权限、依赖或 registry 问题，优先去排障页看 Skill 安装失败相关部分。</p>
+          </div>
+          <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_skills_faq">去排障 →</a>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>装上了，但不会用</h3>
+            <p>先从最短问题模板开始，不要一上来写很长的复杂任务。</p>
+          </div>
+          <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm" data-track="click_next_tutorial" data-topic="beginner" data-surface="tutorial_skills_faq">看新手页 →</a>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>装太多，不知道保留哪个</h3>
+            <p>优先保留你一周内会反复用到的，其他先删掉或暂时不用。</p>
+          </div>
+          <a href="resources.html" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="tutorial_skills_faq">看资源 →</a>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">新手推荐</p>
+      <h2 class="text-h2 mb-6">第一次建议优先装这 4 类</h2>
+      <ul class="tutorial-checklist">
+        <li>搜索 / 查询类：最容易立刻验证效果</li>
+        <li>文件整理类：适合日常办公和内容用户</li>
+        <li>Git / 仓库类：适合开发者和半技术用户</li>
+        <li>写作 / 内容处理类：适合创作者和运营用户</li>
+      </ul>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">装 Skill 的目标不是“变多”，而是“变好用”</h3>
+        <p class="text-body mb-4">第一次只要装一个真正帮你省时间的 Skill，就已经比“收藏很多但不用”更有价值。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="tutorial-advanced.html" class="btn btn-primary" data-track="click_next_tutorial" data-topic="advanced" data-surface="tutorial_skills_bottom">继续看进阶使用 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="tutorial_skills_bottom">安装失败？去排障 →</a>
+          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="tutorial_skills_bottom">了解 LolaClaw →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="tutorial.html">教程中心</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
