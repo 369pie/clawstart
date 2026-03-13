@@ -42,8 +42,8 @@ function Invoke-DiagnoseCase {
     }
 
     if ($IncludeProvider) {
-        New-Item -ItemType Directory -Force -Path (Join-Path $caseDir "config") | Out-Null
-        Set-Content -Path (Join-Path $caseDir "config\provider.json") -Encoding UTF8 -Value '{"provider":"deepseek","modelId":"deepseek-chat","apiBase":"https://api.deepseek.com"}'
+        New-Item -ItemType Directory -Force -Path (Join-Path $caseDir "state") | Out-Null
+        Set-Content -Path (Join-Path $caseDir "state\openclaw.json") -Encoding UTF8 -Value '{"gateway":{"mode":"local"},"agents":{"defaults":{"workspace":"./workspace"}}}'
     }
 
     if ($LogBody) {
@@ -79,7 +79,7 @@ New-Item -ItemType Directory -Force -Path $script:TempRoot | Out-Null
 
 try {
     Invoke-DiagnoseCase -Name "missing-node" -ExpectedError "NODE_EMBEDDED_MISSING" -ExpectedRule "ENV_NODE_MISSING" -ExpectedTitle "未找到内嵌 Node.js 运行时" -IncludeNode:$false -IncludeProvider:$false
-    Invoke-DiagnoseCase -Name "missing-provider" -ExpectedError "CONFIG_PROVIDER_MISSING" -ExpectedRule "CFG_PROVIDER_MISSING" -ExpectedTitle "还没有完成模型配置" -IncludeNode:$true -IncludeProvider:$false
+    Invoke-DiagnoseCase -Name "missing-provider" -ExpectedError "CONFIG_OPENCLAW_MISSING" -ExpectedRule "CFG_OPENCLAW_SETUP_MISSING" -ExpectedTitle "还没有完成 OpenClaw 首次配置" -IncludeNode:$true -IncludeProvider:$false
     Invoke-DiagnoseCase -Name "git-ssh" -ExpectedError "GIT_SSH_PERMISSION" -ExpectedRule "R001" -ExpectedTitle "Git SSH 权限错误" -LogBody "Error: permission denied (publickey)`r`nfatal: Could not read from remote repository ssh://git@github.com/example/repo.git"
 
     Write-Host ""

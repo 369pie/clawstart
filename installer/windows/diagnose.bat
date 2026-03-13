@@ -19,6 +19,8 @@ set "CLAWSTART_HOME=%CLAWSTART_HOME:~0,-1%"
 set "REPORT=%CLAWSTART_HOME%\diagnostic.txt"
 set "PRIMARY_LOG=%CLAWSTART_HOME%\logs\gateway.log"
 set "SECONDARY_LOG=%USERPROFILE%\.openclaw\logs\gateway.log"
+set "STATE_DIR=%CLAWSTART_HOME%\state"
+set "CONFIG_FILE=%STATE_DIR%\openclaw.json"
 
 set "ERROR_CODE=OK"
 set "MATCHED_RULE=NONE"
@@ -75,11 +77,11 @@ echo. >> "%REPORT%"
 :: 配置检测
 echo   [5/6] 配置文件...
 echo --- 配置文件 --- >> "%REPORT%"
-if exist "%CLAWSTART_HOME%\config\provider.json" (
-    echo provider.json: 存在 >> "%REPORT%"
-    type "%CLAWSTART_HOME%\config\provider.json" | findstr "provider modelId apiBase" >> "%REPORT%"
+if exist "%CONFIG_FILE%" (
+    echo openclaw.json: 存在 >> "%REPORT%"
+    type "%CONFIG_FILE%" | findstr "workspace gateway agents" >> "%REPORT%"
 ) else (
-    echo provider.json: 未配置 >> "%REPORT%"
+    echo openclaw.json: 未配置 >> "%REPORT%"
 )
 echo. >> "%REPORT%"
 
@@ -153,11 +155,11 @@ if not exist "%CLAWSTART_HOME%\runtime\node\node.exe" (
     goto :eof
 )
 
-if not exist "%CLAWSTART_HOME%\config\provider.json" (
-    set "ERROR_CODE=CONFIG_PROVIDER_MISSING"
-    set "MATCHED_RULE=CFG_PROVIDER_MISSING"
-    set "HUMAN_TITLE=还没有完成模型配置"
-    set "RECOMMENDED_ACTION=先重新运行首次配置，再测试模型连通性。"
+if not exist "%CONFIG_FILE%" (
+    set "ERROR_CODE=CONFIG_OPENCLAW_MISSING"
+    set "MATCHED_RULE=CFG_OPENCLAW_SETUP_MISSING"
+    set "HUMAN_TITLE=还没有完成 OpenClaw 首次配置"
+    set "RECOMMENDED_ACTION=重新运行 launch.bat 或 first-run.bat，完成首次配置。"
     goto :eof
 )
 

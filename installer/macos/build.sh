@@ -1,127 +1,120 @@
 #!/bin/bash
 # ============================================================
-# ClawStart macOS 免安装一键包 - 打包脚本
+# ClawStart macOS beta package builder
 # ============================================================
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-BUILD_DIR="$PROJECT_ROOT/build/macos"
 OUTPUT_DIR="$PROJECT_ROOT/dist"
 VERSION="${1:-0.1.0}"
+TARGET_ARCH="${2:-$(uname -m)}"
 
-# 检测架构
-ARCH=$(uname -m)
-if [ "$ARCH" = "arm64" ]; then
-    NODE_ARCH="darwin-arm64"
-    PACK_NAME="ClawStart-macOS-Apple-Silicon-v${VERSION}"
-else
-    NODE_ARCH="darwin-x64"
-    PACK_NAME="ClawStart-macOS-Intel-v${VERSION}"
-fi
+case "$TARGET_ARCH" in
+    arm64|aarch64)
+        NODE_ARCH="darwin-arm64"
+        PACK_NAME="ClawStart-macOS-Apple-Silicon-v${VERSION}"
+        ;;
+    x64|x86_64|intel)
+        NODE_ARCH="darwin-x64"
+        PACK_NAME="ClawStart-macOS-Intel-v${VERSION}"
+        ;;
+    *)
+        echo "Unsupported target arch: $TARGET_ARCH" >&2
+        exit 1
+        ;;
+esac
 
+DEST="$PROJECT_ROOT/build/macos/$PACK_NAME"
 NODE_VERSION="v22.12.0"
 NODE_URL="https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-${NODE_ARCH}.tar.gz"
+NPM_REGISTRY="${CLAWSTART_NPM_REGISTRY:-https://registry.npmjs.org}"
 
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
-YELLOW='\033[1;33m'
 NC='\033[0m'
 
 echo ""
-echo -e "${CYAN}🦞 ClawStart macOS 一键包打包工具${NC}"
-echo -e "   版本: ${VERSION} | 架构: ${ARCH}"
+echo -e "${CYAN}ClawStart macOS beta package builder${NC}"
+echo -e "  version: ${VERSION} | target: ${TARGET_ARCH}"
 echo ""
 
-# 清理
-echo -e "  [1/6] 清理旧构建..."
-rm -rf "$BUILD_DIR"
-mkdir -p "$BUILD_DIR/$PACK_NAME"
-mkdir -p "$OUTPUT_DIR"
+echo "  [1/6] Cleaning old build..."
+rm -rf "$DEST"
+mkdir -p "$DEST" "$OUTPUT_DIR"
 
-DEST="$BUILD_DIR/$PACK_NAME"
-
-# 下载 Node.js
-echo -e "  [2/6] 准备 Node.js 运行时..."
+echo "  [2/6] Preparing Node.js runtime..."
 NODE_CACHE="$PROJECT_ROOT/build/.cache/node-${NODE_VERSION}-${NODE_ARCH}.tar.gz"
-if [ -f "$NODE_CACHE" ]; then
-    echo -e "    使用缓存"
-else
-    echo -e "    下载 Node.js ${NODE_VERSION} (${NODE_ARCH})..."
+if [ ! -f "$NODE_CACHE" ]; then
     mkdir -p "$(dirname "$NODE_CACHE")"
     curl -L --progress-bar -o "$NODE_CACHE" "$NODE_URL"
 fi
 
 mkdir -p "$DEST/runtime/node"
-tar xzf "$NODE_CACHE" -C /tmp
-cp -r /tmp/node-${NODE_VERSION}-${NODE_ARCH}/* "$DEST/runtime/node/"
-rm -rf /tmp/node-${NODE_VERSION}-${NODE_ARCH}
-echo -e "  ${GREEN}✓${NC} Node.js 就绪"
+rm -rf /tmp/clawstart-node-macos-extract
+mkdir -p /tmp/clawstart-node-macos-extract
+tar xzf "$NODE_CACHE" -C /tmp/clawstart-node-macos-extract
+cp -R /tmp/clawstart-node-macos-extract/node-${NODE_VERSION}-${NODE_ARCH}/. "$DEST/runtime/node/"
+rm -rf /tmp/clawstart-node-macos-extract
+echo -e "  ${GREEN}OK${NC} Node.js runtime ready"
 
-# 安装 OpenClaw
-echo -e "  [3/6] 安装 OpenClaw..."
-mkdir -p "$DEST/openclaw"
-export PATH="$DEST/runtime/node/bin:$PATH"
-cd "$DEST/openclaw"
-npm init -y >/dev/null 2>&1
-npm install openclaw --save 2>&1 | tail -1 || {
-    echo -e "  ${YELLOW}⚠ npm install 失败，标记为需要手动安装${NC}"
-    echo "NEEDS_OPENCLAW_INSTALL=true" > "$DEST/.build-flags"
-}
-echo -e "  ${GREEN}✓${NC} OpenClaw 就绪"
+echo "  [3/6] Installing OpenClaw into local bundle prefix..."
+mkdir -p "$DEST/runtime/npm-global"
+npm_config_platform=darwin \
+npm_config_arch="${TARGET_ARCH/arm64/arm64}" \
+npm install -g openclaw --prefix "$DEST/runtime/npm-global" --omit=dev --registry "$NPM_REGISTRY"
+echo -e "  ${GREEN}OK${NC} OpenClaw installed"
 
-# 复制启动器和工具
-echo -e "  [4/6] 复制启动器..."
+echo "  [4/6] Copying launch tools..."
 cp "$SCRIPT_DIR/launch.command" "$DEST/"
 cp "$SCRIPT_DIR/diagnose.sh" "$DEST/"
 chmod +x "$DEST/launch.command" "$DEST/diagnose.sh"
 
-# 创建默认工作区
-echo -e "  [5/6] 创建默认工作区..."
-mkdir -p "$DEST/workspace"
-mkdir -p "$DEST/config"
+echo "  [5/6] Creating default workspace..."
+mkdir -p "$DEST/workspace" "$DEST/state" "$DEST/logs"
 
-cat > "$DEST/workspace/AGENTS.md" << 'EOF'
-# 我的 AI 工作区
+cat > "$DEST/workspace/AGENTS.md" <<'EOF'
+# ClawStart Workspace
 
-欢迎使用 ClawStart！这是你的 AI 助手工作区。
+Welcome to your ClawStart workspace.
 
-## 快速开始
-1. 双击 `launch.command` 启动 OpenClaw
-2. 在浏览器中开始对话
-3. 探索更多功能：https://clawstart.com
+## First run
+1. Double-click `launch.command`
+2. Complete the OpenClaw setup wizard
+3. Return here when you want the agent to work with your files
 EOF
 
-cat > "$DEST/README-先看这个.txt" << 'EOF'
-🦞 ClawStart - OpenClaw 免安装一键包
-   下载即运行，开箱就能用
+cat > "$DEST/README-先看这个.txt" <<'EOF'
+ClawStart macOS Beta
+====================
 
-【使用方法】
-1. 双击 "launch.command" 启动
-   - 首次可能需要：右键 → 打开（macOS 安全限制）
-2. 首次运行会引导你配置 AI 模型
-3. 配置完成后自动打开浏览器
+使用方法
+1. 双击 launch.command
+2. 首次运行按提示完成 OpenClaw 配置向导
+3. 浏览器会自动打开本地控制台
 
-【macOS 安全提示】
-如果提示"无法打开，因为无法验证开发者"：
-  方法1: 右键点击 launch.command → 选择"打开"
-  方法2: 系统设置 → 隐私与安全性 → 仍要打开
+如果 macOS 提示无法打开
+- 右键 launch.command -> 打开
+- 或在 系统设置 -> 隐私与安全性 中允许
 
-【遇到问题？】
+遇到问题
 - 运行 diagnose.sh 生成诊断报告
-- 将 diagnostic.txt 发到社群求助
-- 访问 https://clawstart.com/troubleshooting
+- 访问 https://useclawstart.com/troubleshooting.html
 
+目录说明
+- runtime/ : 内嵌 Node.js 和 OpenClaw CLI
+- workspace/ : 默认工作区
+- state/ : 本地配置和状态
+- logs/ : 启动日志
 EOF
 
-# 打包
-echo -e "  [6/6] 打包..."
-cd "$BUILD_DIR"
-tar czf "$OUTPUT_DIR/${PACK_NAME}.tar.gz" "$PACK_NAME"
-SIZE=$(du -sh "$OUTPUT_DIR/${PACK_NAME}.tar.gz" | cut -f1)
-echo -e "  ${GREEN}✓${NC} 打包完成: dist/${PACK_NAME}.tar.gz (${SIZE})"
+echo "  [6/6] Packing archive..."
+(
+    cd "$PROJECT_ROOT/build/macos"
+    tar czf "$OUTPUT_DIR/${PACK_NAME}.tar.gz" "$PACK_NAME"
+)
 
 echo ""
-echo -e "${GREEN}🦞 macOS 一键包构建完成！${NC}"
+echo -e "${GREEN}Built:${NC} dist/${PACK_NAME}.tar.gz"
 echo ""

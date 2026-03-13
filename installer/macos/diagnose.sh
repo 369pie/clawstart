@@ -7,6 +7,8 @@ CLAWSTART_HOME="$(cd "$(dirname "$0")" && pwd)"
 REPORT="$CLAWSTART_HOME/diagnostic.txt"
 PRIMARY_LOG="$CLAWSTART_HOME/logs/gateway.log"
 SECONDARY_LOG="$HOME/.openclaw/logs/gateway.log"
+STATE_DIR="$CLAWSTART_HOME/state"
+CONFIG_FILE="$STATE_DIR/openclaw.json"
 
 CYAN='\033[0;36m'
 GREEN='\033[0;32m'
@@ -33,11 +35,11 @@ detect_rule() {
         return
     fi
 
-    if [ ! -f "$CLAWSTART_HOME/config/provider.json" ]; then
-        ERROR_CODE="CONFIG_PROVIDER_MISSING"
-        MATCHED_RULE="CFG_PROVIDER_MISSING"
-        HUMAN_TITLE="还没有完成模型配置"
-        RECOMMENDED_ACTION="先完成模型配置，再重新测试连通性。"
+    if [ ! -f "$CONFIG_FILE" ]; then
+        ERROR_CODE="CONFIG_OPENCLAW_MISSING"
+        MATCHED_RULE="CFG_OPENCLAW_SETUP_MISSING"
+        HUMAN_TITLE="还没有完成 OpenClaw 首次配置"
+        RECOMMENDED_ACTION="重新运行 launch.command，完成首次配置。"
         return
     fi
 
@@ -198,11 +200,11 @@ echo "" >> "$REPORT"
 # 配置
 echo "  [5/6] 配置文件..."
 echo "--- 配置文件 ---" >> "$REPORT"
-if [ -f "$CLAWSTART_HOME/config/provider.json" ]; then
-    echo "provider.json: 存在" >> "$REPORT"
-    grep -E '"provider"|"modelId"|"apiBase"' "$CLAWSTART_HOME/config/provider.json" >> "$REPORT"
+if [ -f "$CONFIG_FILE" ]; then
+    echo "openclaw.json: 存在" >> "$REPORT"
+    grep -E '"workspace"|"gateway"|"agents"' "$CONFIG_FILE" >> "$REPORT" || true
 else
-    echo "provider.json: 未配置" >> "$REPORT"
+    echo "openclaw.json: 未配置" >> "$REPORT"
 fi
 echo "" >> "$REPORT"
 

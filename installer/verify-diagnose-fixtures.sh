@@ -54,9 +54,9 @@ EOF
     fi
 
     if [ "$include_provider" = "yes" ]; then
-        mkdir -p "$case_dir/config"
-        cat > "$case_dir/config/provider.json" <<'EOF'
-{"provider":"deepseek","modelId":"deepseek-chat","apiBase":"https://api.deepseek.com"}
+        mkdir -p "$case_dir/state"
+        cat > "$case_dir/state/openclaw.json" <<'EOF'
+{"gateway":{"mode":"local"},"agents":{"defaults":{"workspace":"./workspace"}}}
 EOF
     fi
 
@@ -98,7 +98,7 @@ run_windows_static_check() {
 }
 
 run_mac_case "missing-node" "NODE_EMBEDDED_MISSING" "ENV_NODE_MISSING" "未找到内嵌 Node.js 运行时" "" "no" "no"
-run_mac_case "missing-provider" "CONFIG_PROVIDER_MISSING" "CFG_PROVIDER_MISSING" "还没有完成模型配置" "" "yes" "no"
+run_mac_case "missing-provider" "CONFIG_OPENCLAW_MISSING" "CFG_OPENCLAW_SETUP_MISSING" "还没有完成 OpenClaw 首次配置" "" "yes" "no"
 run_mac_case "git-ssh" "GIT_SSH_PERMISSION" "R001" "Git SSH 权限错误" $'Error: permission denied (publickey)\nfatal: Could not read from remote repository ssh://git@github.com/example/repo.git'
 run_windows_static_check
 
