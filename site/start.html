@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快速开始 - ClawStart | 10 分钟跑通第一次安装</title>
+  <meta name="description" content="按 ClawStart 的最短路径完成第一次安装、模型配置和启动。适合第一次接触 AI 助手安装的小白用户。">
+  <meta name="keywords" content="ClawStart快速开始,OpenClaw快速开始,10分钟安装,模型配置,首次启动">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/start.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="快速开始 - ClawStart">
+  <meta property="og:description" content="按最短路径完成第一次安装、模型配置和启动，适合第一次接触 AI 助手安装的小白用户。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/start.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="快速开始 - ClawStart">
+  <meta name="twitter:description" content="10 分钟跑通第一次安装、模型配置和启动。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "ClawStart 10 分钟快速开始",
+    "url": "https://nicekate.github.io/openlola/start.html",
+    "description": "按最短路径完成第一次安装、模型配置和启动。",
+    "inLanguage": "zh-CN",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "CNY",
+      "value": "0"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "第一次启动",
+        "text": "Windows 用户双击 launch.bat，macOS 用户右键打开 launch.command。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "选择模型供应商",
+        "text": "优先选择最容易拿到 API Key 的模型服务商。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "输入 API Key 并测试连接",
+        "text": "填入密钥并测试连通性，确认模型可以正常返回结果。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "完成初始配置",
+        "text": "设置工作目录与启动选项后进入使用界面。"
+      }
+    ]
+  }
+  </script>
+  <style>
+    .step-list{counter-reset:steps;list-style:none;padding:0}
+    .step-item{counter-increment:steps;display:flex;gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--theme-border)}
+    .step-item:last-child{border-bottom:none}
+    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+    .step-num::before{content:counter(steps)}
+    .step-body h3{font-size:18px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.7}
+    .check-item{display:flex;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);margin:var(--space-2) 0}
+    .check-ok{background:var(--theme-bg-card);border:1px solid var(--success)}
+    .check-ok .icon{color:var(--success);font-weight:bold}
+    .check-ok p{color:var(--theme-text);font-size:14px;margin:0}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html" class="active">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+      <div class="container">
+        <h1>10 分钟快速开始</h1>
+        <p>按这条最短路径把 ClawStart 跑起来，再完成第一次模型连接</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="tip-box">
+        <strong>💡 前置条件</strong>
+        你已经在 <a href="download.html">下载页</a> 选好平台，并拿到了对应的一键包。
+      </div>
+
+      <h2 class="text-h2 mt-8 mb-6">先按这个顺序检测</h2>
+      <p class="text-body mb-4">如果中途卡住，不要跳步。先确认当前停在哪一环，再决定是不是去排障页。</p>
+      <div class="check-item check-ok"><div class="icon">1</div><p>一键包是否下载正确，并且已经解压到新的目录</p></div>
+      <div class="check-item check-ok"><div class="icon">2</div><p>启动器是否能正常打开，没有被系统权限或杀软拦截</p></div>
+      <div class="check-item check-ok"><div class="icon">3</div><p>模型连接测试是否通过，API Key 和网络是否都正常</p></div>
+      <div class="check-item check-ok"><div class="icon">4</div><p>是否已经完成第一次任务，拿到第一条有结果的输出</p></div>
+      <div class="tip-box mt-4">
+        <strong>💡 什么时候去排障</strong>
+        只有当你明确卡在上面某一步时，再去 <a href="troubleshooting.html">排障页</a> 按错误类型处理，这样会快很多。
+      </div>
+
+      <h2 class="text-h2 mt-12 mb-6">配置引导</h2>
+
+      <ol class="step-list">
+        <li class="step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>第一次启动</h3>
+            <p>Windows 用户双击 <code>launch.bat</code>，macOS 用户右键打开 <code>launch.command</code>。</p>
+            <p>第一次启动会自动进入配置引导，不需要你手动编辑配置文件。</p>
+            <p>如果这一步就打不开，先去看 <a href="troubleshooting.html">排障页</a> 里的“打不开 / 启动失败”。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>选择 AI 模型供应商</h3>
+            <p>优先选择你当前最容易拿到 API Key 的服务商。中国大陆用户推荐先从国内模型提供商开始：</p>
+            <ul style="color:var(--theme-text-secondary);line-height:1.8;margin:var(--space-3) 0 var(--space-3) var(--space-5);">
+              <li>🇨🇳 豆包 / 硅基流动 / DeepSeek / 自定义兼容接口</li>
+              <li>🧠 已有海外 API 的用户也可以继续使用现有服务商</li>
+              <li>🏠 想少花钱也可以后续切到本地模型</li>
+            </ul>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>输入 API Key</h3>
+            <p>填入对应服务商的 API Key。密钥仅保存在本地，不会上传到任何第三方。</p>
+            <div class="warn-box">
+              <strong>⚠️ 安全提示</strong>
+              不要将 API Key 分享给他人或提交到公开仓库。
+            </div>
+            <p>如果这里报错，优先检查是不是复制了前后空格、Key 已过期，或者当前网络无法访问对应接口。</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>测试连通性</h3>
+            <p>点击「测试连接」，确认 API Key 有效、网络可用、模型能正常返回结果。</p>
+            <div class="check-item check-ok">
+              <div class="icon">✓</div>
+              <p>测试成功：说明这台机器已经具备第一次可用条件</p>
+            </div>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>完成初始配置</h3>
+            <p>设置工作目录，选择是否开机自启，点击「保存并进入」。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="text-h2 mt-12 mb-6">第一个任务</h2>
+      <p class="text-body mb-4">配置完成后，试试这些：</p>
+      <div class="code-block"><span class="comment"># 让 AI 帮你总结一个网页</span>
+总结这篇文章的核心观点：https://docs.openclaw.ai
+
+<span class="comment"># 或者让它帮你写一份 README</span>
+帮我写一份 Node.js 项目的 README 模板</div>
+
+      <div class="tip-box mt-4">
+        <strong>💡 小技巧</strong>
+        按下 <code>Ctrl + Space</code>（Mac 是 <code>Cmd + Space</code>）可以快速唤醒全局输入框。
+      </div>
+
+      <h2 class="text-h2 mt-12 mb-6">验证安装成功</h2>
+      <p class="text-body mb-4">完成以下 3 项，说明你已经跑通了：</p>
+      <div class="check-item check-ok"><div class="icon">1</div><p>应用正常启动，没有报错</p></div>
+      <div class="check-item check-ok"><div class="icon">2</div><p>模型连接测试通过，可以正常对话</p></div>
+      <div class="check-item check-ok"><div class="icon">3</div><p>完成了第一个任务，得到预期输出</p></div>
+
+      <h2 class="text-h2 mt-12 mb-6">接下来</h2>
+      <div class="card-grid-2">
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <h3>学习更多功能</h3>
+          <p>查看完整使用教程，解锁高级能力。</p>
+          <a href="tutorial.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial" data-surface="start_next_cards">查看教程 →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎒</div>
+          <h3>安装技能包</h3>
+          <p>从技能商店安装扩展功能。</p>
+          <a href="https://clawhub.com" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skillhub" data-surface="start_next_cards">技能商店 →</a>
+        </div>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">第一次跑通后这样走</h3>
+        <p class="text-body mb-4">先去教程页完成第一件有成就感的事。如果你已经觉得折腾太多，也可以直接了解 LolaClaw。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="tutorial.html" class="btn btn-primary" data-track="click_tutorial" data-surface="start_bottom_cta">查看教程 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="start_bottom_cta">遇到问题？去排障 →</a>
+          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="start_bottom_cta">了解 LolaClaw →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

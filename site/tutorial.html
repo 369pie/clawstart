@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教程 - ClawStart | 装好后先做这几件事</title>
+  <meta name="description" content="ClawStart 教程页，帮助第一次跑通环境的用户先完成第一件有成就感的事情，再决定要不要继续深入。">
+  <meta name="keywords" content="ClawStart教程,OpenClaw教程,装好后怎么用,技能入门,第一次对话">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/tutorial.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="教程 - ClawStart">
+  <meta property="og:description" content="帮助第一次跑通环境的用户先完成第一件有成就感的事情，再决定要不要继续深入。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/tutorial.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="教程 - ClawStart">
+  <meta name="twitter:description" content="装好后先做什么、先学什么、先试什么，按这页顺序往下走。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ClawStart 教程：装好后先做这几件事",
+    "url": "https://nicekate.github.io/openlola/tutorial.html",
+    "description": "帮助第一次跑通环境的用户先完成第一件有成就感的事情。",
+    "inLanguage": "zh-CN",
+    "author": {
+      "@type": "Organization",
+      "name": "ClawStart"
+    },
+    "about": [
+      "OpenClaw 使用教程",
+      "技能入门",
+      "ClawStart"
+    ]
+  }
+  </script>
+  <style>
+    .toc{background:var(--theme-bg-card);border:1px solid var(--theme-border);border-radius:var(--radius-lg);padding:var(--space-6) var(--space-8);margin-bottom:var(--space-12)}
+    .toc h3{font-size:16px;font-weight:600;margin-bottom:var(--space-3);color:var(--theme-text-secondary)}
+    .toc ol{margin:0;padding-left:var(--space-5);line-height:2}
+    .toc a{color:var(--brand-500);font-size:15px}
+    .t-section{padding:var(--space-12) 0;border-bottom:1px solid var(--theme-border)}
+    .t-section:last-child{border-bottom:none}
+    .t-section h2{font-size:24px;font-weight:700;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .t-section .subtitle{color:var(--theme-text-secondary);font-size:15px;margin-bottom:var(--space-6)}
+    .t-section p.body{color:var(--theme-text);font-size:15px;line-height:1.7}
+    .channel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5);margin:var(--space-6) 0}
+    .channel-card{background:var(--theme-bg-card);border:1px solid var(--theme-border);border-radius:var(--radius-md);padding:var(--space-5)}
+    .channel-card h4{font-size:16px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .channel-card p{color:var(--theme-text-secondary);font-size:14px;line-height:1.6}
+    @media(max-width:768px){.channel-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>装好之后，先做这几件事</h1>
+      <p>先体验一次真正有结果的使用，再决定要不要继续深入技能、渠道和自动化。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <nav class="toc">
+        <h3>📖 建议顺序</h3>
+        <ol>
+          <li><a href="#basics">先完成第一次对话</a></li>
+          <li><a href="#skills">再装一个对你有用的技能</a></li>
+          <li><a href="#channels">需要时再接消息渠道</a></li>
+          <li><a href="#memory">记忆系统</a></li>
+          <li><a href="#cron">定时任务</a></li>
+          <li><a href="#config">配置管理</a></li>
+        </ol>
+      </nav>
+
+      <div id="basics" class="t-section">
+        <h2>1. 先完成第一次对话</h2>
+        <p class="subtitle">你现在最需要的是成就感，不是把所有功能都学完</p>
+        <p class="body">ClawStart 跑通后，底层的 OpenClaw 环境就已经可用了。你现在可以直接在对话框输入任何问题或指令，让它开始真正帮你做事。</p>
+        <div class="code-block"><span class="comment"># 问问题</span>
+帮我解释一下 Docker 和虚拟机的区别
+
+<span class="comment"># 执行任务</span>
+帮我把 ~/Downloads 里超过 30 天的文件整理到 ~/Archive
+
+<span class="comment"># 写代码</span>
+用 Python 写一个批量重命名文件的脚本</div>
+        <div class="tip-box">
+          <strong>💡 第一轮目标</strong>
+          先确认它能稳定响应、能理解你的指令、能给出你满意的第一条结果。这样你就已经跑通了最关键的一步。
+        </div>
+      </div>
+
+      <div id="skills" class="t-section">
+        <h2>2. 再装一个对你有用的技能</h2>
+        <p class="subtitle">不要一上来装十几个，先选一个你马上就会用到的</p>
+        <div class="code-block"><span class="comment"># 搜索可用技能</span>
+openclaw skills search weather
+
+<span class="comment"># 安装技能</span>
+openclaw skills install weather
+
+<span class="comment"># 查看已安装技能</span>
+openclaw skills list</div>
+        <p class="body" style="margin-top:var(--space-4);">安装后直接在对话中使用，AI 会自动调用：</p>
+        <div class="code-block"><span class="comment"># 安装了 weather 技能后</span>
+北京今天天气怎么样？
+
+<span class="comment"># 安装了 git-essentials 技能后</span>
+帮我看看这个仓库最近的提交记录</div>
+        <div class="tip-box">
+          <strong>💡 技能选择建议</strong>
+          第一次优先选搜索、文件整理、Git 或写作类技能。装一个、用一次，比收藏二十个更有效。
+        </div>
+      </div>
+
+      <div id="channels" class="t-section">
+        <h2>3. 需要时再接消息渠道</h2>
+        <p class="subtitle">这一步不是首装必做，等你确认它值得继续用，再接到聊天工具里</p>
+        <div class="channel-grid">
+          <div class="channel-card">
+            <h4>💬 Telegram</h4>
+            <p>通过 BotFather 创建机器人，填入 Token 即可连接。支持私聊和群组。</p>
+          </div>
+          <div class="channel-card">
+            <h4>🎮 Discord</h4>
+            <p>创建 Discord Bot，配置 Token 和频道权限。支持多服务器。</p>
+          </div>
+          <div class="channel-card">
+            <h4>📱 微信（实验性）</h4>
+            <p>通过扫码登录网页版微信，实现消息收发。稳定性取决于微信接口。</p>
+          </div>
+          <div class="channel-card">
+            <h4>🐧 QQ</h4>
+            <p>通过 QQ 官方机器人 API 接入，支持群聊和私聊。</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="memory" class="t-section">
+        <h2>4. 记忆系统</h2>
+        <p class="subtitle">AI 助手会记住你说过的话，越用越懂你</p>
+        <p class="body">底层的 OpenClaw 有分层记忆系统。短期记忆在对话上下文中，长期记忆写入本地文件。数据始终在你自己的设备上。</p>
+        <div class="code-block"><span class="comment"># 让 AI 记住某件事</span>
+记住：我的服务器 IP 是 192.168.1.100，SSH 端口是 2222
+
+<span class="comment"># 之后直接引用</span>
+帮我 SSH 到我的服务器看看磁盘使用情况</div>
+        <div class="tip-box">
+          <strong>💡 记忆文件</strong>
+          长期记忆保存在 <code>~/.openclaw/workspace/MEMORY.md</code>，你可以随时查看和编辑。
+        </div>
+      </div>
+
+      <div id="cron" class="t-section">
+        <h2>5. 定时任务</h2>
+        <p class="subtitle">让 AI 在指定时间自动执行任务</p>
+        <div class="code-block"><span class="comment"># 创建定时任务</span>
+openclaw cron add --schedule "0 9 * * *" --task "检查今天的日历安排并推送到 Telegram"
+
+<span class="comment"># 查看所有定时任务</span>
+openclaw cron list
+
+<span class="comment"># 删除定时任务</span>
+openclaw cron remove &lt;task-id&gt;</div>
+      </div>
+
+      <div id="config" class="t-section">
+        <h2>6. 配置管理</h2>
+        <p class="subtitle">调整 AI 的行为、模型和系统设置</p>
+        <div class="code-block"><span class="comment"># 查看当前配置</span>
+openclaw config list
+
+<span class="comment"># 修改默认模型</span>
+openclaw config set defaultModel "anthropic/claude-sonnet"
+
+<span class="comment"># 查看运行状态</span>
+openclaw status</div>
+        <div class="tip-box">
+          <strong>💡 个性化</strong>
+          编辑 <code>~/.openclaw/workspace/SOUL.md</code> 可以定义 AI 的性格和行为风格。
+        </div>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">接下来怎么走？</h3>
+        <p class="text-body mb-4">如果你已经觉得它有价值，可以继续看资源，也可以直接了解更省事的 LolaClaw。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="resources.html" class="btn btn-primary" data-track="click_resources" data-surface="tutorial_bottom_cta">查看资源 →</a>
+          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="tutorial_bottom_cta">了解 LolaClaw →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="tutorial_bottom_cta">遇到问题？去排障 →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

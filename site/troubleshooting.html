@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排障 - ClawStart | 安装和配置问题快速解决</title>
+  <meta name="description" content="ClawStart 排障页，按现象快速解决首次安装、模型配置、权限和网络问题。适合第一次接触 AI 助手安装的小白用户。">
+  <meta name="keywords" content="ClawStart排障,OpenClaw报错,安装失败,API Key失败,权限问题,网络问题">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/troubleshooting.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="排障 - ClawStart">
+  <meta property="og:description" content="按现象快速解决首次安装、模型配置、权限和网络问题。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/troubleshooting.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="排障 - ClawStart">
+  <meta name="twitter:description" content="打不开、连不上、配不好，按现象快速排查。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "macOS 提示无法验证开发者或已损坏怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以前往系统设置中的隐私与安全性选择仍要打开，或用 xattr 清除隔离属性。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Windows SmartScreen 拦截安装怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "点击更多信息后选择仍要运行即可继续。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "API Key 测试失败怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "检查密钥是否正确、是否过期、账户余额是否足够，以及网络是否能访问对应 API 地址。"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html" class="active">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>故障排查</h1>
+      <p>先按最短顺序定位，再按错误类型处理。大多数问题几分钟内就能解决。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="success-box">
+        <strong>🔧 先做这三件事</strong><br>
+        1. 确认你是按平台页的一键包路径在操作<br>
+        2. 回到 <a href="start.html">快速开始</a> 看自己卡在第几步<br>
+        3. 再到下面按“打不开 / 连不上 / 配不好”分类排查
+      </div>
+
+      <div class="card-grid-2 mt-8">
+        <div class="card">
+          <h3>先看你卡在哪一类</h3>
+          <p>优先判断是“打不开”“安装失败”“模型连不上”还是“运行后报错”，不要同时乱试多个方向。</p>
+        </div>
+        <div class="card">
+          <h3>先做最短动作</h3>
+          <p>一键包用户先处理权限、杀软、路径问题。只有明确走命令行安装时，才需要继续看 Node、Git、CLI 和 npm 错误。</p>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--space-12);">
+        <h2 class="text-h2 mb-6">🔌 打不开 / 启动失败</h2>
+
+        <details class="faq-item">
+          <summary>macOS 提示"无法验证开发者"或"已损坏"</summary>
+          <div class="faq-answer">
+            <p>这是 macOS Gatekeeper 的安全机制。两种解决方式：</p>
+            <p>方式一：前往「系统设置 → 隐私与安全性」，找到被拦截的应用，点击「仍要打开」。</p>
+            <p>方式二：在终端执行：</p>
+            <div class="code-block">xattr -cr "/你的解压目录"</div>
+            <p>如果你走的是一键包路径，不需要先把它装进系统目录，优先对当前解压目录执行上面的命令即可。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Windows SmartScreen 拦截安装</summary>
+          <div class="faq-answer">
+            <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」。底层的 OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Windows SmartScreen 或杀毒软件反复拦截</summary>
+          <div class="faq-answer">
+            <p>这通常不是安装包本身坏了，而是系统把“第一次出现的未签名文件”当成风险项。</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>将当前一键包解压目录加入信任列表</li>
+              <li>关闭仍在占用文件的旧进程后再试</li>
+              <li>用管理员权限重新运行启动器</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div style="margin-top:var(--space-12);">
+        <h2 class="text-h2 mb-6">📦 安装与依赖错误</h2>
+
+        <details class="faq-item">
+          <summary>出现 Git SSH 权限错误或 exit 128</summary>
+          <div class="faq-answer">
+            <p>常见关键词包括 <code>permission denied (publickey)</code>、<code>git@github.com</code>、<code>exit 128</code>。这通常表示当前机器没有正确处理 GitHub 拉取权限。</p>
+            <p>先确认 Git 已安装，再把 Git 拉取方式切到 HTTPS：</p>
+            <div class="code-block">git --version
+git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+git config --global --add url."https://github.com/".insteadOf git@github.com:</div>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>出现 EPERM / operation not permitted</summary>
+          <div class="faq-answer">
+            <p>这通常表示文件被占用、被杀软拦截，或当前终端权限不足。</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>关闭仍在运行的旧 Gateway 或相关进程</li>
+              <li>临时关闭杀软实时防护后重试</li>
+              <li>用管理员权限重新打开终端或启动器</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>出现 ENOENT / -4058 / cannot find module</summary>
+          <div class="faq-answer">
+            <p>这表示文件没写完整、目录异常，或上次安装被中断了。</p>
+            <p>如果你走的是命令行安装路径，先清理 npm 缓存，再重新安装底层 CLI：</p>
+            <div class="code-block">npm cache clean --force
+npm install -g openclaw</div>
+            <p>如果你走的是一键包路径，优先重新下载并解压到一个新的空目录，不要覆盖旧目录。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>出现 native binding / engine / unsupported</summary>
+          <div class="faq-answer">
+            <p>这类错误通常意味着底层依赖没装完整，或者 Node.js 版本太低。</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li><code>native binding</code>：先重装底层 CLI</li>
+              <li><code>engine</code> / <code>unsupported</code>：先升级 Node.js 到当前要求版本以上</li>
+            </ul>
+            <p>如果你只是想最快用起来，建议优先回到一键包路径，不要继续手动折腾命令行环境。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>安装后找不到 openclaw 命令</summary>
+          <div class="faq-answer">
+            <p>只有你明确走了命令行安装路径，才需要处理这个问题。一键包用户不需要手动调用 <code>openclaw</code> 命令。</p>
+            <p>关闭并重新打开终端窗口。如果仍然找不到：</p>
+            <div class="code-block"><span class="comment"># 检查 npm 全局路径</span>
+npm config get prefix
+
+<span class="comment"># 确认该路径在 PATH 中</span>
+echo $PATH
+
+<span class="comment"># 如果不在，手动添加</span>
+export PATH="$(npm config get prefix)/bin:$PATH"</div>
+          </div>
+        </details>
+      </div>
+
+      <div style="margin-top:var(--space-12);">
+        <h2 class="text-h2 mb-6">🤖 模型连不上 / API Key 不通过</h2>
+
+        <details class="faq-item">
+          <summary>API Key 测试失败</summary>
+          <div class="faq-answer">
+            <p>检查以下几点：</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>API Key 是否正确复制（注意前后空格）</li>
+              <li>API Key 是否已过期或被禁用</li>
+              <li>账户余额是否充足</li>
+              <li>网络是否能访问对应的 API 地址</li>
+            </ul>
+            <div class="code-block"><span class="comment"># 手动测试 API 连通性</span>
+curl https://api.openai.com/v1/models \
+  -H "Authorization: Bearer YOUR_API_KEY"</div>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>国内网络无法连接 OpenAI / Anthropic</summary>
+          <div class="faq-answer">
+            <p>几种解决方案：</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>使用国内模型（豆包、通义千问、文心一言）</li>
+              <li>使用 API 中转服务，修改 baseUrl</li>
+              <li>使用本地模型（Ollama + 开源模型）</li>
+            </ul>
+            <div class="code-block"><span class="comment"># 配置自定义 API 地址</span>
+openclaw config set providers.openai.baseUrl "https://your-proxy.com/v1"</div>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>出现 etimedout / econnreset / 证书错误</summary>
+          <div class="faq-answer">
+            <p>这通常是网络、代理、证书或公司环境限制，不一定是模型本身有问题。</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>先切换网络后再试</li>
+              <li>临时关闭代理或 VPN 后重试</li>
+              <li>优先使用国内模型或国内镜像</li>
+            </ul>
+            <div class="code-block"><span class="comment"># 如果是 npm 证书问题，可临时关闭严格 SSL</span>
+npm config set strict-ssl false</div>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>模型响应很慢或超时</summary>
+          <div class="faq-answer">
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>尝试换一个模型或服务商</li>
+              <li>缩短对话上下文长度</li>
+              <li>调整超时：<code>openclaw config set requestTimeout 60000</code></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div style="margin-top:var(--space-12);">
+        <h2 class="text-h2 mb-6">⚙️ 运行时问题</h2>
+
+        <details class="faq-item">
+          <summary>Gateway 启动失败，端口被占用</summary>
+          <div class="faq-answer">
+            <div class="code-block"><span class="comment"># 查看谁占用了端口</span>
+lsof -i :3100        <span class="comment"># macOS / Linux</span>
+netstat -ano | findstr :3100  <span class="comment"># Windows</span>
+
+<span class="comment"># 修改运行端口</span>
+openclaw config set port 3101
+openclaw gateway restart</div>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>内存占用过高</summary>
+          <div class="faq-answer">
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>重启 Gateway：<code>openclaw gateway restart</code></li>
+              <li>减少同时活跃的会话数量</li>
+              <li>清理历史：<code>openclaw sessions prune --older-than 7d</code></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>技能安装失败</summary>
+          <div class="faq-answer">
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>网络问题：检查是否能访问 GitHub / npm</li>
+              <li>权限问题：确保工作目录有写入权限</li>
+              <li>版本冲突：<code>openclaw skills update --force</code></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div style="margin-top:var(--space-12);">
+        <h2 class="text-h2 mb-6">📱 进阶渠道问题</h2>
+
+        <details class="faq-item">
+          <summary>Telegram Bot 收不到消息</summary>
+          <div class="faq-answer">
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>Bot Token 是否正确</li>
+              <li>是否已向 Bot 发送 <code>/start</code></li>
+              <li>Gateway 是否正在运行：<code>openclaw status</code></li>
+              <li>查看日志中是否有 Telegram 相关错误</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>微信连接不稳定</summary>
+          <div class="faq-answer">
+            <p>微信接入是实验性功能。建议：</p>
+            <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+              <li>保持手机微信在线</li>
+              <li>不要在其他设备登录同一微信号</li>
+              <li>如果频繁掉线，考虑用 Telegram 作为主要渠道</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">问题还没解决？</h3>
+        <p class="text-body mb-4">先回到快速开始确认卡点。如果你已经确定卡在更复杂的问题上，再去 GitHub 求助。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="troubleshooting_bottom_cta">回到快速开始 →</a>
+          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="troubleshooting_bottom_cta">了解 LolaClaw →</a>
+          <a href="https://github.com/openclaw/openclaw/issues" target="_blank" rel="noopener" class="btn btn-outline-dark" data-track="click_issue_submit" data-surface="troubleshooting_bottom_cta">去 GitHub 求助 →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+
+    // 主题切换
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+
+</body>
+</html>

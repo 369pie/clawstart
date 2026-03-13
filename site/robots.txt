@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Internal dashboards and archived pages should not be crawled.
+Disallow: /funnel.html
+Disallow: /_archive/
+
+Sitemap: https://nicekate.github.io/openlola/sitemap.xml

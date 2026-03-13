@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>macOS 指南 - ClawStart | 一键包安装说明</title>
+  <meta name="description" content="ClawStart macOS 一键包说明。适合想最快跑通的 Mac 用户，推荐下载后右键打开 launch.command。">
+  <meta name="keywords" content="ClawStart macOS,OpenClaw macOS,Mac一键包,macOS安装指南,launch.command">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/macos.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="macOS 安装指南 - ClawStart">
+  <meta property="og:description" content="适合想最快跑通的 Mac 用户的 macOS 一键包安装说明，下载后右键打开 launch.command。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/macos.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="macOS 安装指南 - ClawStart">
+  <meta name="twitter:description" content="macOS Apple Silicon 和 Intel 一键包下载与首次启动说明。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "ClawStart macOS 安装指南",
+    "url": "https://nicekate.github.io/openlola/macos.html",
+    "description": "适合想最快跑通的 Mac 用户的 macOS 一键包安装说明。",
+    "inLanguage": "zh-CN",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "CNY",
+      "value": "0"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "下载安装包",
+        "text": "下载适合 Apple Silicon 或 Intel 的 macOS tar.gz 一键包。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "解压并右键打开",
+        "text": "解压压缩包后右键打开 launch.command，如被拦截则在系统设置中选择仍要打开。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "完成首次引导",
+        "text": "按引导选择模型服务商、填入 API Key 并完成连通性测试。"
+      }
+    ]
+  }
+  </script>
+  <style>
+    .install-step{counter-reset:steps;list-style:none;padding:0}
+    .install-step-item{counter-increment:steps;display:flex;gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--theme-border)}
+    .install-step-item:last-child{border-bottom:none}
+    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+    .step-num::before{content:counter(steps)}
+    .step-body h3{font-size:18px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.7}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html" class="active">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>macOS 安装指南</h1>
+      <p>支持 Apple Silicon (M系列) 和 Intel 芯片</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="card-grid-2 mb-8">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">📦</div>
+          <h3>macOS 一键包 Beta</h3>
+          <p>适合想最快跑通的 Mac 用户。下载 tar.gz 后解压，右键打开 <code>launch.command</code>。</p>
+          <a href="https://github.com/369pie/openlola/releases/latest/download/ClawStart-macOS-Apple-Silicon-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="macos_arm" data-surface="macos_hero_card">下载 Apple Silicon Beta →</a>
+          <a href="https://github.com/369pie/openlola/releases/latest/download/ClawStart-macOS-Intel-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm mt-4" data-track="click_download" data-platform="macos_intel" data-surface="macos_hero_card">下载 Intel Beta →</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">⌨️</div>
+          <h3>备用命令行路径</h3>
+          <p>更适合熟悉 Homebrew、Node.js 和终端的用户，不推荐第一次使用优先走这条路。</p>
+          <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="macos" data-surface="macos_hero_card">查看命令 →</a>
+        </div>
+      </div>
+
+      <h2 class="text-h2 mb-6">macOS 一键包步骤</h2>
+      <ol class="install-step mb-8">
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>下载安装包</h3>
+            <p>打开最新 Release，选择适合自己芯片架构的 macOS `tar.gz` 产物下载。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>解压并右键打开</h3>
+            <p>解压下载的压缩包，右键打开 <code>launch.command</code>。首次若被拦截，请在系统设置里选择“仍要打开”。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>完成首次引导</h3>
+            <p>按引导选择模型服务商、填入 API Key、测试连通性。成功后浏览器会自动打开。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="cli" class="text-h2 mb-6">命令行安装步骤</h2>
+      <ol class="install-step mb-8">
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>安装 Node.js</h3>
+            <p>如果还没有 Node.js，先安装 LTS 版本：</p>
+            <div class="code-block">brew install node</div>
+            <p style="margin-top:var(--space-2);font-size:13px;">没有 Homebrew？去 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载 pkg 安装包。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>安装底层 OpenClaw CLI</h3>
+            <div class="code-block">npm install -g @anthropic/openclaw</div>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>启动服务</h3>
+            <div class="code-block">openclaw start</div>
+            <p style="margin-top:var(--space-2);">浏览器会自动打开配置界面。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="text-h2 mb-6">常见问题</h2>
+
+      <details class="faq-item">
+        <summary>提示"无法打开，因为无法验证开发者"</summary>
+        <div class="faq-answer">
+          <p>两种解决方式：</p>
+          <p>方式一：打开「系统设置 → 隐私与安全性」，往下翻找到提示，点击「仍要打开」。</p>
+          <p>方式二：如果你明确知道当前一键包解压目录，也可以在终端里对该目录执行 `xattr -cr` 后再重试。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Apple Silicon 和 Intel 有什么区别？</summary>
+        <div class="faq-answer">
+          <p>当前一键包按芯片架构分别提供下载。大多数用户只要按下载页的设备类型选择对应版本即可，不需要理解太多底层差异。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>安装后找不到 openclaw 命令？</summary>
+        <div class="faq-answer">
+          <p>如果你走的是一键包路径，其实不需要手动使用 `openclaw` 命令；直接运行 `launch.command` 就够了。只有命令行安装用户，才需要继续排查 PATH 设置。</p>
+        </div>
+      </details>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
+        <p class="text-body mb-4">跟着快速开始指南，10 分钟完成第一次配置</p>
+        <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="macos_bottom_cta">查看快速开始 →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

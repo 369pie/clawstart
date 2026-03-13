@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows 指南 - ClawStart | 一键包安装说明</title>
+  <meta name="description" content="ClawStart Windows 一键包说明。适合大多数小白用户，推荐解压后双击 launch.bat 完成第一次安装。">
+  <meta name="keywords" content="ClawStart Windows,OpenClaw Windows,Windows一键包,Windows安装指南,launch.bat">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/windows.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Windows 安装指南 - ClawStart">
+  <meta property="og:description" content="适合大多数小白用户的 Windows 一键包安装说明，下载后解压并双击 launch.bat 即可开始。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/windows.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Windows 安装指南 - ClawStart">
+  <meta name="twitter:description" content="Windows 一键包下载、解压与首次启动说明，适合普通用户先跑通第一次安装。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "ClawStart Windows 安装指南",
+    "url": "https://nicekate.github.io/openlola/windows.html",
+    "description": "适合大多数小白用户的 Windows 一键包安装说明。",
+    "inLanguage": "zh-CN",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "CNY",
+      "value": "0"
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "下载安装包",
+        "text": "下载 Windows 对应的 ClawStart 一键包 zip 文件。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "解压并运行启动器",
+        "text": "解压压缩包后双击 launch.bat，必要时在系统提示中选择仍要运行。"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "完成首次引导",
+        "text": "按引导选择模型服务商、填入 API Key 并测试连通性。"
+      }
+    ]
+  }
+  </script>
+  <style>
+    .install-step{counter-reset:steps;list-style:none;padding:0}
+    .install-step-item{counter-increment:steps;display:flex;gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--theme-border)}
+    .install-step-item:last-child{border-bottom:none}
+    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+    .step-num::before{content:counter(steps)}
+    .step-body h3{font-size:18px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.7}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html" class="active">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Windows 安装指南</h1>
+      <p>支持 Windows 10 1903+ 和 Windows 11，64 位系统</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="card-grid-2 mb-8">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">📦</div>
+          <h3>Windows 一键包 Beta</h3>
+          <p>适合普通用户。下载 zip 后解压，双击 <code>launch.bat</code> 即可启动。</p>
+          <a href="https://github.com/369pie/openlola/releases/latest/download/ClawStart-Windows-latest.zip" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="windows" data-surface="windows_hero_card">直接下载 Windows Beta →</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">⌨️</div>
+          <h3>备用命令行路径</h3>
+          <p>更适合熟悉 Node.js 和命令行的用户，不推荐第一次使用优先走这条路。</p>
+          <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="windows" data-surface="windows_hero_card">查看命令 →</a>
+        </div>
+      </div>
+
+      <h2 class="text-h2 mb-6">Windows 一键包步骤</h2>
+      <ol class="install-step mb-8">
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>下载安装包</h3>
+            <p>打开最新 Release，选择 Windows 对应的 `ClawStart-Windows-*.zip` 下载。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>解压并运行启动器</h3>
+            <p>将 zip 解压到任意目录，双击 <code>launch.bat</code>。如果 SmartScreen 拦截，点击「更多信息」→「仍要运行」。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>完成首次引导</h3>
+            <p>按引导选择模型服务商、填入 API Key、测试连通性。成功后浏览器会自动打开。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="cli" class="text-h2 mb-6">命令行安装步骤</h2>
+      <ol class="install-step mb-8">
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>安装 Node.js</h3>
+            <p>如果还没有 Node.js，去 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载 LTS 版本安装。</p>
+            <p>或者用包管理器安装：</p>
+            <div class="code-block"><span class="comment"># Winget (推荐)</span>
+winget install OpenJS.NodeJS.LTS
+
+<span class="comment"># Scoop</span>
+scoop install nodejs-lts
+
+<span class="comment"># Chocolatey</span>
+choco install nodejs-lts</div>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>全局安装 OpenClaw</h3>
+            <div class="code-block">npm install -g @anthropic/openclaw</div>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>启动服务</h3>
+            <div class="code-block">openclaw start</div>
+            <p style="margin-top:var(--space-2);">浏览器会自动打开配置界面。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="text-h2 mb-6">常见问题</h2>
+
+      <details class="faq-item">
+        <summary>Windows SmartScreen 阻止安装？</summary>
+        <div class="faq-answer">
+          <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」即可。底层的 OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>安装后运行报错 "找不到 openclaw 命令"？</summary>
+        <div class="faq-answer">
+          <p>关闭并重新打开命令提示符/ PowerShell，让 PATH 环境变量生效。如果仍然找不到：</p>
+          <div class="code-block"><span class="comment"># 检查 npm 全局路径</span>
+npm config get prefix
+
+<span class="comment"># 将该路径添加到 PATH 环境变量</span>
+setx PATH "%PATH%;%APPDATA%\npm"</div>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>杀毒软件误报病毒？</summary>
+        <div class="faq-answer">
+          <p>部分杀毒软件可能会误报。你可以：</p>
+          <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+            <li>将当前启动器文件夹添加到信任列表/白名单</li>
+            <li>或者使用命令行版本（npm 安装）</li>
+            <li>从 <a href="https://github.com/openclaw/openclaw">GitHub</a> 下载源码自行编译</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
+        <p class="text-body mb-4">跟着快速开始指南，10 分钟完成第一次配置</p>
+        <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="windows_bottom_cta">查看快速开始 →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

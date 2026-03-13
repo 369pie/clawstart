@@ -1,0 +1,102 @@
+name: Build & Release ClawStart
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. 0.1.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Windows package
+        shell: bash
+        run: |
+          VERSION="${{ github.event.inputs.version || github.ref_name }}"
+          VERSION="${VERSION#v}"
+          bash installer/windows/build.sh "$VERSION"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-package
+          path: dist/ClawStart-Windows-*.zip
+
+  build-macos-arm:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build macOS ARM package
+        run: |
+          VERSION="${{ github.event.inputs.version || github.ref_name }}"
+          VERSION="${VERSION#v}"
+          bash installer/macos/build.sh "$VERSION"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm-package
+          path: dist/ClawStart-macOS-Apple-Silicon-*.tar.gz
+
+  build-macos-intel:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build macOS Intel package
+        run: |
+          VERSION="${{ github.event.inputs.version || github.ref_name }}"
+          VERSION="${VERSION#v}"
+          bash installer/macos/build.sh "$VERSION"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-intel-package
+          path: dist/ClawStart-macOS-Intel-*.tar.gz
+
+  release:
+    needs: [build-windows, build-macos-arm, build-macos-intel]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: dist
+      - name: Prepare stable asset aliases
+        run: |
+          windows_file="$(find dist -maxdepth 1 -name 'ClawStart-Windows-v*.zip' | head -n 1)"
+          mac_arm_file="$(find dist -maxdepth 1 -name 'ClawStart-macOS-Apple-Silicon-v*.tar.gz' | head -n 1)"
+          mac_intel_file="$(find dist -maxdepth 1 -name 'ClawStart-macOS-Intel-v*.tar.gz' | head -n 1)"
+
+          [ -n "$windows_file" ] && cp "$windows_file" "dist/ClawStart-Windows-latest.zip"
+          [ -n "$mac_arm_file" ] && cp "$mac_arm_file" "dist/ClawStart-macOS-Apple-Silicon-latest.tar.gz"
+          [ -n "$mac_intel_file" ] && cp "$mac_intel_file" "dist/ClawStart-macOS-Intel-latest.tar.gz"
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || format('v{0}', github.event.inputs.version) }}
+          name: ClawStart ${{ github.ref_name || format('v{0}', github.event.inputs.version) }}
+          body: |
+            ## 🦞 ClawStart 免安装一键包
+
+            下载即运行，开箱就能用。
+
+            ### 下载
+            | 平台 | 文件 |
+            |------|------|
+            | Windows | `ClawStart-Windows-latest.zip` |
+            | macOS (Apple Silicon) | `ClawStart-macOS-Apple-Silicon-latest.tar.gz` |
+            | macOS (Intel) | `ClawStart-macOS-Intel-latest.tar.gz` |
+
+            ### 使用方法
+            1. 下载对应平台的包
+            2. 解压到任意目录
+            3. 双击启动器运行
+            4. 首次运行按引导配置模型
+
+            详细教程：https://nicekate.github.io/openlola/start.html
+          files: dist/*
+          draft: false
+          prerelease: false

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Beta 路径 - ClawStart | 实验性安装说明</title>
+  <meta name="description" content="ClawStart Linux 当前主推荐路径是 Beta 安装脚本，适合熟悉终端和排错的用户。普通用户优先建议使用 Windows 或 macOS 一键包。">
+  <meta name="keywords" content="ClawStart Linux,OpenClaw Linux,Linux Beta 安装脚本,Linux安装指南,npm安装">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/linux.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Linux Beta 路径 - ClawStart">
+  <meta property="og:description" content="Linux 当前主推荐路径是 Beta 安装脚本，适合熟悉终端和排错的用户；普通用户优先使用 Windows 或 macOS 一键包。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/linux.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Linux Beta 路径 - ClawStart">
+  <meta name="twitter:description" content="Linux Beta 安装脚本与环境准备说明，适合愿意自行排错的用户。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "ClawStart Linux Beta 安装脚本路径",
+    "url": "https://nicekate.github.io/openlola/linux.html",
+    "description": "面向熟悉终端用户的 Linux Beta 安装脚本与环境准备说明。",
+    "inLanguage": "zh-CN",
+    "author": {
+      "@type": "Organization",
+      "name": "ClawStart"
+    },
+    "about": [
+      "Linux 安装",
+      "OpenClaw",
+      "ClawStart"
+    ]
+  }
+  </script>
+  <style>
+    .install-step{counter-reset:steps;list-style:none;padding:0}
+    .install-step-item{counter-increment:steps;display:flex;gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--theme-border)}
+    .install-step-item:last-child{border-bottom:none}
+    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+    .step-num::before{content:counter(steps)}
+    .step-body h3{font-size:18px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.7}
+    .distro-tabs{display:flex;gap:var(--space-2);margin-bottom:var(--space-4);flex-wrap:wrap}
+    .tab-btn{background:var(--theme-bg-alt);border:1px solid var(--theme-border);padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm);font-size:14px;cursor:pointer;color:var(--theme-text-secondary)}
+    .tab-btn.active{background:var(--brand-500);color:#fff;border-color:var(--brand-500)}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html" class="active">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Linux Beta 路径</h1>
+      <p>当前属于实验性路径，更适合熟悉终端、愿意自己排错的用户。当前主推荐路径是 Linux Beta 安装脚本，默认安装到 <code>~/.clawstart-linux-beta</code>。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="card-grid-2 mb-8">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">📦</div>
+          <h3>实验性打包产物</h3>
+          <p>如果 Release 中出现 Linux 构建产物可以尝试，但当前更推荐先走下面的 Linux Beta 安装脚本。</p>
+          <a href="https://github.com/369pie/openlola/releases/latest" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_release_notes" data-platform="linux" data-surface="linux_hero_card">查看最新 Release →</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">⌨️</div>
+          <h3>Linux Beta 脚本</h3>
+          <p>适合愿意使用终端但不想自己从零搭目录的用户。先准备 Node.js，再运行脚本即可。</p>
+          <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="linux" data-surface="linux_hero_card">查看命令 →</a>
+        </div>
+      </div>
+
+      <div class="card mb-8" style="padding:var(--space-6);">
+        <h2 class="text-h2 mb-4">Linux Beta 安装脚本</h2>
+        <p class="mb-4">如果你愿意使用终端，但不想自己从零搭目录，可以先下载 ClawStart 的 Linux Beta 安装脚本。它会检查 Node.js 版本、创建本地工作区，并把底层 OpenClaw CLI 安装到独立目录 <code>~/.clawstart-linux-beta</code>。</p>
+        <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+        <p style="color:var(--theme-text-secondary);margin-top:var(--space-4);">安装完成后，进入 <code>~/.clawstart-linux-beta</code> 并运行 <code>./launch.sh</code>。如果脚本提示缺少 Node.js 20+，先按它给出的包管理器命令补齐环境。</p>
+        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-6);">
+          <a href="https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_download" data-platform="linux_beta_script" data-surface="linux_beta_script">下载 Linux Beta 脚本 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-platform="linux" data-surface="linux_beta_script">Linux 常见问题 →</a>
+        </div>
+      </div>
+
+      <h2 class="text-h2 mb-6">Linux Beta 推荐步骤</h2>
+      <ol class="install-step mb-8">
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>先准备 Node.js 20+</h3>
+            <p>脚本启动时会检查 Node.js 版本；如果版本不够，它会直接给出 apt、dnf、pacman 等安装提示。</p>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>运行 Linux Beta 脚本</h3>
+            <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+          </div>
+        </li>
+        <li class="install-step-item">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>进入安装目录并启动</h3>
+            <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+            <p style="margin-top:var(--space-2);">如果失败，不要先乱改 PATH，优先去排障页对应 Linux、Git、npm、证书和权限问题。</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="cli" class="text-h2 mb-6">按发行版准备环境</h2>
+
+      <div class="distro-tabs">
+        <button class="tab-btn active" onclick="showTab('ubuntu')">Ubuntu/Debian</button>
+        <button class="tab-btn" onclick="showTab('fedora')">Fedora/RHEL</button>
+        <button class="tab-btn" onclick="showTab('arch')">Arch/Manjaro</button>
+        <button class="tab-btn" onclick="showTab('npm')">npm (通用)</button>
+      </div>
+
+      <div class="tab-content active" id="ubuntu">
+        <div class="card" style="padding:var(--space-6);">
+          <h4 class="text-h3 mb-4">Ubuntu / Debian / Linux Mint</h4>
+          <ol class="install-step">
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
+                <div class="code-block"><span class="comment"># 安装 Node.js 20 LTS</span>
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">启动本地 Beta</h3>
+                <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="tab-content" id="fedora">
+        <div class="card" style="padding:var(--space-6);">
+          <h4 class="text-h3 mb-4">Fedora / CentOS / RHEL</h4>
+          <ol class="install-step">
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
+                <div class="code-block">sudo dnf install -y nodejs</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">启动本地 Beta</h3>
+                <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="tab-content" id="arch">
+        <div class="card" style="padding:var(--space-6);">
+          <h4 class="text-h3 mb-4">Arch Linux / Manjaro / EndeavourOS</h4>
+          <ol class="install-step">
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
+                <div class="code-block">sudo pacman -S nodejs npm</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">启动本地 Beta</h3>
+                <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="tab-content" id="npm">
+        <div class="card" style="padding:var(--space-6);">
+          <h4 class="text-h3 mb-4">npm 安装（所有发行版通用）</h4>
+          <ol class="install-step">
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">安装 nvm（推荐）</h3>
+                <div class="code-block">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm install --lts</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
+                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/openlola/main/installer/linux/install.sh -o clawstart-linux-beta.sh
+bash clawstart-linux-beta.sh</div>
+              </div>
+            </li>
+            <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
+              <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
+              <div class="step-body" style="flex:1;">
+                <h3 style="font-size:16px;">启动本地 Beta</h3>
+                <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <h2 class="text-h2 mb-6 mt-12">常见问题</h2>
+
+      <details class="faq-item">
+        <summary>提示 "EACCES: permission denied" 安装失败？</summary>
+        <div class="faq-answer">
+          <p>先不要自己手动改一堆 npm 全局目录，优先直接回到 Linux Beta 脚本路径。脚本会把依赖安装到 <code>~/.clawstart-linux-beta/runtime/npm-global</code>，减少全局权限问题。</p>
+          <p>如果你已经手动执行过系统级 npm 安装，再回到排障页看权限和缓存问题会更稳。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>脚本执行完成后，下一步该做什么？</summary>
+        <div class="faq-answer">
+          <p>进入默认安装目录并启动：</p>
+          <div class="code-block">cd ~/.clawstart-linux-beta
+./launch.sh</div>
+          <p>如果这里报错，不要直接重装，先去排障页按 Linux、Git、npm、证书和网络问题分流。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>安装后启动提示"找不到命令"？</summary>
+        <div class="faq-answer">
+          <p>如果你走的是 Linux Beta 脚本，优先使用安装目录里的 <code>./launch.sh</code>，而不是直接在全局环境里敲 <code>openclaw</code>。</p>
+          <p>只有在你明确走手动 CLI 路径时，才需要自己处理 PATH 和 npm 全局目录。</p>
+        </div>
+      </details>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
+        <p class="text-body mb-4">先用 <code>./launch.sh</code> 跑通第一轮；如果中途卡住，优先去排障页，不要直接回头乱改系统环境。</p>
+        <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+          <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="linux_bottom_cta">查看快速开始 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-platform="linux" data-surface="linux_bottom_cta">Linux 遇到问题？去排障 →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

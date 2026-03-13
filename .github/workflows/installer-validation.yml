@@ -1,0 +1,39 @@
+name: Validate ClawStart Installers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/installer-validation.yml'
+      - 'installer/**'
+      - 'docs/CLAWSTART-TROUBLESHOOTING-RULES.md'
+      - 'docs/CLAWSTART-MVP-DEV-BREAKDOWN.md'
+  pull_request:
+    paths:
+      - '.github/workflows/installer-validation.yml'
+      - 'installer/**'
+      - 'docs/CLAWSTART-TROUBLESHOOTING-RULES.md'
+      - 'docs/CLAWSTART-MVP-DEV-BREAKDOWN.md'
+  workflow_dispatch:
+
+jobs:
+  validate-macos-diagnose:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run macOS diagnose fixtures
+        run: bash installer/verify-diagnose-fixtures.sh
+
+  validate-windows-diagnose:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Windows diagnose fixtures
+        run: pwsh -File installer/windows/verify-diagnose-fixtures.ps1
+
+  validate-linux-beta-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Linux Beta install fixtures
+        run: bash installer/linux/verify-install-fixtures.sh

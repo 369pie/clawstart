@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - ClawStart | 中文安装入口与上手指南</title>
+  <meta name="description" content="ClawStart 是面向中国大陆用户的中文安装入口与上手指南，帮助你更快安装和用好 OpenClaw。下载即运行，开箱就能用。">
+  <meta name="keywords" content="ClawStart,OpenClaw,中文安装,一键包,快速开始,故障排查">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://nicekate.github.io/openlola/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ClawStart | 中文安装入口与上手指南">
+  <meta property="og:description" content="下载即运行，开箱就能用。面向中国大陆用户的中文安装入口，帮助你更快安装和上手 OpenClaw。">
+  <meta property="og:url" content="https://nicekate.github.io/openlola/">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ClawStart | 中文安装入口与上手指南">
+  <meta name="twitter:description" content="下载即运行，开箱就能用。先帮你装起来，再帮你真正用起来。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ClawStart",
+    "url": "https://nicekate.github.io/openlola/",
+    "description": "面向中国大陆用户的中文安装入口与上手指南。",
+    "inLanguage": "zh-CN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ClawStart"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ClawStart",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "url": "https://nicekate.github.io/openlola/download.html",
+    "description": "帮助中国大陆用户更快安装和上手 OpenClaw 的中文入口与上手方案。",
+    "softwareHelp": "https://nicekate.github.io/openlola/troubleshooting.html"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        面向中国大陆用户的中文安装入口
+      </div>
+      <h1 class="hero-title"><span class="text-gradient">下载即运行</span><br>开箱就能用</h1>
+      <p class="hero-desc">ClawStart 不是资料堆砌站，而是带你跑通第一次安装的中文入口。<br>不用先学命令行，先下载、解压、双击启动，再一步步配好模型。</p>
+      <div class="hero-actions">
+        <a href="download.html" class="btn btn-primary btn-glow btn-xl" data-track="click_download" data-platform="all" data-surface="home_hero">
+          <span>📦 立即下载一键包</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="start.html" class="btn btn-outline" data-track="click_quickstart" data-surface="home_hero">查看快速开始 →</a>
+      </div>
+
+      <!-- Terminal mockup -->
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot" style="background:#FF5F57;"></span>
+          <span class="terminal-dot" style="background:#FEBC2E;"></span>
+          <span class="terminal-dot" style="background:#28C840;"></span>
+          <span class="terminal-title">ClawStart</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-cmd">双击 ClawStart 启动器</span>
+            <span class="terminal-cursor"></span>
+          </div>
+          <div class="terminal-line terminal-output">✓ 一键包已解压，正在启动...</div>
+          <div class="terminal-line terminal-output">✓ 国内模型已预配置</div>
+          <div class="terminal-line terminal-output terminal-success">🦞 ClawStart 已就绪！你的 AI 助手上线了。</div>
+        </div>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-icon">📦</span>
+          <span>免安装</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-icon">🇨🇳</span>
+          <span>国内模型预配置</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-icon">📖</span>
+          <span>中文教程</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-icon">💬</span>
+          <span>社群支持</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三步流程 -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <p class="section-title">怎么开始？</p>
+      <h2 class="text-h2 mb-8">三步拥有 AI 助手</h2>
+      <div class="card-grid">
+        <div class="card" style="text-align:left;">
+          <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">Step 1</div>
+          <h3>📥 下载</h3>
+          <p>选择你的操作系统，下载一键包。体积小，国内网络友好。</p>
+        </div>
+        <div class="card" style="text-align:left;">
+          <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">Step 2</div>
+          <h3>📂 解压</h3>
+          <p>解压到任意目录，U盘、移动硬盘都可以。不写注册表，不污染系统。</p>
+        </div>
+        <div class="card" style="text-align:left;">
+          <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">Step 3</div>
+          <h3>🚀 双击启动</h3>
+          <p>双击运行，国内模型已预配置，开箱即用。5 分钟拥有你的 AI 助手。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container text-center">
+      <p class="section-title">如果装失败了</p>
+      <h2 class="text-h2 mb-6">不要反复乱试，先走这条最短分流</h2>
+      <div class="card-grid" style="text-align:left;">
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>启动器打不开</h3>
+          <p>先检查解压目录、系统权限、SmartScreen、Gatekeeper 和杀软拦截，不要一上来就重装。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔑</div>
+          <h3>模型连不上</h3>
+          <p>优先检查 API Key、服务商、网络和代理；大多数“装好了不能用”都卡在这里。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧰</div>
+          <h3>Git / npm / 依赖报错</h3>
+          <p>直接按错误类型去排障页，那里已经整理好了 Git SSH、ENOENT、EPERM、证书和缓存问题。</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;margin-top:var(--space-8);">
+        <a href="troubleshooting.html" class="btn btn-primary" data-track="click_troubleshooting" data-surface="home_failure_branch">按问题去排障 →</a>
+        <a href="download.html" class="btn btn-outline-dark" data-track="click_download" data-platform="all" data-surface="home_failure_branch">重新确认下载路径 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特性展示 -->
+  <section class="section section-white">
+    <div class="container text-center">
+      <p class="section-title">为什么选 ClawStart？</p>
+      <h2 class="text-h2 mb-8">专为中文用户打造的安装上手方案</h2>
+      <div class="card-grid" style="text-align:left;">
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <h3>免安装</h3>
+          <p>下载解压即可运行，不需要 Node.js、不需要命令行，真正的开箱即用。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🇨🇳</div>
+          <h3>国内模型预配置</h3>
+          <p>内置豆包、通义千问等国内模型配置，无需翻墙，填入 API Key 即可使用。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📖</div>
+          <h3>中文教程</h3>
+          <p>从下载到上手的全中文图文教程，PDF 手册、视频教程一应俱全。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>社群支持</h3>
+          <p>活跃的中文社群，遇到问题随时提问，和其他用户交流使用心得。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏠</div>
+          <h3>数据本地</h3>
+          <p>所有数据保存在你自己的设备上。对话记录、配置信息，完全自主掌控。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔓</div>
+          <h3>开源免费</h3>
+          <p>基于 OpenClaw 开源生态整理成适合中文小白的上手路径，先帮你跑通，再考虑高级玩法。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下一步 CTA -->
+  <section class="section section-alt">
+    <div class="container text-center">
+      <p class="section-title">装好之后</p>
+      <h2 class="text-h2" style="margin-bottom:12px;">下一步别停在“已经装好了”</h2>
+      <p class="text-body" style="max-width:480px;margin:0 auto var(--space-8);">
+        你可以先按快速开始跑通第一轮，<br>也可以直接看看 LolaClaw 这种更省事的长期方案。
+      </p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="home_next_step">查看快速开始 →</a>
+        <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="home_next_step">了解 LolaClaw →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="about.html#lolaclaw">LolaClaw</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll behavior + Theme toggle -->
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
