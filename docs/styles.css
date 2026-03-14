@@ -9,6 +9,7 @@
   /* Brand — Lobster Red 🦞 #E85A4F */
   --brand-50:  #FEF2F1;
   --brand-100: #FDE0DE;
+  --brand-200: #F8B4AE;
   --brand-400: #EF7B72;
   --brand-500: #E85A4F;
   --brand-600: #D04840;
@@ -1190,6 +1191,15 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--theme-shadow-md);
 }
 
+[data-theme="dark"] .tutorial-series-nav {
+  background:
+    radial-gradient(circle at top right, rgba(232,90,79,0.14), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(59,130,246,0.14), transparent 34%),
+    linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.86));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.34);
+}
+
 .tutorial-series-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1232,6 +1242,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--theme-text-secondary);
 }
 
+[data-theme="dark"] .tutorial-series-link p {
+  color: #CBD5E1;
+}
+
 .tutorial-recommend-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1243,7 +1257,12 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-5);
   border-radius: 22px;
   border: 1px solid var(--theme-border);
-  background: rgba(255,255,255,0.82);
+  background: var(--theme-bg-card);
+}
+
+[data-theme="dark"] .tutorial-recommend-card {
+  background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.82));
+  border-color: rgba(255,255,255,0.08);
 }
 
 /* --- 高频问题悬浮卡片 --- */
@@ -1260,6 +1279,12 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-4);
   z-index: 100;
   backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .faq-float-card {
+  background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.42);
 }
 
 @media (max-width: 1280px) {
@@ -1295,9 +1320,18 @@ h1, h2, h3, h4, h5, h6 {
   transition: background var(--dur-fast) ease;
 }
 
+[data-theme="dark"] .faq-float-item a {
+  color: #CBD5E1;
+}
+
 .faq-float-item a:hover {
   background: var(--brand-50);
   color: var(--brand-600);
+}
+
+[data-theme="dark"] .faq-float-item a:hover {
+  background: rgba(232,90,79,0.14);
+  color: #FDE0DE;
 }
 
 .faq-float-footer {
@@ -1315,10 +1349,256 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+/* --- 社区入口悬浮按钮 --- */
+.community-float-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.community-float-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.community-float-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  width: 320px;
+  background: var(--theme-bg-card);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-4);
+  z-index: 99;
+  backdrop-filter: blur(10px);
+  display: none;
+}
+
+.community-float-panel.show {
+  display: block;
+  animation: slideUp var(--dur-normal) var(--ease-out);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.community-float-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.community-float-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--theme-text);
+}
+
+.community-float-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--theme-text-secondary);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.community-float-close:hover {
+  background: var(--gray-100);
+}
+
+.community-float-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.community-float-item {
+  margin-bottom: var(--space-2);
+}
+
+.community-float-item a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--theme-text);
+  text-decoration: none;
+  transition: background var(--dur-fast) ease;
+}
+
+.community-float-item a:hover {
+  background: var(--brand-50);
+  color: var(--brand-600);
+}
+
+.community-float-item .icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.community-float-footer {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--theme-border);
+  font-size: 12px;
+  color: var(--theme-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .community-float-button {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    right: 16px;
+    bottom: 16px;
+  }
+  
+  .community-float-panel {
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 88px;
+  }
+}
+
+
+/* --- 二维码弹窗 --- */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.qr-modal.show {
+  display: flex;
+  animation: fadeIn var(--dur-normal) ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.qr-modal-content {
+  background: var(--theme-bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+}
+
+.qr-modal-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--theme-text-secondary);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast) ease;
+}
+
+.qr-modal-close:hover {
+  background: var(--gray-100);
+}
+
+.qr-modal-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-4);
+}
+
+.qr-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--theme-text);
+}
+
+.qr-modal-desc {
+  font-size: 14px;
+  color: var(--theme-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.qr-modal-image {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  border: 4px solid var(--brand-50);
+  margin: 0 auto var(--space-4);
+  display: block;
+}
+
+.qr-modal-hint {
+  font-size: 12px;
+  color: var(--theme-text-muted);
+  background: var(--gray-50);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
 /* --- 视频教程入口卡片 --- */
 .video-tutorial-card {
-  background: linear-gradient(135deg, var(--accent-50), var(--brand-50));
-  border: 1px solid var(--accent-100);
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(232,90,79,0.08));
+  border: 1px solid var(--theme-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   margin: var(--space-8) 0;
@@ -1336,13 +1616,19 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 var(--space-2) 0;
   font-size: 18px;
   font-weight: 600;
-  color: var(--gray-900);
+  color: var(--theme-text);
 }
 
 .video-tutorial-content p {
   margin: 0 0 var(--space-3) 0;
   font-size: 14px;
-  color: var(--gray-600);
+  color: var(--theme-text-secondary);
+}
+
+[data-theme="dark"] .video-tutorial-card {
+  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(232,90,79,0.12));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.28);
 }
 
 .tutorial-recommend-card h3 {
@@ -1352,6 +1638,11 @@ h1, h2, h3, h4, h5, h6 {
 .tutorial-recommend-card p {
   margin-bottom: var(--space-4);
   color: var(--theme-text-secondary);
+}
+
+[data-theme="dark"] .tutorial-recommend-card p,
+[data-theme="dark"] .video-tutorial-content p {
+  color: #CBD5E1;
 }
 
 .skill-hub-layout {
@@ -1996,6 +2287,26 @@ code {
   font-size: 14px;
   color: var(--brand-700);
   line-height: 1.7;
+}
+
+[data-theme="dark"] .tip-box {
+  background: rgba(232,90,79,0.10);
+  border-color: rgba(232,90,79,0.24);
+  color: #FDE0DE;
+}
+
+[data-theme="dark"] .tip-box a {
+  color: #FDBA74;
+}
+
+.tip-box-strong {
+  background: linear-gradient(135deg, var(--brand-50), rgba(59,130,246,0.08));
+  border-color: var(--brand-200);
+}
+
+[data-theme="dark"] .tip-box-strong {
+  background: linear-gradient(135deg, rgba(232,90,79,0.14), rgba(59,130,246,0.14));
+  border-color: rgba(232,90,79,0.24);
 }
 
 .tip-box strong {
