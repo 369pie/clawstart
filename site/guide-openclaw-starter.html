@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 中文入门手册 - ClawStart | 第一次从下载到会用</title>
+  <meta name="description" content="ClawStart 提供的 OpenClaw 中文入门手册网页版：把下载、安装、模型配置、第一次任务和第一个 Skill 压成一条最短学习链路。">
+  <meta name="keywords" content="OpenClaw 中文入门手册,OpenClaw 新手指南,OpenClaw 教程,ClawStart 手册,OpenClaw 中文 PDF">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/guide-openclaw-starter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="OpenClaw 中文入门手册 - ClawStart">
+  <meta property="og:description" content="把下载、安装、模型配置、第一次任务和第一个 Skill 压成一条最短学习链路。">
+  <meta property="og:url" content="https://useclawstart.com/guide-openclaw-starter.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenClaw 中文入门手册 - ClawStart">
+  <meta name="twitter:description" content="网页版先上线，后续可直接导出 PDF 的中文入门手册。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-kicker">OpenClaw 中文入门手册</p>
+      <h1>第一次从下载到会用，先把这 5 步走完</h1>
+      <p>这是一份网页版中文入门手册。你可以把它当成未来 PDF 的母版，先按这一页走完“安装、配置、第一次任务、第一批 Skill”四条主路径。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>这份手册适合谁</strong>
+        适合第一次接触 OpenClaw、刚装好还不确定下一步做什么、或想把零散教程压成一条完整学习链路的人。
+      </div>
+
+      <p class="section-title mt-8">第 1 步</p>
+      <h2 class="text-h2 mb-4">先判断你的安装路径</h2>
+      <p class="text-body mb-4">普通用户优先走 Windows 或 macOS 一键包，不要第一步就陷进旧版命令行教程。Linux 当前主推荐路径是 Beta 安装脚本。</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+        <a href="guide-openclaw-install.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_install" data-surface="starter_step_1">看安装指南 →</a>
+        <a href="download.html" class="btn btn-outline-dark btn-sm" data-track="click_download" data-platform="all" data-surface="starter_step_1">直接去下载页 →</a>
+      </div>
+
+      <p class="section-title mt-12">第 2 步</p>
+      <h2 class="text-h2 mb-4">把模型和 API 先配稳定</h2>
+      <p class="text-body mb-4">第一次目标不是“模型最强”，而是“连接稳定”。中国大陆用户优先走国内在线模型，再考虑已有海外 API 或本地模型。</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+        <a href="guide-openclaw-api-setup.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_api_setup" data-surface="starter_step_2">看 API 配置指南 →</a>
+        <a href="tutorial-model-choice.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="starter_step_2">看完整模型教程 →</a>
+      </div>
+
+      <p class="section-title mt-12">第 3 步</p>
+      <h2 class="text-h2 mb-4">完成第一次真实任务</h2>
+      <p class="text-body mb-4">不要停在“已经装好了”。你需要立刻完成一次写作、办公或开发小任务，这样才算真正开始用起来。</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+        <a href="tutorial-first-task-templates.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="starter_step_3">照抄任务模板 →</a>
+        <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="beginner" data-surface="starter_step_3">看新手入门 →</a>
+      </div>
+
+      <p class="section-title mt-12">第 4 步</p>
+      <h2 class="text-h2 mb-4">只装第一个最像你日常任务的 Skill</h2>
+      <p class="text-body mb-4">第一次不要装很多。优先从“适合小白”“无需 API Key”或者最像你日常场景的 Skill 开始。</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+        <a href="guide-openclaw-skills-cn.html" class="btn btn-primary btn-sm" data-track="click_skill_guide" data-surface="starter_step_4">看中文 Skills 指南 →</a>
+        <a href="skills-hub.html?tags=beginner,no_api_key" class="btn btn-outline-dark btn-sm" data-track="click_skill_hub" data-surface="starter_step_4">先看新手 Skill 入口 →</a>
+      </div>
+
+      <p class="section-title mt-12">第 5 步</p>
+      <h2 class="text-h2 mb-4">按你的身份扩展，而不是盲学全部功能</h2>
+      <p class="text-body mb-4">内容用户、办公用户、开发者和研究学习用户，最适合的下一步并不一样。先按自己的身份走对应路径，比“把所有教程看完”更有效。</p>
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">✍️</div>
+          <h3>内容创作者</h3>
+          <p>写作、改稿、资料总结和内容沉淀，优先走更偏创作产出的路径。</p>
+          <a href="tutorial-role-creators.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_creators" data-surface="starter_step_5">进入创作者路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">💼</div>
+          <h3>办公用户</h3>
+          <p>会议纪要、待办清单、长文档总结和协作资料，优先走办公提效路径。</p>
+          <a href="tutorial-role-office.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_office" data-surface="starter_step_5">进入办公路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3>开发者</h3>
+          <p>报错解释、仓库阅读、Issue / PR 整理和 GitHub Skill，优先走开发路径。</p>
+          <a href="tutorial-role-developers.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_developers" data-surface="starter_step_5">进入开发者路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔬</div>
+          <h3>研究学习用户</h3>
+          <p>长文资料总结、决策摘要和知识整理，优先走研究学习路径。</p>
+          <a href="tutorial-role-research.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_research" data-surface="starter_step_5">进入研究路径 →</a>
+        </article>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">这份手册后面会继续演进成 PDF</h3>
+        <p class="text-body mb-4">网页版先上线，方便你立刻使用和持续更新。后面我们会把它进一步整理成适合下载和分享的 PDF 版。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="resources.html" class="btn btn-primary" data-track="click_resources" data-surface="starter_bottom">回资源页 →</a>
+          <a href="tutorial.html" class="btn btn-outline-dark" data-track="click_tutorial" data-surface="starter_bottom">回教程中心 →</a>
+          <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="starter_bottom">打开 Skills Hub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="tutorial.html">教程</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="skills-hub.html">Skills Hub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
