@@ -774,6 +774,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: calc(64px + var(--space-16)) 0 var(--space-16);
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(232,90,79,0.12), transparent 22%),
+    radial-gradient(circle at 82% 18%, rgba(59,130,246,0.10), transparent 24%);
+  pointer-events: none;
 }
 
 .page-hero::after {
@@ -787,6 +798,39 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+.page-hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+}
+
+.page-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(232,90,79,0.18);
+  background: rgba(255,255,255,0.68);
+  color: var(--brand-600);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(232,90,79,0.08);
+}
+
+.page-hero-kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  box-shadow: 0 0 0 6px rgba(232,90,79,0.10);
+}
+
 .page-hero h1 {
   font-size: 36px;
   font-weight: 800;
@@ -797,6 +841,13 @@ h1, h2, h3, h4, h5, h6 {
 .page-hero p {
   color: var(--theme-hero-muted);
   font-size: 18px;
+}
+
+[data-theme="dark"] .page-hero-kicker {
+  background: rgba(15,23,42,0.72);
+  border-color: rgba(248,180,174,0.22);
+  color: #F8B4AE;
+  box-shadow: 0 16px 38px rgba(0,0,0,0.26);
 }
 
 /* --- 7. Buttons --- */
