@@ -62,6 +62,7 @@
         <li><a href="download.html">下载</a></li>
         <li><a href="start.html">快速开始</a></li>
         <li><a href="tutorial.html">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
         <li><a href="troubleshooting.html">排障</a></li>
         <li><a href="resources.html">资源</a></li>
         <li><a href="about.html">关于</a></li>
@@ -92,7 +93,7 @@
           <span>📦 立即下载一键包</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="start.html" class="btn btn-outline" data-track="click_quickstart" data-surface="home_hero">查看快速开始 →</a>
+        <a href="start.html" class="btn btn-outline-dark" data-track="click_quickstart" data-surface="home_hero">查看快速开始 →</a>
       </div>
 
       <!-- Terminal mockup -->
@@ -233,6 +234,98 @@
     </div>
   </section>
 
+  <section class="section section-alt">
+    <div class="container">
+      <div class="community-hub">
+        <div class="community-heading">
+          <p class="section-title">大陆用户社群</p>
+          <h2 class="text-h2 mb-4">想更快装好，别一个人硬扛</h2>
+          <p class="text-body">针对中国大陆用户，我们把私域承接拆成 4 个入口：QQ群负责公开答疑，企业微信负责 1 对 1 分流，微信群承接高频陪跑，知识星球沉淀案例、模板和持续更新。</p>
+        </div>
+        <div class="community-highlight">
+          <strong>推荐主路径</strong>
+          <p>先加企业微信，备注 <code>ClawStart</code> 和你的系统环境。这样既能把你拉进对应微信群，也能更快收到适合你当前卡点的安装建议。</p>
+        </div>
+        <!-- 主卡：企业微信 — 全宽横排 -->
+        <article class="community-channel is-primary">
+          <div class="community-channel-copy">
+            <div class="community-channel-badge">主承接入口</div>
+            <h3>企业微信</h3>
+            <p>适合安装卡住、企业咨询、远程排障，以及把用户再分流到微信群。</p>
+            <ul class="community-chip-list">
+              <li>安装卡住</li>
+              <li>远程排障</li>
+              <li>拉群分流</li>
+            </ul>
+            <div class="community-actions">
+              <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_private_channel" data-channel="wecom" data-surface="home_private_hub" data-community-link="wecom">打开企微二维码</a>
+              <a href="download.html" class="btn btn-outline-dark btn-sm" data-track="click_download" data-platform="all" data-surface="home_private_hub">先去下载 →</a>
+            </div>
+          </div>
+          <div class="community-channel-media">
+            <div class="community-qr-frame">
+              <img data-community-image="wecom" src="assets/community/wecom-qr-placeholder.svg" alt="企业微信二维码预览图" loading="lazy">
+            </div>
+            <p class="community-hint" data-community-hint="wecom"></p>
+          </div>
+        </article>
+
+        <!-- 三张副卡：等宽 3 列 -->
+        <div class="community-grid-3">
+          <article class="community-channel">
+            <div class="community-channel-badge">公开答疑</div>
+            <h3>QQ群</h3>
+            <p>适合公开提问、发报错截图、看其他用户怎么解决首次安装问题。</p>
+            <div class="community-channel-media">
+              <div class="community-qr-frame">
+                <img data-community-image="qq" src="assets/community/qq-qr-placeholder.svg" alt="QQ群二维码预览图" loading="lazy">
+              </div>
+              <p class="community-hint" data-community-hint="qq"></p>
+            </div>
+            <div class="community-actions">
+              <a href="assets/community/qq-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="qq" data-surface="home_private_hub" data-community-link="qq">打开 QQ 群二维码</a>
+            </div>
+          </article>
+          <article class="community-channel">
+            <div class="community-channel-badge">高频陪跑</div>
+            <h3>微信群</h3>
+            <p>适合已经在安装中、想要更高频反馈的用户。微信生态没有稳定公开链接时，建议先走企微再拉群。</p>
+            <div class="community-channel-media">
+              <div class="community-qr-frame">
+                <img data-community-image="wechat" src="assets/community/wechat-qr-placeholder.svg" alt="微信群二维码预览图" loading="lazy">
+              </div>
+              <p class="community-hint" data-community-hint="wechat"></p>
+            </div>
+            <div class="community-actions">
+              <a href="assets/community/wechat-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="wechat" data-surface="home_private_hub" data-community-link="wechat">打开微信群二维码</a>
+            </div>
+          </article>
+          <article class="community-channel">
+            <div class="community-channel-badge">内容沉淀</div>
+            <h3>知识星球</h3>
+            <p>适合承接已经装好、想继续看案例、模板、进阶玩法和更新记录的用户。</p>
+            <div class="community-channel-media">
+              <div class="community-qr-frame">
+                <img data-community-image="planet" src="assets/community/planet-qr-placeholder.svg" alt="知识星球二维码预览图" loading="lazy">
+              </div>
+              <p class="community-hint" data-community-hint="planet"></p>
+            </div>
+            <div class="community-actions">
+              <a href="assets/community/planet-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="planet" data-surface="home_private_hub" data-community-link="planet">打开星球二维码</a>
+              <a href="resources.html" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="home_private_hub">先看资源 →</a>
+            </div>
+          </article>
+        </div>
+        <ul class="community-route-list">
+          <li><strong>下载前犹豫：</strong>先进 QQ 群看真实安装反馈，再决定从哪条平台路径开始。</li>
+          <li><strong>安装中卡住：</strong>优先加企业微信，发系统环境和报错截图，效率最高。</li>
+          <li><strong>已经装好：</strong>进知识星球或微信群，看案例、模板和后续更新。</li>
+        </ul>
+        <p class="community-fineprint">如果微信生态入口经常变动，最稳的公开主入口仍然建议放在企业微信，再由人工分流到微信群或知识星球。</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 下一步 CTA -->
   <section class="section section-alt">
     <div class="container text-center">
@@ -252,7 +345,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -268,6 +366,7 @@
 
   <!-- Scroll behavior + Theme toggle -->
   <script src="analytics.js"></script>
+  <script src="community.js"></script>
   <script>
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

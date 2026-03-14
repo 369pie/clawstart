@@ -1246,6 +1246,105 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255,255,255,0.82);
 }
 
+/* --- 高频问题悬浮卡片 --- */
+.faq-float-card {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  background: var(--theme-bg-card);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1280px) {
+  .faq-float-card {
+    display: none;
+  }
+}
+
+.faq-float-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  color: var(--theme-text);
+}
+
+.faq-float-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-float-item {
+  margin-bottom: var(--space-2);
+}
+
+.faq-float-item a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--theme-text-secondary);
+  text-decoration: none;
+  transition: background var(--dur-fast) ease;
+}
+
+.faq-float-item a:hover {
+  background: var(--brand-50);
+  color: var(--brand-600);
+}
+
+.faq-float-footer {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--theme-border);
+  font-size: 12px;
+  color: var(--theme-text-muted);
+  text-align: center;
+}
+
+.faq-float-footer a {
+  color: var(--brand-500);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* --- 视频教程入口卡片 --- */
+.video-tutorial-card {
+  background: linear-gradient(135deg, var(--accent-50), var(--brand-50));
+  border: 1px solid var(--accent-100);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin: var(--space-8) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.video-tutorial-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.video-tutorial-content h3 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.video-tutorial-content p {
+  margin: 0 0 var(--space-3) 0;
+  font-size: 14px;
+  color: var(--gray-600);
+}
+
 .tutorial-recommend-card h3 {
   margin-bottom: var(--space-2);
 }
@@ -1288,7 +1387,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--theme-border);
   border-radius: 14px;
   background: var(--theme-bg-card);
-  color: var(--theme-text-primary);
+  color: var(--theme-text);
   padding: 0.9rem 1rem;
   font: inherit;
 }
@@ -1359,7 +1458,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .skill-tag-filter-chip:hover {
   transform: translateY(-1px);
-  color: var(--theme-text-primary);
+  color: var(--theme-text);
   box-shadow: var(--theme-shadow-sm);
 }
 
@@ -1484,6 +1583,96 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
+}
+
+[data-theme="dark"] .skill-hub-toolbar,
+[data-theme="dark"] .skill-tag-filter {
+  background:
+    radial-gradient(circle at top left, rgba(59,130,246,0.10), transparent 28%),
+    linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.82));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.32);
+}
+
+[data-theme="dark"] .skill-hub-stat {
+  background:
+    radial-gradient(circle at top right, rgba(59,130,246,0.10), transparent 32%),
+    linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.82));
+  border-color: rgba(255,255,255,0.08);
+  color: var(--theme-text);
+}
+
+[data-theme="dark"] .skill-hub-stat strong,
+[data-theme="dark"] .skill-catalog-heading h2,
+[data-theme="dark"] .skill-card h3,
+[data-theme="dark"] .skill-tag-filter-heading h2 {
+  color: var(--theme-text);
+}
+
+[data-theme="dark"] .skill-hub-note,
+[data-theme="dark"] .skill-tag-filter-note {
+  background: rgba(148,163,184,0.08);
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .skill-hub-input,
+[data-theme="dark"] .skill-hub-select {
+  background: rgba(255,255,255,0.06);
+  color: var(--theme-text);
+  border-color: rgba(255,255,255,0.12);
+}
+
+[data-theme="dark"] .skill-hub-input::placeholder {
+  color: #94A3B8;
+}
+
+[data-theme="dark"] .skill-tag-filter-chip {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.10);
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .skill-tag-filter-chip:hover {
+  background: rgba(255,255,255,0.09);
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .skill-tag-filter-chip.is-active {
+  border-color: rgba(232,90,79,0.34);
+  background: rgba(232,90,79,0.18);
+  color: #FDE0DE;
+  box-shadow: 0 10px 28px rgba(232,90,79,0.18);
+}
+
+[data-theme="dark"] .skill-card {
+  background:
+    radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(232,90,79,0.14), transparent 30%),
+    linear-gradient(180deg, rgba(15,23,42,0.94), rgba(15,23,42,0.84));
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.34);
+}
+
+[data-theme="dark"] .skill-card p,
+[data-theme="dark"] .skill-meta,
+[data-theme="dark"] .skill-catalog-heading p,
+[data-theme="dark"] .skill-tag-badge {
+  color: #CBD5E1;
+}
+
+[data-theme="dark"] .skill-badge {
+  background: rgba(232,90,79,0.18);
+  color: #FDE0DE;
+}
+
+[data-theme="dark"] .skill-tag-badge {
+  background: rgba(148,163,184,0.12);
+}
+
+[data-theme="dark"] .skill-command {
+  background: rgba(2,6,23,0.94);
+  color: #E2E8F0;
+  border: 1px solid rgba(148,163,184,0.14);
 }
 
 .skill-empty {

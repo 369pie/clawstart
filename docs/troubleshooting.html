@@ -62,6 +62,7 @@
         <li><a href="download.html">下载</a></li>
         <li><a href="start.html">快速开始</a></li>
         <li><a href="tutorial.html">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
         <li><a href="troubleshooting.html" class="active">排障</a></li>
         <li><a href="resources.html">资源</a></li>
         <li><a href="about.html">关于</a></li>
@@ -327,14 +328,100 @@ openclaw gateway restart</div>
         </details>
       </div>
 
-      <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">问题还没解决？</h3>
-        <p class="text-body mb-4">先回到快速开始确认卡点。如果你已经确定卡在更复杂的问题上，再去 GitHub 求助。</p>
-        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
-          <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="troubleshooting_bottom_cta">回到快速开始 →</a>
-          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="troubleshooting_bottom_cta">了解 LolaClaw →</a>
-          <a href="https://github.com/openclaw/openclaw/issues" target="_blank" rel="noopener" class="btn btn-outline-dark" data-track="click_issue_submit" data-surface="troubleshooting_bottom_cta">去 GitHub 求助 →</a>
+      <div class="community-hub mt-12">
+        <div class="community-heading">
+          <p class="section-title">排障后的人工承接</p>
+          <h2 class="text-h2 mb-4">按上面试了 5 分钟还没解掉，就别继续单打独斗</h2>
+          <p class="text-body">排障页是最适合导入私域的地方。这里的用户已经有强问题意识，转化到 QQ 群、企业微信、微信群或知识星球的意愿通常最高。</p>
         </div>
+        <div class="community-highlight">
+          <strong>求助时请带上</strong>
+          <p><code>系统版本 + 当前步骤 + 报错截图 + diagnostic.txt（如果你已经跑过诊断）</code>。这样无论是群里公开答疑还是企业微信一对一排查，效率都会高很多。</p>
+        </div>
+        <div class="community-grid">
+          <article class="community-channel is-primary">
+            <div class="community-channel-copy">
+              <div class="community-channel-badge">优先人工分流</div>
+              <h3>企业微信</h3>
+              <p>最适合处理“报错很复杂”“需要看截图”“想进微信群继续排”的场景。</p>
+              <ul class="community-chip-list">
+                <li>复杂报错</li>
+                <li>带图求助</li>
+                <li>继续跟进</li>
+              </ul>
+              <div class="community-actions">
+                <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_private_channel" data-channel="wecom" data-surface="troubleshooting_private_hub" data-community-link="wecom">打开企微二维码</a>
+                <a href="start.html" class="btn btn-outline-dark btn-sm" data-track="click_quickstart" data-surface="troubleshooting_private_hub">回到快速开始 →</a>
+              </div>
+            </div>
+            <div class="community-channel-media">
+              <div class="community-qr-frame">
+                <img data-community-image="wecom" src="assets/community/wecom-qr-placeholder.svg" alt="企业微信二维码预览图" loading="lazy">
+              </div>
+              <p class="community-hint" data-community-hint="wecom"></p>
+            </div>
+          </article>
+          <div class="community-secondary-grid">
+            <div class="community-secondary-head">
+              <span>辅助渠道</span>
+              <p>如果你更适合公开发图、进入高频群或把排障后的用户继续沉淀下来，可以从右侧继续分流。</p>
+            </div>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">截图求助</div>
+                <h3>QQ群</h3>
+                <p>适合把错误提示、系统环境和操作截图发出来，让更多用户一起帮你判断。</p>
+                <div class="community-actions">
+                  <a href="assets/community/qq-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="qq" data-surface="troubleshooting_private_hub" data-community-link="qq">打开 QQ 群二维码</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="qq" src="assets/community/qq-qr-placeholder.svg" alt="QQ群二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="qq"></p>
+              </div>
+            </article>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">高频跟进</div>
+                <h3>微信群</h3>
+                <p>适合需要连续跟进同一个问题的用户，尤其是模型配置、网络和权限类问题。</p>
+                <div class="community-actions">
+                  <a href="assets/community/wechat-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="wechat" data-surface="troubleshooting_private_hub" data-community-link="wechat">打开微信群二维码</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="wechat" src="assets/community/wechat-qr-placeholder.svg" alt="微信群二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="wechat"></p>
+              </div>
+            </article>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">后续沉淀</div>
+                <h3>知识星球</h3>
+                <p>适合把已经解决问题的用户沉淀下来，继续接教程、案例、模板和升级服务。</p>
+                <div class="community-actions">
+                  <a href="assets/community/planet-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="planet" data-surface="troubleshooting_private_hub" data-community-link="planet">打开星球二维码</a>
+                  <a href="https://github.com/openclaw/openclaw/issues" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_issue_submit" data-surface="troubleshooting_private_hub">GitHub Issues →</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="planet" src="assets/community/planet-qr-placeholder.svg" alt="知识星球二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="planet"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <ul class="community-route-list">
+          <li><strong>需要人工判断：</strong>优先走企业微信，便于后续继续分流到微信群或单独跟进。</li>
+          <li><strong>希望公开提问：</strong>走 QQ 群，方便其他用户也能复用同一条解决方案。</li>
+          <li><strong>问题已解决：</strong>继续导去知识星球，避免流量只停在“排障完就走”。</li>
+        </ul>
       </div>
 
     </div>
@@ -343,7 +430,12 @@ openclaw gateway restart</div>
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -358,6 +450,7 @@ openclaw gateway restart</div>
   </footer>
 
   <script src="analytics.js"></script>
+  <script src="community.js"></script>
   <script>
     const header = document.getElementById('siteHeader');
     let ticking = false;

@@ -64,6 +64,7 @@
         <li><a href="download.html" class="active">下载</a></li>
         <li><a href="start.html">快速开始</a></li>
         <li><a href="tutorial.html">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
         <li><a href="troubleshooting.html">排障</a></li>
         <li><a href="resources.html">资源</a></li>
         <li><a href="about.html">关于</a></li>
@@ -159,8 +160,138 @@
     </div>
   </section>
 
+  <!-- 高频问题悬浮卡片 -->
+  <div class="faq-float-card">
+    <h4>❓ 新手最常问</h4>
+    <ul class="faq-float-list">
+      <li class="faq-float-item">
+        <a href="troubleshooting.html#macos-cannot-verify" target="_blank">macOS提示"已损坏"怎么办？</a>
+      </li>
+      <li class="faq-float-item">
+        <a href="troubleshooting.html#smartscreen" target="_blank">Windows SmartScreen拦截怎么办？</a>
+      </li>
+      <li class="faq-float-item">
+        <a href="tutorial-model-choice.html" target="_blank">API Key怎么获取？</a>
+      </li>
+      <li class="faq-float-item">
+        <a href="tutorial-model-choice.html#domestic" target="_blank">国内连不上OpenAI怎么办？</a>
+      </li>
+      <li class="faq-float-item">
+        <a href="portable.html" target="_blank">有没有免安装便携版？</a>
+      </li>
+    </ul>
+    <div class="faq-float-footer">
+      更多问题请看 <a href="troubleshooting.html">排障页</a>
+    </div>
+  </div>
+
   <section class="section section-white">
     <div class="container" style="max-width:var(--content-width);">
+      <!-- 视频教程入口 -->
+      <div class="video-tutorial-card">
+        <div class="video-tutorial-icon">🎥</div>
+        <div class="video-tutorial-content">
+          <h3>10分钟看完安装到使用全流程</h3>
+          <p>不爱看文字？跟着视频一步步操作，从下载到完成第一次任务全程演示</p>
+          <a href="https://www.bilibili.com/video/xxxxxxx" target="_blank" rel="noopener" class="btn btn-primary btn-sm">去B站看视频教程 →</a>
+        </div>
+      </div>
+
+      <div class="community-hub" style="margin-bottom:var(--space-12);">
+        <div class="community-heading">
+          <p class="section-title">下载前后都能进群</p>
+          <h2 class="text-h2 mb-4">遇到选择困难、下载失败或模型不会配，都不要自己硬试</h2>
+          <p class="text-body">下载页是高意图用户最集中的地方，适合直接把用户引导进你的私域。这里建议把企业微信做成主入口，再用 QQ 群、微信群、知识星球分别承接公开答疑、高频陪跑和内容沉淀。</p>
+        </div>
+        <div class="community-highlight">
+          <strong>推荐话术</strong>
+          <p>先复制企业微信入口，添加时带上 <code>系统 + 报错现象 + 你当前卡住的步骤</code>。这样后续无论是拉微信群、发教程，还是安排一对一答疑都更顺。</p>
+        </div>
+        <div class="community-grid">
+          <article class="community-channel is-primary">
+            <div class="community-channel-copy">
+              <div class="community-channel-badge">下载页主 CTA</div>
+              <h3>企业微信</h3>
+              <p>推荐作为下载前后的统一私域入口，尤其适合需要人工判断平台、模型和网络环境的用户。</p>
+              <ul class="community-chip-list">
+                <li>平台判断</li>
+                <li>下载失败</li>
+                <li>模型配置</li>
+              </ul>
+              <div class="community-actions">
+                <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_private_channel" data-channel="wecom" data-surface="download_private_hub" data-community-link="wecom">打开企微二维码</a>
+                <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="download_private_hub">先看排障 →</a>
+              </div>
+            </div>
+            <div class="community-channel-media">
+              <div class="community-qr-frame">
+                <img data-community-image="wecom" src="assets/community/wecom-qr-placeholder.svg" alt="企业微信二维码预览图" loading="lazy">
+              </div>
+              <p class="community-hint" data-community-hint="wecom"></p>
+            </div>
+          </article>
+          <div class="community-secondary-grid">
+            <div class="community-secondary-head">
+              <span>分流入口</span>
+              <p>右侧渠道更适合把不同成熟度的用户分别承接到公开答疑、活跃群或长期内容体系。</p>
+            </div>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">公开分流</div>
+                <h3>QQ群</h3>
+                <p>适合承接“我该下哪个版本”“为什么我这里报错”和截图答疑这类公开问题。</p>
+                <div class="community-actions">
+                  <a href="assets/community/qq-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="qq" data-surface="download_private_hub" data-community-link="qq">打开 QQ 群二维码</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="qq" src="assets/community/qq-qr-placeholder.svg" alt="QQ群二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="qq"></p>
+              </div>
+            </article>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">高频反馈</div>
+                <h3>微信群</h3>
+                <p>适合把已经开始安装的用户留在高活跃渠道里，提高答疑触达率和二次转化。</p>
+                <div class="community-actions">
+                  <a href="assets/community/wechat-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="wechat" data-surface="download_private_hub" data-community-link="wechat">打开微信群二维码</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="wechat" src="assets/community/wechat-qr-placeholder.svg" alt="微信群二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="wechat"></p>
+              </div>
+            </article>
+            <article class="community-channel">
+              <div class="community-channel-copy">
+                <div class="community-channel-badge">进阶承接</div>
+                <h3>知识星球</h3>
+                <p>适合把“已经下载或装好”的用户接到更长期的内容体系里，沉淀案例、教程和付费转化。</p>
+                <div class="community-actions">
+                  <a href="assets/community/planet-qr-placeholder.svg" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_private_channel" data-channel="planet" data-surface="download_private_hub" data-community-link="planet">打开星球二维码</a>
+                  <a href="resources.html" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="download_private_hub">配套资源 →</a>
+                </div>
+              </div>
+              <div class="community-channel-media">
+                <div class="community-qr-frame">
+                  <img data-community-image="planet" src="assets/community/planet-qr-placeholder.svg" alt="知识星球二维码预览图" loading="lazy">
+                </div>
+                <p class="community-hint" data-community-hint="planet"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <ul class="community-route-list">
+          <li><strong>还没下载：</strong>先加企业微信或进 QQ 群，判断自己该走哪条平台路径。</li>
+          <li><strong>已经下载：</strong>如果打不开或解压后卡住，优先走企微或微信群发截图。</li>
+          <li><strong>已经装好：</strong>把用户导去知识星球，继续承接教程、案例和升级方案。</li>
+        </ul>
+      </div>
       <p class="section-title">系统要求</p>
       <h2 class="text-h2 mb-6">下载前先看这几项</h2>
       <div class="card" style="padding:var(--space-6);">
@@ -232,7 +363,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -247,6 +383,7 @@
   </footer>
 
   <script src="analytics.js"></script>
+  <script src="community.js"></script>
   <script>
     const header = document.getElementById('siteHeader');
     let ticking = false;
