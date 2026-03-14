@@ -24,7 +24,22 @@
       max-width: var(--content-width);
     }
 
+    .share-hero-note {
+      margin-top: var(--space-5);
+      display: inline-flex;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(232,90,79,0.12);
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .share-card {
+      max-width: 720px;
+      margin: 0 auto;
       padding: var(--space-7);
       border-radius: 28px;
       border: 1px solid rgba(232,90,79,0.18);
@@ -39,6 +54,102 @@
         radial-gradient(circle at top left, rgba(232,90,79,0.18), transparent 32%),
         linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
       border-color: rgba(248,180,174,0.16);
+    }
+
+    .share-frame {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto var(--space-6);
+      padding: 18px;
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(30,41,59,0.94));
+      box-shadow: 0 24px 60px rgba(15,23,42,0.28);
+    }
+
+    .share-frame::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 110px;
+      height: 16px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .share-phone-card {
+      min-height: 760px;
+      padding: 32px 24px 24px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(232,90,79,0.16), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(59,130,246,0.14), transparent 24%),
+        linear-gradient(180deg, #fff8f6, #f8fbff);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-5);
+    }
+
+    .share-phone-top {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .share-phone-kicker {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(232,90,79,0.12);
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .share-phone-card h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+
+    .share-phone-card p {
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .share-phone-points {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .share-phone-point {
+      padding: var(--space-4);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(148,163,184,0.16);
+    }
+
+    .share-phone-point strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: #0f172a;
+    }
+
+    .share-phone-footer {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .share-phone-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      color: #64748b;
+      font-size: 13px;
     }
 
     .share-grid {
@@ -78,6 +189,16 @@
     }
 
     @media (max-width: 768px) {
+      .share-frame {
+        padding: 12px;
+        border-radius: 28px;
+      }
+
+      .share-phone-card {
+        min-height: auto;
+        padding: 26px 18px 18px;
+      }
+
       .share-grid,
       .share-links {
         grid-template-columns: 1fr;
@@ -116,12 +237,44 @@
       <p class="page-hero-kicker">团队转发版 / 极简一页版</p>
       <h1>如果你只想发 1 页给别人，就发这页</h1>
       <p>适合发给同事、朋友或社群成员。一页讲清它是什么、适合谁、怎么开始，以及去哪里继续看。</p>
+      <span class="share-hero-note">更适合微信 / 飞书 / QQ 转发</span>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
       <div class="share-card">
+        <div class="share-frame">
+          <div class="share-phone-card">
+            <div class="share-phone-top">
+              <span class="share-phone-kicker">Share Sheet</span>
+              <h2>ClawStart 是中国大陆小白的 OpenClaw 中文入口</h2>
+              <p>如果对方只需要 1 页，就让他先看这里：知道自己适不适合、先做什么、下一步该点哪里。</p>
+            </div>
+            <div class="share-phone-points">
+              <div class="share-phone-point">
+                <strong>第一步：下载一键包</strong>
+                Windows / macOS 优先走一键包，不先折腾复杂命令行。
+              </div>
+              <div class="share-phone-point">
+                <strong>第二步：先跑通，再扩展</strong>
+                先完成第一个真实任务，再装第一个 Skill。
+              </div>
+              <div class="share-phone-point">
+                <strong>第三步：卡住就看速查页</strong>
+                不要同时乱试多个方向，先按现象定位问题。
+              </div>
+            </div>
+            <div class="share-phone-footer">
+              <div class="share-phone-meta">
+                <span>官网：useclawstart.com</span>
+                <span>手册：guide-openclaw-starter</span>
+                <span>速查：quick-reference</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <h2 class="text-h2">ClawStart 是什么</h2>
         <p class="text-body">ClawStart 是一个面向中国大陆普通用户和小白的 OpenClaw 中文入口。它解决的是“不会装、装不动、装好了不会继续用”的问题。</p>
 

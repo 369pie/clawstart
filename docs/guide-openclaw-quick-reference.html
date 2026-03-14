@@ -24,11 +24,46 @@
       max-width: var(--content-width);
     }
 
+    .quickref-print-head {
+      display: none;
+      margin-bottom: var(--space-6);
+    }
+
+    .quickref-print-head p {
+      margin: 0 0 var(--space-2);
+      color: #475569;
+      font-size: 13px;
+    }
+
     .quickref-toolbar {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
       margin-top: var(--space-6);
+    }
+
+    .quickref-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .quickref-summary-card {
+      padding: var(--space-5);
+      border-radius: 18px;
+      border: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      box-shadow: var(--theme-shadow-sm);
+    }
+
+    .quickref-summary-card span {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--theme-text-secondary);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .quickref-grid {
@@ -91,14 +126,83 @@
       color: var(--theme-text-secondary);
     }
 
+    .quickref-print-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
     @media (max-width: 768px) {
       .quickref-grid,
-      .quickref-mini {
+      .quickref-mini,
+      .quickref-summary {
         grid-template-columns: 1fr;
       }
 
       .quickref-toolbar {
         flex-direction: column;
+      }
+
+      .quickref-print-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+      }
+
+      body.quickref-page {
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+
+      body.quickref-page .site-header,
+      body.quickref-page .site-footer,
+      body.quickref-page .theme-toggle,
+      body.quickref-page .nav-toggle,
+      body.quickref-page .quickref-toolbar,
+      body.quickref-page .quickref-print-actions {
+        display: none !important;
+      }
+
+      body.quickref-page .quickref-print-head {
+        display: block !important;
+      }
+
+      body.quickref-page .page-hero,
+      body.quickref-page .section,
+      body.quickref-page .section-alt {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      body.quickref-page .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+
+      body.quickref-page .quickref-summary-card,
+      body.quickref-page .quickref-card,
+      body.quickref-page .quickref-mini-card,
+      body.quickref-page .quickref-footer {
+        background: #ffffff !important;
+        box-shadow: none !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      body.quickref-page .quickref-card,
+      body.quickref-page .quickref-footer {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      body.quickref-page a {
+        color: #0f172a !important;
+        text-decoration: none;
       }
     }
   </style>
@@ -139,6 +243,27 @@
 
   <section class="section section-alt">
     <div class="container">
+      <div class="quickref-print-head">
+        <p>ClawStart 常见问题速查手册</p>
+        <h1>OpenClaw 小白排障速查</h1>
+        <p>来源：useclawstart.com/guide-openclaw-quick-reference.html</p>
+      </div>
+
+      <div class="quickref-summary">
+        <article class="quickref-summary-card">
+          <span>适合谁</span>
+          <strong>刚装好就卡住的小白用户</strong>
+        </article>
+        <article class="quickref-summary-card">
+          <span>使用方式</span>
+          <strong>先按现象判断，再回对应教程</strong>
+        </article>
+        <article class="quickref-summary-card">
+          <span>版本</span>
+          <strong>v0.1 Quick Reference</strong>
+        </article>
+      </div>
+
       <div class="quickref-mini">
         <div class="quickref-mini-card">
           <strong>先判断</strong>
@@ -195,6 +320,10 @@
       <div class="quickref-footer">
         <strong>建议转发方式</strong>
         如果你在帮朋友排障，先发这页；如果他还没装好，再发 [入门手册](/Users/caonanya/Documents/GitHub/openlola/site/guide-openclaw-starter.html)；如果他已经装好但不会扩展，再发 [Skills 指南](/Users/caonanya/Documents/GitHub/openlola/site/guide-openclaw-skills-cn.html)。
+        <div class="quickref-print-actions">
+          <button type="button" class="btn btn-primary" data-print-quickref="true" data-track="click_manual_print" data-surface="quickref_footer">打印 / 导出 PDF →</button>
+          <a href="guide-openclaw-share-sheet.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="share_sheet" data-surface="quickref_footer">看团队转发版 →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -238,6 +367,11 @@
         });
         ticking = true;
       }
+    });
+    document.querySelectorAll('[data-print-quickref="true"]').forEach((button) => {
+      button.addEventListener('click', () => {
+        window.print();
+      });
     });
   </script>
 </body>
