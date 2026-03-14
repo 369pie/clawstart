@@ -1156,6 +1156,28 @@ h1, h2, h3, h4, h5, h6 {
 .visual-shot-lines span:nth-child(2) { width: 72%; }
 .visual-shot-lines span:nth-child(3) { width: 61%; }
 
+.tutorial-illustration {
+  margin: var(--space-6) 0 var(--space-8);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--theme-border);
+  box-shadow: var(--theme-shadow-md);
+  background: var(--theme-bg-card);
+}
+
+.tutorial-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tutorial-illustration figcaption {
+  padding: var(--space-4) var(--space-5);
+  font-size: 14px;
+  color: var(--theme-text-secondary);
+  background: linear-gradient(180deg, transparent, rgba(148,163,184,0.05));
+}
+
 .community-hub {
   position: relative;
   overflow: hidden;
