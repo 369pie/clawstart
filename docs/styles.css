@@ -1178,6 +1178,83 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(180deg, transparent, rgba(148,163,184,0.05));
 }
 
+.tutorial-series-nav {
+  margin-top: var(--space-12);
+  padding: var(--space-8);
+  border-radius: 28px;
+  border: 1px solid var(--theme-border);
+  background:
+    radial-gradient(circle at top right, rgba(232,90,79,0.08), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(59,130,246,0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.94));
+  box-shadow: var(--theme-shadow-md);
+}
+
+.tutorial-series-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.tutorial-series-link {
+  display: block;
+  padding: var(--space-5);
+  border-radius: 22px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-card);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tutorial-series-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--theme-shadow-sm);
+  border-color: rgba(232,90,79,0.24);
+}
+
+.tutorial-series-label {
+  display: inline-flex;
+  margin-bottom: var(--space-2);
+  color: var(--brand-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tutorial-series-link h3 {
+  margin-bottom: var(--space-2);
+}
+
+.tutorial-series-link p {
+  margin: 0;
+  color: var(--theme-text-secondary);
+}
+
+.tutorial-recommend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.tutorial-recommend-card {
+  padding: var(--space-5);
+  border-radius: 22px;
+  border: 1px solid var(--theme-border);
+  background: rgba(255,255,255,0.82);
+}
+
+.tutorial-recommend-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.tutorial-recommend-card p {
+  margin-bottom: var(--space-4);
+  color: var(--theme-text-secondary);
+}
+
 .community-hub {
   position: relative;
   overflow: hidden;
@@ -1697,6 +1774,8 @@ code {
   .tutorial-article-grid { grid-template-columns: 1fr; }
   .tutorial-outcome-grid { grid-template-columns: 1fr; }
   .visual-step-grid { grid-template-columns: 1fr; }
+  .tutorial-series-links { grid-template-columns: 1fr; }
+  .tutorial-recommend-grid { grid-template-columns: 1fr; }
   .tutorial-link-item { grid-template-columns: 1fr; }
   .community-grid-3 { grid-template-columns: 1fr; }
   .community-highlight { grid-template-columns: 1fr; }
