@@ -1086,6 +1086,76 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 }
 
+.visual-step-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.visual-step-card {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-card);
+  box-shadow: var(--theme-shadow-sm);
+}
+
+.visual-step-card h3 {
+  margin-bottom: var(--space-3);
+  font-size: 16px;
+}
+
+.visual-step-card p {
+  color: var(--theme-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.visual-shot {
+  min-height: 132px;
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--theme-border);
+  background:
+    linear-gradient(180deg, rgba(232,90,79,0.08) 0%, transparent 100%),
+    var(--theme-bg-alt);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.visual-shot-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--brand-400);
+}
+
+.visual-shot-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--theme-text);
+}
+
+.visual-shot-lines {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.visual-shot-lines span {
+  display: block;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(148,163,184,0.22);
+}
+
+.visual-shot-lines span:nth-child(1) { width: 88%; }
+.visual-shot-lines span:nth-child(2) { width: 72%; }
+.visual-shot-lines span:nth-child(3) { width: 61%; }
+
 .community-hub {
   position: relative;
   overflow: hidden;
@@ -1604,6 +1674,7 @@ code {
   .tutorial-path-grid { grid-template-columns: 1fr; }
   .tutorial-article-grid { grid-template-columns: 1fr; }
   .tutorial-outcome-grid { grid-template-columns: 1fr; }
+  .visual-step-grid { grid-template-columns: 1fr; }
   .tutorial-link-item { grid-template-columns: 1fr; }
   .community-grid-3 { grid-template-columns: 1fr; }
   .community-highlight { grid-template-columns: 1fr; }
