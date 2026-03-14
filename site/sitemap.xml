@@ -86,6 +86,31 @@
     <priority>0.67</priority>
   </url>
   <url>
+    <loc>https://useclawstart.com/guide-openclaw-install.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/guide-openclaw-api-setup.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.71</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/guide-openclaw-skills-cn.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/tutorial-role-creators.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.66</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/tutorial-role-developers.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.66</priority>
+  </url>
+  <url>
     <loc>https://useclawstart.com/resources.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

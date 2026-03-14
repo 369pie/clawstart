@@ -257,6 +257,59 @@
 
   <section class="section section-white">
     <div class="container" style="max-width:var(--content-width);">
+      <p class="section-title">搜索直达</p>
+      <h2 class="text-h2 mb-8">如果你是带着具体问题来的，先从这几页进</h2>
+      <div class="card-grid">
+        <article class="card tutorial-article-card">
+          <div class="tutorial-meta-row">
+            <span class="tutorial-pill">安装</span>
+            <span class="tutorial-pill">高意图</span>
+          </div>
+          <h3>OpenClaw 中文安装指南</h3>
+          <p>把平台选择、下载、首启和常见误区压成一条最短路径，适合第一次从搜索进入的人。</p>
+          <a href="guide-openclaw-install.html" class="text-link" data-track="click_tutorial_article" data-topic="guide_install" data-surface="tutorial_hub_search_intent">进入安装指南 →</a>
+        </article>
+        <article class="card tutorial-article-card">
+          <div class="tutorial-meta-row">
+            <span class="tutorial-pill">模型</span>
+            <span class="tutorial-pill">配置</span>
+          </div>
+          <h3>OpenClaw API 配置指南</h3>
+          <p>适合搜“API Key 怎么配、选哪家模型、为什么连不上”的用户，先把最常见问题讲透。</p>
+          <a href="guide-openclaw-api-setup.html" class="text-link" data-track="click_tutorial_article" data-topic="guide_api_setup" data-surface="tutorial_hub_search_intent">进入 API 指南 →</a>
+        </article>
+        <article class="card tutorial-article-card">
+          <div class="tutorial-meta-row">
+            <span class="tutorial-pill">Skill</span>
+            <span class="tutorial-pill">中文推荐</span>
+          </div>
+          <h3>OpenClaw 中文 Skills 推荐</h3>
+          <p>适合搜“Skill 有哪些、中文怎么选、从哪里开始”的用户，直接导到真实 Skill 和安装命令。</p>
+          <a href="guide-openclaw-skills-cn.html" class="text-link" data-track="click_skill_guide" data-topic="guide_skills_cn" data-surface="tutorial_hub_search_intent">进入 Skills 指南 →</a>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">按角色直达</p>
+      <h2 class="text-h2 mb-8">如果你更关心“我这种人怎么用”，从这里开始</h2>
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">✍️</div>
+          <h3>内容创作者</h3>
+          <p>从选模型、写初稿、总结资料到装第一批 Skill，给内容用户一条直接能出成果的路线。</p>
+          <a href="tutorial-role-creators.html" class="btn btn-primary btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_creators" data-surface="tutorial_hub_role_entry">进入创作者路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3>开发者</h3>
+          <p>从报错解释、仓库阅读、PR 辅助到 GitHub Skill，把“会用”尽快变成“每天真在用”。</p>
+          <a href="tutorial-role-developers.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_developers" data-surface="tutorial_hub_role_entry">进入开发者路径 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container" style="max-width:var(--content-width);">
       <div class="tutorial-block">
         <p class="section-title">配套入口</p>
         <h2 class="text-h2 mb-6">教程不是终点，记得回到主路径</h2>
@@ -399,7 +452,7 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
@@ -485,7 +538,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

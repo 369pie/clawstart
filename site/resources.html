@@ -111,6 +111,45 @@
     </div>
   </section>
 
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-title">中文专题入口</p>
+      <h2 class="text-h2 mb-8">带着具体问题来的，先从这些长尾页进</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">📦</div>
+          <h3>OpenClaw 中文安装指南</h3>
+          <p>适合第一次搜索“怎么安装 OpenClaw”的用户，先搞清平台路径，再回下载页拿一键包。</p>
+          <a href="guide-openclaw-install.html" class="btn btn-primary btn-sm mt-4" data-track="click_tutorial_article" data-topic="guide_install" data-surface="resources_topic_card">查看安装指南 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔑</div>
+          <h3>OpenClaw API 配置指南</h3>
+          <p>适合第一次配模型服务商、拿 API Key、排查连通性问题的用户。</p>
+          <a href="guide-openclaw-api-setup.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="guide_api_setup" data-surface="resources_topic_card">查看 API 指南 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧩</div>
+          <h3>OpenClaw 中文 Skills 推荐</h3>
+          <p>适合搜“Skill 有哪些、中文怎么选、从哪里开始”的用户，直接承接到 Skills Hub 和安装页。</p>
+          <a href="guide-openclaw-skills-cn.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_guide" data-surface="resources_topic_card">查看 Skills 指南 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">✍️</div>
+          <h3>内容创作者路径</h3>
+          <p>适合写作、脚本、选题、资料整理、视频文案用户，从任务到 Skill 一条线走完。</p>
+          <a href="tutorial-role-creators.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_creators" data-surface="resources_topic_card">进入创作者路径 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3>开发者路径</h3>
+          <p>适合代码解释、仓库阅读、GitHub 协作、README 优化和排错辅助场景。</p>
+          <a href="tutorial-role-developers.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_developers" data-surface="resources_topic_card">进入开发者路径 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- PDF 教程下载 -->
   <section class="section section-alt">
     <div class="container">
@@ -349,7 +388,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

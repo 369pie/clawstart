@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开发者怎么用 OpenClaw - ClawStart | 报错解释、仓库阅读、GitHub 协作</title>
+  <meta name="description" content="面向开发者的 OpenClaw 使用路径：从解释报错、读仓库、改 README 到安装 GitHub 相关 Skill，让 OpenClaw 更快融入日常开发流。">
+  <meta name="keywords" content="开发者 OpenClaw,OpenClaw Github Skill,OpenClaw 仓库阅读,OpenClaw 报错解释,ClawStart">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/tutorial-role-developers.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="开发者怎么用 OpenClaw - ClawStart">
+  <meta property="og:description" content="报错解释、仓库阅读、GitHub 协作和 README 优化的开发者路径。">
+  <meta property="og:url" content="https://useclawstart.com/tutorial-role-developers.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="开发者怎么用 OpenClaw - ClawStart">
+  <meta name="twitter:description" content="适合开发者第一次把 OpenClaw 接进日常开发任务的路径。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-kicker">开发者路径</p>
+      <h1>如果你是开发者，从这些任务开始最值</h1>
+      <p>不要先把它当成“万能写代码工具”。先让它帮你解释报错、读仓库、整理 PR 信息，再慢慢扩展到更复杂的工作流。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>最适合谁</strong>
+        适合开发者、技术 PM、懂 GitHub 的半技术用户，以及经常需要读仓库、看报错、写 README 和改 issue 描述的人。
+      </div>
+
+      <p class="section-title mt-8">先做什么</p>
+      <h2 class="text-h2 mb-6">开发者第一次最推荐的 3 类任务</h2>
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">🐛</div>
+          <h3>解释报错</h3>
+          <p>把一段报错贴进去，让它帮你先判断错误属于依赖、环境、路径还是权限问题。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📦</div>
+          <h3>读仓库和 README</h3>
+          <p>先让它帮你概括项目结构、主入口文件和运行方式，避免自己手动满仓库乱翻。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔀</div>
+          <h3>整理 Issue / PR 信息</h3>
+          <p>把变更摘要、待办和 review points 结构化，减少来回切上下文的时间。</p>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">推荐 Skill</p>
+      <h2 class="text-h2 mb-6">开发者第一批最值得装的能力</h2>
+      <div class="skill-feature-grid">
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Github</h3>
+                <span class="skill-badge">开发与仓库工具</span>
+              </div>
+              <p>最适合开发者第一次装的真实 Skill。能读取仓库、Issue、PR 和 Action，立刻有感知。</p>
+            </div>
+          </div>
+          <div class="skill-command"><code>npx clawhub@latest install github</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/github" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Weather</h3>
+                <span class="skill-badge">快速验证</span>
+              </div>
+              <p>虽然不是开发专属，但它最适合第一次验证 Skill 安装链路是否通了，能减少你在错误方向上浪费时间。</p>
+            </div>
+          </div>
+          <div class="skill-command"><code>npx clawhub@latest install weather</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/weather" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">推荐路线</p>
+      <h2 class="text-h2 mb-6">开发者最顺的一条上手路径</h2>
+      <div class="tutorial-order">
+        <article class="tutorial-order-step">
+          <div class="num">1</div>
+          <div>
+            <h3>先把模型和基础问答稳定</h3>
+            <p>先确认它能正常回答、不会一会儿连得上一会儿连不上。</p>
+          </div>
+        </article>
+        <article class="tutorial-order-step">
+          <div class="num">2</div>
+          <div>
+            <h3>让它先做一个纯开发小任务</h3>
+            <p>比如解释报错、读 README、总结目录结构，优先做短平快、结果可验证的事。</p>
+          </div>
+        </article>
+        <article class="tutorial-order-step">
+          <div class="num">3</div>
+          <div>
+            <h3>再装 Github Skill</h3>
+            <p>只有当你知道自己会反复看仓库、Issue、PR 时，装这个 Skill 才最值。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">下一步这样走最顺</h3>
+        <p class="text-body mb-4">如果你是开发者，最值得做的是先用任务模板完成一个开发类小任务，再去装 Github Skill。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="tutorial-first-task-templates.html" class="btn btn-primary" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="role_developers_bottom">看第一次任务模板 →</a>
+          <a href="skills-hub.html?tags=beginner,no_api_key" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="role_developers_bottom">先看新手 Skill 入口 →</a>
+          <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark" data-track="click_skill_install_guide" data-surface="role_developers_bottom">装第一个 Skill →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="tutorial.html">教程</a></li>
+          <li><a href="skills-hub.html">Skills Hub</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>

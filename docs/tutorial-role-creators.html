@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内容创作者怎么用 OpenClaw - ClawStart | 写作、选题、资料整理</title>
+  <meta name="description" content="面向内容创作者的 OpenClaw 使用路径：从模型选择、第一次任务到 Skills 扩展，帮助写作、选题、资料整理和脚本打磨更高效。">
+  <meta name="keywords" content="内容创作者 OpenClaw,OpenClaw 写作,OpenClaw 选题,OpenClaw 内容整理,ClawStart">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/tutorial-role-creators.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="内容创作者怎么用 OpenClaw - ClawStart">
+  <meta property="og:description" content="写作、选题、资料整理和脚本打磨的高频路径。">
+  <meta property="og:url" content="https://useclawstart.com/tutorial-role-creators.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="内容创作者怎么用 OpenClaw - ClawStart">
+  <meta name="twitter:description" content="适合写作、脚本、选题和资料整理用户的第一条使用路径。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-kicker">内容创作者路径</p>
+      <h1>如果你是写作和内容用户，这样开始最顺</h1>
+      <p>不要先学全部功能。先让 OpenClaw 帮你做一次选题、总结资料、改稿或出提纲，再决定后面怎么扩展。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>最适合谁</strong>
+        适合写作者、运营、短视频脚本用户、内容策划、研究资料整理和知识输出场景。
+      </div>
+
+      <p class="section-title mt-8">先做什么</p>
+      <h2 class="text-h2 mb-6">内容用户第一次最推荐这 3 类任务</h2>
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">🧠</div>
+          <h3>选题和提纲</h3>
+          <p>让它先帮你把一个主题拆成可执行的内容方向，而不是从空白开始硬想。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📝</div>
+          <h3>初稿改写</h3>
+          <p>把你已经写好的内容改成更口语、更正式或更适合发布的平台风格。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📚</div>
+          <h3>资料总结</h3>
+          <p>把网页、文档和素材先总结成要点，再回到内容创作本身。</p>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">推荐 Skill</p>
+      <h2 class="text-h2 mb-6">内容用户第一批最值得装的能力</h2>
+      <div class="skill-feature-grid">
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Summarize</h3>
+                <span class="skill-badge">资料总结</span>
+              </div>
+              <p>适合把网页、PDF、视频和音频先压缩成可读摘要，节省前期资料整理时间。</p>
+            </div>
+          </div>
+          <div class="skill-command"><code>npx clawhub@latest install summarize</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/summarize" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Notion</h3>
+                <span class="skill-badge">内容沉淀</span>
+              </div>
+              <p>适合把提纲、脚本、内容库和选题池整理回知识库，而不是只停在聊天窗口里。</p>
+            </div>
+          </div>
+          <div class="skill-command"><code>npx clawhub@latest install notion</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/notion" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">推荐路线</p>
+      <h2 class="text-h2 mb-6">内容创作者最顺的一条路径</h2>
+      <div class="tutorial-order">
+        <article class="tutorial-order-step">
+          <div class="num">1</div>
+          <div>
+            <h3>先把模型连接稳定</h3>
+            <p>先别急着装很多 Skill。先保证你可以稳定拿到一条正常回复。</p>
+          </div>
+        </article>
+        <article class="tutorial-order-step">
+          <div class="num">2</div>
+          <div>
+            <h3>照抄一个内容类任务模板</h3>
+            <p>先做一次选题、改稿或总结，建立“它真的能帮我省时间”的感觉。</p>
+          </div>
+        </article>
+        <article class="tutorial-order-step">
+          <div class="num">3</div>
+          <div>
+            <h3>再装 Summarize 或 Notion</h3>
+            <p>只有当你已经知道自己会反复用这类任务时，才值得装第一个 Skill。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">下一步这样走最顺</h3>
+        <p class="text-body mb-4">如果你是内容用户，建议先用模板出一次结果，再去 Skills Hub 看更细的中文分类和真实安装命令。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="tutorial-first-task-templates.html" class="btn btn-primary" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="role_creators_bottom">看第一次任务模板 →</a>
+          <a href="skills-hub.html?tags=beginner,chinese_friendly" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="role_creators_bottom">看中文友好 Skills →</a>
+          <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark" data-track="click_skill_install_guide" data-surface="role_creators_bottom">装第一个 Skill →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="tutorial.html">教程</a></li>
+          <li><a href="skills-hub.html">Skills Hub</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
