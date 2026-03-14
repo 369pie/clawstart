@@ -51,6 +51,16 @@
     <priority>0.62</priority>
   </url>
   <url>
+    <loc>https://useclawstart.com/tutorial-install-first-skill.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.66</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/tutorial-top-skills.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.64</priority>
+  </url>
+  <url>
     <loc>https://useclawstart.com/resources.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

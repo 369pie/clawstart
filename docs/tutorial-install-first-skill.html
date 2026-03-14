@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安装第一个 Skill - ClawStart | 从搜索到验证的最短路径</title>
+  <meta name="description" content="ClawStart 第一个 Skill 安装教程：先选 Skill、再搜索、再安装、再验证，适合第一次接触 Skills 的用户。">
+  <meta name="keywords" content="ClawStart 安装Skill,OpenClaw 安装Skill,第一个Skill,Skill 搜索,Skill 验证">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/tutorial-install-first-skill.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="安装第一个 Skill - ClawStart">
+  <meta property="og:description" content="第一次安装 Skill 的最短路径，从搜索到验证，一条线走完。">
+  <meta property="og:url" content="https://useclawstart.com/tutorial-install-first-skill.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="安装第一个 Skill - ClawStart">
+  <meta name="twitter:description" content="第一次装 Skill 不要贪多，按最短路径装一个真正会用的。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "安装第一个 Skill",
+    "url": "https://useclawstart.com/tutorial-install-first-skill.html",
+    "description": "帮助 ClawStart 用户完成第一次 Skill 安装与验证。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>安装第一个 Skill</h1>
+      <p>第一次不要追求装很多。先选一个马上能用到的 Skill，完整走通搜索、安装、验证这条链路。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>这页适合谁</strong>
+        适合已经能正常对话、想第一次安装 Skill，但不知道从哪开始的用户。
+      </div>
+
+      <p class="section-title mt-8">先做一个选择</p>
+      <h2 class="text-h2 mb-4">选一个你一周内会真正用到的 Skill</h2>
+      <ul class="tutorial-checklist">
+        <li>想快速看到结果：优先选搜索 / 查询类</li>
+        <li>想提高办公效率：优先选文件 / 内容整理类</li>
+        <li>想辅助开发：优先选 Git / 代码相关类</li>
+      </ul>
+
+      <p class="section-title mt-12">步骤 1</p>
+      <h2 class="text-h2 mb-4">先搜索，再判断</h2>
+      <div class="code-block"><span class="comment"># 搜索某类 Skill</span>
+openclaw skills search weather
+
+<span class="comment"># 或按关键词搜索</span>
+openclaw skills search git
+
+<span class="comment"># 搜索文件整理类</span>
+openclaw skills search file</div>
+      <div class="tip-box">
+        <strong>判断原则</strong>
+        第一次优先选“名字直白、用途明确、你今天就能试一次”的 Skill，不要先装很复杂的组合型 Skill。
+      </div>
+
+      <p class="section-title mt-12">步骤 2</p>
+      <h2 class="text-h2 mb-4">只装一个</h2>
+      <div class="code-block"><span class="comment"># 示例：安装 weather</span>
+openclaw skills install weather
+
+<span class="comment"># 安装后查看列表</span>
+openclaw skills list</div>
+      <div class="success-box">
+        成功标准：`skills list` 能看到它，说明安装阶段已经完成。
+      </div>
+
+      <p class="section-title mt-12">步骤 3</p>
+      <h2 class="text-h2 mb-4">立刻验证一次</h2>
+      <p class="text-body mb-4">装完不要停在“我已经装上了”。马上提一个最短问题，验证这个 Skill 是不是真的能帮到你。</p>
+      <div class="code-block"><span class="comment"># 安装了 weather 以后</span>
+上海明天会下雨吗？
+
+<span class="comment"># 安装了 git 以后</span>
+帮我看一下这个仓库最近 3 次提交的重点</div>
+
+      <p class="section-title mt-12">步骤 4</p>
+      <h2 class="text-h2 mb-4">如果失败，优先看这 3 类问题</h2>
+      <div class="tutorial-link-list">
+        <article class="tutorial-link-item">
+          <div>
+            <h3>搜索结果有，但安装失败</h3>
+            <p>通常是网络、权限、registry 或依赖问题，优先去排障页查 Skill 安装失败类问题。</p>
+          </div>
+          <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_install_skill_faq">去排障 →</a>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>安装成功，但不会调用</h3>
+            <p>先把提问缩短、缩具体，优先问一个最容易判断成功与否的问题。</p>
+          </div>
+          <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm" data-track="click_next_tutorial" data-topic="beginner" data-surface="tutorial_install_skill_faq">回新手入门 →</a>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>装完发现不适合自己</h3>
+            <p>不用纠结，第一次试错很正常。回去看推荐清单，换一个更直接的 Skill 即可。</p>
+          </div>
+          <a href="tutorial-top-skills.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_install_skill_faq">看推荐清单 →</a>
+        </article>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">第一次装 Skill 的目标不是“装成专家”</h3>
+        <p class="text-body mb-4">你只需要完成一次搜索、一次安装、一次验证，这就已经比“知道有 Skill 但从没动手”更进一步了。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="tutorial-top-skills.html" class="btn btn-primary" data-track="click_skill_guide" data-surface="tutorial_install_skill_bottom">看新手推荐 Skill →</a>
+          <a href="tutorial-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="tutorial_install_skill_bottom">回 Skills 指南 →</a>
+          <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="tutorial_install_skill_bottom">了解 LolaClaw →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="tutorial.html">教程中心</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
