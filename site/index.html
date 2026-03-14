@@ -376,7 +376,7 @@
       <div class="qr-modal-icon" id="qrModalIcon">💼</div>
       <h3 class="qr-modal-title" id="qrModalTitle">添加企业微信</h3>
       <p class="qr-modal-desc" id="qrModalDesc">添加后可获得1对1答疑支持，优先解决安装和配置问题</p>
-      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage">
+      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage" data-community-image="wecom">
       <p class="qr-modal-hint" id="qrModalHint">打开微信/QQ扫码即可加入</p>
     </div>
   </div>
@@ -453,11 +453,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }

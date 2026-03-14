@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="排障 - ClawStart">
   <meta name="twitter:description" content="打不开、连不上、配不好，按现象快速排查。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -339,8 +339,8 @@ openclaw gateway restart</div>
           <strong>求助时请带上</strong>
           <p><code>系统版本 + 当前步骤 + 报错截图 + diagnostic.txt（如果你已经跑过诊断）</code>。这样无论是群里公开答疑还是企业微信一对一排查，效率都会高很多。</p>
         </div>
-        <div class="community-grid">
-          <article class="community-channel is-primary">
+        <div class="community-grid-3">
+          <article class="community-channel">
             <div class="community-channel-copy">
               <div class="community-channel-badge">优先人工分流</div>
               <h3>企业微信</h3>
@@ -351,53 +351,31 @@ openclaw gateway restart</div>
                 <li>继续跟进</li>
               </ul>
               <div class="community-actions">
-                <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">打开企微二维码</a>
+                <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开企微二维码</a>
                 <a href="start.html" class="btn btn-outline-dark btn-sm" data-track="click_quickstart" data-surface="troubleshooting_private_hub">回到快速开始 →</a>
               </div>
             </div>
-            <div class="community-channel-media">
-              <div class="community-qr-frame">
-                <img data-community-image="wecom" src="assets/community/wecom-qr-placeholder.svg" alt="企业微信二维码预览图" loading="lazy">
+          </article>
+          <article class="community-channel">
+            <div class="community-channel-copy">
+              <div class="community-channel-badge">截图求助</div>
+              <h3>QQ群</h3>
+              <p>适合把错误提示、系统环境和操作截图发出来，让更多用户一起帮你判断。</p>
+              <div class="community-actions">
+                <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开 QQ 群二维码</a>
               </div>
-              <p class="community-hint" data-community-hint="wecom"></p>
             </div>
           </article>
-          <div class="community-secondary-grid">
-            <div class="community-secondary-head">
-              <span>辅助渠道</span>
-              <p>如果你更适合公开发图、进入高频群或把排障后的用户继续沉淀下来，可以从右侧继续分流。</p>
+          <article class="community-channel">
+            <div class="community-channel-copy">
+              <div class="community-channel-badge">高频跟进</div>
+              <h3>微信群</h3>
+              <p>适合需要连续跟进同一个问题的用户，尤其是模型配置、网络和权限类问题。</p>
+              <div class="community-actions">
+                <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开微信群二维码</a>
+              </div>
             </div>
-            <article class="community-channel">
-              <div class="community-channel-copy">
-                <div class="community-channel-badge">截图求助</div>
-                <h3>QQ群</h3>
-                <p>适合把错误提示、系统环境和操作截图发出来，让更多用户一起帮你判断。</p>
-                <div class="community-actions">
-                  <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">打开 QQ 群二维码</a>
-                </div>
-              </div>
-              <div class="community-channel-media">
-                <div class="community-qr-frame">
-                  <img data-community-image="qq" src="assets/community/qq-qr-placeholder.svg" alt="QQ群二维码预览图" loading="lazy">
-                </div>
-                <p class="community-hint" data-community-hint="qq"></p>
-              </div>
-            </article>
-            <article class="community-channel">
-              <div class="community-channel-copy">
-                <div class="community-channel-badge">高频跟进</div>
-                <h3>微信群</h3>
-                <p>适合需要连续跟进同一个问题的用户，尤其是模型配置、网络和权限类问题。</p>
-                <div class="community-actions">
-                  <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">打开微信群二维码</a>
-                </div>
-              </div>
-              <div class="community-channel-media">
-                <div class="community-qr-frame">
-                  <img data-community-image="wechat" src="assets/community/wechat-qr-placeholder.svg" alt="微信群二维码预览图" loading="lazy">
-                </div>
-                <p class="community-hint" data-community-hint="wechat"></p>
-              </div>
+          </article>
             </article>
             <article class="community-channel">
               <div class="community-channel-copy">
@@ -483,7 +461,7 @@ openclaw gateway restart</div>
       <div class="qr-modal-icon" id="qrModalIcon">💼</div>
       <h3 class="qr-modal-title" id="qrModalTitle">添加企业微信</h3>
       <p class="qr-modal-desc" id="qrModalDesc">添加后可获得1对1答疑支持，优先解决安装和配置问题</p>
-      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage">
+      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage" data-community-image="wecom">
       <p class="qr-modal-hint" id="qrModalHint">打开微信/QQ扫码即可加入</p>
     </div>
   </div>
@@ -503,25 +481,25 @@ openclaw gateway restart</div>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/qq-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/wechat-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/planet-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -558,11 +536,27 @@ openclaw gateway restart</div>
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -589,7 +583,7 @@ openclaw gateway restart</div>
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

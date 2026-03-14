@@ -67,7 +67,7 @@
     }
 
     .manual-cover {
-      padding: var(--space-7);
+      padding: var(--space-8);
       border-radius: 28px;
       border: 1px solid rgba(232,90,79,0.2);
       background:
@@ -91,7 +91,7 @@
       padding: 0.45rem 0.8rem;
       border-radius: 999px;
       background: rgba(232,90,79,0.12);
-      color: var(--brand-primary);
+      color: var(--brand-500);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -199,11 +199,11 @@
     }
 
     .manual-directory-list a:hover {
-      color: var(--brand-primary);
+      color: var(--brand-500);
     }
 
     .manual-section {
-      padding: var(--space-7);
+      padding: var(--space-8);
       border-radius: 24px;
       border: 1px solid var(--theme-border);
       background: var(--theme-surface);
@@ -223,7 +223,7 @@
       padding: 0.45rem 0.85rem;
       border-radius: 999px;
       background: rgba(232,90,79,0.12);
-      color: var(--brand-primary);
+      color: var(--brand-500);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -250,13 +250,14 @@
     }
 
     .manual-check-item::before {
-      content: "•";
+      content: "✓";
       position: absolute;
       left: var(--space-4);
       top: 50%;
       transform: translateY(-50%);
-      color: var(--brand-primary);
-      font-size: 20px;
+      color: var(--brand-500);
+      font-size: 16px;
+      font-weight: 700;
       line-height: 1;
     }
 
@@ -276,6 +277,10 @@
       border-radius: 20px;
       border: 1px dashed rgba(232,90,79,0.35);
       background: rgba(232,90,79,0.05);
+    }
+
+    .manual-export-box .manual-directory-list {
+      margin-bottom: var(--space-5);
     }
 
     [data-theme="dark"] .manual-export-box {
@@ -311,7 +316,7 @@
     }
 
     .manual-back-cover {
-      padding: var(--space-7);
+      padding: var(--space-8);
       border-radius: 24px;
       border: 1px solid var(--theme-border);
       background:
@@ -369,9 +374,38 @@
     .manual-footer-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-3);
+      gap: var(--space-4);
       margin-top: var(--space-3);
       font-size: 13px;
+    }
+
+    .manual-footer-meta span {
+      position: relative;
+      padding-left: var(--space-4);
+    }
+
+    .manual-footer-meta span::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--theme-text-muted);
+    }
+
+    .manual-footer-meta span:first-child {
+      padding-left: 0;
+    }
+
+    .manual-footer-meta span:first-child::before {
+      display: none;
+    }
+
+    .manual-section .card-grid-2 .card {
+      transform: none;
+    }
+
+    .manual-section .card-grid-2 .card:hover {
+      transform: none;
+      box-shadow: var(--theme-shadow-md);
     }
 
     @media (max-width: 768px) {
@@ -385,7 +419,9 @@
         grid-template-columns: 1fr;
       }
 
-      .manual-section {
+      .manual-section,
+      .manual-cover,
+      .manual-back-cover {
         padding: var(--space-5);
       }
 
@@ -714,17 +750,17 @@
           <p class="text-body mb-4">如果你打算把这份 PDF 发给同事、朋友或社群成员，建议同时附上下面这些入口：官网、微信群、QQ 群和企业微信答疑入口。</p>
           <div class="manual-community-grid">
             <article class="manual-qr-card">
-              <img src="assets/community/wechat-qr-placeholder.svg" alt="ClawStart 微信群二维码占位图">
+              <img src="assets/community/wechat-qr-placeholder.svg" alt="ClawStart 微信群二维码占位图" data-community-image="wechat">
               <strong>微信群</strong>
               <p>适合实时交流安装和使用体验。</p>
             </article>
             <article class="manual-qr-card">
-              <img src="assets/community/qq-qr-placeholder.svg" alt="ClawStart QQ 群二维码占位图">
+              <img src="assets/community/qq-qr-placeholder.svg" alt="ClawStart QQ 群二维码占位图" data-community-image="qq">
               <strong>QQ 群</strong>
               <p>适合公开讨论与问题互助。</p>
             </article>
             <article class="manual-qr-card">
-              <img src="assets/community/wecom-qr-placeholder.svg" alt="ClawStart 企业微信二维码占位图">
+              <img src="assets/community/wecom-qr-placeholder.svg" alt="ClawStart 企业微信二维码占位图" data-community-image="wecom">
               <strong>企业微信</strong>
               <p>适合需要更快答疑的用户。</p>
             </article>
@@ -771,6 +807,7 @@
   </footer>
 
   <script src="analytics.js"></script>
+  <script src="community.js"></script>
   <script>
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
