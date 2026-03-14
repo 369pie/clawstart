@@ -4,23 +4,286 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenClaw 中文入门手册 - ClawStart | 第一次从下载到会用</title>
-  <meta name="description" content="ClawStart 提供的 OpenClaw 中文入门手册网页版：把下载、安装、模型配置、第一次任务和第一个 Skill 压成一条最短学习链路。">
+  <meta name="description" content="ClawStart 提供的 OpenClaw 中文入门手册网页版：适合直接在线阅读，也适合打印或导出 PDF，把下载、安装、模型配置和第一个 Skill 压成一条最短学习链路。">
   <meta name="keywords" content="OpenClaw 中文入门手册,OpenClaw 新手指南,OpenClaw 教程,ClawStart 手册,OpenClaw 中文 PDF">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://useclawstart.com/guide-openclaw-starter.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="OpenClaw 中文入门手册 - ClawStart">
-  <meta property="og:description" content="把下载、安装、模型配置、第一次任务和第一个 Skill 压成一条最短学习链路。">
+  <meta property="og:description" content="适合在线阅读，也适合打印或导出 PDF 的 OpenClaw 中文入门手册。">
   <meta property="og:url" content="https://useclawstart.com/guide-openclaw-starter.html">
   <meta property="og:site_name" content="ClawStart">
   <meta property="og:locale" content="zh_CN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OpenClaw 中文入门手册 - ClawStart">
-  <meta name="twitter:description" content="网页版先上线，后续可直接导出 PDF 的中文入门手册。">
+  <meta name="twitter:description" content="适合在线阅读，也适合打印或导出 PDF 的 OpenClaw 中文入门手册。">
   <link rel="stylesheet" href="styles.css?v=3">
+  <style>
+    .manual-page .page-hero .container {
+      max-width: var(--content-width);
+    }
+
+    .manual-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .manual-hero-note {
+      margin-top: var(--space-4);
+      color: var(--theme-text-secondary);
+      font-size: 14px;
+    }
+
+    .manual-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .manual-meta-card {
+      padding: var(--space-5);
+      border-radius: 18px;
+      border: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      box-shadow: var(--theme-shadow-sm);
+    }
+
+    .manual-meta-label {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--theme-text-secondary);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .manual-shell {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .manual-directory {
+      padding: var(--space-6);
+      border: 1px solid var(--theme-border);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(232,90,79,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.92));
+      box-shadow: var(--theme-shadow-md);
+    }
+
+    [data-theme="dark"] .manual-directory {
+      background:
+        radial-gradient(circle at top right, rgba(232,90,79,0.15), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .manual-directory-head {
+      margin-bottom: var(--space-4);
+    }
+
+    .manual-directory-list {
+      margin: 0;
+      padding-left: 1.15rem;
+      display: grid;
+      gap: var(--space-2);
+      color: var(--theme-text-secondary);
+    }
+
+    .manual-directory-list a {
+      color: var(--theme-text);
+      text-decoration: none;
+    }
+
+    .manual-directory-list a:hover {
+      color: var(--brand-primary);
+    }
+
+    .manual-section {
+      padding: var(--space-7);
+      border-radius: 24px;
+      border: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      box-shadow: var(--theme-shadow-sm);
+    }
+
+    .manual-step-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .manual-step-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(232,90,79,0.12);
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    [data-theme="dark"] .manual-step-badge {
+      background: rgba(232,90,79,0.2);
+      color: #ffb3ac;
+    }
+
+    .manual-checklist {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    .manual-check-item {
+      position: relative;
+      padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 20px);
+      border-radius: 16px;
+      background: rgba(15,23,42,0.04);
+      color: var(--theme-text-secondary);
+    }
+
+    .manual-check-item::before {
+      content: "•";
+      position: absolute;
+      left: var(--space-4);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--brand-primary);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    [data-theme="dark"] .manual-check-item {
+      background: rgba(255,255,255,0.05);
+      color: rgba(226,232,240,0.88);
+    }
+
+    .manual-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .manual-export-box {
+      padding: var(--space-6);
+      border-radius: 20px;
+      border: 1px dashed rgba(232,90,79,0.35);
+      background: rgba(232,90,79,0.05);
+    }
+
+    [data-theme="dark"] .manual-export-box {
+      background: rgba(232,90,79,0.08);
+      border-color: rgba(255,179,172,0.28);
+    }
+
+    .screen-only {
+      display: block;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    .manual-print-head {
+      margin-bottom: var(--space-6);
+    }
+
+    .manual-print-head p {
+      margin: 0 0 var(--space-2);
+      color: #475569;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .manual-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .manual-section {
+        padding: var(--space-5);
+      }
+
+      .manual-actions,
+      .manual-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+      }
+
+      body.manual-page {
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+
+      body.manual-page .site-header,
+      body.manual-page .site-footer,
+      body.manual-page .theme-toggle,
+      body.manual-page .nav-toggle,
+      body.manual-page .screen-only {
+        display: none !important;
+      }
+
+      body.manual-page .print-only {
+        display: block !important;
+      }
+
+      body.manual-page .page-hero,
+      body.manual-page .section,
+      body.manual-page .section-alt {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      body.manual-page .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+
+      body.manual-page .tip-box,
+      body.manual-page .manual-directory,
+      body.manual-page .manual-section,
+      body.manual-page .card {
+        box-shadow: none !important;
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      body.manual-page .manual-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+
+      body.manual-page .manual-export-box,
+      body.manual-page .manual-check-item {
+        background: #ffffff !important;
+      }
+
+      body.manual-page a {
+        color: #0f172a !important;
+        text-decoration: none;
+      }
+    }
+  </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
 </head>
-<body>
+<body class="manual-page">
   <header class="site-header" id="siteHeader">
     <nav class="nav container">
       <a href="index.html" class="nav-brand">🦞 ClawStart</a>
@@ -45,86 +308,194 @@
     <div class="container">
       <p class="page-hero-kicker">OpenClaw 中文入门手册</p>
       <h1>第一次从下载到会用，先把这 5 步走完</h1>
-      <p>这是一份网页版中文入门手册。你可以把它当成未来 PDF 的母版，先按这一页走完“安装、配置、第一次任务、第一批 Skill”四条主路径。</p>
+      <p>这是一份适合在线阅读，也适合打印或导出 PDF 的中文入门手册。你可以把它当成一份“先跑通、再保存、再分享”的新手母版。</p>
+      <div class="manual-hero-actions">
+        <button type="button" class="btn btn-primary" data-print-manual="starter" data-track="click_manual_print" data-surface="starter_hero">
+          打印 / 导出 PDF →
+        </button>
+        <a href="#manual-directory" class="btn btn-outline-dark" data-track="click_manual_directory" data-surface="starter_hero">查看手册目录 →</a>
+        <a href="resources.html" class="btn btn-outline-dark" data-track="click_resources" data-surface="starter_hero">回资源页 →</a>
+      </div>
+      <p class="manual-hero-note">建议在电脑浏览器中打开，点击“打印 / 导出 PDF”，目标选择“存储为 PDF”即可保存手册版。</p>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container" style="max-width:var(--content-width);">
+      <div class="print-only manual-print-head">
+        <p>ClawStart 中文入门手册</p>
+        <h1>OpenClaw 第一次从下载到会用</h1>
+        <p>来源：useclawstart.com/guide-openclaw-starter.html</p>
+      </div>
+
+      <div class="manual-meta-grid screen-only">
+        <article class="manual-meta-card">
+          <span class="manual-meta-label">适合谁</span>
+          <strong>第一次接触 OpenClaw 的中国大陆小白用户</strong>
+        </article>
+        <article class="manual-meta-card">
+          <span class="manual-meta-label">预计时长</span>
+          <strong>15 到 30 分钟完成第一轮跑通</strong>
+        </article>
+        <article class="manual-meta-card">
+          <span class="manual-meta-label">最佳使用方式</span>
+          <strong>先在线看一遍，再打印或导出 PDF 保存</strong>
+        </article>
+      </div>
+
       <div class="tip-box">
         <strong>这份手册适合谁</strong>
         适合第一次接触 OpenClaw、刚装好还不确定下一步做什么、或想把零散教程压成一条完整学习链路的人。
       </div>
 
-      <p class="section-title mt-8">第 1 步</p>
-      <h2 class="text-h2 mb-4">先判断你的安装路径</h2>
-      <p class="text-body mb-4">普通用户优先走 Windows 或 macOS 一键包，不要第一步就陷进旧版命令行教程。Linux 当前主推荐路径是 Beta 安装脚本。</p>
-      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-        <a href="guide-openclaw-install.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_install" data-surface="starter_step_1">看安装指南 →</a>
-        <a href="download.html" class="btn btn-outline-dark btn-sm" data-track="click_download" data-platform="all" data-surface="starter_step_1">直接去下载页 →</a>
-      </div>
+      <div class="manual-shell">
+        <aside class="manual-directory screen-only" id="manual-directory">
+          <div class="manual-directory-head">
+            <p class="section-title">手册目录</p>
+            <h2 class="text-h3">建议按这个顺序阅读或打印</h2>
+          </div>
+          <ol class="manual-directory-list">
+            <li><a href="#starter-step-install">判断安装路径</a></li>
+            <li><a href="#starter-step-model">把模型和 API 配稳定</a></li>
+            <li><a href="#starter-step-first-task">完成第一次真实任务</a></li>
+            <li><a href="#starter-step-skills">只装第一个 Skill</a></li>
+            <li><a href="#starter-step-role">按你的身份继续学</a></li>
+            <li><a href="#starter-pdf-export">打印与 PDF 导出</a></li>
+          </ol>
+        </aside>
 
-      <p class="section-title mt-12">第 2 步</p>
-      <h2 class="text-h2 mb-4">把模型和 API 先配稳定</h2>
-      <p class="text-body mb-4">第一次目标不是“模型最强”，而是“连接稳定”。中国大陆用户优先走国内在线模型，再考虑已有海外 API 或本地模型。</p>
-      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-        <a href="guide-openclaw-api-setup.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_api_setup" data-surface="starter_step_2">看 API 配置指南 →</a>
-        <a href="tutorial-model-choice.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="starter_step_2">看完整模型教程 →</a>
-      </div>
-
-      <p class="section-title mt-12">第 3 步</p>
-      <h2 class="text-h2 mb-4">完成第一次真实任务</h2>
-      <p class="text-body mb-4">不要停在“已经装好了”。你需要立刻完成一次写作、办公或开发小任务，这样才算真正开始用起来。</p>
-      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-        <a href="tutorial-first-task-templates.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="starter_step_3">照抄任务模板 →</a>
-        <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="beginner" data-surface="starter_step_3">看新手入门 →</a>
-      </div>
-
-      <p class="section-title mt-12">第 4 步</p>
-      <h2 class="text-h2 mb-4">只装第一个最像你日常任务的 Skill</h2>
-      <p class="text-body mb-4">第一次不要装很多。优先从“适合小白”“无需 API Key”或者最像你日常场景的 Skill 开始。</p>
-      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-        <a href="guide-openclaw-skills-cn.html" class="btn btn-primary btn-sm" data-track="click_skill_guide" data-surface="starter_step_4">看中文 Skills 指南 →</a>
-        <a href="skills-hub.html?tags=beginner,no_api_key" class="btn btn-outline-dark btn-sm" data-track="click_skill_hub" data-surface="starter_step_4">先看新手 Skill 入口 →</a>
-      </div>
-
-      <p class="section-title mt-12">第 5 步</p>
-      <h2 class="text-h2 mb-4">按你的身份扩展，而不是盲学全部功能</h2>
-      <p class="text-body mb-4">内容用户、办公用户、开发者和研究学习用户，最适合的下一步并不一样。先按自己的身份走对应路径，比“把所有教程看完”更有效。</p>
-      <div class="card-grid-2">
-        <article class="card">
-          <div class="card-icon">✍️</div>
-          <h3>内容创作者</h3>
-          <p>写作、改稿、资料总结和内容沉淀，优先走更偏创作产出的路径。</p>
-          <a href="tutorial-role-creators.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_creators" data-surface="starter_step_5">进入创作者路径 →</a>
+        <article class="manual-section" id="starter-step-install">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">第 1 步</span>
+            <h2 class="text-h2">先判断你的安装路径</h2>
+          </div>
+          <p class="text-body mb-4">普通用户优先走 Windows 或 macOS 一键包，不要第一步就陷进旧版命令行教程。Linux 当前主推荐路径是 Beta 安装脚本。</p>
+          <div class="manual-checklist">
+            <div class="manual-check-item">先确认自己是 Windows、macOS 还是 Linux</div>
+            <div class="manual-check-item">优先走一键包，不要先看历史命令行教程</div>
+            <div class="manual-check-item">成功标志：你已经拿到适合自己系统的安装路径</div>
+          </div>
+          <div class="manual-actions">
+            <a href="guide-openclaw-install.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_install" data-surface="starter_step_1">看安装指南 →</a>
+            <a href="download.html" class="btn btn-outline-dark btn-sm" data-track="click_download" data-platform="all" data-surface="starter_step_1">直接去下载页 →</a>
+          </div>
         </article>
-        <article class="card">
-          <div class="card-icon">💼</div>
-          <h3>办公用户</h3>
-          <p>会议纪要、待办清单、长文档总结和协作资料，优先走办公提效路径。</p>
-          <a href="tutorial-role-office.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_office" data-surface="starter_step_5">进入办公路径 →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon">💻</div>
-          <h3>开发者</h3>
-          <p>报错解释、仓库阅读、Issue / PR 整理和 GitHub Skill，优先走开发路径。</p>
-          <a href="tutorial-role-developers.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_developers" data-surface="starter_step_5">进入开发者路径 →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon">🔬</div>
-          <h3>研究学习用户</h3>
-          <p>长文资料总结、决策摘要和知识整理，优先走研究学习路径。</p>
-          <a href="tutorial-role-research.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_research" data-surface="starter_step_5">进入研究路径 →</a>
-        </article>
-      </div>
 
-      <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">这份手册后面会继续演进成 PDF</h3>
-        <p class="text-body mb-4">网页版先上线，方便你立刻使用和持续更新。后面我们会把它进一步整理成适合下载和分享的 PDF 版。</p>
-        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
-          <a href="resources.html" class="btn btn-primary" data-track="click_resources" data-surface="starter_bottom">回资源页 →</a>
-          <a href="tutorial.html" class="btn btn-outline-dark" data-track="click_tutorial" data-surface="starter_bottom">回教程中心 →</a>
-          <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="starter_bottom">打开 Skills Hub →</a>
+        <article class="manual-section" id="starter-step-model">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">第 2 步</span>
+            <h2 class="text-h2">把模型和 API 先配稳定</h2>
+          </div>
+          <p class="text-body mb-4">第一次目标不是“模型最强”，而是“连接稳定”。中国大陆用户优先走国内在线模型，再考虑已有海外 API 或本地模型。</p>
+          <div class="manual-checklist">
+            <div class="manual-check-item">先选稳定的在线模型，再谈更强配置</div>
+            <div class="manual-check-item">API Key 优先确认可用、额度正常、网络可通</div>
+            <div class="manual-check-item">成功标志：你能发出第一条请求并正常收到回复</div>
+          </div>
+          <div class="manual-actions">
+            <a href="guide-openclaw-api-setup.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="guide_api_setup" data-surface="starter_step_2">看 API 配置指南 →</a>
+            <a href="tutorial-model-choice.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="starter_step_2">看完整模型教程 →</a>
+          </div>
+        </article>
+
+        <article class="manual-section" id="starter-step-first-task">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">第 3 步</span>
+            <h2 class="text-h2">完成第一次真实任务</h2>
+          </div>
+          <p class="text-body mb-4">不要停在“已经装好了”。你需要立刻完成一次写作、办公或开发小任务，这样才算真正开始用起来。</p>
+          <div class="manual-checklist">
+            <div class="manual-check-item">优先选一个 5 分钟内能完成的小任务</div>
+            <div class="manual-check-item">先复制模板，不要自己从空白开始写</div>
+            <div class="manual-check-item">成功标志：你已经得到第一份可见成果</div>
+          </div>
+          <div class="manual-actions">
+            <a href="tutorial-first-task-templates.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="starter_step_3">照抄任务模板 →</a>
+            <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="beginner" data-surface="starter_step_3">看新手入门 →</a>
+          </div>
+        </article>
+
+        <article class="manual-section" id="starter-step-skills">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">第 4 步</span>
+            <h2 class="text-h2">只装第一个最像你日常任务的 Skill</h2>
+          </div>
+          <p class="text-body mb-4">第一次不要装很多。优先从“适合小白”“无需 API Key”或者最像你日常场景的 Skill 开始。</p>
+          <div class="manual-checklist">
+            <div class="manual-check-item">优先选“适合小白 + 无需 API Key”的组合</div>
+            <div class="manual-check-item">装一个就测试，不要连装 5 个再一起排查</div>
+            <div class="manual-check-item">成功标志：你已经能调用第一个 Skill 完成真实动作</div>
+          </div>
+          <div class="manual-actions">
+            <a href="guide-openclaw-skills-cn.html" class="btn btn-primary btn-sm" data-track="click_skill_guide" data-surface="starter_step_4">看中文 Skills 指南 →</a>
+            <a href="skills-hub.html?tags=beginner,no_api_key" class="btn btn-outline-dark btn-sm" data-track="click_skill_hub" data-surface="starter_step_4">先看新手 Skill 入口 →</a>
+          </div>
+        </article>
+
+        <article class="manual-section" id="starter-step-role">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">第 5 步</span>
+            <h2 class="text-h2">按你的身份扩展，而不是盲学全部功能</h2>
+          </div>
+          <p class="text-body mb-4">内容用户、办公用户、开发者和研究学习用户，最适合的下一步并不一样。先按自己的身份走对应路径，比“把所有教程看完”更有效。</p>
+          <div class="card-grid-2">
+            <article class="card">
+              <div class="card-icon">✍️</div>
+              <h3>内容创作者</h3>
+              <p>写作、改稿、资料总结和内容沉淀，优先走更偏创作产出的路径。</p>
+              <a href="tutorial-role-creators.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_creators" data-surface="starter_step_5">进入创作者路径 →</a>
+            </article>
+            <article class="card">
+              <div class="card-icon">💼</div>
+              <h3>办公用户</h3>
+              <p>会议纪要、待办清单、长文档总结和协作资料，优先走办公提效路径。</p>
+              <a href="tutorial-role-office.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_office" data-surface="starter_step_5">进入办公路径 →</a>
+            </article>
+            <article class="card">
+              <div class="card-icon">💻</div>
+              <h3>开发者</h3>
+              <p>报错解释、仓库阅读、Issue / PR 整理和 GitHub Skill，优先走开发路径。</p>
+              <a href="tutorial-role-developers.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_developers" data-surface="starter_step_5">进入开发者路径 →</a>
+            </article>
+            <article class="card">
+              <div class="card-icon">🔬</div>
+              <h3>研究学习用户</h3>
+              <p>长文资料总结、决策摘要和知识整理，优先走研究学习路径。</p>
+              <a href="tutorial-role-research.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="role_research" data-surface="starter_step_5">进入研究路径 →</a>
+            </article>
+          </div>
+        </article>
+
+        <article class="manual-section" id="starter-pdf-export">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">附录</span>
+            <h2 class="text-h2">打印与 PDF 导出</h2>
+          </div>
+          <p class="text-body mb-4">这份手册已经按打印阅读做了整理。你可以直接在浏览器里导出一份 PDF，发给团队成员或保存到自己的资料库。</p>
+          <div class="manual-export-box">
+            <ol class="manual-directory-list">
+              <li>在电脑浏览器打开本页。</li>
+              <li>点击下面的“打印 / 导出 PDF”。</li>
+              <li>目标选择“存储为 PDF”或“另存为 PDF”。</li>
+              <li>建议使用纵向、背景图形开启，这样保留品牌样式和目录结构。</li>
+            </ol>
+            <div class="manual-actions">
+              <button type="button" class="btn btn-primary" data-print-manual="starter" data-track="click_manual_print" data-surface="starter_pdf_export">
+                打印 / 导出 PDF →
+              </button>
+              <a href="resources.html" class="btn btn-outline-dark" data-track="click_resources" data-surface="starter_pdf_export">回资源页 →</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="card text-center mt-12 screen-only" style="padding:var(--space-8);">
+          <h3 class="text-h3" style="margin-bottom:var(--space-2);">先把这份手册保存下来，再继续看其他教程</h3>
+          <p class="text-body mb-4">如果你已经走完这 5 步，可以把它导出成 PDF 作为自己的第一份 OpenClaw 中文手册，再继续去 Skills Hub 或教程中心扩展。</p>
+          <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" data-print-manual="starter" data-track="click_manual_print" data-surface="starter_bottom">打印 / 导出 PDF →</button>
+            <a href="tutorial.html" class="btn btn-outline-dark" data-track="click_tutorial" data-surface="starter_bottom">回教程中心 →</a>
+            <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="starter_bottom">打开 Skills Hub →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -170,6 +541,11 @@
         });
         ticking = true;
       }
+    });
+    document.querySelectorAll('[data-print-manual="starter"]').forEach((button) => {
+      button.addEventListener('click', () => {
+        window.print();
+      });
     });
   </script>
 </body>
