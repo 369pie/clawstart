@@ -1319,6 +1319,61 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--theme-text-secondary);
 }
 
+.skill-tag-filter {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--theme-border);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(59,130,246,0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.94));
+  box-shadow: var(--theme-shadow-sm);
+}
+
+.skill-tag-filter-heading {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.skill-tag-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.skill-tag-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--theme-border);
+  background: rgba(255,255,255,0.92);
+  color: var(--theme-text-secondary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.skill-tag-filter-chip:hover {
+  transform: translateY(-1px);
+  color: var(--theme-text-primary);
+  box-shadow: var(--theme-shadow-sm);
+}
+
+.skill-tag-filter-chip.is-active {
+  border-color: rgba(232,90,79,0.3);
+  background: rgba(232,90,79,0.12);
+  color: var(--brand-primary);
+  box-shadow: 0 10px 24px rgba(232,90,79,0.12);
+}
+
+.skill-tag-filter-note {
+  color: var(--theme-text-secondary);
+}
+
 .skill-feature-grid,
 .skill-catalog-grid {
   display: grid;
@@ -1396,6 +1451,23 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+.skill-tag-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--theme-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .skill-command {
@@ -1951,6 +2023,7 @@ code {
   .tutorial-recommend-grid { grid-template-columns: 1fr; }
   .skill-hub-toolbar { grid-template-columns: 1fr; }
   .skill-hub-stats { grid-template-columns: 1fr; }
+  .skill-tag-filter-chips { gap: var(--space-2); }
   .skill-feature-grid,
   .skill-catalog-grid { grid-template-columns: 1fr; }
   .tutorial-link-item { grid-template-columns: 1fr; }

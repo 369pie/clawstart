@@ -31,48 +31,73 @@ const CATEGORY_CONFIG = {
   }
 };
 
+const TAG_CONFIG = {
+  no_api_key: {
+    label: "无需 API Key",
+    note: "适合第一次先验证 Skill 是否工作，不需要先处理密钥和平台配置。"
+  },
+  chinese_friendly: {
+    label: "中文友好",
+    note: "更贴近中国大陆用户的搜索、服务或内容场景，默认更容易问出中文结果。"
+  },
+  beginner: {
+    label: "适合小白",
+    note: "名字直白、任务明确、第一次最容易看出效果，适合安装第一批 Skill。"
+  },
+  login_required: {
+    label: "需要登录",
+    note: "通常要先连接 GitHub、Notion、邮箱或协作平台账号，适合有明确目标再装。"
+  }
+};
+
 const FEATURED_SKILLS = [
   {
     owner: "steipete",
     slug: "weather",
     displayName: "Weather",
     category: "search",
-    zhSummary: "查询当前天气和未来预报，不需要 API Key，最适合第一次验证搜索类 Skill 的效果。"
+    zhSummary: "查询当前天气和未来预报，不需要 API Key，最适合第一次验证搜索类 Skill 的效果。",
+    tags: ["no_api_key", "beginner"]
   },
   {
     owner: "ide-rea",
     slug: "baidu-search",
     displayName: "baidu web search",
     category: "search",
-    zhSummary: "用百度搜索做实时资料查询，比较适合中国大陆用户作为第一批信息检索类 Skill。"
+    zhSummary: "用百度搜索做实时资料查询，比较适合中国大陆用户作为第一批信息检索类 Skill。",
+    tags: ["chinese_friendly", "beginner"]
   },
   {
     owner: "steipete",
     slug: "summarize",
     displayName: "Summarize",
     category: "office",
-    zhSummary: "总结网页、PDF、图片、音频和 YouTube 内容，适合内容用户和办公用户快速出成果。"
+    zhSummary: "总结网页、PDF、图片、音频和 YouTube 内容，适合内容用户和办公用户快速出成果。",
+    tags: ["beginner"]
   },
   {
     owner: "steipete",
     slug: "github",
     displayName: "Github",
     category: "dev",
-    zhSummary: "用 gh CLI 读取仓库、Issue、PR 和 Action，适合开发者第一次感受 Skill 带来的直接差异。"
+    zhSummary: "用 gh CLI 读取仓库、Issue、PR 和 Action，适合开发者第一次感受 Skill 带来的直接差异。",
+    tags: ["login_required"]
   },
   {
     owner: "steipete",
     slug: "notion",
     displayName: "Notion",
     category: "office",
-    zhSummary: "连接 Notion 页面、数据库和区块，适合做知识库整理、协作文档和内容沉淀。"
+    zhSummary: "连接 Notion 页面、数据库和区块，适合做知识库整理、协作文档和内容沉淀。",
+    tags: ["login_required"]
   },
   {
     owner: "steipete",
     slug: "openai-whisper",
     displayName: "Openai Whisper",
     category: "media",
-    zhSummary: "用本地 Whisper 做语音转文字，适合会议录音、播客和视频音频整理。"
+    zhSummary: "用本地 Whisper 做语音转文字，适合会议录音、播客和视频音频整理。",
+    tags: ["beginner"]
   }
 ];
 
@@ -84,7 +109,8 @@ const state = {
   totalCount: null,
   sort: "downloads",
   category: "all",
-  query: ""
+  query: "",
+  tag: "all"
 };
 
 const elements = {};
@@ -103,6 +129,74 @@ function formatNumber(value) {
 
 function containsAny(text, keywords) {
   return keywords.some((keyword) => text.includes(keyword));
+}
+
+function inferTagsFromText(text, slug, categoryId) {
+  const tags = new Set();
+  const normalizedSlug = String(slug || "").toLowerCase();
+
+  if (
+    text.includes("no api key") ||
+    text.includes("without api key") ||
+    text.includes("local") ||
+    normalizedSlug === "weather"
+  ) {
+    tags.add("no_api_key");
+  }
+
+  if (
+    text.includes("baidu") ||
+    text.includes("zh") ||
+    text.includes("chinese") ||
+    text.includes("wechat") ||
+    text.includes("qq") ||
+    text.includes("alibaba") ||
+    text.includes("deepseek") ||
+    normalizedSlug.includes("baidu")
+  ) {
+    tags.add("chinese_friendly");
+  }
+
+  if (
+    categoryId === "search" ||
+    normalizedSlug === "weather" ||
+    normalizedSlug === "summarize" ||
+    normalizedSlug === "baidu-search" ||
+    normalizedSlug === "github" ||
+    normalizedSlug === "notion" ||
+    text.includes("easy") ||
+    text.includes("simple") ||
+    text.includes("starter")
+  ) {
+    tags.add("beginner");
+  }
+
+  if (
+    text.includes("oauth") ||
+    text.includes("login") ||
+    text.includes("account") ||
+    text.includes("token") ||
+    text.includes("github") ||
+    text.includes("notion") ||
+    text.includes("gmail") ||
+    text.includes("slack") ||
+    text.includes("trello") ||
+    text.includes("workspace") ||
+    text.includes("calendar") ||
+    text.includes("drive") ||
+    text.includes("obsidian") ||
+    normalizedSlug === "github" ||
+    normalizedSlug === "notion" ||
+    normalizedSlug === "gmail" ||
+    normalizedSlug === "slack" ||
+    normalizedSlug === "trello" ||
+    normalizedSlug === "gog" ||
+    normalizedSlug === "obsidian"
+  ) {
+    tags.add("login_required");
+  }
+
+  return Array.from(tags);
 }
 
 function inferCategory(item) {
@@ -163,6 +257,7 @@ async function postQuery(path, args) {
 
 function mapSkill(item) {
   const categoryId = inferCategory(item);
+  const text = (item.skill.displayName + " " + (item.skill.summary || "")).toLowerCase();
   return {
     id: item.skill._id,
     slug: item.skill.slug,
@@ -170,6 +265,7 @@ function mapSkill(item) {
     displayName: item.skill.displayName,
     summaryZh: buildChineseSummary(item, categoryId),
     categoryId,
+    tags: inferTagsFromText(text, item.skill.slug, categoryId),
     downloads: item.skill.stats.downloads || 0,
     stars: item.skill.stats.stars || 0,
     url: skillUrl(item.ownerHandle || item.owner?.handle || "unknown", item.skill.slug),
@@ -177,10 +273,21 @@ function mapSkill(item) {
   };
 }
 
+function renderTagBadges(tags) {
+  return tags.map((tagId) => {
+    const tag = TAG_CONFIG[tagId];
+    if (!tag) return "";
+    return `<span class="skill-tag-badge">${tag.label}</span>`;
+  }).join("");
+}
+
 function getFilteredItems() {
   let list = state.items.slice();
   if (state.category !== "all") {
     list = list.filter((item) => item.categoryId === state.category);
+  }
+  if (state.tag !== "all") {
+    list = list.filter((item) => item.tags.includes(state.tag));
   }
   if (state.query) {
     const q = state.query.toLowerCase();
@@ -190,7 +297,8 @@ function getFilteredItems() {
         item.displayName.toLowerCase().includes(q) ||
         item.slug.toLowerCase().includes(q) ||
         item.summaryZh.includes(q) ||
-        categoryLabel.includes(q)
+        categoryLabel.includes(q) ||
+        item.tags.some((tagId) => (TAG_CONFIG[tagId]?.label || "").toLowerCase().includes(q))
       );
     });
   }
@@ -226,6 +334,7 @@ function renderFeatured() {
           <span>来自 ClawHub</span>
           <span>@${skill.owner}</span>
         </div>
+        <div class="skill-tag-badges">${renderTagBadges(skill.tags || [])}</div>
         <div class="skill-command"><code>${installCommand(skill.slug)}</code></div>
         <div class="skill-card-actions">
           <a href="${skillUrl(skill.owner, skill.slug)}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看 ClawHub 页面 →</a>
@@ -242,8 +351,20 @@ function renderStats() {
   elements.visibleCount.textContent = formatNumber(getFilteredItems().length);
 }
 
+function renderActiveTagState() {
+  if (!elements.tagFilters || !elements.tagNote) return;
+  const chips = elements.tagFilters.querySelectorAll("[data-tag]");
+  chips.forEach((chip) => {
+    chip.classList.toggle("is-active", chip.dataset.tag === state.tag);
+  });
+  elements.tagNote.textContent = state.tag === "all"
+    ? "先从“适合小白”或“无需 API Key”开始，会更容易第一次就跑通。"
+    : (TAG_CONFIG[state.tag]?.note || "已按所选标签筛选技能。");
+}
+
 function renderCatalog() {
   const filtered = getFilteredItems();
+  renderActiveTagState();
   renderStats();
 
   if (!filtered.length) {
@@ -281,6 +402,7 @@ function renderCatalog() {
               <span>星标 ${formatNumber(item.stars)}</span>
               <span>@${item.owner}</span>
             </div>
+            <div class="skill-tag-badges">${renderTagBadges(item.tags)}</div>
             <div class="skill-command"><code>${item.command}</code></div>
             <div class="skill-card-actions">
               <a href="${item.url}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看 ClawHub 页面 →</a>
@@ -370,6 +492,15 @@ function bindEvents() {
     renderCatalog();
   });
 
+  if (elements.tagFilters) {
+    elements.tagFilters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-tag]");
+      if (!button) return;
+      state.tag = button.dataset.tag;
+      renderCatalog();
+    });
+  }
+
   elements.sort.addEventListener("change", async (event) => {
     state.sort = event.target.value;
     await fetchSkills(true);
@@ -390,9 +521,12 @@ async function init() {
   elements.category = document.getElementById("skillsHubCategory");
   elements.sort = document.getElementById("skillsHubSort");
   elements.loadMore = document.getElementById("skillsHubLoadMore");
+  elements.tagFilters = document.getElementById("skillsHubTagFilters");
+  elements.tagNote = document.getElementById("skillsHubTagNote");
 
   renderFeatured();
   renderStats();
+  renderActiveTagState();
   bindEvents();
   await fetchCount();
   await fetchSkills(true);
