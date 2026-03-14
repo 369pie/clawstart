@@ -110,7 +110,7 @@ const state = {
   sort: "downloads",
   category: "all",
   query: "",
-  tag: "all"
+  tags: []
 };
 
 const elements = {};
@@ -281,13 +281,18 @@ function renderTagBadges(tags) {
   }).join("");
 }
 
+function getActiveTags() {
+  return Array.isArray(state.tags) ? state.tags : [];
+}
+
 function getFilteredItems() {
   let list = state.items.slice();
   if (state.category !== "all") {
     list = list.filter((item) => item.categoryId === state.category);
   }
-  if (state.tag !== "all") {
-    list = list.filter((item) => item.tags.includes(state.tag));
+  const activeTags = getActiveTags();
+  if (activeTags.length) {
+    list = list.filter((item) => activeTags.every((tagId) => item.tags.includes(tagId)));
   }
   if (state.query) {
     const q = state.query.toLowerCase();
@@ -354,12 +359,31 @@ function renderStats() {
 function renderActiveTagState() {
   if (!elements.tagFilters || !elements.tagNote) return;
   const chips = elements.tagFilters.querySelectorAll("[data-tag]");
+  const activeTags = getActiveTags();
   chips.forEach((chip) => {
-    chip.classList.toggle("is-active", chip.dataset.tag === state.tag);
+    if (chip.dataset.tag === "all") {
+      chip.classList.toggle("is-active", activeTags.length === 0);
+      return;
+    }
+    chip.classList.toggle("is-active", activeTags.includes(chip.dataset.tag));
   });
-  elements.tagNote.textContent = state.tag === "all"
-    ? "先从“适合小白”或“无需 API Key”开始，会更容易第一次就跑通。"
-    : (TAG_CONFIG[state.tag]?.note || "已按所选标签筛选技能。");
+  if (!activeTags.length) {
+    elements.tagNote.textContent = "先从“适合小白”或“无需 API Key”开始，会更容易第一次就跑通。";
+    return;
+  }
+  const labels = activeTags.map((tagId) => TAG_CONFIG[tagId]?.label).filter(Boolean);
+  const notes = activeTags.map((tagId) => TAG_CONFIG[tagId]?.note).filter(Boolean);
+  elements.tagNote.textContent = "当前筛选：" + labels.join(" + ") + "。 " + notes.join(" ");
+}
+
+function parseInitialTags() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get("tags");
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((value) => value.trim())
+    .filter((value) => Boolean(TAG_CONFIG[value]));
 }
 
 function renderCatalog() {
@@ -496,7 +520,19 @@ function bindEvents() {
     elements.tagFilters.addEventListener("click", (event) => {
       const button = event.target.closest("[data-tag]");
       if (!button) return;
-      state.tag = button.dataset.tag;
+      const tagId = button.dataset.tag;
+      if (tagId === "all") {
+        state.tags = [];
+        renderCatalog();
+        return;
+      }
+      const current = new Set(getActiveTags());
+      if (current.has(tagId)) {
+        current.delete(tagId);
+      } else {
+        current.add(tagId);
+      }
+      state.tags = Array.from(current);
       renderCatalog();
     });
   }
@@ -523,6 +559,7 @@ async function init() {
   elements.loadMore = document.getElementById("skillsHubLoadMore");
   elements.tagFilters = document.getElementById("skillsHubTagFilters");
   elements.tagNote = document.getElementById("skillsHubTagNote");
+  state.tags = parseInitialTags();
 
   renderFeatured();
   renderStats();
