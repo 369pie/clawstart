@@ -106,6 +106,17 @@
       color: var(--theme-text-secondary);
     }
 
+    .manual-cover-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .manual-cover-copy {
+      min-width: 0;
+    }
+
     .manual-cover-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -132,6 +143,25 @@
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .manual-cover-visual {
+      padding: var(--space-4);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(148,163,184,0.16);
+    }
+
+    [data-theme="dark"] .manual-cover-visual {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .manual-cover-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
     }
 
     .manual-directory {
@@ -293,6 +323,7 @@
     }
 
     @media (max-width: 768px) {
+      .manual-cover-layout,
       .manual-meta-grid {
         grid-template-columns: 1fr;
       }
@@ -447,21 +478,28 @@
 
       <div class="manual-shell">
         <section class="manual-cover">
-          <span class="manual-cover-kicker">Starter Manual Cover</span>
-          <h2 class="text-h2">ClawStart OpenClaw 中文入门手册</h2>
-          <p>这是一份面向第一次接触 OpenClaw 的用户准备的入门手册母版。你可以在线阅读，也可以直接导出成 PDF，发给团队、社群或未来的自己。</p>
-          <div class="manual-cover-grid">
-            <div class="manual-cover-item">
-              <span>文档版本</span>
-              <strong>v0.1 Beta</strong>
+          <div class="manual-cover-layout">
+            <div class="manual-cover-copy">
+              <span class="manual-cover-kicker">Starter Manual Cover</span>
+              <h2 class="text-h2">ClawStart OpenClaw 中文入门手册</h2>
+              <p>这是一份面向第一次接触 OpenClaw 的用户准备的入门手册母版。你可以在线阅读，也可以直接导出成 PDF，发给团队、社群或未来的自己。</p>
+              <div class="manual-cover-grid">
+                <div class="manual-cover-item">
+                  <span>文档版本</span>
+                  <strong>v0.1 Beta</strong>
+                </div>
+                <div class="manual-cover-item">
+                  <span>最近更新</span>
+                  <strong>2026-03-14</strong>
+                </div>
+                <div class="manual-cover-item">
+                  <span>官方入口</span>
+                  <strong>useclawstart.com</strong>
+                </div>
+              </div>
             </div>
-            <div class="manual-cover-item">
-              <span>最近更新</span>
-              <strong>2026-03-14</strong>
-            </div>
-            <div class="manual-cover-item">
-              <span>官方入口</span>
-              <strong>useclawstart.com</strong>
+            <div class="manual-cover-visual">
+              <img src="assets/manuals/starter-manual-cover.svg" alt="ClawStart 中文入门手册封面插图，展示从安装、模型配置到 Skills 的起步流程">
             </div>
           </div>
         </section>
