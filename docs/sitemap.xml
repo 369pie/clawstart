@@ -106,6 +106,16 @@
     <priority>0.72</priority>
   </url>
   <url>
+    <loc>https://useclawstart.com/guide-openclaw-quick-reference.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.71</priority>
+  </url>
+  <url>
+    <loc>https://useclawstart.com/guide-openclaw-share-sheet.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.69</priority>
+  </url>
+  <url>
     <loc>https://useclawstart.com/tutorial-role-creators.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.66</priority>

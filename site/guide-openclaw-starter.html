@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OpenClaw 中文入门手册 - ClawStart">
   <meta name="twitter:description" content="适合在线阅读，也适合打印或导出 PDF 的 OpenClaw 中文入门手册。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <style>
     .manual-page .page-hero .container {
       max-width: var(--content-width);
@@ -310,6 +310,58 @@
       color: var(--theme-text-secondary);
     }
 
+    .manual-back-cover {
+      padding: var(--space-7);
+      border-radius: 24px;
+      border: 1px solid var(--theme-border);
+      background:
+        radial-gradient(circle at top right, rgba(232,90,79,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.94));
+      box-shadow: var(--theme-shadow-sm);
+    }
+
+    [data-theme="dark"] .manual-back-cover {
+      background:
+        radial-gradient(circle at top right, rgba(232,90,79,0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .manual-community-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .manual-qr-card {
+      padding: var(--space-4);
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.16);
+      background: rgba(255,255,255,0.72);
+      text-align: center;
+    }
+
+    [data-theme="dark"] .manual-qr-card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .manual-qr-card img {
+      width: 100%;
+      max-width: 130px;
+      margin: 0 auto var(--space-3);
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.16);
+    }
+
+    .manual-qr-card p {
+      margin: 0;
+      color: var(--theme-text-secondary);
+      font-size: 14px;
+    }
+
     .manual-footer-note strong {
       color: var(--theme-text);
     }
@@ -324,6 +376,7 @@
 
     @media (max-width: 768px) {
       .manual-cover-layout,
+      .manual-community-grid,
       .manual-meta-grid {
         grid-template-columns: 1fr;
       }
@@ -652,6 +705,42 @@
             <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="starter_bottom">打开 Skills Hub →</a>
           </div>
         </div>
+
+        <section class="manual-back-cover">
+          <div class="manual-step-head">
+            <span class="manual-step-badge">封底</span>
+            <h2 class="text-h2">保存这份手册后，下一步去哪里</h2>
+          </div>
+          <p class="text-body mb-4">如果你打算把这份 PDF 发给同事、朋友或社群成员，建议同时附上下面这些入口：官网、微信群、QQ 群和企业微信答疑入口。</p>
+          <div class="manual-community-grid">
+            <article class="manual-qr-card">
+              <img src="assets/community/wechat-qr-placeholder.svg" alt="ClawStart 微信群二维码占位图">
+              <strong>微信群</strong>
+              <p>适合实时交流安装和使用体验。</p>
+            </article>
+            <article class="manual-qr-card">
+              <img src="assets/community/qq-qr-placeholder.svg" alt="ClawStart QQ 群二维码占位图">
+              <strong>QQ 群</strong>
+              <p>适合公开讨论与问题互助。</p>
+            </article>
+            <article class="manual-qr-card">
+              <img src="assets/community/wecom-qr-placeholder.svg" alt="ClawStart 企业微信二维码占位图">
+              <strong>企业微信</strong>
+              <p>适合需要更快答疑的用户。</p>
+            </article>
+            <article class="manual-qr-card">
+              <img src="assets/manuals/starter-manual-cover.svg" alt="ClawStart 官网入口占位图">
+              <strong>官网入口</strong>
+              <p>useclawstart.com 持续更新最新版手册与资源。</p>
+            </article>
+          </div>
+          <div class="manual-actions" style="margin-top:var(--space-6);">
+            <a href="guide-openclaw-quick-reference.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="quick_reference" data-surface="starter_back_cover">看速查手册 →</a>
+            <a href="guide-openclaw-share-sheet.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="share_sheet" data-surface="starter_back_cover">看团队转发版 →</a>
+            <a href="about.html" class="btn btn-primary" data-track="click_about" data-surface="starter_back_cover">查看社区与品牌关系 →</a>
+            <a href="https://useclawstart.com" class="btn btn-outline-dark" data-track="click_site_visit" data-surface="starter_back_cover">打开官网 →</a>
+          </div>
+        </section>
 
         <div class="manual-footer-note">
           <strong>文档说明</strong>

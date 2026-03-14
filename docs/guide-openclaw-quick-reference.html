@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 常见问题速查手册 - ClawStart | 小白排障速查</title>
+  <meta name="description" content="ClawStart 提供的 OpenClaw 常见问题速查手册：按现象快速定位安装失败、API Key 不通、Skill 安装异常等高频问题。">
+  <meta name="keywords" content="OpenClaw 常见问题,OpenClaw 排障,OpenClaw 报错,ClawStart 速查手册">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/guide-openclaw-quick-reference.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="OpenClaw 常见问题速查手册 - ClawStart">
+  <meta property="og:description" content="按现象快速定位安装失败、API Key 不通、Skill 安装异常等高频问题。">
+  <meta property="og:url" content="https://useclawstart.com/guide-openclaw-quick-reference.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenClaw 常见问题速查手册 - ClawStart">
+  <meta name="twitter:description" content="适合转发给刚装好就卡住的小白用户的排障速查页。">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <style>
+    .quickref-page .page-hero .container,
+    .quickref-page .section .container {
+      max-width: var(--content-width);
+    }
+
+    .quickref-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .quickref-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .quickref-card {
+      padding: var(--space-6);
+      border-radius: 24px;
+      border: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      box-shadow: var(--theme-shadow-sm);
+    }
+
+    .quickref-card h3 {
+      margin-bottom: var(--space-3);
+    }
+
+    .quickref-card p,
+    .quickref-card li {
+      color: var(--theme-text-secondary);
+      line-height: 1.75;
+    }
+
+    .quickref-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .quickref-mini {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .quickref-mini-card {
+      padding: var(--space-5);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(148,163,184,0.18);
+      text-align: center;
+    }
+
+    [data-theme="dark"] .quickref-mini-card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .quickref-footer {
+      margin-top: var(--space-8);
+      padding: var(--space-6);
+      border-radius: 20px;
+      border: 1px dashed rgba(232,90,79,0.28);
+      background: rgba(232,90,79,0.05);
+      color: var(--theme-text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .quickref-grid,
+      .quickref-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .quickref-toolbar {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+</head>
+<body class="quickref-page">
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html" class="active">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero-kicker">OpenClaw 常见问题速查手册</p>
+      <h1>出问题了先看这 1 页</h1>
+      <p>适合刚装好就卡住的小白用户。先按现象判断，再回到对应教程或排障页，不要同时乱试多个方向。</p>
+      <div class="quickref-toolbar">
+        <a href="troubleshooting.html" class="btn btn-primary" data-track="click_troubleshooting" data-surface="quickref_hero">进入完整排障页 →</a>
+        <a href="guide-openclaw-starter.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="starter_guide" data-surface="quickref_hero">回入门手册 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="quickref-mini">
+        <div class="quickref-mini-card">
+          <strong>先判断</strong>
+          <p>是打不开、配不好，还是 Skill 装不上。</p>
+        </div>
+        <div class="quickref-mini-card">
+          <strong>先走最短动作</strong>
+          <p>小白优先回一键包路径，不要先折腾命令行。</p>
+        </div>
+        <div class="quickref-mini-card">
+          <strong>先验证结果</strong>
+          <p>每修一步就重新打开一次，不要堆一串改动。</p>
+        </div>
+      </div>
+
+      <div class="quickref-grid">
+        <article class="quickref-card">
+          <h3>打不开 / 启动失败</h3>
+          <ul>
+            <li>macOS 看系统设置里的“仍要打开”，或执行 `xattr -cr "/你的解压目录"`。</li>
+            <li>Windows 被 SmartScreen 拦截时，点“更多信息”再继续运行。</li>
+            <li>如果反复被拦截，优先换全新目录重新解压。</li>
+          </ul>
+        </article>
+
+        <article class="quickref-card">
+          <h3>模型或 API 连不上</h3>
+          <ul>
+            <li>先检查 API Key 是否复制正确、额度是否正常。</li>
+            <li>中国大陆用户优先用稳定在线模型，不要一开始就上本地模型。</li>
+            <li>先用最简单请求验证连通，再回到复杂配置。</li>
+          </ul>
+        </article>
+
+        <article class="quickref-card">
+          <h3>Skill 装不上</h3>
+          <ul>
+            <li>第一次先装一个 Skill，不要一次装很多。</li>
+            <li>优先选“适合小白 + 无需 API Key”的 Skills。</li>
+            <li>装好后立刻测试，不通过就回到 Skills 指南排查。</li>
+          </ul>
+        </article>
+
+        <article class="quickref-card">
+          <h3>命令行报错</h3>
+          <ul>
+            <li>看到 `git@github.com`、`exit 128`，先把 Git 拉取方式切到 HTTPS。</li>
+            <li>看到 `ENOENT`、`cannot find module`，优先重新下载一键包或重装底层 CLI。</li>
+            <li>看到 `EPERM`，先关掉旧进程、杀软和占用目录。</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="quickref-footer">
+        <strong>建议转发方式</strong>
+        如果你在帮朋友排障，先发这页；如果他还没装好，再发 [入门手册](/Users/caonanya/Documents/GitHub/openlola/site/guide-openclaw-starter.html)；如果他已经装好但不会扩展，再发 [Skills 指南](/Users/caonanya/Documents/GitHub/openlola/site/guide-openclaw-skills-cn.html)。
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="guide-openclaw-starter.html">入门手册</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="skills-hub.html">Skills Hub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
