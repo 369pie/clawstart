@@ -14,10 +14,13 @@
   <meta property="og:url" content="https://useclawstart.com/download.html">
   <meta property="og:site_name" content="ClawStart">
   <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://useclawstart.com/assets/social/og-download.svg">
+  <meta property="og:image:alt" content="ClawStart 下载页分享图，展示一键包与平台下载入口">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="下载 ClawStart 一键包">
   <meta name="twitter:description" content="先选平台，再按快速开始跑通第一次安装。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <meta name="twitter:image" content="https://useclawstart.com/assets/social/og-download.svg">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -194,7 +197,7 @@
         <div class="video-tutorial-content">
           <h3>10分钟看完安装到使用全流程</h3>
           <p>不爱看文字？跟着视频一步步操作，从下载到完成第一次任务全程演示</p>
-          <a href="https://www.bilibili.com/video/xxxxxxx" target="_blank" rel="noopener" class="btn btn-primary btn-sm">去B站看视频教程 →</a>
+          <a href="#" class="btn btn-primary btn-sm disabled" style="opacity: 0.6; pointer-events: none;">视频教程制作中，敬请期待 →</a>
         </div>
       </div>
 
@@ -442,25 +445,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/wecom-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/qq-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/wechat-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="assets/community/planet-qr-placeholder.svg" target="_blank" rel="noopener">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -528,7 +531,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }
