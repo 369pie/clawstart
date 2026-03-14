@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模型选择与 API 配置 - ClawStart | 国内用户先这样选</title>
+  <meta name="description" content="ClawStart 模型选择与 API 配置教程：帮助中国大陆小白判断先用国内模型、海外模型还是本地模型，并完成第一次 API Key 配置。">
+  <meta name="keywords" content="ClawStart 模型配置,API Key 配置,国内模型,本地模型,Ollama,豆包,通义千问">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/tutorial-model-choice.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="模型选择与 API 配置 - ClawStart">
+  <meta property="og:description" content="国内用户先这样选模型，并完成第一次 API Key 配置。">
+  <meta property="og:url" content="https://useclawstart.com/tutorial-model-choice.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="模型选择与 API 配置 - ClawStart">
+  <meta name="twitter:description" content="不知道先选哪个模型服务商，就先按这页的顺序走。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "ClawStart 模型选择与 API 配置",
+    "url": "https://useclawstart.com/tutorial-model-choice.html",
+    "description": "帮助 ClawStart 用户完成第一次模型选择与 API Key 配置。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>模型选择与 API 配置</h1>
+      <p>如果你卡在“到底先选哪个模型服务商”，这页就是给你的。先选最容易跑通的，不要一开始追求最强。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+      <div class="tip-box">
+        <strong>推荐顺序</strong>
+        中国大陆普通用户第一次优先走：国内在线模型 → 已有海外 API 的模型 → 本地模型。先求稳定可用，再考虑成本和高级玩法。
+      </div>
+
+      <p class="section-title mt-8">第一步</p>
+      <h2 class="text-h2 mb-6">先判断你属于哪一种情况</h2>
+      <div class="tutorial-link-list">
+        <article class="tutorial-link-item">
+          <div>
+            <h3>我只想尽快用起来</h3>
+            <p>优先选国内在线模型，最省心，最适合第一次配置和验证连通性。</p>
+          </div>
+          <span class="tutorial-pill">最推荐</span>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>我已经有海外 API Key</h3>
+            <p>可以继续用你熟悉的服务商，但要先确认当前网络和账单都正常。</p>
+          </div>
+          <span class="tutorial-pill">已有资源</span>
+        </article>
+        <article class="tutorial-link-item">
+          <div>
+            <h3>我更想省钱或离线用</h3>
+            <p>后续可以再切到本地模型，比如 Ollama，但不建议把它作为第一次必走路径。</p>
+          </div>
+          <span class="tutorial-pill">后续再上</span>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">第二步</p>
+      <h2 class="text-h2 mb-6">第一次优先选这 3 条路径之一</h2>
+      <div class="card-grid-2">
+        <article class="card">
+          <div class="card-icon">🇨🇳</div>
+          <h3>国内在线模型</h3>
+          <p>适合大多数中国大陆用户。拿到 API Key 相对容易，网络和连通性也更稳定。</p>
+          <ul class="tutorial-checklist" style="margin-top:var(--space-4);">
+            <li>豆包 / 通义千问 / DeepSeek / 硅基流动</li>
+            <li>适合第一次跑通</li>
+            <li>优先用于首启验证</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🌍</div>
+          <h3>海外在线模型</h3>
+          <p>适合已经有 OpenAI / Anthropic / 兼容接口的用户，但要确认网络、余额和可访问性。</p>
+          <ul class="tutorial-checklist" style="margin-top:var(--space-4);">
+            <li>适合已有账号和 Key 的用户</li>
+            <li>需要网络可访问</li>
+            <li>遇错先查 API 和代理</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">🏠</div>
+          <h3>本地模型</h3>
+          <p>适合后续想控成本、要本地化或愿意折腾环境的用户，不推荐作为第一次主路径。</p>
+          <ul class="tutorial-checklist" style="margin-top:var(--space-4);">
+            <li>常见方案：Ollama</li>
+            <li>需要本地硬件资源</li>
+            <li>适合第二阶段再尝试</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="section-title mt-12">第三步</p>
+      <h2 class="text-h2 mb-4">API Key 配置时，先检查这 4 件事</h2>
+      <ul class="tutorial-checklist">
+        <li>复制时有没有带上前后空格</li>
+        <li>这个 Key 是否还有效，是否有额度或余额</li>
+        <li>当前网络是否能访问对应服务商</li>
+        <li>你选择的模型服务商和填入的 Key 是否对应</li>
+      </ul>
+
+      <p class="section-title mt-12">第四步</p>
+      <h2 class="text-h2 mb-6">第一次成功标准，不是“模型最强”，而是“连接稳定”</h2>
+      <div class="check-item check-ok"><div class="icon">1</div><p>测试连接能稳定通过</p></div>
+      <div class="check-item check-ok"><div class="icon">2</div><p>能发出一个问题并正常得到回复</p></div>
+      <div class="check-item check-ok"><div class="icon">3</div><p>你知道当前这条模型路径以后还能继续用</p></div>
+
+      <p class="section-title mt-12">什么时候该换模型</p>
+      <h2 class="text-h2 mb-4">这些情况出现时，再考虑切到下一条路径</h2>
+      <ul class="tutorial-checklist">
+        <li>当前模型连通性长期不稳定</li>
+        <li>响应速度明显过慢，影响日常使用</li>
+        <li>成本开始高于你的接受范围</li>
+        <li>你已经能稳定使用，才考虑再切到本地模型</li>
+      </ul>
+
+      <div class="warn-box mt-4">
+        <strong>遇到 API Key 或网络报错怎么办</strong>
+        如果你已经选好了服务商，但测试连接还是失败，就直接去 <a href="troubleshooting.html">排障页</a> 看“模型连不上 / API Key 不通过”这一组，不要盲目反复换服务商。
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">第一次先跑通，再谈最优</h3>
+        <p class="text-body mb-4">先让模型稳定工作，后面你再去装 Skill、做工作流，整个体验才会顺起来。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="start.html" class="btn btn-primary" data-track="click_tutorial" data-surface="tutorial_model_bottom">回快速开始 →</a>
+          <a href="tutorial-first-task-templates.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="tutorial_model_bottom">接着做第一次任务 →</a>
+          <a href="tutorial-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="tutorial_model_bottom">稳定后再装 Skill →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="tutorial.html">教程中心</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
