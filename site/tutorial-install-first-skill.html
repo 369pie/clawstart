@@ -79,18 +79,19 @@
 
       <p class="section-title mt-12">步骤 1</p>
       <h2 class="text-h2 mb-4">先搜索，再判断</h2>
-      <div class="code-block"><span class="comment"># 搜索某类 Skill</span>
-openclaw skills search weather
+      <div class="code-block"><span class="comment"># 第一步不是先硬搜命令，而是先确认 slug</span>
+# 打开 Skills Hub，看中文分类和真实 Skill 页面
 
-<span class="comment"># 或按关键词搜索</span>
-openclaw skills search git
+<span class="comment"># 选好以后直接执行安装命令</span>
+npx clawhub@latest install weather
 
-<span class="comment"># 搜索文件整理类</span>
-openclaw skills search file</div>
+<span class="comment"># 或者安装 Git / 仓库类 Skill</span>
+npx clawhub@latest install github</div>
       <div class="tip-box">
         <strong>判断原则</strong>
         第一次优先选“名字直白、用途明确、你今天就能试一次”的 Skill，不要先装很复杂的组合型 Skill。
       </div>
+      <a href="skills-hub.html" class="btn btn-primary btn-sm mt-4" data-track="click_skill_hub" data-surface="tutorial_install_skill_step_1">先去 Skills Hub 选 Skill →</a>
 
       <div class="card mt-8">
         <div class="tutorial-meta-row">
@@ -138,12 +139,82 @@ openclaw skills search file</div>
         </article>
       </div>
       <div class="code-block"><span class="comment"># 示例：安装 weather</span>
-openclaw skills install weather
+npx clawhub@latest install weather
 
-<span class="comment"># 安装后查看列表</span>
-openclaw skills list</div>
+<span class="comment"># 或安装百度搜索类 Skill</span>
+npx clawhub@latest install baidu-search
+
+<span class="comment"># 或安装 Git / 仓库类 Skill</span>
+npx clawhub@latest install github</div>
       <div class="success-box">
-        成功标准：`skills list` 能看到它，说明安装阶段已经完成。
+        成功标准：命令执行完成后，你能立刻在对话里问一个最短问题来验证它。
+      </div>
+
+      <div class="skill-feature-grid mt-8">
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Weather</h3>
+                <span class="skill-badge">搜索与信息查询</span>
+              </div>
+              <p>天气类最适合作为第一次验证 Skill 是否真的生效的起点。</p>
+            </div>
+          </div>
+          <div class="skill-meta"><span>@steipete</span><span>直观起步</span></div>
+          <div class="skill-command"><code>npx clawhub@latest install weather</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/weather" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>baidu web search</h3>
+                <span class="skill-badge">中文搜索</span>
+              </div>
+              <p>更贴近中国大陆用户的第一批搜索场景，适合查实时资料和中文内容。</p>
+            </div>
+          </div>
+          <div class="skill-meta"><span>@ide-rea</span><span>中文场景</span></div>
+          <div class="skill-command"><code>npx clawhub@latest install baidu-search</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/ide-rea/baidu-search" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Summarize</h3>
+                <span class="skill-badge">办公与内容处理</span>
+              </div>
+              <p>如果你更关心总结网页、PDF 或音视频内容，这个 Skill 往往比纯搜索更实用。</p>
+            </div>
+          </div>
+          <div class="skill-meta"><span>@steipete</span><span>高频整理</span></div>
+          <div class="skill-command"><code>npx clawhub@latest install summarize</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/summarize" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-card-header">
+            <div>
+              <div class="skill-card-title">
+                <h3>Github</h3>
+                <span class="skill-badge">开发与仓库工具</span>
+              </div>
+              <p>如果你是开发者或半技术用户，仓库类 Skill 最容易马上看出“装前和装后”的差别。</p>
+            </div>
+          </div>
+          <div class="skill-meta"><span>@steipete</span><span>开发起步</span></div>
+          <div class="skill-command"><code>npx clawhub@latest install github</code></div>
+          <div class="skill-card-actions">
+            <a href="https://clawhub.ai/steipete/github" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看原始页面 →</a>
+          </div>
+        </article>
       </div>
 
       <p class="section-title mt-12">步骤 3</p>
@@ -195,6 +266,7 @@ openclaw skills list</div>
         <p class="text-body mb-4">你只需要完成一次搜索、一次安装、一次验证，这就已经比“知道有 Skill 但从没动手”更进一步了。</p>
         <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
           <a href="tutorial-top-skills.html" class="btn btn-primary" data-track="click_skill_guide" data-surface="tutorial_install_skill_bottom">看新手推荐 Skill →</a>
+          <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="tutorial_install_skill_bottom">打开 Skills Hub →</a>
           <a href="tutorial-workflow-templates.html" class="btn btn-outline-dark" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_install_skill_bottom">再看工作流模板 →</a>
           <a href="tutorial-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="tutorial_install_skill_bottom">回 Skills 指南 →</a>
           <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="tutorial_install_skill_bottom">了解 LolaClaw →</a>
@@ -217,6 +289,11 @@ openclaw skills list</div>
           </a>
         </div>
         <div class="tutorial-recommend-grid">
+          <article class="tutorial-recommend-card">
+            <h3>Skills Hub</h3>
+            <p>如果你装完这一个以后想继续扩展，就去 Skills Hub 按中文分类继续选下一批真实 Skill。</p>
+            <a href="skills-hub.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_hub" data-surface="tutorial_install_skill_recommend">继续去 Skills Hub →</a>
+          </article>
           <article class="tutorial-recommend-card">
             <h3>工作流模板</h3>
             <p>如果你已经能稳定用一个 Skill，就可以看看怎样把高频任务固定成工作流。</p>

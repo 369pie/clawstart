@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Hub - ClawStart | 中文技能推荐与安装目录</title>
+  <meta name="description" content="ClawStart Skills Hub：从 ClawHub 获取真实技能，用中文分类展示，默认提供中文说明和可直接复制的安装命令。">
+  <meta name="keywords" content="ClawStart Skills Hub,ClawHub 中文,Skill 安装命令,OpenClaw Skills,技能推荐">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://useclawstart.com/skills-hub.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skills Hub - ClawStart">
+  <meta property="og:description" content="真实技能目录、中文分类说明、默认安装命令，一页帮你看懂 ClawHub 上值得先装的 Skills。">
+  <meta property="og:url" content="https://useclawstart.com/skills-hub.html">
+  <meta property="og:site_name" content="ClawStart">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skills Hub - ClawStart">
+  <meta name="twitter:description" content="从 ClawHub 获取真实技能，用中文分类展示，默认提供安装命令。">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "ClawStart Skills Hub",
+    "url": "https://useclawstart.com/skills-hub.html",
+    "description": "从 ClawHub 获取真实技能并用中文分类展示的 ClawStart 技能目录页。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="download.html">下载</a></li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html" class="active">教程</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Skills Hub</h1>
+      <p>从 ClawHub 获取真实技能，按中文场景重新分类。默认只展示中文说明，安装命令保持原始英文，方便你直接复制使用。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:1200px;">
+      <div class="skill-hub-layout">
+        <div class="tip-box">
+          <strong>先记一个原则</strong>
+          第一次先装 1 到 2 个最像你日常任务的 Skill。这里的中文说明是为小白重新整理过的入口文案，真实来源仍然是 <a href="https://clawhub.ai/" target="_blank" rel="noopener">ClawHub</a>。
+        </div>
+
+        <div class="skill-hub-stats">
+          <article class="skill-hub-stat">
+            <div class="section-title">ClawHub 总技能数</div>
+            <strong id="skillsTotalCount">--</strong>
+            <p>公开可见技能总量，来自 ClawHub 实时接口。</p>
+          </article>
+          <article class="skill-hub-stat">
+            <div class="section-title">当前已加载</div>
+            <strong id="skillsLoadedCount">--</strong>
+            <p>已经从 ClawHub 拉到本页并完成分类的技能数。</p>
+          </article>
+          <article class="skill-hub-stat">
+            <div class="section-title">当前可见</div>
+            <strong id="skillsVisibleCount">--</strong>
+            <p>在当前筛选条件下，页面上正在显示的技能数。</p>
+          </article>
+        </div>
+
+        <div class="skill-hub-toolbar">
+          <div class="skill-hub-field">
+            <label for="skillsHubSearch">本页已加载技能里快速筛选</label>
+            <input id="skillsHubSearch" class="skill-hub-input" type="search" placeholder="搜技能名、slug、中文说明">
+          </div>
+          <div class="skill-hub-field">
+            <label for="skillsHubCategory">中文分类</label>
+            <select id="skillsHubCategory" class="skill-hub-select">
+              <option value="all">全部分类</option>
+              <option value="search">搜索与信息查询</option>
+              <option value="office">办公与内容处理</option>
+              <option value="dev">开发与仓库工具</option>
+              <option value="automation">自动化与代理增强</option>
+              <option value="media">多媒体与素材处理</option>
+            </select>
+          </div>
+          <div class="skill-hub-field">
+            <label for="skillsHubSort">拉取排序</label>
+            <select id="skillsHubSort" class="skill-hub-select">
+              <option value="downloads">按下载量</option>
+              <option value="stars">按星标数</option>
+              <option value="newest">按最新发布</option>
+              <option value="updated">按最近更新</option>
+              <option value="name">按名称</option>
+            </select>
+          </div>
+          <div class="skill-hub-note">
+            默认只展示 ClawHub 的公开、非可疑技能。安装命令统一使用 `npx clawhub@latest install <slug>`，更适合第一次上手。
+          </div>
+        </div>
+
+        <div>
+          <p class="section-title">精选起步技能</p>
+          <h2 class="text-h2 mb-4">先从这些最容易看见价值的真实 Skill 开始</h2>
+          <div class="skill-feature-grid" id="featuredSkillsGrid"></div>
+        </div>
+
+        <div>
+          <p class="section-title">实时技能目录</p>
+          <h2 class="text-h2 mb-4">已加载技能按中文场景分类展示</h2>
+          <div id="skillsCatalog"></div>
+          <div class="skill-load-more">
+            <button id="skillsHubLoadMore" class="btn btn-primary">继续从 ClawHub 加载更多技能</button>
+          </div>
+        </div>
+
+        <div class="card text-center" style="padding:var(--space-8);">
+          <h3 class="text-h3" style="margin-bottom:var(--space-2);">看完 Skills Hub 后怎么继续最顺</h3>
+          <p class="text-body mb-4">先选一个最像你当前任务的 Skill，然后回安装教程把搜索、安装、验证这条链路完整走一遍。</p>
+          <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+            <a href="tutorial-install-first-skill.html" class="btn btn-primary" data-track="click_skill_install_guide" data-surface="skills_hub_bottom">回安装第一个 Skill →</a>
+            <a href="tutorial-top-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="skills_hub_bottom">回推荐清单 →</a>
+            <a href="tutorial-skills-by-role.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="skills_hub_bottom">按人群继续筛选 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="tutorial.html">教程中心</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="analytics.js"></script>
+  <script src="skills-hub.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle('scrolled', window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>

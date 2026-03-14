@@ -103,19 +103,22 @@
 
       <p class="section-title mt-12">第二步</p>
       <h2 class="text-h2 mb-4">用最短路径安装第一个 Skill</h2>
-      <div class="code-block"><span class="comment"># 搜索你想要的 Skill</span>
-openclaw skills search weather
+      <div class="code-block"><span class="comment"># 推荐先在 Skills Hub 里确认 slug</span>
+npx clawhub@latest install weather
 
-<span class="comment"># 安装第一个 Skill</span>
-openclaw skills install weather
+<span class="comment"># 也可以先装百度搜索类 Skill</span>
+npx clawhub@latest install baidu-search
 
-<span class="comment"># 查看已安装 Skill</span>
-openclaw skills list</div>
+<span class="comment"># 想装仓库类 Skill 时</span>
+npx clawhub@latest install github</div>
       <div class="success-box">
-        成功标准：你能在已安装列表里看到它，并且在对话里调用它。
+        成功标准：安装命令执行完成后，你能立刻在对话里用一句自然语言验证它。
       </div>
-      <p class="text-body mt-4">如果你想按步骤一点点走，直接看这篇：</p>
-      <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_install_guide" data-surface="tutorial_skills_install_block">安装第一个 Skill →</a>
+      <p class="text-body mt-4">第一次不建议盲搜。先去 Skills Hub 看中文分类和真实 Skill 页面，再回来执行安装命令会更稳。</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+        <a href="skills-hub.html" class="btn btn-primary btn-sm" data-track="click_skill_hub" data-surface="tutorial_skills_install_block">先去 Skills Hub 选 Skill →</a>
+        <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_install_guide" data-surface="tutorial_skills_install_block">安装第一个 Skill →</a>
+      </div>
 
       <p class="section-title mt-12">第三步</p>
       <h2 class="text-h2 mb-4">装好以后立刻用一次</h2>
@@ -163,6 +166,20 @@ openclaw skills list</div>
       <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
         <a href="tutorial-top-skills.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_skills_top_list">看新手推荐 Skills →</a>
         <a href="tutorial-skills-by-role.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_skills_top_list">按内容 / 办公 / 开发选 →</a>
+        <a href="skills-hub.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_hub" data-surface="tutorial_skills_top_list">进入 Skills Hub →</a>
+      </div>
+
+      <div class="card mt-12">
+        <div class="tutorial-meta-row">
+          <span class="tutorial-pill">真实目录</span>
+          <span class="tutorial-pill">中文分类</span>
+        </div>
+        <h3>如果你不想靠关键词硬猜，直接进 Skills Hub</h3>
+        <p class="text-body">我们已经把 ClawHub 上的公开 Skill 按中文场景重新分了类，并保留真实安装命令和原始 Skill 页面链接。第一次选 Skill，先从这里看最省时间。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="skills-hub.html" class="btn btn-primary btn-sm" data-track="click_skill_hub" data-surface="tutorial_skills_hub_card">打开 Skills Hub →</a>
+          <a href="https://clawhub.ai/" class="btn btn-outline-dark btn-sm" target="_blank" rel="noopener" data-track="click_external_skill_source" data-surface="tutorial_skills_hub_card">查看原始 ClawHub →</a>
+        </div>
       </div>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">

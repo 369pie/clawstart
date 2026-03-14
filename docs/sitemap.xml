@@ -76,6 +76,11 @@
     <priority>0.62</priority>
   </url>
   <url>
+    <loc>https://useclawstart.com/skills-hub.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
     <loc>https://useclawstart.com/tutorial-model-choice.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.67</priority>
