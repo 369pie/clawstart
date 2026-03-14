@@ -66,6 +66,74 @@
       gap: var(--space-6);
     }
 
+    .manual-cover {
+      padding: var(--space-7);
+      border-radius: 28px;
+      border: 1px solid rgba(232,90,79,0.2);
+      background:
+        radial-gradient(circle at top left, rgba(232,90,79,0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.94));
+      box-shadow: var(--theme-shadow-md);
+    }
+
+    [data-theme="dark"] .manual-cover {
+      background:
+        radial-gradient(circle at top left, rgba(232,90,79,0.22), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.9));
+      border-color: rgba(248,180,174,0.18);
+    }
+
+    .manual-cover-kicker {
+      display: inline-flex;
+      margin-bottom: var(--space-4);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(232,90,79,0.12);
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .manual-cover h2 {
+      margin-bottom: var(--space-3);
+    }
+
+    .manual-cover p {
+      color: var(--theme-text-secondary);
+    }
+
+    .manual-cover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .manual-cover-item {
+      padding: var(--space-4);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(148,163,184,0.18);
+    }
+
+    [data-theme="dark"] .manual-cover-item {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .manual-cover-item span {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--theme-text-secondary);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .manual-directory {
       padding: var(--space-6);
       border: 1px solid var(--theme-border);
@@ -203,8 +271,33 @@
       font-size: 13px;
     }
 
+    .manual-footer-note {
+      padding: var(--space-6);
+      border-radius: 20px;
+      border: 1px solid var(--theme-border);
+      background: var(--theme-surface);
+      box-shadow: var(--theme-shadow-sm);
+      color: var(--theme-text-secondary);
+    }
+
+    .manual-footer-note strong {
+      color: var(--theme-text);
+    }
+
+    .manual-footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      font-size: 13px;
+    }
+
     @media (max-width: 768px) {
       .manual-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .manual-cover-grid {
         grid-template-columns: 1fr;
       }
 
@@ -268,6 +361,10 @@
         break-inside: avoid;
         margin-bottom: 20px;
         padding: 20px;
+      }
+
+      body.manual-page .manual-cover {
+        page-break-after: always;
       }
 
       body.manual-page .manual-export-box,
@@ -349,6 +446,26 @@
       </div>
 
       <div class="manual-shell">
+        <section class="manual-cover">
+          <span class="manual-cover-kicker">Starter Manual Cover</span>
+          <h2 class="text-h2">ClawStart OpenClaw 中文入门手册</h2>
+          <p>这是一份面向第一次接触 OpenClaw 的用户准备的入门手册母版。你可以在线阅读，也可以直接导出成 PDF，发给团队、社群或未来的自己。</p>
+          <div class="manual-cover-grid">
+            <div class="manual-cover-item">
+              <span>文档版本</span>
+              <strong>v0.1 Beta</strong>
+            </div>
+            <div class="manual-cover-item">
+              <span>最近更新</span>
+              <strong>2026-03-14</strong>
+            </div>
+            <div class="manual-cover-item">
+              <span>官方入口</span>
+              <strong>useclawstart.com</strong>
+            </div>
+          </div>
+        </section>
+
         <aside class="manual-directory screen-only" id="manual-directory">
           <div class="manual-directory-head">
             <p class="section-title">手册目录</p>
@@ -495,6 +612,16 @@
             <button type="button" class="btn btn-primary" data-print-manual="starter" data-track="click_manual_print" data-surface="starter_bottom">打印 / 导出 PDF →</button>
             <a href="tutorial.html" class="btn btn-outline-dark" data-track="click_tutorial" data-surface="starter_bottom">回教程中心 →</a>
             <a href="skills-hub.html" class="btn btn-outline-dark" data-track="click_skill_hub" data-surface="starter_bottom">打开 Skills Hub →</a>
+          </div>
+        </div>
+
+        <div class="manual-footer-note">
+          <strong>文档说明</strong>
+          这份页面同时承担在线阅读版和打印版两种角色。后续每次补充新手路径、角色路径和 Skills 入口时，都会优先更新这里。
+          <div class="manual-footer-meta">
+            <span>版本：v0.1 Beta</span>
+            <span>更新：2026-03-14</span>
+            <span>来源：useclawstart.com/guide-openclaw-starter.html</span>
           </div>
         </div>
       </div>
