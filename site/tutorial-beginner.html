@@ -10,14 +10,14 @@
   <link rel="canonical" href="https://useclawstart.com/tutorial-beginner.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="新手入门 - ClawStart">
-  <meta property="og:description" content="装好以后先完成第一次成果，别急着研究所有功能。">
+  <meta property="og:description" content="装好以后先完成第一次成果，一步步来最高效。">
   <meta property="og:url" content="https://useclawstart.com/tutorial-beginner.html">
   <meta property="og:site_name" content="ClawStart">
   <meta property="og:locale" content="zh_CN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="新手入门 - ClawStart">
   <meta name="twitter:description" content="第一次对话、第一次任务、第一次成功标准，一条线走完就够了。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -68,53 +68,43 @@
       </div>
 
       <div class="tutorial-outcome-grid mt-8">
-        <article class="tutorial-outcome">
+        <article class="tutorial-outcome" id="first-conversation">
           <h3>第一次对话</h3>
           <p>确认它真的能理解你、回答你，而不是只停留在“看起来装好了”。</p>
         </article>
-        <article class="tutorial-outcome">
+        <article class="tutorial-outcome" id="first-task">
           <h3>第一次任务</h3>
           <p>让它替你完成一个真实动作，最好是写作、整理、总结这类立刻能看出价值的事。</p>
         </article>
-
-  <!-- 高频问题悬浮卡片 -->
-  <div class="faq-float-card">
-    <h4>❓ 新手最常问</h4>
-    <ul class="faq-float-list">
-      <li class="faq-float-item">
-        <a href="tutorial-model-choice.html" target="_blank">API Key怎么获取？</a>
-      </li>
-      <li class="faq-float-item">
-        <a href="tutorial-install-first-skill.html" target="_blank">怎么安装第一个Skill？</a>
-      </li>
-      <li class="faq-float-item">
-        <a href="tutorial-top-skills.html" target="_blank">新手推荐装什么Skill？</a>
-      </li>
-      <li class="faq-float-item">
-        <a href="troubleshooting.html#model-timeout" target="_blank">模型响应太慢怎么办？</a>
-      </li>
-      <li class="faq-float-item">
-        <a href="troubleshooting.html#gateway-failed" target="_blank">Gateway启动失败怎么办？</a>
-      </li>
-    </ul>
-    <div class="faq-float-footer">
-      更多问题请看 <a href="troubleshooting.html">排障页</a>
-    </div>
-  </div>
-
-  <!-- 视频教程入口 -->
-  <div class="video-tutorial-card mb-8">
-    <div class="video-tutorial-icon">🎥</div>
-    <div class="video-tutorial-content">
-      <h3>新手入门视频教程</h3>
-      <p>跟着视频一步步操作，从第一次启动到完成第一个真实任务全程演示</p>
-      <a href="https://www.bilibili.com/video/xxxxxxx" target="_blank" rel="noopener" class="btn btn-primary btn-sm">去B站看视频教程 →</a>
-    </div>
-  </div>
-        <article class="tutorial-outcome">
+        <article class="tutorial-outcome" id="success-criteria">
           <h3>第一次成功标准</h3>
           <p>知道什么叫“已经跑通”，这样你后面扩展 Skill 或工作流时才不会发虚。</p>
         </article>
+      </div>
+
+      <div class="card mt-8">
+        <div class="tutorial-meta-row">
+          <span class="tutorial-pill">先别绕远路</span>
+          <span class="tutorial-pill">直接跳转</span>
+        </div>
+        <h3>新手最容易卡住的 4 个地方</h3>
+        <p>如果你不是不会用，而是被配置、Skill 或第一条任务拦住了，直接走这几个入口更快。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="tutorial-model-choice.html#domestic" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="tutorial_beginner_quick_links">先搞定模型配置 →</a>
+          <a href="#first-task" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="first_task" data-surface="tutorial_beginner_quick_links">直接去第一次任务 →</a>
+          <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_install_guide" data-surface="tutorial_beginner_quick_links">安装第一个 Skill →</a>
+          <a href="troubleshooting.html#model-fail" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_beginner_quick_links">遇到问题？去排障 →</a>
+        </div>
+      </div>
+
+      <div class="card mt-8">
+        <h3>不想整页看完，就直接走这 3 个入口</h3>
+        <p>如果你现在只想知道下一步该做什么，就别在这一页里来回找，直接跳到对应段落。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="#first-conversation" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="first_conversation" data-surface="tutorial_beginner_quick_routes">先完成第一次对话 →</a>
+          <a href="#first-task" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="first_task" data-surface="tutorial_beginner_quick_routes">直接做第一次任务 →</a>
+          <a href="#success-criteria" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="success_criteria" data-surface="tutorial_beginner_quick_routes">看成功标准 →</a>
+        </div>
       </div>
 
       <p class="section-title mt-12">开始前准备</p>
@@ -190,7 +180,7 @@
 
       <div class="warn-box mt-4">
         <strong>什么时候该去排障</strong>
-        如果你连第一次对话都无法完成，或者模型连接一会儿能用一会儿不能用，就先去 <a href="troubleshooting.html">排障页</a>，不要急着继续往下学。
+        如果你连第一次对话都无法完成，或者模型连接一会儿能用一会儿不能用，就先去 <a href="troubleshooting.html">排障页</a> 解决连接问题，之后再继续。
       </div>
 
       <p class="section-title mt-12">下一步</p>
@@ -267,7 +257,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -335,25 +330,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-beginner_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-beginner_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-beginner_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-beginner_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -364,6 +359,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -390,11 +386,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -421,7 +433,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

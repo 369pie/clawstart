@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="进阶使用 - ClawStart">
   <meta name="twitter:description" content="把“已经能用”进一步变成“每天会用、真的省时间”。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -177,7 +177,7 @@
       <h2 class="text-h2 mb-4">如果你已经明确不想继续折腾</h2>
       <ul class="tutorial-checklist">
         <li>你已经知道这个方向有价值，但不想自己维护环境</li>
-        <li>你更在意稳定性和省时间，而不是研究底层细节</li>
+        <li>你更在意稳定性和省时间，而不是研究技术细节</li>
         <li>你希望把重点放在工作本身，而不是配置和排障</li>
       </ul>
 
@@ -199,7 +199,7 @@
           <a href="tutorial-install-first-skill.html" class="tutorial-series-link" data-track="click_prev_tutorial" data-topic="install_first_skill" data-surface="tutorial_advanced_series">
             <span class="tutorial-series-label">上一篇</span>
             <h3>回第一个 Skill 安装</h3>
-            <p>如果你还没把任何一个 Skill 装稳、用顺，就先别急着进阶，先回去补这一步。</p>
+            <p>如果你还没把任何一个 Skill 装稳、用顺，建议先回去补这一步，之后进阶会更顺畅。</p>
           </a>
           <a href="tutorial-workflow-templates.html" class="tutorial-series-link" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_advanced_series">
             <span class="tutorial-series-label">下一篇</span>
@@ -231,7 +231,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -299,25 +304,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-advanced_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-advanced_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-advanced_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-advanced_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -328,6 +333,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -354,11 +360,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -385,7 +407,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

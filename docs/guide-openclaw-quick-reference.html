@@ -233,7 +233,7 @@
     <div class="container">
       <p class="page-hero-kicker">OpenClaw 常见问题速查手册</p>
       <h1>出问题了先看这 1 页</h1>
-      <p>适合刚装好就卡住的小白用户。先按现象判断，再回到对应教程或排障页，不要同时乱试多个方向。</p>
+      <p>适合刚装好就卡住的小白用户。先按现象判断，再回到对应教程或排障页，一次只排查一个方向效率最高。</p>
       <div class="quickref-toolbar">
         <a href="troubleshooting.html" class="btn btn-primary" data-track="click_troubleshooting" data-surface="quickref_hero">进入完整排障页 →</a>
         <a href="guide-openclaw-starter.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="starter_guide" data-surface="quickref_hero">回入门手册 →</a>
@@ -271,7 +271,7 @@
         </div>
         <div class="quickref-mini-card">
           <strong>先走最短动作</strong>
-          <p>小白优先回一键包路径，不要先折腾命令行。</p>
+          <p>小白优先回一键包路径，这条最省心。</p>
         </div>
         <div class="quickref-mini-card">
           <strong>先验证结果</strong>
@@ -293,7 +293,7 @@
           <h3>模型或 API 连不上</h3>
           <ul>
             <li>先检查 API Key 是否复制正确、额度是否正常。</li>
-            <li>中国大陆用户优先用稳定在线模型，不要一开始就上本地模型。</li>
+            <li>中国大陆用户优先用稳定在线模型，跑通之后再考虑本地模型。</li>
             <li>先用最简单请求验证连通，再回到复杂配置。</li>
           </ul>
         </article>
@@ -310,9 +310,9 @@
         <article class="quickref-card">
           <h3>命令行报错</h3>
           <ul>
-            <li>看到 `git@github.com`、`exit 128`，先把 Git 拉取方式切到 HTTPS。</li>
-            <li>看到 `ENOENT`、`cannot find module`，优先重新下载一键包或重装底层 CLI。</li>
-            <li>看到 `EPERM`，先关掉旧进程、杀软和占用目录。</li>
+            <li>看到 `git@github.com`、`exit 128`（连接被拒绝），先把 Git 连接方式从 SSH 改成 HTTPS（这样更容易成功）。</li>
+            <li>看到 `ENOENT`、`cannot find module`（找不到文件），优先重新下载一键包或重装 OpenClaw 核心程序。</li>
+            <li>看到 `EPERM`（权限不足），先关掉旧进程、杀软和占用目录。</li>
           </ul>
         </article>
       </div>
@@ -331,7 +331,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="guide-openclaw-starter.html">入门手册</a></li>
           <li><a href="troubleshooting.html">排障</a></li>

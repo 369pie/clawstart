@@ -322,28 +322,29 @@ function groupByCategory(items) {
 }
 
 function renderFeatured() {
-  elements.featured.innerHTML = FEATURED_SKILLS.map((skill) => {
+  elements.featured.innerHTML = FEATURED_SKILLS.map((skill, index) => {
     const category = CATEGORY_CONFIG[skill.category];
+    const initial = skill.displayName.charAt(0).toUpperCase();
     return `
-      <article class="skill-card">
-        <div class="skill-card-header">
-          <div>
-            <div class="skill-card-title">
+      <article class="sh-featured-card">
+        <div class="sh-rank">${index + 1}</div>
+        <div class="sh-featured-body">
+          <div class="sh-featured-top">
+            <div class="sh-avatar">${initial}</div>
+            <div class="sh-featured-info">
               <h3>${skill.displayName}</h3>
               <span class="skill-badge">${category.label}</span>
             </div>
-            <p>${skill.zhSummary}</p>
           </div>
-        </div>
-        <div class="skill-meta">
-          <span>来自 ClawHub</span>
-          <span>@${skill.owner}</span>
-        </div>
-        <div class="skill-tag-badges">${renderTagBadges(skill.tags || [])}</div>
-        <div class="skill-command"><code>${installCommand(skill.slug)}</code></div>
-        <div class="skill-card-actions">
-          <a href="${skillUrl(skill.owner, skill.slug)}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看 ClawHub 页面 →</a>
-          <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark btn-sm">回安装教程 →</a>
+          <p class="sh-featured-desc">${skill.zhSummary}</p>
+          <div class="sh-featured-tags">${renderTagBadges(skill.tags || [])}</div>
+          <div class="sh-featured-meta">
+            <span>@${skill.owner}</span>
+          </div>
+          <div class="sh-featured-actions">
+            <a href="${skillUrl(skill.owner, skill.slug)}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看详情 →</a>
+            <button class="sh-cmd-copy-btn" data-cmd="${installCommand(skill.slug)}" aria-label="复制安装命令">📋 复制安装命令</button>
+          </div>
         </div>
       </article>
     `;
@@ -386,6 +387,35 @@ function parseInitialTags() {
     .filter((value) => Boolean(TAG_CONFIG[value]));
 }
 
+function renderSkillCard(item) {
+  const category = CATEGORY_CONFIG[item.categoryId];
+  const initial = item.displayName.charAt(0).toUpperCase();
+  return `
+    <article class="sh-skill-card">
+      <div class="sh-card-top">
+        <div class="sh-avatar">${initial}</div>
+        <div class="sh-card-info">
+          <div class="sh-card-name">
+            <h3>${item.displayName}</h3>
+            <span class="skill-badge">${category ? category.label : ''}</span>
+          </div>
+          <p class="sh-card-desc">${item.summaryZh}</p>
+        </div>
+      </div>
+      <div class="sh-card-meta">
+        <span>⬇ ${formatNumber(item.downloads)}</span>
+        <span>★ ${formatNumber(item.stars)}</span>
+        <span>@${item.owner}</span>
+      </div>
+      <div class="sh-card-tags">${renderTagBadges(item.tags)}</div>
+      <div class="sh-card-actions">
+        <a href="${item.url}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看详情 →</a>
+        <button class="sh-cmd-copy-btn" data-cmd="${item.command}" aria-label="复制安装命令">📋 复制安装命令</button>
+      </div>
+    </article>
+  `;
+}
+
 function renderCatalog() {
   const filtered = getFilteredItems();
   renderActiveTagState();
@@ -410,29 +440,7 @@ function renderCatalog() {
       const category = CATEGORY_CONFIG[categoryId];
       const cards = groups[categoryId]
         .sort((a, b) => b.downloads - a.downloads)
-        .map((item) => `
-          <article class="skill-card">
-            <div class="skill-card-header">
-              <div>
-                <div class="skill-card-title">
-                  <h3>${item.displayName}</h3>
-                  <span class="skill-badge">${category.label}</span>
-                </div>
-                <p>${item.summaryZh}</p>
-              </div>
-            </div>
-            <div class="skill-meta">
-              <span>下载 ${formatNumber(item.downloads)}</span>
-              <span>星标 ${formatNumber(item.stars)}</span>
-              <span>@${item.owner}</span>
-            </div>
-            <div class="skill-tag-badges">${renderTagBadges(item.tags)}</div>
-            <div class="skill-command"><code>${item.command}</code></div>
-            <div class="skill-card-actions">
-              <a href="${item.url}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">查看 ClawHub 页面 →</a>
-            </div>
-          </article>
-        `).join("");
+        .map(renderSkillCard).join("");
 
       return `
         <section class="skill-catalog-group">
@@ -441,7 +449,7 @@ function renderCatalog() {
               <p class="section-title">${category.label}</p>
               <h2 class="text-h2">${category.description}</h2>
             </div>
-            <p>${groups[categoryId].length} 个已加载技能</p>
+            <p>${groups[categoryId].length} 个技能</p>
           </div>
           <div class="skill-catalog-grid">${cards}</div>
         </section>
@@ -501,7 +509,8 @@ async function fetchSkills(reset) {
   } finally {
     state.loading = false;
     elements.loadMore.disabled = state.isDone;
-    elements.loadMore.textContent = state.isDone ? "已加载到当前页尽头" : "继续从 ClawHub 加载更多技能";
+    elements.loadMore.style.display = "";
+    elements.loadMore.textContent = state.isDone ? "已加载全部技能" : "继续从 ClawHub 加载更多技能";
   }
 }
 
@@ -511,10 +520,25 @@ function bindEvents() {
     renderCatalog();
   });
 
+  // Hidden <select> kept for compat; real interaction via tabs
   elements.category.addEventListener("change", (event) => {
     state.category = event.target.value;
     renderCatalog();
   });
+
+  // Category tabs
+  if (elements.categoryTabs) {
+    elements.categoryTabs.addEventListener("click", (event) => {
+      const tab = event.target.closest("[data-cat]");
+      if (!tab) return;
+      elements.categoryTabs.querySelectorAll(".sh-cat-tab").forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+      state.category = tab.dataset.cat;
+      // sync hidden select
+      elements.category.value = state.category;
+      renderCatalog();
+    });
+  }
 
   if (elements.tagFilters) {
     elements.tagFilters.addEventListener("click", (event) => {
@@ -545,6 +569,58 @@ function bindEvents() {
   elements.loadMore.addEventListener("click", async () => {
     await fetchSkills(false);
   });
+
+  // Install guide tab switching
+  const installTabs = document.querySelectorAll(".sh-install-tab");
+  const agentPanel = document.getElementById("installPanelAgent");
+  const manualPanel = document.getElementById("installPanelManual");
+  if (installTabs.length && agentPanel && manualPanel) {
+    installTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        installTabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        const target = tab.dataset.tab;
+        agentPanel.style.display = target === "agent" ? "" : "none";
+        manualPanel.style.display = target === "manual" ? "" : "none";
+      });
+    });
+  }
+
+  // Copy buttons (install guide)
+  document.addEventListener("click", (event) => {
+    const btn = event.target.closest(".sh-copy-btn");
+    if (btn) {
+      const targetId = btn.dataset.target;
+      const codeEl = document.getElementById(targetId);
+      if (!codeEl) return;
+      const text = codeEl.textContent;
+      const label = btn.querySelector("span");
+      navigator.clipboard.writeText(text).then(() => {
+        if (label) label.textContent = "已复制";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          if (label) label.textContent = "复制";
+          btn.classList.remove("copied");
+        }, 1800);
+      });
+      return;
+    }
+
+    // Copy command buttons on cards
+    const cmdBtn = event.target.closest(".sh-cmd-copy-btn");
+    if (cmdBtn) {
+      const cmd = cmdBtn.dataset.cmd;
+      if (!cmd) return;
+      navigator.clipboard.writeText(cmd).then(() => {
+        cmdBtn.textContent = "✅ 已复制";
+        cmdBtn.classList.add("copied");
+        setTimeout(() => {
+          cmdBtn.textContent = "📋 复制安装命令";
+          cmdBtn.classList.remove("copied");
+        }, 1800);
+      });
+    }
+  });
 }
 
 async function init() {
@@ -559,7 +635,18 @@ async function init() {
   elements.loadMore = document.getElementById("skillsHubLoadMore");
   elements.tagFilters = document.getElementById("skillsHubTagFilters");
   elements.tagNote = document.getElementById("skillsHubTagNote");
+  elements.categoryTabs = document.getElementById("skillsHubCategoryTabs");
   state.tags = parseInitialTags();
+
+  // Generate tag filter chips
+  if (elements.tagFilters) {
+    const allChip = `<button class="skill-tag-filter-chip is-active" data-tag="all">全部</button>`;
+    const tagChips = Object.entries(TAG_CONFIG).map(([id, cfg]) =>
+      `<button class="skill-tag-filter-chip" data-tag="${id}">${cfg.label}</button>`
+    ).join("");
+    elements.tagFilters.innerHTML = allChip + tagChips;
+    if (elements.tagNote) elements.tagNote.style.display = "";
+  }
 
   renderFeatured();
   renderStats();

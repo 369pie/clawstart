@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="关于 - ClawStart">
   <meta name="twitter:description" content="了解 ClawStart 为什么存在，以及它与 OpenClaw、LolaClaw 之间的关系。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -115,6 +115,78 @@
       </div>
 
       <div class="about-section">
+        <h2>当前状态</h2>
+        <div class="card mb-6" style="background:var(--theme-bg-alt);">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+            <div>
+              <span style="font-size:14px;color:var(--theme-text-secondary);">当前版本</span>
+              <div style="font-size:20px;font-weight:600;">v0.2.3（公测版）</div>
+            </div>
+            <div>
+              <span style="font-size:14px;color:var(--theme-text-secondary);">最后更新</span>
+              <div style="font-size:20px;font-weight:600;">2026-03-15</div>
+            </div>
+            <div>
+              <span style="font-size:14px;color:var(--theme-text-secondary);">状态</span>
+              <div style="display:inline-block;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:500;background:#fef3c7;color:#92400e;">公开测试中</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-6" style="background:var(--theme-bg-alt);">
+          <h3 style="margin-bottom:12px;">📦 平台支持状态</h3>
+          <ul style="line-height:2.2;">
+            <li><strong>Windows 10/11 64 位</strong> — ✅ 稳定（一键包，首次启动约 30-60 秒）</li>
+            <li><strong>macOS 12+ (Apple Silicon)</strong> — ✅ 稳定（一键包）</li>
+            <li><strong>macOS 12+ (Intel)</strong> — ✅ 稳定（一键包）</li>
+            <li><strong>Linux</strong> — ⚠️ 安装脚本方式（适合有终端经验的用户，一键包即将推出）</li>
+          </ul>
+        </div>
+
+        <div class="card mb-6" style="background:var(--theme-bg-alt);">
+          <h3 style="margin-bottom:12px;">✅ 已完成功能</h3>
+          <ul style="line-height:2.2;">
+            <li>一键安装包（Windows / macOS）</li>
+            <li>全中文教程体系（23 个页面）</li>
+            <li>Skills Hub 技能市场</li>
+            <li>社区入口（企业微信 / QQ / 微信 / 知识星球）</li>
+            <li>自动更新系统</li>
+            <li>故障排查与快速开始指南</li>
+          </ul>
+        </div>
+
+        <div class="card mb-6" style="background:var(--theme-bg-alt);">
+          <h3 style="margin-bottom:12px;">⚠️ 已知问题</h3>
+          <details style="margin-bottom:12px;">
+            <summary><strong>部分中文 Windows 环境报"系统无法接受输入的时间"</strong></summary>
+            <p style="margin-top:8px;">已在最新版本中修复为 PowerShell <code>Start-Sleep</code>。如仍遇到此问题，请下载最新 Release 或前往 <a href="troubleshooting.html">排障页</a>。</p>
+          </details>
+          <details style="margin-bottom:12px;">
+            <summary><strong>视频教程尚未上线</strong></summary>
+            <p style="margin-top:8px;">图文教程已完整，视频教程预计 2026-03-22 上线。想第一时间收到通知可 <a href="index.html#community">加入用户社区</a>。</p>
+          </details>
+          <details>
+            <summary><strong>Linux 安装路径为脚本方式</strong></summary>
+            <p style="margin-top:8px;">Linux 用户当前推荐通过安装脚本配置，一键包即将推出。适合有终端经验的用户。</p>
+          </details>
+        </div>
+
+        <div class="card mb-6" style="background:var(--theme-bg-alt);">
+          <h3 style="margin-bottom:12px;">📋 下一步计划</h3>
+          <ul style="line-height:2.2;">
+            <li>视频教程系列（3 期）</li>
+            <li>Linux 一键包</li>
+            <li>更多真实用户案例</li>
+            <li>在线 Demo 体验</li>
+          </ul>
+        </div>
+
+        <p style="font-size:14px;color:var(--theme-text-secondary);">
+          想追踪最新进展？查看 <a href="https://github.com/369pie/clawstart" target="_blank" rel="noopener">GitHub 仓库</a> 或 <a href="index.html#community">加入用户社区</a>。
+        </p>
+      </div>
+
+      <div class="about-section">
         <h2>参与贡献</h2>
         <p>OpenClaw 生态和 ClawStart 入口站都依赖社区持续改进。无论是提交代码、改进文档、报告 Bug 还是分享使用经验，都是有价值的贡献。</p>
         <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;">
@@ -129,7 +201,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -193,25 +270,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="about_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="about_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="about_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="about_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -222,6 +299,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -248,11 +326,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -279,7 +373,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

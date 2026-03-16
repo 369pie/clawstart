@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="工作流模板 - ClawStart">
   <meta name="twitter:description" content="把总结、会议纪要、仓库复盘、内容改写这些高频动作固定成模板。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -66,12 +66,23 @@
         适合已经完成第一次任务、已经知道 ClawStart 有价值，但希望它更稳定帮你省时间的用户。
       </div>
 
+      <div class="card mt-8">
+        <h3>不想整页看完，就直接走这 4 个入口</h3>
+        <p>如果你已经知道自己更偏办公、内容、开发还是只想看落地方法，直接跳到对应段落就行。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="#workflow-office-content" class="btn btn-primary btn-sm" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_workflow_quick_routes">看办公 / 内容模板 →</a>
+          <a href="#workflow-dev-research" class="btn btn-outline-dark btn-sm" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_workflow_quick_routes">看开发 / 研究模板 →</a>
+          <a href="#workflow-how-to" class="btn btn-outline-dark btn-sm" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_workflow_quick_routes">看落地方式 →</a>
+          <a href="#workflow-next-step" class="btn btn-outline-dark btn-sm" data-track="click_next_tutorial" data-topic="workflow_templates" data-surface="tutorial_workflow_quick_routes">看下一步 →</a>
+        </div>
+      </div>
+
       <p class="section-title mt-8">先记一个原则</p>
       <h2 class="text-h2 mb-4">工作流不是“更复杂”，而是“更少重来”</h2>
       <p class="text-body mb-6">如果一件事你一周内会重复两次以上，它就值得做成模板。这样你不需要每次重新想提问方式，也更容易看出效果有没有在变好。</p>
 
       <p class="section-title mt-12">办公 / 内容类</p>
-      <h2 class="text-h2 mb-6">最容易先做成模板的 3 件事</h2>
+      <h2 class="text-h2 mb-6" id="workflow-office-content">最容易先做成模板的 3 件事</h2>
       <div class="tutorial-link-list">
         <article class="tutorial-link-item">
           <div>
@@ -97,7 +108,7 @@
       </div>
 
       <p class="section-title mt-12">开发 / 研究类</p>
-      <h2 class="text-h2 mb-6">适合半技术用户和开发者的 3 件事</h2>
+      <h2 class="text-h2 mb-6" id="workflow-dev-research">适合半技术用户和开发者的 3 件事</h2>
       <div class="tutorial-link-list">
         <article class="tutorial-link-item">
           <div>
@@ -123,7 +134,7 @@
       </div>
 
       <p class="section-title mt-12">落地方式</p>
-      <h2 class="text-h2 mb-4">把工作流固定下来，只需要这 3 步</h2>
+      <h2 class="text-h2 mb-4" id="workflow-how-to">把工作流固定下来，只需要这 3 步</h2>
       <div class="tutorial-order">
         <article class="tutorial-order-step">
           <div class="num">1</div>
@@ -148,7 +159,7 @@
         </article>
       </div>
 
-      <div class="card text-center mt-12" style="padding:var(--space-8);">
+      <div class="card text-center mt-12" style="padding:var(--space-8);" id="workflow-next-step">
         <h3 class="text-h3" style="margin-bottom:var(--space-2);">你不需要一开始就拥有完整系统</h3>
         <p class="text-body mb-4">只要先把一个高频任务固定下来，ClawStart 就已经开始从“偶尔能用”变成“真的会帮你省时间”。</p>
         <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
@@ -181,7 +192,7 @@
           </article>
           <article class="tutorial-recommend-card">
             <h3>模型配置教程</h3>
-            <p>如果你的工作流偶尔不稳定，先把模型和 API 配置重新校对一遍，底层稳定最重要。</p>
+            <p>如果你的工作流偶尔不稳定，先把模型和 API 配置重新校对一遍，基础配置稳定最重要。</p>
             <a href="tutorial-model-choice.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="tutorial_workflow_recommend">复查模型配置 →</a>
           </article>
           <article class="tutorial-recommend-card">
@@ -197,7 +208,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -264,25 +280,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-workflow-templates_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-workflow-templates_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-workflow-templates_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-workflow-templates_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -293,6 +309,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -319,11 +336,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -350,7 +383,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

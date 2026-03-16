@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="教程中心 - ClawStart">
   <meta name="twitter:description" content="新手入门、Skill 指南、进阶使用，按阶段给你最短学习路径。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -65,6 +65,57 @@
       <div class="tip-box">
         <strong>适合谁</strong>
         这页适合已经下载或已经装好的用户。如果你还没开始，先去 <a href="download.html">下载页</a> 或 <a href="start.html">快速开始</a>。
+      </div>
+
+      <!-- 问诊式引导：根据当前状态推荐最短路径 -->
+      <div class="card mb-8 diagnosis-card" style="padding:var(--space-6);">
+        <h2 class="text-h3" style="margin-bottom:var(--space-4);">🩺 30 秒定位你的下一步</h2>
+        <p style="color:var(--theme-text-secondary);margin-bottom:var(--space-5);">回答一个问题，我们直接帮你跳到最合适的页面。</p>
+        <div id="tutorial-diagnosis" style="display:flex;flex-direction:column;gap:var(--space-3);">
+          <a href="start.html" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="not_installed" data-surface="tutorial_hub_diagnosis">
+            <span>📦 我还没装好，或者装了但打不开</span>
+          </a>
+          <a href="tutorial-beginner.html" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="installed_first_time" data-surface="tutorial_hub_diagnosis">
+            <span>✅ 装好了，但还没真正用起来</span>
+          </a>
+          <a href="tutorial-model-choice.html#domestic" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="model_stuck" data-surface="tutorial_hub_diagnosis">
+            <span>🔑 卡在模型配置 / API Key 这一步</span>
+          </a>
+          <a href="tutorial-skills.html" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="want_skills" data-surface="tutorial_hub_diagnosis">
+            <span>🧩 能用了，想装 Skill 扩展能力</span>
+          </a>
+          <a href="tutorial-advanced.html" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="want_workflow" data-surface="tutorial_hub_diagnosis">
+            <span>⚡ 想搭建工作流、提升效率</span>
+          </a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="error" data-surface="tutorial_hub_diagnosis">
+            <span>🔧 遇到报错或异常，需要排障</span>
+          </a>
+          <a href="#commands" class="btn btn-outline-dark" style="text-align:left;justify-content:flex-start;padding:var(--space-4) var(--space-5);" data-track="click_diagnosis" data-answer="terminal_cmds" data-surface="tutorial_hub_diagnosis">
+            <span>💻 我是终端重度用户，想看常用命令速查</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card mb-8 onboarding-steps-card">
+        <p class="section-title" style="margin-bottom:var(--space-3);">第一次来这里？</p>
+        <h2 class="text-h3" style="margin-bottom:var(--space-3);">只需 3 步，找到最适合你的学习路径</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4);">
+          <div>
+            <strong>第一步</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">先确认已经装好，并完成第一次正常回复。</p>
+            <a href="start.html" class="text-link">去快速开始 →</a>
+          </div>
+          <div>
+            <strong>第二步</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">如果你刚装好，从新手入门开始最顺。</p>
+            <a href="tutorial-beginner.html" class="text-link">去新手入门 →</a>
+          </div>
+          <div>
+            <strong>第三步</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">卡住了就直接去排障，比在教程里翻来翻去快得多。</p>
+            <a href="troubleshooting.html" class="text-link">去排障页 →</a>
+          </div>
+        </div>
       </div>
 
       <p class="section-title">你现在属于哪种阶段</p>
@@ -119,7 +170,227 @@
     </div>
   </section>
 
-  <section class="section section-white">
+  <!-- ========== 常用命令速查 ========== -->
+  <section class="section section-alt" id="commands">
+    <div class="container" style="max-width:var(--content-width);">
+      <p class="section-title">Terminal 用户必备</p>
+      <h2 class="text-h2 mb-4">常用命令速查</h2>
+      <p style="color:var(--theme-text-secondary);margin-bottom:var(--space-6);">macOS / Linux 重度终端用户？这里汇总了 OpenClaw CLI 最常用的命令，点击即可复制。</p>
+
+      <!-- 搜索栏 -->
+      <div class="cmd-search-wrap">
+        <input type="text" id="cmdSearch" class="cmd-search-input" placeholder="搜索命令…  例如 config、skills、gateway" autocomplete="off">
+      </div>
+
+      <!-- 分类标签 -->
+      <div class="cmd-tab-bar" id="cmdTabBar">
+        <button class="cmd-tab active" data-cat="all">全部</button>
+        <button class="cmd-tab" data-cat="config">🔧 配置与诊断</button>
+        <button class="cmd-tab" data-cat="gateway">🌐 网关与日志</button>
+        <button class="cmd-tab" data-cat="skills">🧩 技能管理</button>
+        <button class="cmd-tab" data-cat="session">💬 会话与频道</button>
+      </div>
+
+      <!-- 命令列表 -->
+      <div class="cmd-ref-grid" id="cmdRefGrid">
+
+        <!-- ── 配置与诊断 ── -->
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw configure</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw configure">复制</button>
+          </div>
+          <p class="cmd-ref-desc">打开龙虾配置向导</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw onboard</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw onboard">复制</button>
+          </div>
+          <p class="cmd-ref-desc">打开龙虾配置页面</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw dashboard</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw dashboard">复制</button>
+          </div>
+          <p class="cmd-ref-desc">打开龙虾控制面板</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config get</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config get">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看龙虾所有配置</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config get --section <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config get --section ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看龙虾指定配置（例如 <code>--section models</code>）</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config set <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config set ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">设置龙虾指定配置</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config set models.default mistral:mixtral-8x7b</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config set models.default mistral:mixtral-8x7b">复制</button>
+          </div>
+          <p class="cmd-ref-desc">设置默认模型</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config unset models.fast</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config unset models.fast">复制</button>
+          </div>
+          <p class="cmd-ref-desc">删除特定配置项</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw config unset models</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw config unset models">复制</button>
+          </div>
+          <p class="cmd-ref-desc">重置某个配置节点</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw doctor</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw doctor">复制</button>
+          </div>
+          <p class="cmd-ref-desc">对龙虾进行健康检查</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="config">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw --help</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw --help">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看龙虾所有命令</p>
+        </div>
+
+        <!-- ── 网关与日志 ── -->
+        <div class="cmd-ref-card" data-cat="gateway">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw gateway start</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw gateway start">复制</button>
+          </div>
+          <p class="cmd-ref-desc">启动 Gateway（默认端口 18789）</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="gateway">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw gateway restart</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw gateway restart">复制</button>
+          </div>
+          <p class="cmd-ref-desc">网关重启，常用于让龙虾配置生效</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="gateway">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw logs --lines 50</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw logs --lines 50">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看最近 50 行日志，调试 Bug 必备</p>
+        </div>
+
+        <!-- ── 技能管理 ── -->
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills search <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills search ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">搜索龙虾技能</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills list</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills list">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看小龙虾安装的所有技能包</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills install <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills install ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">安装龙虾技能</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills uninstall <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills uninstall ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">卸载龙虾技能</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills show <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills show ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看龙虾技能详情</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="skills">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw skills update</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw skills update">复制</button>
+          </div>
+          <p class="cmd-ref-desc">更新所有已安装技能</p>
+        </div>
+
+        <!-- ── 会话与频道 ── -->
+        <div class="cmd-ref-card" data-cat="session">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw sessions</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw sessions">复制</button>
+          </div>
+          <p class="cmd-ref-desc">查看龙虾所有的会话</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="session">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw message send --message "Hello"</code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd='openclaw message send --message "Hello"'>复制</button>
+          </div>
+          <p class="cmd-ref-desc">发送消息到当前会话</p>
+        </div>
+
+        <div class="cmd-ref-card" data-cat="session">
+          <div class="cmd-ref-line">
+            <code class="cmd-ref-code">openclaw channels show <em>XX</em></code>
+            <button class="cmd-copy-btn" aria-label="复制命令" data-cmd="openclaw channels show ">复制</button>
+          </div>
+          <p class="cmd-ref-desc">展示龙虾特定频道</p>
+        </div>
+
+      </div><!-- /cmd-ref-grid -->
+
+      <div class="cmd-ref-empty" id="cmdRefEmpty" style="display:none;">
+        <p>🔍 没有匹配的命令，试试其他关键词</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="recommended-order">
     <div class="container" style="max-width:var(--content-width);">
       <p class="section-title">推荐顺序</p>
       <h2 class="text-h2 mb-8">先按这个顺序学，最不容易卡住</h2>
@@ -129,7 +400,7 @@
           <div class="num">1</div>
           <div>
             <h3>先完成第一次有结果的体验</h3>
-            <p>不要一上来研究所有功能。先确认它能回答你、能帮你完成一个真实任务，建立第一次成就感。</p>
+            <p>先确认它能回答你、能帮你完成一个真实任务，建立第一次成就感，其他功能之后再探索。</p>
             <a href="tutorial-beginner.html" class="text-link" data-track="click_tutorial_article" data-topic="first_task" data-surface="tutorial_hub_order">去新手入门 →</a>
             <div style="margin-top:var(--space-3);">
               <a href="tutorial-first-task-templates.html" class="text-link" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="tutorial_hub_order">直接看任务模板 →</a>
@@ -375,12 +646,12 @@
       </div>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">如果你已经觉得它有价值</h3>
-        <p class="text-body mb-4">先完成第一条教程路径，再决定要不要继续折腾。如果你已经明确想要更省心的版本，也可以直接去看 LolaClaw。</p>
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">选一条路径走到底就够了</h3>
+        <p class="text-body mb-4">你现在只需要选一条路径走完。新手先做出第一次成果，想扩展就先装一个 Skill，已经有手感再去看工作流。</p>
         <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
           <a href="tutorial-beginner.html" class="btn btn-primary" data-track="click_next_tutorial" data-topic="beginner" data-surface="tutorial_hub_bottom">从新手入门开始 →</a>
           <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="tutorial_hub_bottom">了解 LolaClaw →</a>
-          <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">加入社区 →</a>
+          <a href="#" class="btn btn-outline-dark" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial_hub_bottom">加入社区 →</a>
         </div>
       </div>
     </div>
@@ -390,7 +661,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
           <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
             当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
           </div>
@@ -436,6 +707,72 @@
     });
   </script>
 
+  <!-- 常用命令速查：筛选 + 搜索 + 复制 -->
+  <script>
+  (function(){
+    var grid = document.getElementById('cmdRefGrid');
+    var cards = grid ? Array.from(grid.querySelectorAll('.cmd-ref-card')) : [];
+    var tabs = document.getElementById('cmdTabBar');
+    var searchInput = document.getElementById('cmdSearch');
+    var emptyMsg = document.getElementById('cmdRefEmpty');
+    var activeCat = 'all';
+
+    function applyFilter(){
+      var q = (searchInput.value || '').trim().toLowerCase();
+      var visible = 0;
+      cards.forEach(function(c){
+        var catMatch = activeCat === 'all' || c.dataset.cat === activeCat;
+        var txt = (c.textContent || '').toLowerCase();
+        var searchMatch = !q || txt.indexOf(q) !== -1;
+        if(catMatch && searchMatch){ c.classList.remove('hidden'); visible++; }
+        else { c.classList.add('hidden'); }
+      });
+      if(emptyMsg) emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    if(tabs){
+      tabs.addEventListener('click', function(e){
+        var btn = e.target.closest('.cmd-tab');
+        if(!btn) return;
+        tabs.querySelectorAll('.cmd-tab').forEach(function(t){ t.classList.remove('active'); });
+        btn.classList.add('active');
+        activeCat = btn.dataset.cat || 'all';
+        applyFilter();
+      });
+    }
+
+    if(searchInput){
+      searchInput.addEventListener('input', applyFilter);
+    }
+
+    // 复制按钮
+    if(grid){
+      grid.addEventListener('click', function(e){
+        var btn = e.target.closest('.cmd-copy-btn');
+        if(!btn) return;
+        var cmd = btn.dataset.cmd || '';
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(cmd).then(function(){
+            btn.textContent = '✓ 已复制';
+            btn.classList.add('copied');
+            setTimeout(function(){ btn.textContent = '复制'; btn.classList.remove('copied'); }, 1500);
+          });
+        }else{
+          // fallback
+          var ta = document.createElement('textarea');
+          ta.value = cmd; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          try{ document.execCommand('copy');
+            btn.textContent = '✓ 已复制'; btn.classList.add('copied');
+            setTimeout(function(){ btn.textContent = '复制'; btn.classList.remove('copied'); }, 1500);
+          }catch(ex){}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+  })();
+  </script>
+
   
   <!-- 二维码弹窗模板 -->
   <div class="qr-modal" id="qrModal">
@@ -464,25 +801,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -493,6 +830,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -519,11 +857,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }

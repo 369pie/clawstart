@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="安装第一个 Skill - ClawStart">
   <meta name="twitter:description" content="第一次装 Skill 不要贪多，按最短路径装一个真正会用的。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -67,12 +67,23 @@
       </div>
 
       <figure class="tutorial-illustration">
-        <img src="assets/tutorials/skill-install-placeholder.svg" alt="ClawStart 第一次安装 Skill 的占位示意图">
-        <figcaption>占位示意图：第一次装 Skill 的最短路径是搜索、安装、第一次调用验证，不需要一开始收藏很多复杂扩展。</figcaption>
+        <img src="assets/tutorials/skill-install-placeholder.svg" alt="ClawStart 第一次安装 Skill 的示意图">
+        <figcaption>示意图：第一次装 Skill 的最短路径是搜索、安装、第一次调用验证，不需要一开始收藏很多复杂扩展。</figcaption>
       </figure>
 
+      <div class="card mt-8">
+        <h3>不想整页看完，就直接走这 4 个入口</h3>
+        <p>如果你现在只想知道下一步该做什么，直接跳到对应步骤，不用从头慢慢滑。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="#choose-skill" class="btn btn-primary btn-sm" data-track="click_skill_install_guide" data-surface="tutorial_install_skill_quick_routes">先选 Skill →</a>
+          <a href="#install-skill" class="btn btn-outline-dark btn-sm" data-track="click_skill_install_guide" data-surface="tutorial_install_skill_quick_routes">直接看安装 →</a>
+          <a href="#verify-skill" class="btn btn-outline-dark btn-sm" data-track="click_skill_install_guide" data-surface="tutorial_install_skill_quick_routes">直接看验证 →</a>
+          <a href="#skill-install-problems" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_install_skill_quick_routes">装失败怎么办 →</a>
+        </div>
+      </div>
+
       <p class="section-title mt-8">先做一个选择</p>
-      <h2 class="text-h2 mb-4">选一个你一周内会真正用到的 Skill</h2>
+      <h2 class="text-h2 mb-4" id="choose-skill">选一个你一周内会真正用到的 Skill</h2>
       <ul class="tutorial-checklist">
         <li>想快速看到结果：优先选搜索 / 查询类</li>
         <li>想提高办公效率：优先选文件 / 内容整理类</li>
@@ -81,7 +92,7 @@
 
       <p class="section-title mt-12">步骤 1</p>
       <h2 class="text-h2 mb-4">先搜索，再判断</h2>
-      <div class="code-block"><span class="comment"># 第一步不是先硬搜命令，而是先确认 slug</span>
+      <div class="code-block"><span class="comment"># 第一步不是先硬搜命令，而是先确认 Skill 的唯一名称（slug）</span>
 # 打开 Skills Hub，看中文分类和真实 Skill 页面
 
 <span class="comment"># 选好以后直接执行安装命令</span>
@@ -91,7 +102,7 @@ npx clawhub@latest install weather
 npx clawhub@latest install github</div>
       <div class="tip-box">
         <strong>判断原则</strong>
-        第一次优先选“名字直白、用途明确、你今天就能试一次”的 Skill，不要先装很复杂的组合型 Skill。
+        第一次优先选"名字直白、用途明确、你今天就能试一次"的 Skill，简单的用顺了再看组合型 Skill。
       </div>
       <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
         <a href="skills-hub.html?tags=beginner,no_api_key" class="btn btn-primary btn-sm" data-track="click_skill_hub" data-surface="tutorial_install_skill_step_1">先去看 适合小白 + 无需 API Key →</a>
@@ -113,7 +124,7 @@ npx clawhub@latest install github</div>
       </div>
 
       <p class="section-title mt-12">步骤 2</p>
-      <h2 class="text-h2 mb-4">只装一个</h2>
+      <h2 class="text-h2 mb-4" id="install-skill">只装一个</h2>
       <div class="visual-step-grid mb-8">
         <article class="visual-step-card">
           <div class="visual-shot">
@@ -151,7 +162,7 @@ npx clawhub@latest install baidu-search
 
 <span class="comment"># 或安装 Git / 仓库类 Skill</span>
 npx clawhub@latest install github</div>
-      <div class="success-box">
+      <div class="success-box" id="install-success-check">
         成功标准：命令执行完成后，你能立刻在对话里问一个最短问题来验证它。
       </div>
 
@@ -223,7 +234,7 @@ npx clawhub@latest install github</div>
       </div>
 
       <p class="section-title mt-12">步骤 3</p>
-      <h2 class="text-h2 mb-4">立刻验证一次</h2>
+      <h2 class="text-h2 mb-4" id="verify-skill">立刻验证一次</h2>
       <p class="text-body mb-4">装完不要停在“我已经装上了”。马上提一个最短问题，验证这个 Skill 是不是真的能帮到你。</p>
       <div class="code-block"><span class="comment"># 安装了 weather 以后</span>
 上海明天会下雨吗？
@@ -232,14 +243,14 @@ npx clawhub@latest install github</div>
 帮我看一下这个仓库最近 3 次提交的重点</div>
 
       <p class="section-title mt-12">步骤 4</p>
-      <h2 class="text-h2 mb-4">如果失败，优先看这 3 类问题</h2>
+      <h2 class="text-h2 mb-4" id="skill-install-problems">如果失败，优先看这 3 类问题</h2>
       <div class="tutorial-link-list">
         <article class="tutorial-link-item">
           <div>
             <h3>搜索结果有，但安装失败</h3>
             <p>通常是网络、权限、registry 或依赖问题，优先去排障页查 Skill 安装失败类问题。</p>
           </div>
-          <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_install_skill_faq">去排障 →</a>
+          <a href="troubleshooting.html#runtime-fail" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="tutorial_install_skill_faq">去排障 →</a>
         </article>
         <article class="tutorial-link-item">
           <div>
@@ -322,7 +333,12 @@ npx clawhub@latest install github</div>
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -389,25 +405,25 @@ npx clawhub@latest install github</div>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-install-first-skill_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-install-first-skill_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-install-first-skill_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-install-first-skill_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -418,6 +434,7 @@ npx clawhub@latest install github</div>
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -444,11 +461,27 @@ npx clawhub@latest install github</div>
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -475,7 +508,7 @@ npx clawhub@latest install github</div>
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

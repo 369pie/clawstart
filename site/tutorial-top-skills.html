@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="新手推荐 Skills - ClawStart">
   <meta name="twitter:description" content="第一次装 Skill 不看数量，看你能不能真的用起来。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -70,26 +70,37 @@
       <h2 class="text-h2 mb-6">新手优先装这 4 类</h2>
 
       <div class="card-grid-2">
-        <article class="card">
+        <article class="card" id="top-search-skills">
           <div class="card-icon">🌦️</div>
           <h3>搜索 / 查询类</h3>
           <p>优先级最高。装完后最容易立刻问一句话就看到效果。</p>
         </article>
-        <article class="card">
+        <article class="card" id="top-work-skills">
           <div class="card-icon">🗂️</div>
           <h3>文件 / 整理类</h3>
           <p>适合办公和内容用户，最容易在日常任务里重复使用。</p>
         </article>
-        <article class="card">
+        <article class="card" id="top-dev-skills">
           <div class="card-icon">🧰</div>
           <h3>Git / 仓库类</h3>
           <p>适合开发者或半技术用户，能很快看出“装前和装后”的区别。</p>
         </article>
-        <article class="card">
+        <article class="card" id="top-writing-skills">
           <div class="card-icon">✍️</div>
           <h3>写作 / 内容处理类</h3>
           <p>适合创作者和运营用户，最容易直接转化成实际产出。</p>
         </article>
+      </div>
+
+      <div class="card mt-8">
+        <h3>不想整页看完，就直接走这 4 个入口</h3>
+        <p>如果你已经知道自己更偏哪类场景，就直接跳到对应类型，再决定装哪个最划算。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="#top-search-skills" class="btn btn-primary btn-sm" data-track="click_skill_guide" data-surface="tutorial_top_skills_quick_routes">看搜索类 →</a>
+          <a href="#top-work-skills" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_top_skills_quick_routes">看工作类 →</a>
+          <a href="#top-dev-skills" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_top_skills_quick_routes">看开发类 →</a>
+          <a href="#top-writing-skills" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="tutorial_top_skills_quick_routes">看写作类 →</a>
+        </div>
       </div>
 
       <p class="section-title mt-12">怎么选</p>
@@ -120,7 +131,7 @@
       <a href="tutorial-skills-by-role.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_guide" data-surface="tutorial_top_skills_role_split">按内容 / 办公 / 开发人群继续看 →</a>
 
       <p class="section-title mt-12">真实可装清单</p>
-      <h2 class="text-h2 mb-6">第一次最值得直接试的 4 个真实 Skill</h2>
+      <h2 class="text-h2 mb-6" id="real-skill-list">第一次最值得直接试的 4 个真实 Skill</h2>
       <div class="skill-feature-grid">
         <article class="skill-card">
           <div class="skill-card-header">
@@ -274,7 +285,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -341,25 +357,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-top-skills_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-top-skills_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-top-skills_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="tutorial-top-skills_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -370,6 +386,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -396,11 +413,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -427,7 +460,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

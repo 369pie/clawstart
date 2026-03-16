@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - 页面未找到 - OpenClaw</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <style>
     .error-page{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#060A14;text-align:center;padding:24px}
@@ -24,7 +24,7 @@
       <p class="error-desc">你要找的页面不存在，可能已经被移动或删除。<br>别担心，回到首页重新开始。</p>
       <div class="error-links">
         <a href="index.html" class="btn btn-primary">回到首页</a>
-        <a href="download.html" class="btn btn-outline">下载安装</a>
+        <a href="download.html" class="btn btn-outline-dark">下载安装</a>
       </div>
     </div>
   </div>
@@ -35,5 +35,162 @@
     const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', currentTheme);
   </script>
+  
+  <!-- 二维码弹窗模板 -->
+  <div class="qr-modal" id="qrModal">
+    <div class="qr-modal-content">
+      <button class="qr-modal-close" id="qrModalClose" aria-label="关闭">×</button>
+      <div class="qr-modal-icon" id="qrModalIcon">💼</div>
+      <h3 class="qr-modal-title" id="qrModalTitle">添加企业微信</h3>
+      <p class="qr-modal-desc" id="qrModalDesc">添加后可获得1对1答疑支持，优先解决安装和配置问题</p>
+      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage">
+      <p class="qr-modal-hint" id="qrModalHint">打开微信/QQ扫码即可加入</p>
+    </div>
+  </div>
+
+  <!-- 社区悬浮入口 -->
+  <button class="community-float-button" id="communityFloatBtn" aria-label="用户社区">💬</button>
+  <div class="community-float-panel" id="communityFloatPanel">
+    <div class="community-float-header">
+      <h4>👋 加入用户社区</h4>
+      <button class="community-float-close" id="communityFloatClose" aria-label="关闭">×</button>
+    </div>
+    <ul class="community-float-list">
+      <li class="community-float-item">
+        <a href="index.html#community">
+          <span class="icon">🏠</span>
+          <span>查看所有社区入口</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="404_float_panel" data-channel="wecom">
+          <span class="icon">💼</span>
+          <span>加企业微信（1对1答疑）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="404_float_panel" data-channel="qq">
+          <span class="icon">🐧</span>
+          <span>QQ交流群（公开讨论）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="404_float_panel" data-channel="wechat">
+          <span class="icon">💬</span>
+          <span>微信群（用户交流）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="404_float_panel" data-channel="planet">
+          <span class="icon">🪐</span>
+          <span>知识星球（付费内容）</span>
+        </a>
+      </li>
+    </ul>
+    <div class="community-float-footer">
+      遇到问题优先看 <a href="troubleshooting.html">排障页</a>
+    </div>
+  </div>
+
+  <script src="community.js"></script>
+  <script>
+    
+    // 二维码弹窗逻辑
+    const qrModal = document.getElementById('qrModal');
+    const qrModalClose = document.getElementById('qrModalClose');
+    const qrModalIcon = document.getElementById('qrModalIcon');
+    const qrModalTitle = document.getElementById('qrModalTitle');
+    const qrModalDesc = document.getElementById('qrModalDesc');
+    const qrModalImage = document.getElementById('qrModalImage');
+    const qrModalHint = document.getElementById('qrModalHint');
+
+    const iconMap = {
+      'wecom': '💼',
+      'qq': '🐧',
+      'wechat': '💬',
+      'planet': '🪐'
+    };
+
+    const hintMap = {
+      'wecom': '打开微信扫码添加企业微信',
+      'qq': '打开QQ扫码加入群聊',
+      'wechat': '打开微信扫码加入群聊',
+      'planet': '打开微信扫码加入知识星球'
+    };
+
+    function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
+      qrModalIcon.textContent = iconMap[type] || '💬';
+      qrModalTitle.textContent = title;
+      qrModalDesc.textContent = desc;
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
+      qrModal.classList.add('show');
+      communityPanel.classList.remove('show');
+    }
+
+    // 社区悬浮按钮逻辑
+    const communityBtn = document.getElementById('communityFloatBtn');
+    const communityPanel = document.getElementById('communityFloatPanel');
+    const communityClose = document.getElementById('communityFloatClose');
+
+    communityBtn.addEventListener('click', () => {
+      communityPanel.classList.toggle('show');
+    });
+
+    qrModalClose.addEventListener('click', () => {
+      qrModal.classList.remove('show');
+    });
+
+    communityClose.addEventListener('click', () => {
+      communityPanel.classList.remove('show');
+    });
+
+    // 点击页面其他地方关闭面板
+    document.addEventListener('click', (e) => {
+      if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
+        communityPanel.classList.remove('show');
+      }
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
+        qrModal.classList.remove('show');
+        communityPanel.classList.remove('show');
+      }
+    });
+  </script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">快速开始</a></li>
+          <li><a href="troubleshooting.html">排障</a></li>
+          <li><a href="resources.html">资源</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Windows 安装指南 - ClawStart">
   <meta name="twitter:description" content="Windows 一键包下载、解压与首次启动说明，适合普通用户先跑通第一次安装。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -85,9 +85,9 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="page-hero-kicker">Windows 安装路径</p>
-      <h1>Windows 安装指南</h1>
-      <p>支持 Windows 10 1903+ 和 Windows 11，64 位系统</p>
+      <p class="page-hero-kicker">Windows 安装指南</p>
+      <h1>解压到新目录，双击启动，就这么简单</h1>
+      <p>支持 Windows 10 和 Windows 11（64 位系统）。<br>第一次安装最常见的问题：直接在压缩包里运行，或者用旧目录覆盖安装。避开这两点就能顺利启动。</p>
     </div>
   </section>
 
@@ -97,16 +97,23 @@
       <div class="card-grid-2 mb-8">
         <div class="card" style="text-align:center;">
           <div class="card-icon">📦</div>
-          <h3>Windows 一键包 Beta</h3>
-          <p>适合普通用户。下载 zip 后解压，双击 <code>launch.bat</code> 即可启动。</p>
-          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-Windows-latest.zip" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="windows" data-surface="windows_hero_card">直接下载 Windows Beta →</a>
+          <h3>Windows 一键包（推荐）</h3>
+          <p>适合普通用户。下载压缩包后解压到一个新目录，双击启动程序即可运行。</p>
+          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-Windows-latest.zip" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="windows" data-surface="windows_hero_card">直接下载 Windows 版 →</a>
         </div>
         <div class="card" style="text-align:center;">
           <div class="card-icon">⌨️</div>
-          <h3>备用命令行路径</h3>
-          <p>更适合熟悉 Node.js 和命令行的用户，不推荐第一次使用优先走这条路。</p>
+          <h3>高级：命令行方式</h3>
+          <p>适合熟悉 Node.js 和命令行的开发者，新手用户推荐走上面的一键包。</p>
           <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="windows" data-surface="windows_hero_card">查看命令 →</a>
         </div>
+      </div>
+
+      <div class="warning-box mb-8">
+        <strong>先避开两个高频坑</strong><br>
+        1. 请先完整解压，不要在压缩包预览窗口里直接双击启动程序<br>
+        2. 每次更新建议解压到新目录，不要覆盖旧目录<br>
+        每次都用新目录启动，是最稳的方式。
       </div>
 
       <h2 class="text-h2 mb-6">Windows 一键包步骤</h2>
@@ -115,32 +122,36 @@
           <div class="step-num"></div>
           <div class="step-body">
             <h3>下载安装包</h3>
-            <p>打开最新 Release，选择 Windows 对应的 `ClawStart-Windows-*.zip` 下载。</p>
+            <p>打开最新版本页面，选择 Windows 对应的压缩包下载。第一次安装优先用一键包，最简单省心。</p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>解压并运行启动器</h3>
-            <p>将 zip 解压到任意目录，双击 <code>launch.bat</code>。如果 SmartScreen 拦截，点击「更多信息」→「仍要运行」。</p>
+            <h3>解压到新目录后再运行启动器</h3>
+            <p>先把压缩包完整解压到一个新的空目录，再双击启动程序（launch.bat）。如果 SmartScreen（Windows 自带的安全拦截）弹窗，点击「更多信息」→「仍要运行」即可。请先完整解压再运行，也不要覆盖旧目录。</p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>完成首次引导</h3>
-            <p>按引导选择模型服务商、填入 API Key、测试连通性。成功后浏览器会自动打开。</p>
+            <h3>完成首次引导并拿到第一次正常回复</h3>
+            <p>按引导选择模型服务商、填入 API Key（服务商给你的专属密码）、测试连通性。浏览器打开后，先确认你已经拿到一条正常回复，这才算真的跑通。</p>
           </div>
         </li>
       </ol>
 
-      <h2 id="cli" class="text-h2 mb-6">命令行安装步骤</h2>
+      <h2 id="cli" class="text-h2 mb-6">高级：命令行安装步骤</h2>
+      <div class="tip-box mb-6">
+        <strong>💡 适合谁</strong>
+        以下步骤面向熟悉 Node.js 编程环境的开发者。如果你是普通用户，请直接使用上面的一键包。
+      </div>
       <ol class="install-step mb-8">
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
             <h3>安装 Node.js</h3>
-            <p>如果还没有 Node.js，去 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载 LTS 版本安装。</p>
+            <p>OpenClaw 需要 <strong>Node.js 22 或更高版本</strong>。去 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载 LTS 版本安装。</p>
             <p>或者用包管理器安装：</p>
             <div class="code-block"><span class="comment"># Winget (推荐)</span>
 winget install OpenJS.NodeJS.LTS
@@ -156,25 +167,79 @@ choco install nodejs-lts</div>
           <div class="step-num"></div>
           <div class="step-body">
             <h3>全局安装 OpenClaw</h3>
-            <div class="code-block">npm install -g @anthropic/openclaw</div>
+            <div class="code-block">npm install -g openclaw@latest</div>
+            <p style="margin-top:var(--space-2);font-size:13px;">也可以用 pnpm：<code>pnpm add -g openclaw@latest</code></p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>启动服务</h3>
-            <div class="code-block">openclaw start</div>
-            <p style="margin-top:var(--space-2);">浏览器会自动打开配置界面。</p>
+            <h3>运行引导向导</h3>
+            <div class="code-block">openclaw onboard --install-daemon</div>
+            <p style="margin-top:var(--space-2);">向导会引导你完成 Gateway、Workspace、频道和 Skill 的配置。</p>
           </div>
         </li>
       </ol>
+
+      <h2 class="text-h2 mb-6">推荐环境与已知问题</h2>
+
+      <div class="card mb-8" style="background:var(--theme-bg-alt);">
+        <h3 style="margin-bottom:var(--space-3);">✅ 推荐环境</h3>
+        <ul style="line-height:2.2;">
+          <li><strong>系统版本：</strong>Windows 10 64 位 或 Windows 11（推荐最新正式版）</li>
+          <li><strong>内存：</strong>8GB 以上（推荐 16GB）</li>
+          <li><strong>磁盘空间：</strong>至少预留 2GB 可用空间</li>
+          <li><strong>网络：</strong>需要能访问 GitHub 和所选模型服务商 API</li>
+          <li><strong>浏览器：</strong>Chrome / Edge / Firefox 最新版</li>
+        </ul>
+      </div>
+
+      <div class="card mb-8" style="background:var(--theme-bg-alt);">
+        <h3 style="margin-bottom:var(--space-3);">⏱️ 首次启动耗时预期</h3>
+        <ul style="line-height:2.2;">
+          <li><strong>解压一键包：</strong>约 10-30 秒（取决于硬盘速度）</li>
+          <li><strong>首次启动：</strong>约 30-60 秒（首次需要下载必要组件）</li>
+          <li><strong>浏览器打开：</strong>启动器会自动打开配置界面。如果没有自动打开，手动在浏览器地址栏输入 <code>http://127.0.0.1:18789</code></li>
+        </ul>
+      </div>
+
+      <div class="card mb-8" style="background:var(--theme-bg-alt);">
+        <h3 style="margin-bottom:var(--space-3);">⚠️ 已知问题</h3>
+        <details style="margin-bottom:var(--space-3);">
+          <summary><strong>「系统无法接受输入的时间」错误</strong></summary>
+          <p style="margin-top:var(--space-2);">部分中文 Windows 环境下，启动器内部调用 <code>timeout</code> 命令时可能触发此错误。我们已在最新版本中修复为 PowerShell <code>Start-Sleep</code>，如仍遇到此问题：</p>
+          <ol style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
+            <li>确认已下载最新 Release 版本</li>
+            <li>尝试手动运行 <code>diagnose.bat</code> 查看详细日志</li>
+            <li>前往 <a href="troubleshooting.html">排障页</a> 搜索此错误码</li>
+          </ol>
+        </details>
+        <details style="margin-bottom:var(--space-3);">
+          <summary><strong>logs 目录下没有日志文件</strong></summary>
+          <p style="margin-top:var(--space-2);">如果启动失败但 logs 目录为空，可能是网关未成功启动。请运行 <code>diagnose.bat</code> 进行诊断，日志会输出到控制台。</p>
+        </details>
+        <details>
+          <summary><strong>浏览器打开但显示无法连接</strong></summary>
+          <p style="margin-top:var(--space-2);">确认网关已完全启动（看到「OK OpenClaw 已启动」提示），并访问正确端口 <code>18789</code> 而非 <code>3000</code>。</p>
+        </details>
+      </div>
+
+      <div class="card mb-8" style="background:var(--theme-bg-alt);">
+        <h3 style="margin-bottom:var(--space-3);">🆘 遇到问题？</h3>
+        <p>如果上述问题都没解决你的情况，别自己硬扛：</p>
+        <ul style="line-height:2.2;">
+          <li>先看 <a href="troubleshooting.html">排障页</a> 按现象找解决方案</li>
+          <li>或 <a href="index.html#community">加入用户社区</a> 提问</li>
+          <li>也可发邮件到 <a href="mailto:hi@useclawstart.com">hi@useclawstart.com</a></li>
+        </ul>
+      </div>
 
       <h2 class="text-h2 mb-6">常见问题</h2>
 
       <details class="faq-item">
         <summary>Windows SmartScreen 阻止安装？</summary>
         <div class="faq-answer">
-          <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」即可。底层的 OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
+          <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」即可。OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
         </div>
       </details>
 
@@ -203,9 +268,12 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
       </details>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
-        <p class="text-body mb-4">跟着快速开始指南，10 分钟完成第一次配置</p>
-        <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="windows_bottom_cta">查看快速开始 →</a>
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">装好以后别停在“能打开了”</h3>
+        <p class="text-body mb-4">下一步不是继续研究安装，而是按快速开始完成模型测试和第一次正常输出。能拿到第一条可用结果，才叫真正装好。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="windows_bottom_cta">继续看快速开始 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="windows_bottom_cta">卡住了？去排障 →</a>
+        </div>
       </div>
 
     </div>
@@ -215,7 +283,7 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
           <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
             当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
           </div>
@@ -283,25 +351,25 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="windows_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="windows_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="windows_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="windows_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -312,6 +380,7 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -338,11 +407,27 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -369,7 +454,7 @@ setx PATH "%PATH%;%APPDATA%\npm"</div>
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

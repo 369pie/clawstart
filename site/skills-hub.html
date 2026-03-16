@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Skills Hub - ClawStart">
   <meta name="twitter:description" content="从 ClawHub 获取真实技能，用中文分类展示，默认提供安装命令。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -51,110 +51,157 @@
     </nav>
   </header>
 
-  <section class="page-hero">
-    <div class="container">
-      <p class="page-hero-kicker">ClawStart Skills Hub</p>
-      <h1>Skills Hub</h1>
-      <p>从 ClawHub 获取真实技能，按中文场景重新分类。默认只展示中文说明，安装命令保持原始英文，方便你直接复制使用。</p>
+  <!-- ===== Hero ===== -->
+  <section class="sh-hero">
+    <div class="sh-hero-bg"></div>
+    <div class="container sh-hero-inner">
+      <p class="sh-hero-badge">🦞 ClawStart Skills Hub</p>
+      <h1 class="sh-hero-title">装上这些 Skill<br>解锁 AI 超能力</h1>
+      <p class="sh-hero-desc">从 ClawHub 生态精选最值得安装的 AI Skills，中文分类说明，安装命令一键复制。</p>
+      <div class="sh-hero-actions">
+        <a href="#featured" class="btn btn-primary btn-lg">查看精选榜单</a>
+        <a href="#explore" class="btn btn-outline-light btn-lg">探索全部技能</a>
+      </div>
+      <div class="sh-hero-trust">
+        <span class="sh-trust-item">★ 官方精选推荐</span>
+        <span class="sh-trust-item">⚡ 一键安装命令</span>
+        <span class="sh-trust-item">✓ 中文说明</span>
+      </div>
     </div>
   </section>
 
-  <section class="section section-alt">
+  <!-- ===== Install Guide ===== -->
+  <section class="section sh-install-section">
+    <div class="container" style="max-width:780px;">
+      <div class="tip-box" style="margin-bottom:var(--space-6);">
+        <strong>第一次来这页，建议别贪多。</strong>
+        先装 1 个最接近你当前任务的 Skill，装完后马上验证一次。新手最稳的顺序是：<a href="tutorial-install-first-skill.html">按教程安装第一个 Skill</a> → 再回来逛完整目录。
+      </div>
+      <div class="sh-install-box">
+        <h2 class="sh-install-title">如何安装 Skill？</h2>
+        <p class="sh-install-desc">先装一个真会用到的，30 秒完成第一次安装</p>
+        <div class="sh-install-tabs">
+          <button class="sh-install-tab is-active" data-tab="agent">🤖 发给 AI Agent</button>
+          <button class="sh-install-tab" data-tab="manual">⌨️ 手动终端安装</button>
+        </div>
+        <div class="sh-install-panel" id="installPanelAgent">
+          <p class="sh-install-hint">将以下提示词复制后发送给你的 AI Agent（Claude / ChatGPT / Cursor 等），它会自动帮你完成安装：</p>
+          <div class="sh-code-block">
+            <span class="sh-code-prefix">Prompt</span>
+            <code id="agentPromptCode">请帮我安装以下 AI Skill，在终端运行：npx clawhub@latest install &lt;技能名&gt;</code>
+            <button class="sh-copy-btn" data-target="agentPromptCode" aria-label="复制"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>复制</span></button>
+          </div>
+        </div>
+        <div class="sh-install-panel" id="installPanelManual" style="display:none;">
+          <p class="sh-install-hint">在终端直接运行以下命令。把 <code>&lt;slug&gt;</code> 替换成想安装的技能名：</p>
+          <div class="sh-code-block">
+            <span class="sh-code-prefix">Terminal</span>
+            <code id="manualInstallCode">npx clawhub@latest install &lt;slug&gt;</code>
+            <button class="sh-copy-btn" data-target="manualInstallCode" aria-label="复制"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>复制</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured TOP Skills ===== -->
+  <section class="section" id="featured">
     <div class="container" style="max-width:1200px;">
-      <div class="skill-hub-layout">
-        <div class="tip-box">
-          <strong>先记一个原则</strong>
-          第一次先装 1 到 2 个最像你日常任务的 Skill。这里的中文说明是为小白重新整理过的入口文案，真实来源仍然是 <a href="https://clawhub.ai/" target="_blank" rel="noopener">ClawHub</a>。
-        </div>
-
-        <div class="skill-hub-stats">
-          <article class="skill-hub-stat">
-            <div class="section-title">ClawHub 总技能数</div>
-            <strong id="skillsTotalCount">--</strong>
-            <p>公开可见技能总量，来自 ClawHub 实时接口。</p>
-          </article>
-          <article class="skill-hub-stat">
-            <div class="section-title">当前已加载</div>
-            <strong id="skillsLoadedCount">--</strong>
-            <p>已经从 ClawHub 拉到本页并完成分类的技能数。</p>
-          </article>
-          <article class="skill-hub-stat">
-            <div class="section-title">当前可见</div>
-            <strong id="skillsVisibleCount">--</strong>
-            <p>在当前筛选条件下，页面上正在显示的技能数。</p>
-          </article>
-        </div>
-
-        <div class="skill-hub-toolbar">
-          <div class="skill-hub-field">
-            <label for="skillsHubSearch">本页已加载技能里快速筛选</label>
-            <input id="skillsHubSearch" class="skill-hub-input" type="search" placeholder="搜技能名、slug、中文说明">
-          </div>
-          <div class="skill-hub-field">
-            <label for="skillsHubCategory">中文分类</label>
-            <select id="skillsHubCategory" class="skill-hub-select">
-              <option value="all">全部分类</option>
-              <option value="search">搜索与信息查询</option>
-              <option value="office">办公与内容处理</option>
-              <option value="dev">开发与仓库工具</option>
-              <option value="automation">自动化与代理增强</option>
-              <option value="media">多媒体与素材处理</option>
-            </select>
-          </div>
-          <div class="skill-hub-field">
-            <label for="skillsHubSort">拉取排序</label>
-            <select id="skillsHubSort" class="skill-hub-select">
-              <option value="downloads">按下载量</option>
-              <option value="stars">按星标数</option>
-              <option value="newest">按最新发布</option>
-              <option value="updated">按最近更新</option>
-              <option value="name">按名称</option>
-            </select>
-          </div>
-          <div class="skill-hub-note">
-            默认只展示 ClawHub 的公开、非可疑技能。安装命令统一使用 `npx clawhub@latest install <slug>`，更适合第一次上手。
-          </div>
-        </div>
-
-        <div class="skill-tag-filter" aria-label="实用标签筛选">
-          <div class="skill-tag-filter-heading">
-            <p class="section-title">实用筛选</p>
-            <h2 class="text-h2">按“适不适合我现在用”来缩小范围</h2>
-          </div>
-          <div class="skill-tag-filter-chips" id="skillsHubTagFilters">
-            <button type="button" class="skill-tag-filter-chip is-active" data-tag="all">全部标签</button>
-            <button type="button" class="skill-tag-filter-chip" data-tag="no_api_key">无需 API Key</button>
-            <button type="button" class="skill-tag-filter-chip" data-tag="chinese_friendly">中文友好</button>
-            <button type="button" class="skill-tag-filter-chip" data-tag="beginner">适合小白</button>
-            <button type="button" class="skill-tag-filter-chip" data-tag="login_required">需要登录</button>
-          </div>
-          <p class="skill-tag-filter-note" id="skillsHubTagNote">先从“适合小白”或“无需 API Key”开始，会更容易第一次就跑通。</p>
-        </div>
-
+      <div class="sh-section-header">
         <div>
-          <p class="section-title">精选起步技能</p>
-          <h2 class="text-h2 mb-4">先从这些最容易看见价值的真实 Skill 开始</h2>
-          <div class="skill-feature-grid" id="featuredSkillsGrid"></div>
+          <p class="sh-section-kicker">精选推荐</p>
+          <h2 class="sh-section-title">精选 TOP Skills 榜单</h2>
+          <p class="sh-section-desc">从 ClawHub 生态中精选最值得安装的 AI Skills，新手最容易上手。</p>
         </div>
+      </div>
+      <div id="featuredSkillsGrid" class="sh-featured-grid">
+        <!-- JS renders -->
+      </div>
+      <div class="card" style="margin-top:var(--space-8);padding:var(--space-6);">
+        <div class="tutorial-meta-row">
+          <span class="tutorial-pill">不会选也正常</span>
+          <span class="tutorial-pill">先按结果选</span>
+        </div>
+        <h3>如果你只是想先装一个，别研究半天分类</h3>
+        <p>内容用户优先看写作与办公类，开发用户优先看仓库、Git 和自动化类。还拿不准的话，先走“安装第一个 Skill”的教程，跑通一次再回来挑第二个。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="tutorial-install-first-skill.html" class="btn btn-primary btn-sm" data-track="click_skill_install_guide" data-surface="skills_hub_featured">先装第一个 Skill →</a>
+          <a href="tutorial-skills-by-role.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="skills_hub_featured">按人群选 Skills →</a>
+          <a href="tutorial-top-skills.html" class="btn btn-outline-dark btn-sm" data-track="click_skill_guide" data-surface="skills_hub_featured">看推荐榜单 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ===== Explore All Skills ===== -->
+  <section class="section section-alt" id="explore">
+    <div class="container" style="max-width:1200px;">
+      <div class="sh-section-header">
         <div>
-          <p class="section-title">实时技能目录</p>
-          <h2 class="text-h2 mb-4">已加载技能按中文场景分类展示</h2>
-          <div id="skillsCatalog"></div>
-          <div class="skill-load-more">
-            <button id="skillsHubLoadMore" class="btn btn-primary">继续从 ClawHub 加载更多技能</button>
-          </div>
+          <p class="sh-section-kicker">探索全部技能</p>
+          <h2 class="sh-section-title">发现你需要的 AI Skills</h2>
+          <p class="sh-section-desc">收录 ClawHub 生态 <strong id="skillsTotalCount">--</strong> 个 Skills，快速发现你需要的 AI Skills</p>
         </div>
+      </div>
 
-        <div class="card text-center" style="padding:var(--space-8);">
-          <h3 class="text-h3" style="margin-bottom:var(--space-2);">看完 Skills Hub 后怎么继续最顺</h3>
-          <p class="text-body mb-4">先选一个最像你当前任务的 Skill，然后回安装教程把搜索、安装、验证这条链路完整走一遍。</p>
-          <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
-            <a href="tutorial-install-first-skill.html" class="btn btn-primary" data-track="click_skill_install_guide" data-surface="skills_hub_bottom">回安装第一个 Skill →</a>
-            <a href="tutorial-top-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="skills_hub_bottom">回推荐清单 →</a>
-            <a href="tutorial-skills-by-role.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="skills_hub_bottom">按人群继续筛选 →</a>
-          </div>
+      <!-- Toolbar: Search + Cats + Sort -->
+      <div class="sh-toolbar">
+        <div class="sh-toolbar-search">
+          <span class="sh-search-icon">🔍</span>
+          <input id="skillsHubSearch" class="sh-search-input" type="search" placeholder="搜技能名、分类、中文说明...">
         </div>
+        <div class="sh-toolbar-sort">
+          <select id="skillsHubSort" class="skill-hub-select">
+            <option value="downloads">按下载量</option>
+            <option value="stars">按星标数</option>
+            <option value="newest">按最新发布</option>
+            <option value="updated">按最近更新</option>
+            <option value="name">按名称</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="sh-cat-tabs" id="skillsHubCategoryTabs">
+        <button class="sh-cat-tab is-active" data-cat="all">全部</button>
+        <button class="sh-cat-tab" data-cat="search">🔍 搜索与信息查询</button>
+        <button class="sh-cat-tab" data-cat="office">📄 办公与内容处理</button>
+        <button class="sh-cat-tab" data-cat="dev">💻 开发与仓库工具</button>
+        <button class="sh-cat-tab" data-cat="automation">🤖 自动化与代理增强</button>
+        <button class="sh-cat-tab" data-cat="media">🎬 多媒体与素材处理</button>
+      </div>
+
+      <!-- Tag Filter Chips -->
+      <div class="sh-tag-row">
+        <div id="skillsHubTagFilters" class="sh-tag-chips">
+          <!-- JS renders -->
+        </div>
+        <div id="skillsHubTagNote" class="sh-tag-note" style="display:none;"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="sh-stats-row">
+        <span class="sh-stat">已加载 <strong id="skillsLoadedCount">--</strong></span>
+        <span class="sh-stat">本页筛选 <strong id="skillsVisibleCount">--</strong></span>
+      </div>
+
+      <!-- Hidden select for JS compat -->
+      <select id="skillsHubCategory" style="display:none;">
+        <option value="all">全部分类</option>
+        <option value="search">搜索与信息查询</option>
+        <option value="office">办公与内容处理</option>
+        <option value="dev">开发与仓库工具</option>
+        <option value="automation">自动化与代理增强</option>
+        <option value="media">多媒体与素材处理</option>
+      </select>
+
+      <!-- Catalog Grid -->
+      <div id="skillsCatalog" class="sh-catalog">
+        <!-- JS renders -->
+      </div>
+
+      <div class="text-center" style="margin-top: 32px;">
+        <button id="skillsHubLoadMore" class="btn btn-outline-dark btn-xl" style="width: 100%; max-width: 480px; display: none;">继续从 ClawHub 加载更多技能</button>
       </div>
     </div>
   </section>
@@ -162,7 +209,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -175,7 +227,7 @@
   </footer>
 
   <script src="analytics.js"></script>
-  <script src="skills-hub.js"></script>
+  <script src="skills-hub.js?v=5"></script>
   <script>
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -230,25 +282,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="skillshub_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="skillshub_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="skillshub_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="skillshub_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -259,6 +311,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -285,11 +338,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -316,7 +385,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

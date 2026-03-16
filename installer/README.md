@@ -18,8 +18,7 @@ ClawStart 一键包是面向中文用户的 OpenClaw 免安装发行版。用户
 
 ```
 ClawStart-v{版本号}-win64/
-├── launch.bat              # 双击启动（主入口）
-├── launch.ps1              # PowerShell 备用启动器
+├── launch.bat              # 双击启动（主入口，默认打开 http://127.0.0.1:18789/ ）
 ├── first-run.bat           # 首次运行引导（自动调用）
 ├── diagnose.bat            # 诊断工具（遇到问题时使用）
 ├── runtime/
@@ -57,12 +56,17 @@ cd installer/windows
 
 构建步骤：
 1. 下载 Node.js Windows 便携版（x64）
-2. 克隆 OpenClaw 指定版本
-3. 安装依赖（npm ci --production）
-4. 复制启动器脚本和配置模板
-5. 生成预配置工作区
+2. 通过 npm 安装 `openclaw` 到包内前缀目录（不是直接从本地源码仓库复制）
+3. 复制启动器脚本和配置模板
+4. 生成预配置工作区
+5. 校验关键产物路径和文件名
 6. 打包为 zip（保留目录结构）
 7. 计算 SHA256 校验和
+
+说明：
+- 当前默认来源是 npm registry 上的 `openclaw` 包
+- `openclaw` 包对应源码仓库：`https://github.com/openclaw/openclaw.git`
+- 如需固定版本或切换镜像，应优先通过 npm 源和版本号控制，不要假设打包脚本会直接读取本地 OpenClaw 仓库
 
 ### macOS 包
 
@@ -72,6 +76,10 @@ cd installer/macos
 ```
 
 构建步骤与 Windows 类似，使用 macOS 版 Node.js 运行时。
+
+补充说明：
+- macOS 包当前也通过 npm 安装 `openclaw` 到包内目录
+- 默认网关地址按当前 OpenClaw 本地服务约定对齐到 `http://127.0.0.1:18789/`
 
 ## 版本管理策略
 

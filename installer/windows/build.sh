@@ -13,7 +13,7 @@ VERSION="${1:-0.1.0}"
 PACK_NAME="ClawStart-Windows-v${VERSION}"
 DEST="$PROJECT_ROOT/build/windows/$PACK_NAME"
 
-NODE_VERSION="v22.12.0"
+NODE_VERSION="v22.16.0"
 NODE_ARCH="win-x64"
 NODE_URL="https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-${NODE_ARCH}.zip"
 NPM_REGISTRY="${CLAWSTART_NPM_REGISTRY:-https://registry.npmjs.org}"
@@ -21,6 +21,19 @@ NPM_REGISTRY="${CLAWSTART_NPM_REGISTRY:-https://registry.npmjs.org}"
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 NC='\033[0m'
+
+# Convert a UTF-8 bat file to UTF-8 BOM + CRLF for correct Windows CMD handling.
+# Without BOM, chcp 65001 causes cmd.exe file-pointer desync on CJK Windows,
+# resulting in garbled commands and instant exit.
+prepare_bat_for_windows() {
+    local src="$1"
+    local dst="$2"
+    local tmp="${dst}.tmp"
+    # Add UTF-8 BOM (EF BB BF) then convert LF → CRLF
+    printf '\xEF\xBB\xBF' > "$tmp"
+    sed 's/$/\r/' "$src" >> "$tmp"
+    mv "$tmp" "$dst"
+}
 
 download_runtime() {
     local url="$1"
@@ -38,6 +51,48 @@ download_runtime() {
     fi
 
     mv "$tmp" "$dest"
+}
+
+assert_bundled_node_matches_openclaw() {
+    local package_json="$DEST/runtime/npm-global/lib/node_modules/openclaw/package.json"
+
+    if [ ! -f "$package_json" ]; then
+        echo "Missing OpenClaw package.json: $package_json" >&2
+        exit 1
+    fi
+
+    if ! node - "$NODE_VERSION" "$package_json" <<'EOF'
+const bundled = (process.argv[2] || "").replace(/^v/, "").trim();
+const packageJsonPath = process.argv[3];
+const pkg = require(packageJsonPath);
+const requirement = String(pkg.engines?.node || "").trim();
+const match = requirement.match(/^>=\s*(\d+)\.(\d+)\.(\d+)$/);
+
+if (!match) {
+  console.log(`  WARN OpenClaw engines.node is not a simple >=x.y.z range: ${requirement || "(missing)"}`);
+  process.exit(0);
+}
+
+const parse = (value) => value.split(".").map((part) => Number.parseInt(part, 10) || 0);
+const [bundledMajor, bundledMinor, bundledPatch] = parse(bundled);
+const [requiredMajor, requiredMinor, requiredPatch] = match.slice(1).map((part) => Number.parseInt(part, 10));
+
+const ok =
+  bundledMajor > requiredMajor ||
+  (bundledMajor === requiredMajor &&
+    (bundledMinor > requiredMinor ||
+      (bundledMinor === requiredMinor && bundledPatch >= requiredPatch)));
+
+if (!ok) {
+  console.error(`Bundled Node ${bundled} does not satisfy OpenClaw engines.node ${requirement}.`);
+  process.exit(1);
+}
+
+console.log(`  OK Bundled Node ${bundled} satisfies OpenClaw engines.node ${requirement}`);
+EOF
+    then
+        exit 1
+    fi
 }
 
 echo ""
@@ -74,11 +129,19 @@ npm_config_platform=win32 \
 npm_config_arch=x64 \
 npm install -g openclaw --prefix "$DEST/runtime/npm-global" --omit=dev --registry "$NPM_REGISTRY"
 echo -e "  ${GREEN}OK${NC} OpenClaw installed"
+assert_bundled_node_matches_openclaw
 
 echo "  [4/6] Copying launch tools..."
-cp "$SCRIPT_DIR/launch.bat" "$DEST/"
-cp "$SCRIPT_DIR/first-run.bat" "$DEST/"
-cp "$SCRIPT_DIR/diagnose.bat" "$DEST/"
+prepare_bat_for_windows "$SCRIPT_DIR/launch.bat" "$DEST/launch.bat"
+prepare_bat_for_windows "$SCRIPT_DIR/first-run.bat" "$DEST/first-run.bat"
+prepare_bat_for_windows "$SCRIPT_DIR/diagnose.bat" "$DEST/diagnose.bat"
+prepare_bat_for_windows "$SCRIPT_DIR/gateway-runner.bat" "$DEST/gateway-runner.bat"
+
+mkdir -p "$DEST/config-wizard"
+cp "$SCRIPT_DIR/config-wizard/config-server.mjs" "$DEST/config-wizard/config-server.mjs"
+cp "$SCRIPT_DIR/config-wizard/index.html" "$DEST/config-wizard/index.html"
+cp "$SCRIPT_DIR/config-wizard/providers.json" "$DEST/config-wizard/providers.json"
+echo -e "  ${GREEN}OK${NC} Config wizard copied"
 
 echo "  [5/6] Creating default workspace..."
 mkdir -p "$DEST/workspace" "$DEST/state" "$DEST/logs"
@@ -99,7 +162,7 @@ Welcome to your ClawStart workspace.
 - The package keeps its own state under the local `state/` directory
 EOF
 
-cat > "$DEST/README-先看这个.txt" <<'EOF'
+cat > "$DEST/README.txt" <<'EOF'
 ClawStart Windows Beta
 ======================
 
@@ -114,12 +177,40 @@ ClawStart Windows Beta
 
 目录说明
 - runtime/ : 内嵌 Node.js 和 OpenClaw CLI
+- config-wizard/ : 配置向导（首次运行自动打开）
 - workspace/ : 默认工作区
 - state/ : 本地配置和状态
 - logs/ : 启动日志
 EOF
 
-echo "  [6/6] Packing archive..."
+echo "  [6/6] Validating package contents..."
+required_files=(
+    "$DEST/launch.bat"
+    "$DEST/first-run.bat"
+    "$DEST/diagnose.bat"
+    "$DEST/gateway-runner.bat"
+    "$DEST/README.txt"
+    "$DEST/runtime/node/node.exe"
+    "$DEST/runtime/npm-global/lib/node_modules/openclaw/openclaw.mjs"
+    "$DEST/config-wizard/config-server.mjs"
+    "$DEST/config-wizard/index.html"
+    "$DEST/config-wizard/providers.json"
+)
+
+for required in "${required_files[@]}"; do
+    if [ ! -f "$required" ]; then
+        echo "Missing required package file: $required" >&2
+        exit 1
+    fi
+done
+
+if find "$DEST" -print | LC_ALL=C grep -q '[^ -~]'; then
+    echo "Non-ASCII file or directory names found in Windows package." >&2
+    find "$DEST" -print | LC_ALL=C grep '[^ -~]' >&2 || true
+    exit 1
+fi
+
+echo "  [7/7] Packing archive..."
 (
     cd "$PROJECT_ROOT/build/windows"
     zip -qr "$OUTPUT_DIR/${PACK_NAME}.zip" "$PACK_NAME"

@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="macOS 安装指南 - ClawStart">
   <meta name="twitter:description" content="macOS Apple Silicon 和 Intel 一键包下载与首次启动说明。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -85,9 +85,9 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="page-hero-kicker">macOS 安装路径</p>
-      <h1>macOS 安装指南</h1>
-      <p>支持 Apple Silicon (M系列) 和 Intel 芯片</p>
+      <p class="page-hero-kicker">macOS 安装指南</p>
+      <h1>解压，右键打开，跟着引导走</h1>
+      <p>支持 Apple Silicon (M 系列) 和 Intel 芯片。<br>macOS 首次启动最常见的问题，不是包坏了，而是系统安全拦截和错误的打开方式把你卡住了。</p>
     </div>
   </section>
 
@@ -97,17 +97,24 @@
       <div class="card-grid-2 mb-8">
         <div class="card" style="text-align:center;">
           <div class="card-icon">📦</div>
-          <h3>macOS 一键包 Beta</h3>
-          <p>适合想最快跑通的 Mac 用户。下载 tar.gz 后解压，右键打开 <code>launch.command</code>。</p>
-          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-macOS-Apple-Silicon-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="macos_arm" data-surface="macos_hero_card">下载 Apple Silicon Beta →</a>
-          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-macOS-Intel-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm mt-4" data-track="click_download" data-platform="macos_intel" data-surface="macos_hero_card">下载 Intel Beta →</a>
+          <h3>macOS 一键包（推荐）</h3>
+          <p>适合想最快跑通的 Mac 用户。下载压缩包后先解压，再右键打开启动脚本即可。</p>
+          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-macOS-Apple-Silicon-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_download" data-platform="macos_arm" data-surface="macos_hero_card">下载 Apple Silicon 版 →</a>
+          <a href="https://github.com/369pie/clawstart/releases/latest/download/ClawStart-macOS-Intel-latest.tar.gz" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm mt-4" data-track="click_download" data-platform="macos_intel" data-surface="macos_hero_card">下载 Intel 版 →</a>
         </div>
         <div class="card" style="text-align:center;">
           <div class="card-icon">⌨️</div>
-          <h3>备用命令行路径</h3>
-          <p>更适合熟悉 Homebrew、Node.js 和终端的用户，不推荐第一次使用优先走这条路。</p>
+          <h3>高级：命令行方式</h3>
+          <p>适合熟悉 Homebrew、Node.js 和终端的开发者，新手用户推荐走上面的一键包。</p>
           <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="macos" data-surface="macos_hero_card">查看命令 →</a>
         </div>
+      </div>
+
+      <div class="warning-box mb-8">
+        <strong>先避开两个高频坑</strong><br>
+        1. 第一次请用右键打开启动脚本（launch.command），不要直接双击<br>
+        2. 如果系统提示无法验证开发者，这不是安装包有问题，而是 Gatekeeper（macOS 自带的安全验证）在起作用，按下面的处理方式继续<br>
+        大多数 Mac 首装问题，卡的都是这里。
       </div>
 
       <h2 class="text-h2 mb-6">macOS 一键包步骤</h2>
@@ -116,32 +123,36 @@
           <div class="step-num"></div>
           <div class="step-body">
             <h3>下载安装包</h3>
-            <p>打开最新 Release，选择适合自己芯片架构的 macOS `tar.gz` 产物下载。</p>
+            <p>打开最新版本页面，选择适合自己芯片架构的 macOS 压缩包下载。第一次安装优先走一键包，最简单省心。</p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>解压并右键打开</h3>
-            <p>解压下载的压缩包，右键打开 <code>launch.command</code>。首次若被拦截，请在系统设置里选择“仍要打开”。</p>
+            <h3>解压后右键打开启动器</h3>
+            <p>先解压下载的压缩包，再右键打开启动脚本（launch.command）。首次若被拦截，请在系统设置里选择"仍要打开"。出现拦截是正常的，不代表安装包有问题。</p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>完成首次引导</h3>
-            <p>按引导选择模型服务商、填入 API Key、测试连通性。成功后浏览器会自动打开。</p>
+            <h3>完成首次引导并拿到第一次正常回复</h3>
+            <p>按引导选择模型服务商、填入 API Key（服务商给你的专属密码）、测试连通性。浏览器打开后，先确认你已经拿到一条正常回复，这才算真的跑通。</p>
           </div>
         </li>
       </ol>
 
-      <h2 id="cli" class="text-h2 mb-6">命令行安装步骤</h2>
+      <h2 id="cli" class="text-h2 mb-6">高级：命令行安装步骤</h2>
+      <div class="tip-box mb-6">
+        <strong>💡 适合谁</strong>
+        以下步骤面向熟悉终端和 Homebrew 的开发者。如果你是普通用户，请直接使用上面的一键包。
+      </div>
       <ol class="install-step mb-8">
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
             <h3>安装 Node.js</h3>
-            <p>如果还没有 Node.js，先安装 LTS 版本：</p>
+            <p>OpenClaw 需要 <strong>Node.js 22 或更高版本</strong>。推荐用 Homebrew 安装：</p>
             <div class="code-block">brew install node</div>
             <p style="margin-top:var(--space-2);font-size:13px;">没有 Homebrew？去 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载 pkg 安装包。</p>
           </div>
@@ -149,16 +160,17 @@
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>安装底层 OpenClaw CLI</h3>
-            <div class="code-block">npm install -g @anthropic/openclaw</div>
+            <h3>全局安装 OpenClaw</h3>
+            <div class="code-block">npm install -g openclaw@latest</div>
+            <p style="margin-top:var(--space-2);font-size:13px;">也可以用 pnpm：<code>pnpm add -g openclaw@latest</code></p>
           </div>
         </li>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>启动服务</h3>
-            <div class="code-block">openclaw start</div>
-            <p style="margin-top:var(--space-2);">浏览器会自动打开配置界面。</p>
+            <h3>运行引导向导</h3>
+            <div class="code-block">openclaw onboard --install-daemon</div>
+            <p style="margin-top:var(--space-2);">向导会引导你完成 Gateway、Workspace、频道和 Skill 的配置。</p>
           </div>
         </li>
       </ol>
@@ -170,28 +182,31 @@
         <div class="faq-answer">
           <p>两种解决方式：</p>
           <p>方式一：打开「系统设置 → 隐私与安全性」，往下翻找到提示，点击「仍要打开」。</p>
-          <p>方式二：如果你明确知道当前一键包解压目录，也可以在终端里对该目录执行 `xattr -cr` 后再重试。</p>
+          <p>方式二：如果你熟悉终端操作，也可以在终端里对解压目录执行一条清除安全标记的命令后再重试。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>Apple Silicon 和 Intel 有什么区别？</summary>
         <div class="faq-answer">
-          <p>当前一键包按芯片架构分别提供下载。大多数用户只要按下载页的设备类型选择对应版本即可，不需要理解太多底层差异。</p>
+          <p>当前一键包按芯片架构分别提供下载。大多数用户只要按下载页的设备类型选择对应版本即可，不需要理解太多技术差异。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>安装后找不到 openclaw 命令？</summary>
         <div class="faq-answer">
-          <p>如果你走的是一键包路径，其实不需要手动使用 `openclaw` 命令；直接运行 `launch.command` 就够了。只有命令行安装用户，才需要继续排查 PATH 设置。</p>
+          <p>如果你走的是一键包，其实不需要手动使用命令行；直接运行启动脚本（launch.command）就够了。只有命令行安装的用户，才需要排查环境变量设置。</p>
         </div>
       </details>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
-        <p class="text-body mb-4">跟着快速开始指南，10 分钟完成第一次配置</p>
-        <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="macos_bottom_cta">查看快速开始 →</a>
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成了？接下来去快速开始</h3>
+        <p class="text-body mb-4">下一步是按快速开始完成模型测试和第一次正常输出。能拿到第一条可用结果，才算真正装好。</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+          <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="macos_bottom_cta">继续看快速开始 →</a>
+          <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="macos_bottom_cta">卡住了？去排障 →</a>
+        </div>
       </div>
 
     </div>
@@ -201,7 +216,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
           <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
             当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
           </div>
@@ -269,25 +284,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="macos_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="macos_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="macos_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="macos_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -298,6 +313,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -324,11 +340,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -355,7 +387,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

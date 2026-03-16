@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClawStart 设置面板</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f111a;--surface:#1a1d2e;--surface2:#242842;--border:#2d3154;
+  --text:#e2e4f0;--text2:#9094b8;--accent:#6366f1;--accent-hover:#818cf8;
+  --success:#22c55e;--error:#ef4444;--warning:#f59e0b;
+  --radius:12px;--radius-sm:8px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;display:flex;
+  align-items:center;justify-content:center;padding:20px;line-height:1.6}
+.panel{width:100%;max-width:680px;background:var(--surface);border-radius:16px;
+  border:1px solid var(--border);overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,.4)}
+
+/* ── Panel header ── */
+.panel-header{padding:24px 32px 0;text-align:center}
+.panel-header h1{font-size:22px;font-weight:700;margin-bottom:2px}
+.panel-header .subtitle{color:var(--text2);font-size:13px}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin:16px 32px 0;user-select:none}
+.tab{flex:1;text-align:center;padding:10px 0;font-size:14px;font-weight:600;color:var(--text2);
+  cursor:pointer;border-bottom:2px solid transparent;transition:.2s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-panel{display:none;animation:fadeIn .3s ease}
+.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── Wizard step dots ── */
+.steps{display:flex;gap:8px;justify-content:center;padding:20px 0 0}
+.step-dot{width:10px;height:10px;border-radius:50%;background:var(--border);transition:.3s}
+.step-dot.active{background:var(--accent);transform:scale(1.2)}
+.step-dot.done{background:var(--success)}
+
+/* ── Content areas ── */
+.wizard-body{padding:20px 32px 24px;min-height:300px}
+.step{display:none;animation:fadeIn .3s ease}
+.step.active{display:block}
+.wizard-footer{display:flex;justify-content:space-between;align-items:center;padding:0 32px 24px}
+.gateway-body{padding:24px 32px 32px}
+
+/* ── Provider cards ── */
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.provider-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px;cursor:pointer;transition:.2s;position:relative}
+.provider-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.provider-card.selected{border-color:var(--accent);background:rgba(99,102,241,.1)}
+.provider-card .name{font-weight:600;font-size:14px;margin-bottom:2px}
+.provider-card .name-cn{font-size:12px;color:var(--text2)}
+.provider-card .badge{position:absolute;top:8px;right:8px;background:var(--accent);
+  color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600}
+.provider-card .desc{font-size:12px;color:var(--text2);margin-top:6px;line-height:1.4}
+
+/* ── Form elements ── */
+.form-group{margin-top:20px}
+.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.form-group .hint{font-size:12px;color:var(--text2);margin-bottom:8px}
+.input-wrap{position:relative}
+.input-wrap input{width:100%;padding:12px 44px 12px 14px;background:var(--surface2);
+  border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);
+  font-size:14px;outline:none;transition:.2s;font-family:monospace}
+.input-wrap input:focus{border-color:var(--accent)}
+.input-wrap .toggle-vis{position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--text2);cursor:pointer;font-size:18px;padding:4px}
+.key-link{display:inline-block;margin-top:10px;color:var(--accent);font-size:13px;
+  text-decoration:none;transition:.2s}
+.key-link:hover{color:var(--accent-hover)}
+
+/* ── Model select ── */
+.model-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.model-option{background:var(--surface2);border:2px solid var(--border);border-radius:var(--radius-sm);
+  padding:12px 16px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px}
+.model-option:hover{border-color:var(--accent)}
+.model-option.selected{border-color:var(--accent);background:rgba(99,102,241,.1)}
+.model-option .radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.2s}
+.model-option.selected .radio{border-color:var(--accent)}
+.model-option.selected .radio::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.model-option .model-name{font-weight:600;font-size:14px}
+.model-option .model-badge{font-size:10px;background:var(--success);color:#fff;padding:2px 8px;
+  border-radius:10px;margin-left:auto}
+.model-option .model-id{font-size:12px;color:var(--text2);font-family:monospace}
+
+/* ── Buttons ── */
+.btn{padding:10px 24px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;
+  cursor:pointer;border:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--accent-hover)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--text2);color:var(--text)}
+.btn-success{background:var(--success);color:#fff}
+.btn-success:hover:not(:disabled){filter:brightness(1.1)}
+.btn-danger{background:var(--error);color:#fff}
+.btn-danger:hover:not(:disabled){filter:brightness(1.1)}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-warning:hover:not(:disabled){filter:brightness(1.1)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* ── Status messages ── */
+.status{margin-top:16px;padding:12px 16px;border-radius:var(--radius-sm);font-size:13px;display:none}
+.status.show{display:block}
+.status.error{background:rgba(239,68,68,.1);border:1px solid var(--error);color:var(--error)}
+.status.success{background:rgba(34,197,94,.1);border:1px solid var(--success);color:var(--success)}
+.status.loading{background:rgba(99,102,241,.1);border:1px solid var(--accent);color:var(--accent)}
+.status.warning{background:rgba(245,158,11,.1);border:1px solid var(--warning);color:var(--warning)}
+
+/* ── Gateway status section ── */
+.gw-status-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;margin-bottom:20px}
+.gw-status-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.gw-indicator{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.gw-indicator.running{background:var(--success);box-shadow:0 0 8px rgba(34,197,94,.5)}
+.gw-indicator.stopped{background:var(--error);box-shadow:0 0 8px rgba(239,68,68,.3)}
+.gw-indicator.loading{background:var(--warning);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.gw-status-label{font-size:16px;font-weight:600}
+.gw-status-detail{font-size:13px;color:var(--text2)}
+.gw-actions{display:flex;gap:10px;flex-wrap:wrap}
+.gw-info{margin-top:16px}
+.gw-info-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.gw-info-item:last-child{border-bottom:none}
+.gw-info-item .label{color:var(--text2)}
+.gw-info-item .value{font-weight:600;font-family:monospace;font-size:12px}
+.gw-info-item .value a{color:var(--accent);text-decoration:none}
+.gw-info-item .value a:hover{color:var(--accent-hover)}
+
+/* ── Complete card ── */
+.complete-card{text-align:center;padding:32px 0}
+.complete-icon{font-size:48px;margin-bottom:12px}
+.complete-title{font-size:20px;font-weight:700;margin-bottom:8px}
+.complete-desc{color:var(--text2);font-size:14px;margin-bottom:20px}
+
+/* ── Info bar ── */
+.info-bar{margin-top:12px;padding:10px 14px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);
+  border-radius:var(--radius-sm);font-size:12px;color:var(--text2);line-height:1.5}
+.info-bar a{color:var(--accent);text-decoration:none;font-weight:600}
+.info-bar a:hover{color:var(--accent-hover)}
+.help-link{display:inline-block;margin-top:6px;color:var(--text2);font-size:12px;text-decoration:none;transition:.2s}
+.help-link:hover{color:var(--accent)}
+
+/* ── CTA grid (complete page) ── */
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;text-align:left}
+.cta-card{padding:18px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);
+  transition:.2s;text-decoration:none;color:inherit;display:block}
+.cta-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.cta-card .cta-icon{font-size:24px;margin-bottom:8px}
+.cta-card .cta-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.cta-card .cta-desc{font-size:12px;color:var(--text2);line-height:1.5}
+.cta-card .cta-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);font-weight:600}
+.lolaclaw-text{margin-top:16px;font-size:12px;color:var(--text2);text-align:center}
+.lolaclaw-text a{color:var(--accent);text-decoration:none}
+.lolaclaw-text a:hover{color:var(--accent-hover)}
+
+/* ── Panel footer ── */
+.panel-footer{padding:16px 32px;border-top:1px solid var(--border);text-align:center;
+  font-size:12px;color:var(--text2);line-height:1.6}
+.panel-footer a{color:var(--accent);text-decoration:none;font-weight:600}
+.panel-footer a:hover{color:var(--accent-hover)}
+.panel-footer .brand-tagline{display:block;margin-top:2px;font-size:11px;opacity:.7}
+
+/* ── Spinner ── */
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid transparent;
+  border-top-color:currentColor;border-radius:50%;animation:spin .6s linear infinite;
+  vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <div class="panel-header">
+    <h1><a href="https://useclawstart.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">ClawStart</a> 设置面板</h1>
+    <div class="subtitle" id="headerSubtitle">由 <a href="https://useclawstart.com" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">ClawStart</a> 提供 · <a href="https://useclawstart.com" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none">useclawstart.com</a></div>
+  </div>
+
+  <!-- ── Tab bar ── -->
+  <div class="tabs">
+    <div class="tab active" data-tab="wizard">⚙️ 配置向导</div>
+    <div class="tab" data-tab="gateway">🌐 网关服务</div>
+  </div>
+
+  <!-- ════════════════ Tab 1: Config Wizard ════════════════ -->
+  <div class="tab-panel active" id="tabWizard">
+    <div class="steps">
+      <div class="step-dot active" data-step="1"></div>
+      <div class="step-dot" data-step="2"></div>
+      <div class="step-dot" data-step="3"></div>
+    </div>
+
+    <div class="wizard-body">
+      <!-- Step 1: Choose Provider -->
+      <div class="step active" id="step1">
+        <h2 style="font-size:16px;margin-bottom:4px">选择 AI 服务商</h2>
+        <p style="font-size:13px;color:var(--text2)">选择你的 AI 模型提供方，后续可随时更换</p>
+        <div class="info-bar">💡 不知道选哪个？查看 <a href="https://useclawstart.com/guide-openclaw-api-setup.html" target="_blank" rel="noopener">服务商对比指南</a>，帮你快速选到合适的 AI 服务</div>
+        <div class="provider-grid" id="providerGrid"></div>
+        <div style="margin-top:16px;text-align:center">
+          <button class="btn btn-ghost" id="btnSkip" style="font-size:13px;color:var(--text2)">跳过配置，直接启动网关 →</button>
+          <div style="font-size:11px;color:var(--text2);margin-top:6px;opacity:.7">跳过后可随时在设置面板中配置服务商</div>
+        </div>
+        <div class="status" id="step1Status"></div>
+      </div>
+
+      <!-- Step 2: Enter API Key -->
+      <div class="step" id="step2">
+        <h2 style="font-size:16px;margin-bottom:4px">输入 API Key</h2>
+        <p style="font-size:13px;color:var(--text2)" id="step2Desc">请输入你的 API Key</p>
+        <div class="form-group">
+          <label id="keyLabel">API Key</label>
+          <div class="hint" id="keyHint"></div>
+          <div class="input-wrap">
+            <input type="password" id="apiKeyInput" placeholder="粘贴你的 API Key" autocomplete="off" spellcheck="false">
+            <button type="button" class="toggle-vis" id="toggleVis" title="显示/隐藏">👁</button>
+          </div>
+          <a href="#" target="_blank" rel="noopener" class="key-link" id="keyLink">获取 API Key →</a>
+          <br><a href="https://useclawstart.com/tutorial-beginner.html" target="_blank" rel="noopener" class="help-link">遇到问题？查看完整配置教程 →</a>
+        </div>
+        <div class="status" id="step2Status"></div>
+      </div>
+
+      <!-- Step 3: Choose Model -->
+      <div class="step" id="step3">
+        <h2 style="font-size:16px;margin-bottom:4px">选择默认模型</h2>
+        <p style="font-size:13px;color:var(--text2)">选择你最常用的模型，或手动输入模型名称</p>
+        <div class="model-list" id="modelList"></div>
+        <div class="form-group" style="margin-top:12px">
+          <label style="font-size:13px;font-weight:600">自定义模型名称</label>
+          <div class="hint" style="font-size:12px;color:var(--text2);margin-bottom:6px">如果列表中没有你需要的模型，可以手动输入完整的模型 ID</div>
+          <input type="text" id="customModelInput" placeholder="例如: volcengine-plan/doubao-seed-2.0-code" autocomplete="off" spellcheck="false"
+            style="width:100%;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13px;outline:none">
+        </div>
+        <div class="status" id="step3Status"></div>
+      </div>
+
+      <!-- Step 4: Complete -->
+      <div class="step" id="step4">
+        <div class="complete-card">
+          <div class="complete-icon">🎉</div>
+          <div class="complete-title">配置完成！</div>
+          <div class="complete-desc" id="step4Desc">配置已保存，正在等待 Gateway...</div>
+          <div style="margin:16px 0;padding:12px 16px;background:var(--surface2);border-radius:var(--radius-sm);font-size:13px;color:var(--text2);line-height:1.6" id="step4Info">
+            Gateway 启动后，浏览器会自动打开工作台。<br>
+            如果没有自动打开，请访问 <a href="http://127.0.0.1:18789" target="_blank" style="color:var(--accent)" id="step4FallbackLink">http://127.0.0.1:18789</a>
+          </div>
+          <button class="btn btn-ghost" id="btnReconfigure" style="margin-top:6px;font-size:13px">
+            重新配置服务商 ↺
+          </button>
+          <div class="cta-grid">
+            <a class="cta-card" href="https://useclawstart.com/tutorial.html" target="_blank" rel="noopener">
+              <div class="cta-icon">📚</div>
+              <div class="cta-title">探索更多玩法</div>
+              <div class="cta-desc">新手教程、进阶指南、Skills 扩展商店，解锁 AI 助手的全部潜力</div>
+              <span class="cta-link">查看教程 →</span>
+            </a>
+            <a class="cta-card" href="https://useclawstart.com/download.html#community" target="_blank" rel="noopener">
+              <div class="cta-icon">💬</div>
+              <div class="cta-title">加入用户社群</div>
+              <div class="cta-desc">与其他用户交流经验、获取及时帮助、第一时间了解版本更新</div>
+              <span class="cta-link">加入社群 →</span>
+            </a>
+          </div>
+          <div class="lolaclaw-text">想要图形化管理？试试 <a href="https://useclawstart.com/about.html#lolaclaw" target="_blank" rel="noopener" id="lolaCta">LolaClaw 桌面端</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wizard-footer" id="wizardFooter">
+      <button class="btn btn-ghost" id="btnBack" style="display:none">← 上一步</button>
+      <div></div>
+      <button class="btn btn-primary" id="btnNext" disabled>下一步 →</button>
+    </div>
+  </div>
+
+  <!-- ════════════════ Tab 2: Gateway Control ════════════════ -->
+  <div class="tab-panel" id="tabGateway">
+    <div class="gateway-body">
+      <div class="gw-status-card">
+        <div class="gw-status-row">
+          <div class="gw-indicator stopped" id="gwIndicator"></div>
+          <div>
+            <div class="gw-status-label" id="gwStatusLabel">检测中...</div>
+            <div class="gw-status-detail" id="gwStatusDetail">正在检查网关状态</div>
+          </div>
+        </div>
+        <div class="gw-actions">
+          <button class="btn btn-success" id="btnGwStart" disabled>▶ 启动</button>
+          <button class="btn btn-warning" id="btnGwRestart" disabled>🔄 重启</button>
+          <button class="btn btn-danger" id="btnGwStop" disabled>⏹ 停止</button>
+        </div>
+      </div>
+
+      <div class="gw-info">
+        <div class="gw-info-item">
+          <span class="label">网关地址</span>
+          <span class="value"><a href="http://127.0.0.1:18789" target="_blank" id="gwAddressLink">http://127.0.0.1:18789</a></span>
+        </div>
+        <div class="gw-info-item">
+          <span class="label">当前服务商</span>
+          <span class="value" id="gwProvider">-</span>
+        </div>
+        <div class="gw-info-item">
+          <span class="label">当前模型</span>
+          <span class="value" id="gwModel">-</span>
+        </div>
+        <div class="gw-info-item">
+          <span class="label">配置面板</span>
+          <span class="value"><a href="http://127.0.0.1:18790" target="_blank">http://127.0.0.1:18790</a></span>
+        </div>
+      </div>
+
+      <div class="status" id="gwActionStatus"></div>
+      <div style="margin-top:20px;text-align:center;font-size:12px;color:var(--text2)">
+        需要帮助？查看 <a href="https://useclawstart.com/tutorial.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">完整使用教程</a>
+         · <a href="https://useclawstart.com/troubleshooting.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">常见问题排查</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Brand footer (always visible) ── -->
+  <div class="panel-footer">
+    🦞 <a href="https://useclawstart.com" target="_blank" rel="noopener">ClawStart</a> · 免费开源的 AI 助手中文入口
+    <span class="brand-tagline">让每个中文用户，都能拥有自己的 AI 助手 · <a href="https://useclawstart.com" target="_blank" rel="noopener">useclawstart.com</a></span>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── State ──
+  let currentStep = 1;
+  let providers = [];
+  let selectedProvider = null;
+  let selectedModel = null;
+  let apiKeyValue = '';
+  let gatewayWasRunning = false; // track if gateway was running before reconfigure
+  let gatewayToken = null; // gateway auth token for dashboard URL
+
+  // ── DOM refs ──
+  const $grid = document.getElementById('providerGrid');
+  const $keyInput = document.getElementById('apiKeyInput');
+  const $keyLabel = document.getElementById('keyLabel');
+  const $keyHint = document.getElementById('keyHint');
+  const $keyLink = document.getElementById('keyLink');
+  const $step2Desc = document.getElementById('step2Desc');
+  const $modelList = document.getElementById('modelList');
+  const $customModel = document.getElementById('customModelInput');
+  const $btnNext = document.getElementById('btnNext');
+  const $btnBack = document.getElementById('btnBack');
+  const $footer = document.getElementById('wizardFooter');
+  const $toggleVis = document.getElementById('toggleVis');
+
+  // ── API helpers ──
+  async function api(method, path, body) {
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(path, opts);
+    return r.json();
+  }
+
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+  }
+
+  function showStatus(stepId, msg, type) {
+    const el = document.getElementById(stepId + 'Status');
+    if (!el) return;
+    el.className = 'status show ' + type;
+    el.innerHTML = (type === 'loading' ? '<span class="spinner"></span>' : '') + msg;
+  }
+  function hideStatus(stepId) {
+    const el = document.getElementById(stepId + 'Status');
+    if (el) el.className = 'status';
+  }
+
+  function dashboardUrl() {
+    const base = 'http://127.0.0.1:18789';
+    return gatewayToken ? base + '/#token=' + encodeURIComponent(gatewayToken) : base;
+  }
+
+  // ══════════════════  TAB SWITCHING  ══════════════════
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.tab-panel').forEach(p =>
+        p.classList.toggle('active', p.id === 'tab' + target.charAt(0).toUpperCase() + target.slice(1)));
+      if (target === 'gateway') refreshGatewayStatus();
+    });
+  });
+
+  // ══════════════════  WIZARD (Tab 1)  ══════════════════
+
+  function updateStepDots() {
+    document.querySelectorAll('.step-dot').forEach(d => {
+      const s = Number(d.dataset.step);
+      d.classList.toggle('active', s === currentStep);
+      d.classList.toggle('done', s < currentStep);
+    });
+  }
+
+  function showStep(n) {
+    currentStep = n;
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('step' + n);
+    if (target) target.classList.add('active');
+    updateStepDots();
+
+    $btnBack.style.display = n > 1 && n < 4 ? '' : 'none';
+    if (n === 4) {
+      $footer.style.display = 'none';
+    } else {
+      $footer.style.display = '';
+      $btnNext.textContent = n === 3 ? '完成配置' : '下一步 →';
+    }
+    validateStep();
+  }
+
+  function validateStep() {
+    if (currentStep === 1) {
+      $btnNext.disabled = !selectedProvider;
+    } else if (currentStep === 2) {
+      $btnNext.disabled = !$keyInput.value.trim();
+    } else if (currentStep === 3) {
+      $btnNext.disabled = !selectedModel && !$customModel.value.trim();
+    }
+  }
+
+  // ── Step 1: Providers ──
+  async function loadProviders() {
+    const [provRes, statusRes] = await Promise.all([
+      api('GET', '/api/providers'),
+      api('GET', '/api/status'),
+    ]);
+    if (provRes.ok) {
+      providers = provRes.providers;
+      renderProviders();
+    }
+    if (statusRes.ok) {
+      if (statusRes.gatewayToken) gatewayToken = statusRes.gatewayToken;
+      if (statusRes.hasEnv) {
+        const sub = document.getElementById('headerSubtitle');
+        if (sub) {
+          const pName = statusRes.currentProvider || '未知';
+          const mName = statusRes.currentModel || '未设置';
+          sub.innerHTML = '当前: <b>' + esc(pName) + '</b> / <b>' + esc(mName) + '</b> · <a href="https://useclawstart.com" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none">useclawstart.com</a>';
+        }
+      }
+    }
+  }
+
+  function renderProviders() {
+    $grid.innerHTML = '';
+    providers.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'provider-card';
+      card.dataset.id = p.id;
+      card.innerHTML =
+        (p.badge ? '<span class="badge">' + esc(p.badge) + '</span>' : '') +
+        '<div class="name">' + esc(p.name) + '</div>' +
+        '<div class="name-cn">' + esc(p.nameCn) + '</div>' +
+        '<div class="desc">' + esc(p.description) + '</div>';
+      card.addEventListener('click', () => selectProvider(p));
+      $grid.appendChild(card);
+    });
+  }
+
+  function selectProvider(p) {
+    selectedProvider = p;
+    selectedModel = null;
+    document.querySelectorAll('.provider-card').forEach(c =>
+      c.classList.toggle('selected', c.dataset.id === p.id));
+    validateStep();
+  }
+
+  // ── Step 2: API Key ──
+  function setupStep2() {
+    if (!selectedProvider) return;
+    $step2Desc.textContent = '请输入 ' + selectedProvider.nameCn + ' 的 API Key';
+    $keyLabel.textContent = selectedProvider.name + ' API Key';
+    $keyHint.textContent = selectedProvider.apiKeyHint || '';
+    $keyLink.href = selectedProvider.apiKeyUrl || '#';
+    $keyLink.style.display = selectedProvider.apiKeyUrl ? '' : 'none';
+    $keyInput.value = '';
+    hideStatus('step2');
+  }
+
+  $toggleVis.addEventListener('click', () => {
+    const isPassword = $keyInput.type === 'password';
+    $keyInput.type = isPassword ? 'text' : 'password';
+    $toggleVis.textContent = isPassword ? '🙈' : '👁';
+  });
+
+  $keyInput.addEventListener('input', validateStep);
+
+  // ── Step 3: Models ──
+  function setupStep3() {
+    if (!selectedProvider) return;
+    $modelList.innerHTML = '';
+    $customModel.value = '';
+    const models = selectedProvider.models || [];
+    models.forEach((m, i) => {
+      const opt = document.createElement('div');
+      opt.className = 'model-option' + (m.recommended && i === 0 ? ' selected' : '');
+      opt.dataset.id = m.id;
+      opt.innerHTML =
+        '<div class="radio"></div>' +
+        '<div>' +
+          '<div class="model-name">' + esc(m.name) + '</div>' +
+          '<div class="model-id">' + esc(m.id) + '</div>' +
+        '</div>' +
+        (m.recommended ? '<span class="model-badge">推荐</span>' : '');
+      opt.addEventListener('click', () => {
+        selectModel(m, opt);
+        $customModel.value = '';
+      });
+      $modelList.appendChild(opt);
+      if (m.recommended && i === 0) selectedModel = m;
+    });
+    $customModel.addEventListener('input', () => {
+      if ($customModel.value.trim()) {
+        selectedModel = null;
+        document.querySelectorAll('.model-option').forEach(o => o.classList.remove('selected'));
+      }
+      validateStep();
+    });
+    validateStep();
+  }
+
+  function selectModel(m, el) {
+    selectedModel = m;
+    document.querySelectorAll('.model-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    validateStep();
+  }
+
+  // ── Actions ──
+  async function saveProviderAndKey() {
+    showStatus('step2', '正在保存 API Key...', 'loading');
+    const res = await api('POST', '/api/set-provider', {
+      provider: selectedProvider.id,
+      apiKey: $keyInput.value.trim(),
+    });
+    if (!res.ok) {
+      showStatus('step2', res.error || '保存失败', 'error');
+      return false;
+    }
+    hideStatus('step2');
+    apiKeyValue = $keyInput.value.trim();
+    return true;
+  }
+
+  async function saveModelAndFinish() {
+    const modelId = $customModel.value.trim() || (selectedModel ? selectedModel.id : '');
+    if (!modelId) return false;
+    showStatus('step3', '正在配置模型...', 'loading');
+    const res = await api('POST', '/api/set-model', { model: modelId });
+    if (!res.ok) {
+      showStatus('step3', res.error || '设置模型失败', 'error');
+      return false;
+    }
+    hideStatus('step3');
+    await api('POST', '/api/complete').catch(() => {});
+    return true;
+  }
+
+  // ── Navigation handlers ──
+  $btnNext.addEventListener('click', async () => {
+    if (currentStep === 1) {
+      // Before entering wizard, check if gateway is already running
+      try {
+        const gwStatus = await api('GET', '/api/gateway/status');
+        gatewayWasRunning = gwStatus.ok && gwStatus.running;
+      } catch { gatewayWasRunning = false; }
+      showStep(2);
+      setupStep2();
+    } else if (currentStep === 2) {
+      $btnNext.disabled = true;
+      const ok = await saveProviderAndKey();
+      if (ok) {
+        showStep(3);
+        setupStep3();
+      } else {
+        $btnNext.disabled = false;
+      }
+    } else if (currentStep === 3) {
+      $btnNext.disabled = true;
+      const ok = await saveModelAndFinish();
+      if (ok) {
+        showStep(4);
+        handlePostConfig();
+      } else {
+        $btnNext.disabled = false;
+      }
+    }
+  });
+
+  $btnBack.addEventListener('click', () => {
+    if (currentStep === 2) showStep(1);
+    else if (currentStep === 3) { showStep(2); setupStep2(); }
+  });
+
+  // ── Skip config ──
+  document.getElementById('btnSkip').addEventListener('click', async () => {
+    const btn = document.getElementById('btnSkip');
+    btn.disabled = true;
+    btn.textContent = '正在跳过...';
+    try {
+      const gwStatus = await api('GET', '/api/gateway/status').catch(() => ({ ok: false }));
+      gatewayWasRunning = gwStatus.ok && gwStatus.running;
+      await api('POST', '/api/skip-config');
+      // Refresh token
+      try {
+        const st = await api('GET', '/api/status');
+        if (st.ok && st.gatewayToken) gatewayToken = st.gatewayToken;
+      } catch {}
+      showStep(4);
+      const $desc = document.getElementById('step4Desc');
+      const $info = document.getElementById('step4Info');
+      $desc.textContent = '已跳过服务商配置，正在等待 Gateway 启动...';
+      $info.innerHTML = 'Gateway 启动后可在控制台中配置服务商。<br>或随时访问 <a href="http://127.0.0.1:18790" style="color:var(--accent)">设置面板</a> 进行配置。';
+      const fallbackLink = document.getElementById('step4FallbackLink');
+      if (fallbackLink) fallbackLink.href = dashboardUrl();
+      if (gatewayWasRunning) {
+        $desc.innerHTML = '✅ 网关已在运行中！<br><a href="' + dashboardUrl() + '" style="color:var(--accent);font-size:16px;font-weight:600">进入工作台 →</a>';
+      } else {
+        pollGateway();
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = '跳过配置，直接启动网关 →';
+      showStatus('step1', '跳过失败，请重试', 'error');
+    }
+  });
+
+  /** After config is saved: if gateway was running, auto-restart it; otherwise poll for launch.bat to start it */
+  async function handlePostConfig() {
+    const $desc = document.getElementById('step4Desc');
+    const $info = document.getElementById('step4Info');
+
+    // Refresh token from latest config
+    try {
+      const st = await api('GET', '/api/status');
+      if (st.ok && st.gatewayToken) gatewayToken = st.gatewayToken;
+    } catch {}
+
+    // Update step4 fallback link with token
+    const fallbackLink = document.getElementById('step4FallbackLink');
+    if (fallbackLink) fallbackLink.href = dashboardUrl();
+
+    if (gatewayWasRunning) {
+      // Gateway was already running → need restart for new config
+      $desc.innerHTML = '<span class="spinner"></span>配置已更新，正在重启网关以应用新配置...';
+      $info.style.display = 'none';
+      try {
+        const res = await api('POST', '/api/gateway/restart');
+        if (res.ok) {
+          $desc.innerHTML = '✅ 网关已重启，新配置已生效！<br><a href="' + dashboardUrl() + '" style="color:var(--accent);font-size:16px;font-weight:600">点击进入工作台 →</a>';
+        } else {
+          $desc.innerHTML = '⚠️ 网关重启失败：' + esc(res.error || '未知错误') + '<br>请切换到「网关服务」标签页手动操作';
+        }
+      } catch {
+        $desc.innerHTML = '⚠️ 网关重启请求失败，请切换到「网关服务」标签页手动操作';
+      }
+      $info.style.display = '';
+    } else {
+      // First-time config → poll for gateway to come up (launched by launch.bat)
+      $desc.textContent = '配置已保存，正在等待 Gateway 启动...';
+      pollGateway();
+    }
+  }
+
+  function pollGateway() {
+    const $desc = document.getElementById('step4Desc');
+    let attempts = 0;
+    const timer = setInterval(async () => {
+      attempts++;
+      try {
+        const r = await fetch('http://127.0.0.1:18789', { signal: AbortSignal.timeout(3000) });
+        if (r.ok || r.status === 401 || r.status === 403) {
+          clearInterval(timer);
+          // Refresh token in case gateway generated/updated it
+          try {
+            const st = await api('GET', '/api/status');
+            if (st.ok && st.gatewayToken) gatewayToken = st.gatewayToken;
+          } catch {}
+          const fallbackLink = document.getElementById('step4FallbackLink');
+          if (fallbackLink) fallbackLink.href = dashboardUrl();
+          $desc.innerHTML = '✅ Gateway 已启动！<br><a href="' + dashboardUrl() + '" style="color:var(--accent);font-size:16px;font-weight:600">点击进入工作台 →</a>';
+          return;
+        }
+      } catch {}
+      if (attempts <= 60) {
+        $desc.textContent = '配置已保存，正在等待 Gateway 启动... (' + attempts + 's)';
+      }
+    }, 2000);
+  }
+
+  document.getElementById('lolaCta').addEventListener('click', () => {
+    try { localStorage.setItem('wizard_lolaclaw_cta_click', Date.now()); } catch {}
+  });
+
+  document.getElementById('btnReconfigure').addEventListener('click', () => {
+    selectedProvider = null;
+    selectedModel = null;
+    apiKeyValue = '';
+    showStep(1);
+    loadProviders();
+  });
+
+  // ══════════════════  GATEWAY CONTROL (Tab 2)  ══════════════════
+
+  const $gwIndicator = document.getElementById('gwIndicator');
+  const $gwLabel = document.getElementById('gwStatusLabel');
+  const $gwDetail = document.getElementById('gwStatusDetail');
+  const $gwProvider = document.getElementById('gwProvider');
+  const $gwModel = document.getElementById('gwModel');
+  const $btnGwStart = document.getElementById('btnGwStart');
+  const $btnGwRestart = document.getElementById('btnGwRestart');
+  const $btnGwStop = document.getElementById('btnGwStop');
+
+  function setGwButtons(running, busy) {
+    $btnGwStart.disabled = running || busy;
+    $btnGwRestart.disabled = !running || busy;
+    $btnGwStop.disabled = !running || busy;
+  }
+
+  async function refreshGatewayStatus() {
+    $gwIndicator.className = 'gw-indicator loading';
+    $gwLabel.textContent = '检测中...';
+    $gwDetail.textContent = '正在检查网关状态';
+    setGwButtons(false, true);
+
+    try {
+      const [gwRes, stRes] = await Promise.all([
+        api('GET', '/api/gateway/status'),
+        api('GET', '/api/status'),
+      ]);
+
+      const running = gwRes.ok && gwRes.running;
+      $gwIndicator.className = 'gw-indicator ' + (running ? 'running' : 'stopped');
+      $gwLabel.textContent = running ? '运行中' : '已停止';
+      $gwDetail.textContent = running
+        ? '网关正在监听 127.0.0.1:18789'
+        : '网关未运行，点击「启动」按钮开启服务';
+      setGwButtons(running, false);
+
+      if (stRes.ok) {
+        if (stRes.gatewayToken) gatewayToken = stRes.gatewayToken;
+        $gwProvider.textContent = stRes.currentProvider || '未配置';
+        $gwModel.textContent = stRes.currentModel || '未配置';
+      }
+
+      // Update gateway address link with token
+      const gwLink = document.getElementById('gwAddressLink');
+      if (gwLink) gwLink.href = dashboardUrl();
+    } catch {
+      $gwIndicator.className = 'gw-indicator stopped';
+      $gwLabel.textContent = '状态未知';
+      $gwDetail.textContent = '无法连接配置服务';
+      setGwButtons(false, false);
+    }
+  }
+
+  function showGwAction(msg, type) {
+    const el = document.getElementById('gwActionStatus');
+    el.className = 'status show ' + type;
+    el.innerHTML = (type === 'loading' ? '<span class="spinner"></span>' : '') + msg;
+  }
+  function hideGwAction() {
+    document.getElementById('gwActionStatus').className = 'status';
+  }
+
+  $btnGwStart.addEventListener('click', async () => {
+    setGwButtons(false, true);
+    showGwAction('正在启动网关...', 'loading');
+    try {
+      const res = await api('POST', '/api/gateway/start');
+      if (res.ok) {
+        showGwAction('✅ ' + (res.message || '网关已启动'), 'success');
+      } else {
+        showGwAction('启动失败: ' + (res.error || '未知错误'), 'error');
+      }
+    } catch {
+      showGwAction('请求失败，请检查配置服务', 'error');
+    }
+    await refreshGatewayStatus();
+    setTimeout(hideGwAction, 5000);
+  });
+
+  $btnGwRestart.addEventListener('click', async () => {
+    setGwButtons(true, true);
+    showGwAction('正在重启网关...', 'loading');
+    try {
+      const res = await api('POST', '/api/gateway/restart');
+      if (res.ok) {
+        showGwAction('✅ ' + (res.message || '网关已重启'), 'success');
+      } else {
+        showGwAction('重启失败: ' + (res.error || '未知错误'), 'error');
+      }
+    } catch {
+      showGwAction('请求失败，请检查配置服务', 'error');
+    }
+    await refreshGatewayStatus();
+    setTimeout(hideGwAction, 5000);
+  });
+
+  $btnGwStop.addEventListener('click', async () => {
+    setGwButtons(true, true);
+    showGwAction('正在停止网关...', 'loading');
+    try {
+      const res = await api('POST', '/api/gateway/stop');
+      if (res.ok) {
+        showGwAction('⏹ ' + (res.message || '网关已停止'), 'success');
+      } else {
+        showGwAction('停止失败: ' + (res.error || '未知错误'), 'error');
+      }
+    } catch {
+      showGwAction('请求失败，请检查配置服务', 'error');
+    }
+    await refreshGatewayStatus();
+    setTimeout(hideGwAction, 5000);
+  });
+
+  // ══════════════════  INIT  ══════════════════
+
+  loadProviders();
+  // Pre-fetch gateway status for header info
+  refreshGatewayStatus();
+})();
+</script>
+</body>
+</html>

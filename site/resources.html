@@ -64,7 +64,39 @@
     <div class="container">
       <p class="section-title">先看哪儿</p>
       <h2 class="text-h2 mb-8">资源页不是教程中心，先按阶段选入口</h2>
-      <div class="card-grid-2">
+      <div class="card mb-8">
+        <h3>不想整页看完，就直接走这 4 个入口</h3>
+        <p>如果你已经知道自己现在缺的是哪一块，直接跳到对应资源区，不用在资源页里来回翻。</p>
+      </div>
+
+      <div class="card mb-8" style="background:linear-gradient(135deg, var(--brand-50), var(--accent-50)); border:1px solid var(--brand-100);">
+        <p class="section-title" style="margin-bottom:var(--space-3);">新手导视</p>
+        <h2 class="text-h3" style="margin-bottom:var(--space-3);">如果你第一次来，只记住这 3 个入口</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4);">
+          <div>
+            <strong>先装上</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">还没下载或没跑通，先别在资源页里翻资料。</p>
+            <a href="download.html" class="text-link">去下载页 →</a>
+          </div>
+          <div>
+            <strong>先拿到第一次结果</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">想真正用起来，先做一个有输出的任务。</p>
+            <a href="tutorial-beginner.html" class="text-link">去新手入门 →</a>
+          </div>
+          <div>
+            <strong>卡住就排障</strong>
+            <p style="margin:8px 0 0;color:var(--theme-text-secondary);">报错、连不上、Key 不通，直接看排障页最快。</p>
+            <a href="troubleshooting.html" class="text-link">去排障页 →</a>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);">
+          <a href="#route-by-stage" class="btn btn-primary btn-sm" data-track="click_resources" data-surface="resources_quick_routes">按阶段选入口 →</a>
+          <a href="#topic-guides" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="resources_quick_routes">看中文专题入口 →</a>
+          <a href="#docs-and-pdf" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="resources_quick_routes">看 PDF 与文档 →</a>
+          <a href="#next-best-steps" class="btn btn-outline-dark btn-sm" data-track="click_resources" data-surface="resources_quick_routes">看下一步入口 →</a>
+        </div>
+      </div>
+      <div class="card-grid-2" id="route-by-stage">
         <div class="card">
           <div class="card-icon">🌱</div>
           <h3>刚装好，不知道先做什么</h3>
@@ -111,7 +143,49 @@
     </div>
   </section>
 
-  <section class="section section-alt">
+  <!-- 视频教程 -->
+  <section class="section section-white" id="video-tutorials">
+    <div class="container">
+      <p class="section-title">视频教程</p>
+      <h2 class="text-h2 mb-8">不想看图文，直接跟着视频做</h2>
+      <div class="card-grid">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">🎬</div>
+          <h3>10 分钟上手 ClawStart</h3>
+          <p>从下载到第一次完成任务，一条视频带你跑通全流程。适合想快速判断"这东西我能不能用"的用户。</p>
+          <div style="margin-top:var(--space-4);font-size:14px;color:var(--theme-text-secondary);">
+            <p>📹 视频正在制作中，预计 2026-03-22 上线</p>
+            <p>📝 先看图文教程：<a href="start.html">快速开始</a> | <a href="tutorial-beginner.html">新手入门</a></p>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">📚</div>
+          <h3>模型选择与 API 配置</h3>
+          <p>国内用户怎么选模型服务商、怎么拿 API Key、怎么排查连通性问题，视频一步步演示。</p>
+          <div style="margin-top:var(--space-4);font-size:14px;color:var(--theme-text-secondary);">
+            <p>📹 视频正在制作中</p>
+            <p>📝 先看图文指南：<a href="tutorial-model-choice.html">模型选择教程</a> | <a href="guide-openclaw-api-setup.html">API 配置指南</a></p>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">🧩</div>
+          <h3>安装第一个 Skill</h3>
+          <p>从 ClawHub 搜索、安装到验证，完整演示第一个 Skill 的安装流程，避免踩坑。</p>
+          <div style="margin-top:var(--space-4);font-size:14px;color:var(--theme-text-secondary);">
+            <p>📹 视频正在制作中</p>
+            <p>📝 先看图文教程：<a href="tutorial-install-first-skill.html">Skill 安装指南</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:var(--space-6);">
+        <p style="font-size:14px;color:var(--theme-text-secondary);">
+          📬 想第一时间收到视频更新通知？<a href="index.html#community">加入用户社区</a> 或关注 <a href="about.html#lolaclaw">LolaClaw</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="topic-guides">
     <div class="container">
       <p class="section-title">中文专题入口</p>
       <h2 class="text-h2 mb-8">带着具体问题来的，先从这些长尾页进</h2>
@@ -150,8 +224,53 @@
     </div>
   </section>
 
+  <!-- 可下载资产 -->
+  <section class="section section-white" id="downloadable-assets">
+    <div class="container">
+      <p class="section-title">可下载资产</p>
+      <h2 class="text-h2 mb-8">拿了就能用的实货，不是空链接</h2>
+      <div class="card-grid">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">📝</div>
+          <h3>新手任务模板包</h3>
+          <p>9 个可直接照抄的任务模板，覆盖写作、办公、开发三类场景。复制粘贴就能开始，不用自己组织提示词。</p>
+          <div style="margin-top:var(--space-4);font-size:13px;color:var(--theme-text-secondary);">
+            <p>📦 格式：Markdown (.md)</p>
+            <p>📊 大小：约 5 KB</p>
+          </div>
+          <a href="assets/downloads/first-task-templates.zip" class="btn btn-primary btn-sm mt-4" download data-track="download_templates" data-surface="resources_download_card">下载任务模板包 →</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">⚡</div>
+          <h3>一页速查卡</h3>
+          <p>常见问题 + 命令速查，打印出来贴显示器旁边。遇到卡点不用翻完整教程，10 秒内找到答案。</p>
+          <div style="margin-top:var(--space-4);font-size:13px;color:var(--theme-text-secondary);">
+            <p>📦 格式：HTML（可用浏览器打印为 PDF）</p>
+            <p>📊 大小：约 3 KB</p>
+          </div>
+          <a href="assets/downloads/quick-reference-card.html" class="btn btn-primary btn-sm mt-4" target="_blank" data-track="download_quickref" data-surface="resources_download_card">打开速查卡 →</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon">✅</div>
+          <h3>首启检查清单</h3>
+          <p>Windows / macOS 首次启动检查清单，一步步确认不遗漏。适合帮别人远程排查时对照使用。</p>
+          <div style="margin-top:var(--space-4);font-size:13px;color:var(--theme-text-secondary);">
+            <p>📦 格式：Markdown (.md)</p>
+            <p>📊 大小：约 3 KB</p>
+          </div>
+          <a href="assets/downloads/first-launch-checklist.md" class="btn btn-outline-dark btn-sm mt-4" download data-track="download_checklist" data-surface="resources_download_card">下载检查清单 →</a>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:var(--space-6);">
+        <p style="font-size:14px;color:var(--theme-text-secondary);">
+          📬 想要更多模板或资料？<a href="index.html#community">加入用户社区</a> 提需求，我们会按投票优先级制作。
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- PDF 教程下载 -->
-  <section class="section section-alt">
+  <section class="section section-alt" id="docs-and-pdf">
     <div class="container">
       <p class="section-title">PDF 与文档</p>
       <h2 class="text-h2 mb-8">适合离线阅读和查缺补漏</h2>
@@ -159,7 +278,7 @@
         <div class="card" style="text-align:center;">
           <div class="card-icon">📗</div>
           <h3>OpenClaw 中文入门手册</h3>
-          <p>当前版本 `v0.1 Beta`。适合在线阅读，也适合直接打印或导出 PDF 保存。适合第一次把完整链路看一遍。</p>
+          <p>当前版本 v0.1。适合在线阅读，也可以直接打印或导出 PDF 保存。第一次使用推荐先把完整流程看一遍。</p>
           <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;margin-top:var(--space-4);">
             <a href="guide-openclaw-starter.html" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="starter_guide" data-surface="resources_doc_card">在线阅读 →</a>
             <a href="guide-openclaw-starter.html#starter-pdf-export" class="btn btn-outline-dark btn-sm" data-track="click_manual_print" data-surface="resources_doc_card">打印 / PDF 入口 →</a>
@@ -199,32 +318,35 @@
     </div>
   </section>
 
-  <!-- 视频教程 -->
-  <section class="section section-white">
+  <section class="section section-white" id="next-best-steps">
     <div class="container">
-      <p class="section-title">视频与录屏</p>
-      <h2 class="text-h2 mb-8">适合跟着一起操作</h2>
-      <div class="card" style="text-align:center;padding:var(--space-12);">
-        <div style="font-size:48px;margin-bottom:var(--space-4);">🎬</div>
-        <h3 class="text-h3 mb-4">B 站视频教程即将上线</h3>
-        <p class="text-body" style="max-width:480px;margin:0 auto;">
-          我们正在录制系列视频教程，涵盖安装部署、模型配置、日常使用等内容，敬请期待。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 配置模板 -->
-  <section class="section section-alt">
-    <div class="container">
-      <p class="section-title">模板与预设</p>
-      <h2 class="text-h2 mb-8">适合已经装好、准备提效的用户</h2>
-      <div class="card" style="text-align:center;padding:var(--space-12);">
-        <div style="font-size:48px;margin-bottom:var(--space-4);">📋</div>
-        <h3 class="text-h3 mb-4">配置模板下载区即将开放</h3>
-        <p class="text-body" style="max-width:480px;margin:0 auto;">
-          预配置的模型方案、技能组合、自动化工作流模板，下载导入即可使用。
-        </p>
+      <p class="section-title">别等“更多资源”</p>
+      <h2 class="text-h2 mb-8">现在最值得继续往下走的 4 个入口</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">📝</div>
+          <h3>第一次任务模板</h3>
+          <p>如果你还停在“会打开，但没真正用起来”，这页是最短路径。挑一条直接照抄，先拿到第一次成果。</p>
+          <a href="tutorial-first-task-templates.html" class="btn btn-primary btn-sm mt-4" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="resources_next_step">立即照抄模板 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧩</div>
+          <h3>安装第一个 Skill</h3>
+          <p>如果你已经感受到一点价值，就别继续只停留在纯聊天，先装一个真正会用到的 Skill。</p>
+          <a href="tutorial-install-first-skill.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_install_guide" data-surface="resources_next_step">一步步装 Skill →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🚀</div>
+          <h3>工作流模板</h3>
+          <p>如果你已经用了几次，开始把总结、纪要、资料整理这些高频动作固定成工作流，价值会陡一点。</p>
+          <a href="tutorial-workflow-templates.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial_article" data-topic="workflow_templates" data-surface="resources_next_step">看工作流模板 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>Skills Hub</h3>
+          <p>如果你想自己筛选真实 Skill、看中文说明和安装命令，直接去 Skills Hub，不用等后续资料包。</p>
+          <a href="skills-hub.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_hub" data-surface="resources_next_step">打开 Skills Hub →</a>
+        </article>
       </div>
     </div>
   </section>
@@ -247,7 +369,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -311,25 +438,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="resources_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="resources_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="resources_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="resources_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -340,6 +467,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -366,11 +494,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }

@@ -94,6 +94,40 @@
       }
     };
 
+    // 覆盖全局 showQrModal 函数，自动使用真实图片路径而非 placeholder
+    var originalShowQrModal = window.showQrModal;
+    window.showQrModal = function (channel, title, desc, placeholderImage) {
+      var entry = resolveChannelEntry(config, channel);
+      var realImage = entry.image || placeholderImage;
+      
+      if (originalShowQrModal) {
+        return originalShowQrModal(channel, title, desc, realImage);
+      }
+      
+      // 如果没有原始函数，直接执行默认逻辑
+      var qrModal = document.getElementById('qrModal');
+      var qrModalIcon = document.getElementById('qrModalIcon');
+      var qrModalTitle = document.getElementById('qrModalTitle');
+      var qrModalDesc = document.getElementById('qrModalDesc');
+      var qrModalImage = document.getElementById('qrModalImage');
+      var qrModalHint = document.getElementById('qrModalHint');
+      
+      var iconMap = { 'wecom': '💼', 'qq': '🐧', 'wechat': '💬', 'planet': '🪐' };
+      var hintMap = {
+        'wecom': '打开微信扫码添加企业微信',
+        'qq': '打开 QQ 扫码加入群聊',
+        'wechat': '打开微信扫码加入群聊',
+        'planet': '打开微信扫码加入知识星球'
+      };
+      
+      qrModalIcon.textContent = iconMap[channel] || '💬';
+      qrModalTitle.textContent = title;
+      qrModalDesc.textContent = desc;
+      qrModalImage.src = realImage;
+      qrModalHint.textContent = entry.hint || hintMap[channel] || '扫码即可加入';
+      qrModal.classList.add('show');
+    };
+
     document.querySelectorAll("[data-community-image]").forEach(function (node) {
       var channel = node.dataset.communityImage;
       var entry = resolveChannelEntry(config, channel);

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>快速开始 - ClawStart | 10 分钟跑通第一次安装</title>
-  <meta name="description" content="按 ClawStart 的最短路径完成第一次安装、模型配置和启动。适合第一次接触 AI 助手安装的小白用户。">
+  <meta name="description" content="按 ClawStart 的最短路径完成首次启动、模型配置和第一次成果。适合第一次接触 AI 助手安装的小白用户。">
   <meta name="keywords" content="ClawStart快速开始,OpenClaw快速开始,10分钟安装,模型配置,首次启动">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://useclawstart.com/start.html">
@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="快速开始 - ClawStart">
   <meta name="twitter:description" content="10 分钟跑通第一次安装、模型配置和启动。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
@@ -57,17 +57,17 @@
   }
   </script>
   <style>
-    .step-list{counter-reset:steps;list-style:none;padding:0}
-    .step-item{counter-increment:steps;display:flex;gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--theme-border)}
+    .step-list{counter-reset:steps;list-style:none;padding:0;margin:var(--space-8) 0}
+    .step-item{counter-increment:steps;display:flex;gap:var(--space-6);padding:var(--space-10) 0;border-bottom:1px solid var(--theme-border)}
     .step-item:last-child{border-bottom:none}
-    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+    .step-num{flex-shrink:0;width:36px;height:36px;background:var(--brand-500);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
     .step-num::before{content:counter(steps)}
-    .step-body h3{font-size:18px;font-weight:600;margin-bottom:var(--space-2);color:var(--theme-text)}
-    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.7}
-    .check-item{display:flex;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);margin:var(--space-2) 0}
+    .step-body h3{font-size:20px;font-weight:600;margin-bottom:var(--space-3);color:var(--theme-text)}
+    .step-body p{color:var(--theme-text-secondary);font-size:15px;line-height:1.8;margin-bottom:var(--space-4)}
+    .check-item{display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);margin:var(--space-4) 0}
     .check-ok{background:var(--theme-bg-card);border:1px solid var(--success)}
-    .check-ok .icon{color:var(--success);font-weight:bold}
-    .check-ok p{color:var(--theme-text);font-size:14px;margin:0}
+    .check-ok .icon{color:var(--success);font-weight:bold;font-size:18px;line-height:1.2}
+    .check-ok p{color:var(--theme-text);font-size:15px;margin:0;line-height:1.6}
   </style>
 </head>
 <body>
@@ -95,8 +95,8 @@
   <section class="page-hero">
       <div class="container">
         <p class="page-hero-kicker">ClawStart 快速开始</p>
-        <h1>10 分钟快速开始</h1>
-        <p>按这条最短路径把 ClawStart 跑起来，再完成第一次模型连接</p>
+        <h1>10 分钟，从零到第一次 AI 对话</h1>
+        <p>按这条最短路径完成首次启动、模型连接，拿到第一次真实可用的 AI 回复</p>
     </div>
   </section>
 
@@ -105,16 +105,16 @@
     <h4>❓ 新手最常问</h4>
     <ul class="faq-float-list">
       <li class="faq-float-item">
-        <a href="troubleshooting.html#macos-cannot-verify" target="_blank">macOS提示"已损坏"怎么办？</a>
+        <a href="troubleshooting.html#launch-fail" target="_blank">macOS提示"已损坏"怎么办？</a>
       </li>
       <li class="faq-float-item">
-        <a href="troubleshooting.html#smartscreen" target="_blank">Windows SmartScreen拦截怎么办？</a>
+        <a href="troubleshooting.html#launch-fail" target="_blank">Windows SmartScreen拦截怎么办？</a>
       </li>
       <li class="faq-float-item">
         <a href="tutorial-model-choice.html" target="_blank">API Key怎么获取？</a>
       </li>
       <li class="faq-float-item">
-        <a href="troubleshooting.html#api-test-failed" target="_blank">API Key测试失败怎么办？</a>
+        <a href="troubleshooting.html#model-fail" target="_blank">API Key测试失败怎么办？</a>
       </li>
       <li class="faq-float-item">
         <a href="tutorial-model-choice.html#domestic" target="_blank">国内连不上模型怎么办？</a>
@@ -132,28 +132,33 @@
         <div style="display: flex; align-items: center; gap: var(--space-3);">
           <div style="font-size: 24px;">👇</div>
           <div>
-            <strong>还没下载？</strong> 先去 <a href="download.html" style="font-weight: 600; text-decoration: underline;">下载页</a> 选择对应平台的一键包，再回到这里继续。
+            <strong>还没下载？</strong> 先去 <a href="download.html" style="font-weight: 600; text-decoration: underline;">下载页</a> 选对平台的一键包。下载完成后直接回这里继续就好。
           </div>
         </div>
       </div>
 
-      <!-- 视频教程入口 -->
-      <div class="video-tutorial-card mt-8">
-        <div class="video-tutorial-icon">🎥</div>
-        <div class="video-tutorial-content">
-          <h3>10分钟看完安装到使用全流程</h3>
-          <p>不爱看文字？跟着视频一步步操作，从启动到完成第一次任务全程演示</p>
-          <a href="https://www.bilibili.com/video/xxxxxxx" target="_blank" rel="noopener" class="btn btn-primary btn-sm">去B站看视频教程 →</a>
+      <div class="card mt-8" style="padding:var(--space-6);">
+        <div style="display:flex;gap:var(--space-4);align-items:flex-start;flex-wrap:wrap;">
+          <div style="font-size:28px;line-height:1;">🧭</div>
+          <div style="flex:1;min-width:240px;">
+            <h3 style="margin-bottom:var(--space-2);">不想通读全文，就直接走这 3 个入口</h3>
+            <p style="color:var(--theme-text-secondary);margin-bottom:var(--space-4);">快速开始页不该把你困在这里。如果你已经知道自己卡在哪，就直接跳到最短路径。</p>
+            <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+              <a href="tutorial-model-choice.html#domestic" class="btn btn-primary btn-sm" data-track="click_tutorial_article" data-topic="model_choice" data-surface="start_quick_routes">先去配模型 →</a>
+              <a href="tutorial-first-task-templates.html" class="btn btn-outline-dark btn-sm" data-track="click_tutorial_article" data-topic="first_task_templates" data-surface="start_quick_routes">直接抄任务模板 →</a>
+              <a href="troubleshooting.html#launch-fail" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-surface="start_quick_routes">启动失败去排障 →</a>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="tip-box mt-6">
         <strong>💡 前置条件</strong>
-        你已经在 <a href="download.html">下载页</a> 选好平台，并拿到了对应的一键包。
+        你已经在 <a href="download.html">下载页</a> 选好平台，并拿到了对应的一键包。这个页面只负责把你带到“第一次真的能用”。
       </div>
 
       <h2 class="text-h2 mt-8 mb-6">先按这个顺序检测</h2>
-      <p class="text-body mb-4">如果中途卡住，不要跳步。先确认当前停在哪一环，再决定是不是去排障页。</p>
+      <p class="text-body mb-4">如果中途卡住，建议按顺序来。你的目标不是"把配置页点完"，而是确认自己已经走到第一次可用结果。</p>
       <div class="check-item check-ok"><div class="icon">1</div><p>一键包是否下载正确，并且已经解压到新的目录</p></div>
       <div class="check-item check-ok"><div class="icon">2</div><p>启动器是否能正常打开，没有被系统权限或杀软拦截</p></div>
       <div class="check-item check-ok"><div class="icon">3</div><p>模型连接测试是否通过，API Key 和网络是否都正常</p></div>
@@ -164,11 +169,11 @@
       </div>
 
       <figure class="tutorial-illustration">
-        <img src="assets/tutorials/start-setup-placeholder.svg" alt="ClawStart 首次启动和配置引导的占位示意图">
-        <figcaption>占位示意图：第一次启动后，你应该依次看到启动引导、模型服务商选择和测试连接成功这三类界面状态。</figcaption>
+        <img src="assets/tutorials/start-setup-placeholder.svg" alt="ClawStart 首次启动和配置引导示意图">
+        <figcaption>示意图：第一次启动后，你应该依次看到启动引导、模型服务商选择和测试连接成功这三类界面状态。</figcaption>
       </figure>
 
-      <h2 class="text-h2 mt-12 mb-6">配置引导</h2>
+      <h2 class="text-h2 mt-12 mb-6">配置引导，只做够第一次跑通的那部分</h2>
 
       <div class="visual-step-grid mb-8">
         <article class="visual-step-card">
@@ -178,7 +183,7 @@
             <div class="visual-shot-lines"><span></span><span></span><span></span></div>
           </div>
           <h3>先确认启动器真的打开了</h3>
-          <p>如果你已经看到配置引导，而不是系统拦截弹窗，就说明第一步已经走通。</p>
+          <p>如果你已经看到配置引导，而不是系统拦截弹窗，就说明下载后的第一关已经过了。</p>
         </article>
         <article class="visual-step-card">
           <div class="visual-shot">
@@ -187,7 +192,7 @@
             <div class="visual-shot-lines"><span></span><span></span><span></span></div>
           </div>
           <h3>先选最容易拿到 Key 的服务商</h3>
-          <p>第一次不要纠结最强模型，先选最容易完成测试连接的路径。</p>
+            <p>第一次不要纠结最强模型，先选最容易完成测试的那个。</p>
         </article>
         <article class="visual-step-card">
           <div class="visual-shot">
@@ -196,7 +201,7 @@
             <div class="visual-shot-lines"><span></span><span></span><span></span></div>
           </div>
           <h3>成功标志是“能稳定回复”</h3>
-          <p>只要测试通过并拿到第一条正常回复，你就已经比大多数“只装不学”的用户走得更远。</p>
+          <p>只要测试通过并拿到第一条正常回复，这次首装就算真的完成了，不是只把软件打开而已。</p>
         </article>
       </div>
 
@@ -205,7 +210,7 @@
           <div class="step-num"></div>
           <div class="step-body">
             <h3>第一次启动</h3>
-            <p>Windows 用户双击 <code>launch.bat</code>，macOS 用户右键打开 <code>launch.command</code>。</p>
+            <p>Windows 用户双击启动程序（launch.bat），macOS 用户右键打开启动脚本（launch.command）。</p>
             <p>第一次启动会自动进入配置引导，不需要你手动编辑配置文件。</p>
             <p>如果这一步就打不开，先去看 <a href="troubleshooting.html">排障页</a> 里的“打不开 / 启动失败”。</p>
           </div>
@@ -214,7 +219,7 @@
           <div class="step-num"></div>
           <div class="step-body">
             <h3>选择 AI 模型供应商</h3>
-            <p>优先选择你当前最容易拿到 API Key 的服务商。中国大陆用户推荐先从国内模型提供商开始：</p>
+            <p>优先选择你当前最容易拿到 API Key（服务商给你的专属密码）的服务商。中国大陆用户推荐先从国内模型提供商开始：</p>
             <ul style="color:var(--theme-text-secondary);line-height:1.8;margin:var(--space-3) 0 var(--space-3) var(--space-5);">
               <li>🇨🇳 豆包 / 硅基流动 / DeepSeek / 自定义兼容接口</li>
               <li>🧠 已有海外 API 的用户也可以继续使用现有服务商</li>
@@ -231,7 +236,7 @@
               <strong>⚠️ 安全提示</strong>
               不要将 API Key 分享给他人或提交到公开仓库。
             </div>
-            <p>如果这里报错，优先检查是不是复制了前后空格、Key 已过期，或者当前网络无法访问对应接口。</p>
+            <p>如果这里报错，优先检查是不是复制了前后空格、密码已过期，或者当前网络无法访问对应接口。</p>
           </div>
         </li>
         <li class="step-item">
@@ -254,8 +259,8 @@
         </li>
       </ol>
 
-      <h2 class="text-h2 mt-12 mb-6">第一个任务</h2>
-      <p class="text-body mb-4">配置完成后，试试这些：</p>
+      <h2 class="text-h2 mt-12 mb-6">第一次成果，先拿一个看得见的输出</h2>
+      <p class="text-body mb-4">配置完成后，马上做一个足够小、但能证明“真的能用”的任务：</p>
       <div class="code-block"><span class="comment"># 让 AI 帮你总结一个网页</span>
 总结这篇文章的核心观点：https://docs.openclaw.ai
 
@@ -263,8 +268,8 @@
 帮我写一份 Node.js 项目的 README 模板</div>
 
       <div class="tip-box mt-4">
-        <strong>💡 小技巧</strong>
-        按下 <code>Ctrl + Space</code>（Mac 是 <code>Cmd + Space</code>）可以快速唤醒全局输入框。
+        <strong>💡 判断标准</strong>
+        只要你能稳定输入一个真实问题，并拿到一条可读、可复用的回复，你的第一次成果就到手了。
       </div>
 
       <h2 class="text-h2 mt-12 mb-6">验证安装成功</h2>
@@ -273,7 +278,7 @@
       <div class="check-item check-ok"><div class="icon">2</div><p>模型连接测试通过，可以正常对话</p></div>
       <div class="check-item check-ok"><div class="icon">3</div><p>完成了第一个任务，得到预期输出</p></div>
 
-      <h2 class="text-h2 mt-12 mb-6">接下来</h2>
+      <h2 class="text-h2 mt-12 mb-6">接下来，先延续第一次成果这条主线</h2>
       <div class="card-grid-2">
         <div class="card">
           <div class="card-icon">📚</div>
@@ -282,10 +287,10 @@
           <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial" data-surface="start_next_cards">进入新手入门 →</a>
         </div>
         <div class="card">
-          <div class="card-icon">🎒</div>
-          <h3>安装第一个 Skill</h3>
-          <p>理解 Skill 是什么，再按最短路径装一个你真正会用的扩展。</p>
-          <a href="tutorial-skills.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_skill_guide" data-surface="start_next_cards">进入 Skills 指南 →</a>
+          <div class="card-icon">🧭</div>
+          <h3>先做第一个新手任务</h3>
+          <p>比起立刻装 Skill，首次用户更该先用现成能力完成一次真实任务，建立成就感。</p>
+          <a href="tutorial-beginner.html" class="btn btn-outline-dark btn-sm mt-4" data-track="click_tutorial" data-surface="start_next_cards">继续做第一个任务 →</a>
         </div>
         <div class="card">
           <div class="card-icon">🤖</div>
@@ -296,12 +301,11 @@
       </div>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">
-        <h3 class="text-h3" style="margin-bottom:var(--space-2);">第一次跑通后这样走</h3>
-        <p class="text-body mb-4">先去教程页完成第一件有成就感的事。如果你已经觉得折腾太多，也可以直接了解 LolaClaw。</p>
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">第一次跑通后，先延续成功感</h3>
+        <p class="text-body mb-4">现在最优先的下一步不是继续折腾环境，而是马上完成一个更像样的新手任务。其他入口都往后排。</p>
         <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
-          <a href="tutorial-beginner.html" class="btn btn-primary" data-track="click_tutorial" data-surface="start_bottom_cta">进入新手入门 →</a>
+          <a href="tutorial-beginner.html" class="btn btn-primary" data-track="click_tutorial" data-surface="start_bottom_cta">继续做第一个任务 →</a>
           <a href="tutorial-model-choice.html" class="btn btn-outline-dark" data-track="click_tutorial_article" data-topic="model_choice" data-surface="start_bottom_cta">模型配置教程 →</a>
-          <a href="tutorial-skills.html" class="btn btn-outline-dark" data-track="click_skill_guide" data-surface="start_bottom_cta">看 Skills 指南 →</a>
           <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-surface="start_bottom_cta">遇到问题？去排障 →</a>
           <a href="about.html#lolaclaw" class="btn btn-outline-dark" data-track="click_lolaclaw" data-surface="start_bottom_cta">了解 LolaClaw →</a>
         </div>
@@ -310,7 +314,7 @@
       <div class="tutorial-series-nav">
         <p class="section-title">继续阅读</p>
         <h2 class="text-h2 mb-4">按这条顺序继续，最不容易迷路</h2>
-        <p class="text-body">你现在已经完成安装和首启，下一步重点不是继续折腾环境，而是完成第一次可见成果，然后再决定是否扩展 Skill。</p>
+        <p class="text-body">你现在已经完成安装和首启，下一步重点不是继续折腾环境，而是把第一次可见成果做扎实，然后再决定是否扩展 Skill。</p>
         <div class="tutorial-series-links">
           <a href="download.html" class="tutorial-series-link" data-track="click_prev_tutorial" data-topic="download" data-surface="start_series">
             <span class="tutorial-series-label">上一篇</span>
@@ -347,7 +351,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+        <div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
+          <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
+            当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
+          </div>
+        </div>
         <ul class="footer-links">
           <li><a href="download.html">下载</a></li>
           <li><a href="start.html">快速开始</a></li>
@@ -411,25 +420,25 @@
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="start_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="start_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="start_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="start_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -440,6 +449,7 @@
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -466,11 +476,27 @@
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -497,7 +523,7 @@
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

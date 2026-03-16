@@ -6,7 +6,7 @@
     plausible: {
       enabled: true,
       domain: window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-        ? "369pie.github.io"
+        ? "nicekate.github.io"
         : window.location.hostname,
       scriptSrc: "https://plausible.io/js/script.js",
       apiHost: "",

@@ -77,8 +77,8 @@
   <section class="page-hero">
     <div class="container">
       <p class="page-hero-kicker">ClawStart 排障中心</p>
-      <h1>故障排查</h1>
-      <p>先按最短顺序定位，再按错误类型处理。大多数问题几分钟内就能解决。</p>
+      <h1>遇到问题？按现象快速找到解决办法</h1>
+      <p>安装过程中遇到报错很正常，大部分问题都有现成的解决方案。<br>先判断你是打不开、装不上、模型连不上，还是运行后出问题，再做最短动作。</p>
     </div>
   </section>
 
@@ -95,21 +95,47 @@
       <div class="card-grid-2 mt-8">
         <div class="card">
           <h3>先看你卡在哪一类</h3>
-          <p>优先判断是“打不开”“安装失败”“模型连不上”还是“运行后报错”，不要同时乱试多个方向。</p>
+          <p>先判断属于"打不开""安装失败""模型连不上"还是"运行后报错"，一次只排查一个方向，效率最高。</p>
         </div>
         <div class="card">
-          <h3>先做最短动作</h3>
+          <h3>找到最短解决路径</h3>
           <p>一键包用户先处理权限、杀软、路径问题。只有明确走命令行安装时，才需要继续看 Node、Git、CLI 和 npm 错误。</p>
         </div>
       </div>
 
-      <div style="margin-top:var(--space-12);">
+      <div class="card mt-8">
+        <h3>按现象选入口，快速定位</h3>
+        <div class="card-grid" style="margin-top:var(--space-5);">
+          <a href="#launch-fail" class="card" style="text-decoration:none;color:inherit;text-align:left;">
+            <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">入口 1</div>
+            <h4>打不开 / 启动失败</h4>
+            <p>适合 macOS 安全拦截、Windows SmartScreen、杀软拦截、双击没反应这类问题。</p>
+          </a>
+          <a href="#install-fail" class="card" style="text-decoration:none;color:inherit;text-align:left;">
+            <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">入口 2</div>
+            <h4>安装失败 / 依赖报错</h4>
+            <p>适合 Git 权限错误、npm 依赖损坏、找不到命令、文件缺失这类问题。</p>
+          </a>
+          <a href="#model-fail" class="card" style="text-decoration:none;color:inherit;text-align:left;">
+            <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">入口 3</div>
+            <h4>模型连不上 / API Key 不通过</h4>
+            <p>适合网络不通、Key 错误、余额问题、代理或证书环境干扰这类问题。</p>
+          </a>
+          <a href="#runtime-fail" class="card" style="text-decoration:none;color:inherit;text-align:left;">
+            <div style="font-size:14px;font-weight:700;color:var(--brand-500);margin-bottom:12px;">入口 4</div>
+            <h4>运行后出问题</h4>
+            <p>适合端口占用、内存过高、技能安装异常，以及消息渠道接入不稳定这类问题。</p>
+          </a>
+        </div>
+      </div>
+
+      <div id="launch-fail" style="margin-top:var(--space-12);">
         <h2 class="text-h2 mb-6">🔌 打不开 / 启动失败</h2>
 
         <details class="faq-item">
           <summary>macOS 提示"无法验证开发者"或"已损坏"</summary>
           <div class="faq-answer">
-            <p>这是 macOS Gatekeeper 的安全机制。两种解决方式：</p>
+            <p>这是 macOS Gatekeeper（系统自带的安全验证机制）在起作用。两种解决方式：</p>
             <p>方式一：前往「系统设置 → 隐私与安全性」，找到被拦截的应用，点击「仍要打开」。</p>
             <p>方式二：在终端执行：</p>
             <div class="code-block">xattr -cr "/你的解压目录"</div>
@@ -118,9 +144,9 @@
         </details>
 
         <details class="faq-item">
-          <summary>Windows SmartScreen 拦截安装</summary>
+          <summary>Windows SmartScreen（系统安全拦截）弹窗</summary>
           <div class="faq-answer">
-            <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」。底层的 OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
+            <p>弹出"Windows 已保护你的电脑"时，点击「更多信息」→「仍要运行」。这是 Windows 对未签名程序的正常拦截。OpenClaw 是开源软件，源码可在 <a href="https://github.com/openclaw/openclaw">GitHub</a> 查看。</p>
           </div>
         </details>
 
@@ -137,7 +163,7 @@
         </details>
       </div>
 
-      <div style="margin-top:var(--space-12);">
+      <div id="install-fail" style="margin-top:var(--space-12);">
         <h2 class="text-h2 mb-6">📦 安装与依赖错误</h2>
 
         <details class="faq-item">
@@ -167,7 +193,7 @@ git config --global --add url."https://github.com/".insteadOf git@github.com:</d
           <summary>出现 ENOENT / -4058 / cannot find module</summary>
           <div class="faq-answer">
             <p>这表示文件没写完整、目录异常，或上次安装被中断了。</p>
-            <p>如果你走的是命令行安装路径，先清理 npm 缓存，再重新安装底层 CLI：</p>
+            <p>如果你走的是命令行安装路径，先清理 npm 缓存，再重新安装OpenClaw 核心程序：</p>
             <div class="code-block">npm cache clean --force
 npm install -g openclaw</div>
             <p>如果你走的是一键包路径，优先重新下载并解压到一个新的空目录，不要覆盖旧目录。</p>
@@ -177,9 +203,9 @@ npm install -g openclaw</div>
         <details class="faq-item">
           <summary>出现 native binding / engine / unsupported</summary>
           <div class="faq-answer">
-            <p>这类错误通常意味着底层依赖没装完整，或者 Node.js 版本太低。</p>
+            <p>这类错误通常意味着必要组件没装完整，或者 Node.js 版本太低。</p>
             <ul style="margin:var(--space-2) 0 var(--space-2) var(--space-5);line-height:2;">
-              <li><code>native binding</code>：先重装底层 CLI</li>
+              <li><code>native binding</code>：先重装OpenClaw 核心程序</li>
               <li><code>engine</code> / <code>unsupported</code>：先升级 Node.js 到当前要求版本以上</li>
             </ul>
             <p>如果你只是想最快用起来，建议优先回到一键包路径，不要继续手动折腾命令行环境。</p>
@@ -203,7 +229,7 @@ export PATH="$(npm config get prefix)/bin:$PATH"</div>
         </details>
       </div>
 
-      <div style="margin-top:var(--space-12);">
+      <div id="model-fail" style="margin-top:var(--space-12);">
         <h2 class="text-h2 mb-6">🤖 模型连不上 / API Key 不通过</h2>
 
         <details class="faq-item">
@@ -262,7 +288,7 @@ npm config set strict-ssl false</div>
         </details>
       </div>
 
-      <div style="margin-top:var(--space-12);">
+      <div id="runtime-fail" style="margin-top:var(--space-12);">
         <h2 class="text-h2 mb-6">⚙️ 运行时问题</h2>
 
         <details class="faq-item">
@@ -351,7 +377,7 @@ openclaw gateway restart</div>
                 <li>继续跟进</li>
               </ul>
               <div class="community-actions">
-                <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开企微二维码</a>
+                <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_private_hub" data-channel="wecom" class="btn btn-primary btn-sm">打开企微二维码</a>
                 <a href="start.html" class="btn btn-outline-dark btn-sm" data-track="click_quickstart" data-surface="troubleshooting_private_hub">回到快速开始 →</a>
               </div>
             </div>
@@ -362,7 +388,7 @@ openclaw gateway restart</div>
               <h3>QQ群</h3>
               <p>适合把错误提示、系统环境和操作截图发出来，让更多用户一起帮你判断。</p>
               <div class="community-actions">
-                <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开 QQ 群二维码</a>
+                <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_private_hub" data-channel="qq" class="btn btn-primary btn-sm">打开 QQ 群二维码</a>
               </div>
             </div>
           </article>
@@ -372,18 +398,17 @@ openclaw gateway restart</div>
               <h3>微信群</h3>
               <p>适合需要连续跟进同一个问题的用户，尤其是模型配置、网络和权限类问题。</p>
               <div class="community-actions">
-                <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" class="btn btn-primary btn-sm">打开微信群二维码</a>
+                <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_private_hub" data-channel="wechat" class="btn btn-primary btn-sm">打开微信群二维码</a>
               </div>
             </div>
           </article>
-            </article>
-            <article class="community-channel">
+          <article class="community-channel">
               <div class="community-channel-copy">
                 <div class="community-channel-badge">后续沉淀</div>
                 <h3>知识星球</h3>
                 <p>适合把已经解决问题的用户沉淀下来，继续接教程、案例、模板和升级服务。</p>
                 <div class="community-actions">
-                  <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">打开星球二维码</a>
+                  <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_private_hub" data-channel="planet">打开星球二维码</a>
                   <a href="https://github.com/openclaw/openclaw/issues" target="_blank" rel="noopener" class="btn btn-outline-dark btn-sm" data-track="click_issue_submit" data-surface="troubleshooting_private_hub">GitHub Issues →</a>
                 </div>
               </div>
@@ -410,7 +435,7 @@ openclaw gateway restart</div>
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
           <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
             当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
           </div>
@@ -481,25 +506,25 @@ openclaw gateway restart</div>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="troubleshooting_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>

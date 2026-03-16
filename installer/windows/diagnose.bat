@@ -14,6 +14,7 @@ set "CYAN=[96m"
 set "RESET=[0m"
 set "BOLD=[1m"
 
+cd /d "%~dp0"
 set "CLAWSTART_HOME=%~dp0"
 set "CLAWSTART_HOME=%CLAWSTART_HOME:~0,-1%"
 set "REPORT=%CLAWSTART_HOME%\diagnostic.txt"
@@ -70,8 +71,8 @@ echo. >> "%REPORT%"
 :: 端口检测
 echo   [4/6] 端口占用...
 echo --- 端口检测 --- >> "%REPORT%"
-netstat -ano | findstr ":3000 :3001 :8080 :8888" >> "%REPORT%" 2>nul
-if !errorlevel! neq 0 echo 常用端口(3000/3001/8080/8888): 均空闲 >> "%REPORT%"
+netstat -ano | findstr ":18789 :3000 :3001 :8080 :8888" >> "%REPORT%" 2>nul
+if !errorlevel! neq 0 echo 常用端口(18789/3000/3001/8080/8888): 均空闲 >> "%REPORT%"
 echo. >> "%REPORT%"
 
 :: 配置检测
@@ -136,9 +137,11 @@ if not "%MANUAL_COMMAND%"=="" echo   手动命令: %CYAN%%MANUAL_COMMAND%%RESET%
 echo.
 echo   报告已保存到: %CYAN%%REPORT%%RESET%
 echo.
-echo   %YELLOW%如需帮助，请将 diagnostic.txt 发到社群：%RESET%
-echo     QQ群: [待填写]
-echo     微信群: [待填写]
+echo   %YELLOW%如需帮助，请将 diagnostic.txt 或报错截图发到你的私域入口：%RESET%
+echo     企业微信: [待填写企微客服/名片]
+echo     QQ群: [待填写群号或加群链接]
+echo     微信群: [建议写“先加企业微信，备注进群”]
+echo     知识星球: [待填写星球链接]
 echo.
 if /I "%CLAWSTART_NO_PAUSE%"=="1" goto :eof
 if /I "%CI%"=="true" goto :eof

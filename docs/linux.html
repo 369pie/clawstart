@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linux Beta 路径 - ClawStart | 实验性安装说明</title>
-  <meta name="description" content="ClawStart Linux 当前主推荐路径是 Beta 安装脚本，适合熟悉终端和排错的用户。普通用户优先建议使用 Windows 或 macOS 一键包。">
-  <meta name="keywords" content="ClawStart Linux,OpenClaw Linux,Linux Beta 安装脚本,Linux安装指南,npm安装">
+  <title>Linux 安装指南 - ClawStart</title>
+  <meta name="description" content="ClawStart Linux 安装指南，适合有终端经验的用户。新手推荐使用 Windows 或 macOS 一键包。">
+  <meta name="keywords" content="ClawStart Linux,OpenClaw Linux,Linux安装指南,Linux安装脚本">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://useclawstart.com/linux.html">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Linux Beta 路径 - ClawStart">
-  <meta property="og:description" content="Linux 当前主推荐路径是 Beta 安装脚本，适合熟悉终端和排错的用户；普通用户优先使用 Windows 或 macOS 一键包。">
+  <meta property="og:title" content="Linux 安装指南 - ClawStart">
+  <meta property="og:description" content="Linux 安装指南，适合有终端经验的用户。新手推荐使用 Windows 或 macOS 一键包。">
   <meta property="og:url" content="https://useclawstart.com/linux.html">
   <meta property="og:site_name" content="ClawStart">
   <meta property="og:locale" content="zh_CN">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Linux Beta 路径 - ClawStart">
-  <meta name="twitter:description" content="Linux Beta 安装脚本与环境准备说明，适合愿意自行排错的用户。">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <meta name="twitter:title" content="Linux 安装指南 - ClawStart">
+  <meta name="twitter:description" content="Linux 安装脚本与环境准备说明，适合有终端经验的用户。">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": "ClawStart Linux Beta 安装脚本路径",
+    "headline": "ClawStart Linux 安装指南",
     "url": "https://useclawstart.com/linux.html",
-    "description": "面向熟悉终端用户的 Linux Beta 安装脚本与环境准备说明。",
+    "description": "面向有终端经验用户的 Linux 安装脚本与环境准备说明。",
     "inLanguage": "zh-CN",
     "author": {
       "@type": "Organization",
@@ -77,9 +77,9 @@
 
   <section class="page-hero">
     <div class="container">
-      <p class="page-hero-kicker">Linux Beta 路径</p>
-      <h1>Linux Beta 路径</h1>
-      <p>当前属于实验性路径，更适合熟悉终端、愿意自己排错的用户。当前主推荐路径是 Linux Beta 安装脚本，默认安装到 <code>~/.clawstart-linux-beta</code>。</p>
+      <p class="page-hero-kicker">Linux 安装指南</p>
+      <h1>适合有终端经验的用户</h1>
+      <p>当前通过安装脚本配置，适合熟悉终端操作的用户。<br>如果你的目标只是尽快把 AI 助手用起来，Windows 或 macOS 一键包通常会更省心。</p>
     </div>
   </section>
 
@@ -89,31 +89,41 @@
       <div class="card-grid-2 mb-8">
         <div class="card" style="text-align:center;">
           <div class="card-icon">📦</div>
-          <h3>实验性打包产物</h3>
-          <p>如果 Release 中出现 Linux 构建产物可以尝试，但当前更推荐先走下面的 Linux Beta 安装脚本。</p>
-          <a href="https://github.com/369pie/clawstart/releases/latest" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_release_notes" data-platform="linux" data-surface="linux_hero_card">查看最新 Release →</a>
+          <h3>预构建安装包</h3>
+          <p>如果版本页面中包含 Linux 构建产物可以直接尝试，也可以使用下面的安装脚本。</p>
+          <a href="https://github.com/369pie/clawstart/releases/latest" target="_blank" rel="noopener" class="btn btn-primary btn-sm mt-4" data-track="click_release_notes" data-platform="linux" data-surface="linux_hero_card">查看最新版本 →</a>
         </div>
         <div class="card" style="text-align:center;">
           <div class="card-icon">⌨️</div>
-          <h3>Linux Beta 脚本</h3>
-          <p>适合愿意使用终端但不想自己从零搭目录的用户。先准备 Node.js，再运行脚本即可。</p>
+          <h3>Linux 安装脚本</h3>
+          <p>适合有终端经验但不想从零搭目录的用户。先准备 Node.js，再运行脚本即可。</p>
           <a href="#cli" class="btn btn-outline-dark btn-sm mt-4" data-track="click_cli_guide" data-platform="linux" data-surface="linux_hero_card">查看命令 →</a>
         </div>
       </div>
 
+      <div class="warning-box mb-8">
+        <strong>先判断，这是不是你该走的路径</strong><br>
+        如果你愿意看终端输出、能自己处理 Node.js、权限、证书和 Git/npm 问题，这页适合你。<br>
+        如果你只是想尽快用起来，不想把第一次体验花在排环境上，这页大概率不是最优解。
+      </div>
+
       <div class="card mb-8" style="padding:var(--space-6);">
-        <h2 class="text-h2 mb-4">Linux Beta 安装脚本</h2>
-        <p class="mb-4">如果你愿意使用终端，但不想自己从零搭目录，可以先下载 ClawStart 的 Linux Beta 安装脚本。它会检查 Node.js 版本、创建本地工作区，并把底层 OpenClaw CLI 安装到独立目录 <code>~/.clawstart-linux-beta</code>。</p>
+        <h2 class="text-h2 mb-4">Linux 安装脚本</h2>
+        <p class="mb-4">如果你熟悉终端但不想从零搭建目录，可以使用 ClawStart 的 Linux 安装脚本。它会自动检查 Node.js 版本、创建本地工作区，并将 OpenClaw 核心程序安装到独立目录。</p>
         <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
 bash clawstart-linux-beta.sh</div>
         <p style="color:var(--theme-text-secondary);margin-top:var(--space-4);">安装完成后，进入 <code>~/.clawstart-linux-beta</code> 并运行 <code>./launch.sh</code>。如果脚本提示缺少 Node.js 20+，先按它给出的包管理器命令补齐环境。</p>
+        <div class="tip-box" style="margin-top:var(--space-6);">
+          <strong>跑通标准</strong>
+          脚本执行完成不等于已经能用。你至少要成功启动、打开配置界面，并拿到第一条正常回复，才算真正跑通。
+        </div>
         <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-6);">
-          <a href="https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_download" data-platform="linux_beta_script" data-surface="linux_beta_script">下载 Linux Beta 脚本 →</a>
+          <a href="https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-track="click_download" data-platform="linux_beta_script" data-surface="linux_beta_script">下载 Linux 安装脚本 →</a>
           <a href="troubleshooting.html" class="btn btn-outline-dark btn-sm" data-track="click_troubleshooting" data-platform="linux" data-surface="linux_beta_script">Linux 常见问题 →</a>
         </div>
       </div>
 
-      <h2 class="text-h2 mb-6">Linux Beta 推荐步骤</h2>
+      <h2 class="text-h2 mb-6">Linux 推荐安装步骤</h2>
       <ol class="install-step mb-8">
         <li class="install-step-item">
           <div class="step-num"></div>
@@ -125,7 +135,7 @@ bash clawstart-linux-beta.sh</div>
         <li class="install-step-item">
           <div class="step-num"></div>
           <div class="step-body">
-            <h3>运行 Linux Beta 脚本</h3>
+            <h3>运行安装脚本</h3>
             <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
 bash clawstart-linux-beta.sh</div>
           </div>
@@ -136,12 +146,12 @@ bash clawstart-linux-beta.sh</div>
             <h3>进入安装目录并启动</h3>
             <div class="code-block">cd ~/.clawstart-linux-beta
 ./launch.sh</div>
-            <p style="margin-top:var(--space-2);">如果失败，不要先乱改 PATH，优先去排障页对应 Linux、Git、npm、证书和权限问题。</p>
+            <p style="margin-top:var(--space-2);">如果失败，优先去排障页查看对应 Linux、Git、npm、证书和权限问题，比手动改 PATH 更高效。</p>
           </div>
         </li>
       </ol>
 
-      <h2 id="cli" class="text-h2 mb-6">按发行版准备环境</h2>
+      <h2 id="cli" class="text-h2 mb-6">选择你的 Linux 系统版本</h2>
 
       <div class="distro-tabs">
         <button class="tab-btn active" onclick="showTab('ubuntu')">Ubuntu/Debian</button>
@@ -157,26 +167,24 @@ bash clawstart-linux-beta.sh</div>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
-                <div class="code-block"><span class="comment"># 安装 Node.js 20 LTS</span>
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+                <h3 style="font-size:16px;">安装 Node.js 22+</h3>
+                <div class="code-block"><span class="comment"># 安装 Node.js 22 LTS</span>
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
-bash clawstart-linux-beta.sh</div>
+                <h3 style="font-size:16px;">全局安装 OpenClaw</h3>
+                <div class="code-block">npm install -g openclaw@latest</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">启动本地 Beta</h3>
-                <div class="code-block">cd ~/.clawstart-linux-beta
-./launch.sh</div>
+                <h3 style="font-size:16px;">运行引导向导</h3>
+                <div class="code-block">openclaw onboard --install-daemon</div>
               </div>
             </li>
           </ol>
@@ -190,24 +198,22 @@ bash clawstart-linux-beta.sh</div>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
+                <h3 style="font-size:16px;">安装 Node.js 22+</h3>
                 <div class="code-block">sudo dnf install -y nodejs</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
-bash clawstart-linux-beta.sh</div>
+                <h3 style="font-size:16px;">全局安装 OpenClaw</h3>
+                <div class="code-block">npm install -g openclaw@latest</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">启动本地 Beta</h3>
-                <div class="code-block">cd ~/.clawstart-linux-beta
-./launch.sh</div>
+                <h3 style="font-size:16px;">运行引导向导</h3>
+                <div class="code-block">openclaw onboard --install-daemon</div>
               </div>
             </li>
           </ol>
@@ -221,24 +227,22 @@ bash clawstart-linux-beta.sh</div>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">安装 Node.js 20+</h3>
+                <h3 style="font-size:16px;">安装 Node.js 22+</h3>
                 <div class="code-block">sudo pacman -S nodejs npm</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
-bash clawstart-linux-beta.sh</div>
+                <h3 style="font-size:16px;">全局安装 OpenClaw</h3>
+                <div class="code-block">npm install -g openclaw@latest</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">启动本地 Beta</h3>
-                <div class="code-block">cd ~/.clawstart-linux-beta
-./launch.sh</div>
+                <h3 style="font-size:16px;">运行引导向导</h3>
+                <div class="code-block">openclaw onboard --install-daemon</div>
               </div>
             </li>
           </ol>
@@ -252,26 +256,24 @@ bash clawstart-linux-beta.sh</div>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">安装 nvm（推荐）</h3>
-                <div class="code-block">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+                <h3 style="font-size:16px;">安装 nvm 并装 Node.js 22+</h3>
+                <div class="code-block">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 source ~/.bashrc
-nvm install --lts</div>
+nvm install 22</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">运行 Linux Beta 脚本</h3>
-                <div class="code-block">curl -fsSL https://raw.githubusercontent.com/369pie/clawstart/main/installer/linux/install.sh -o clawstart-linux-beta.sh
-bash clawstart-linux-beta.sh</div>
+                <h3 style="font-size:16px;">全局安装 OpenClaw</h3>
+                <div class="code-block">npm install -g openclaw@latest</div>
               </div>
             </li>
             <li class="install-step-item" style="padding:var(--space-3) 0;border-bottom:none;">
               <div class="step-num" style="width:24px;height:24px;font-size:12px;"></div>
               <div class="step-body" style="flex:1;">
-                <h3 style="font-size:16px;">启动本地 Beta</h3>
-                <div class="code-block">cd ~/.clawstart-linux-beta
-./launch.sh</div>
+                <h3 style="font-size:16px;">运行引导向导</h3>
+                <div class="code-block">openclaw onboard --install-daemon</div>
               </div>
             </li>
           </ol>
@@ -283,32 +285,32 @@ bash clawstart-linux-beta.sh</div>
       <details class="faq-item">
         <summary>提示 "EACCES: permission denied" 安装失败？</summary>
         <div class="faq-answer">
-          <p>先不要自己手动改一堆 npm 全局目录，优先直接回到 Linux Beta 脚本路径。脚本会把依赖安装到 <code>~/.clawstart-linux-beta/runtime/npm-global</code>，减少全局权限问题。</p>
+          <p>推荐通过 nvm 安装 Node.js，可以避免大多数全局权限问题。使用 npm 通用 tab 里的方式安装 nvm 后重新操作即可。</p>
           <p>如果你已经手动执行过系统级 npm 安装，再回到排障页看权限和缓存问题会更稳。</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>脚本执行完成后，下一步该做什么？</summary>
+        <summary>安装完成后，下一步该做什么？</summary>
         <div class="faq-answer">
-          <p>进入默认安装目录并启动：</p>
-          <div class="code-block">cd ~/.clawstart-linux-beta
-./launch.sh</div>
-          <p>如果这里报错，不要直接重装，先去排障页按 Linux、Git、npm、证书和网络问题分流。</p>
+          <p>如果你已经运行过 <code>openclaw onboard --install-daemon</code>，向导会自动帮你配好 Gateway 并启动。</p>
+          <p>你也可以手动启动 Gateway：</p>
+          <div class="code-block">openclaw gateway --port 18789 --verbose</div>
+          <p>如果遇到问题，建议先去排障页按 Linux、Git、npm、证书和网络问题分流。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>安装后启动提示"找不到命令"？</summary>
         <div class="faq-answer">
-          <p>如果你走的是 Linux Beta 脚本，优先使用安装目录里的 <code>./launch.sh</code>，而不是直接在全局环境里敲 <code>openclaw</code>。</p>
+          <p>如果你走的是安装脚本，优先使用安装目录里的 <code>./launch.sh</code>，而不是直接在全局环境里敲 <code>openclaw</code>。</p>
           <p>只有在你明确走手动 CLI 路径时，才需要自己处理 PATH 和 npm 全局目录。</p>
         </div>
       </details>
 
       <div class="card text-center mt-12" style="padding:var(--space-8);">
         <h3 class="text-h3" style="margin-bottom:var(--space-2);">安装完成？</h3>
-        <p class="text-body mb-4">先用 <code>./launch.sh</code> 跑通第一轮；如果中途卡住，优先去排障页，不要直接回头乱改系统环境。</p>
+        <p class="text-body mb-4">先用 <code>./launch.sh</code> 跑通第一轮；如果中途卡住，优先去排障页查找对应问题，效率比改系统环境高很多。</p>
         <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
           <a href="start.html" class="btn btn-primary" data-track="click_quickstart" data-surface="linux_bottom_cta">查看快速开始 →</a>
           <a href="troubleshooting.html" class="btn btn-outline-dark" data-track="click_troubleshooting" data-platform="linux" data-surface="linux_bottom_cta">Linux 遇到问题？去排障 →</a>
@@ -322,7 +324,7 @@ bash clawstart-linux-beta.sh</div>
     <div class="container">
       <div class="footer-inner">
         <div>
-          <div>🦞 ClawStart · 先帮你装上，再帮你真正用起来</div>
+          <div>🦞 ClawStart · 让每个中文用户，都能拥有自己的 AI 助手</div>
           <div style="font-size: 12px; color: var(--theme-text-secondary); margin-top: var(--space-2);">
             当前版本：v0.2.3 | 最后更新：2026-03-14 | 联系我们：hi@useclawstart.com
           </div>
@@ -396,25 +398,25 @@ bash clawstart-linux-beta.sh</div>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="linux_float_panel" data-channel="wecom">
           <span class="icon">💼</span>
           <span>加企业微信（1对1答疑）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="linux_float_panel" data-channel="qq">
           <span class="icon">🐧</span>
           <span>QQ交流群（公开讨论）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="linux_float_panel" data-channel="wechat">
           <span class="icon">💬</span>
           <span>微信群（用户交流）</span>
         </a>
       </li>
       <li class="community-float-item">
-        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="linux_float_panel" data-channel="planet">
           <span class="icon">🪐</span>
           <span>知识星球（付费内容）</span>
         </a>
@@ -425,6 +427,7 @@ bash clawstart-linux-beta.sh</div>
     </div>
   </div>
 
+  <script src="community.js"></script>
   <script>
     
     // 二维码弹窗逻辑
@@ -451,11 +454,27 @@ bash clawstart-linux-beta.sh</div>
     };
 
     function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
       qrModalIcon.textContent = iconMap[type] || '💬';
       qrModalTitle.textContent = title;
       qrModalDesc.textContent = desc;
-      qrModalImage.src = image;
-      qrModalHint.textContent = hintMap[type] || '扫码即可加入';
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
       qrModal.classList.add('show');
       communityPanel.classList.remove('show');
     }
@@ -482,7 +501,7 @@ bash clawstart-linux-beta.sh</div>
       if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
         communityPanel.classList.remove('show');
       }
-      if (qrModal.classList.contains('show') && !qrModal.querySelector('.qr-modal-content').contains(e.target)) {
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
         qrModal.classList.remove('show');
         communityPanel.classList.remove('show');
       }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClawStart 一页速查卡</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
+    h1 { text-align: center; color: #1a1a1a; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 32px; }
+    .card { border: 2px solid #e5e5e5; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+    .card h2 { margin-top: 0; color: #1a1a1a; font-size: 18px; }
+    .card ul { margin: 8px 0; padding-left: 20px; }
+    .card li { margin: 6px 0; }
+    .code { background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+    .footer { text-align: center; margin-top: 32px; color: #666; font-size: 14px; }
+    @media print { body { padding: 20px; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <h1>🦞 ClawStart 一页速查卡</h1>
+  <p class="subtitle">版本 v0.2.3 | 打印贴显示器，10 秒内找到答案</p>
+
+  <div class="card">
+    <h2>🚀 启动问题</h2>
+    <ul>
+      <li><strong>打不开/报错：</strong>检查是否完整解压到<strong>新目录</strong>，不要在压缩包内运行</li>
+      <li><strong>SmartScreen 拦截：</strong>点击「更多信息」→「仍要运行」</li>
+      <li><strong>Gatekeeper 拦截（macOS）：</strong>系统设置 → 隐私与安全性 → 仍要打开</li>
+      <li><strong>正确端口：</strong><span class="code">http://127.0.0.1:18789</span>（不是 3000）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🔑 API Key 问题</h2>
+    <ul>
+      <li><strong>国内模型：</strong>豆包/通义千问/DeepSeek，无需翻墙</li>
+      <li><strong>Key 无效：</strong>检查是否复制完整，前后无空格</li>
+      <li><strong>测试失败：</strong>先确认网络能访问对应服务商</li>
+      <li><strong>获取 Key：</strong>去对应模型官网控制台创建 API Key</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🧩 Skill 安装问题</h2>
+    <ul>
+      <li><strong>找不到 Skill：</strong>用 ClawHub 搜索，确认技能名拼写正确</li>
+      <li><strong>安装失败：</strong>检查网络连接，重试或换源</li>
+      <li><strong>装上后报错：</strong>看错误信息，通常是配置项缺失</li>
+      <li><strong>推荐先装：</strong>搜索、文件、Git、写作类 Skill</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 常用命令</h2>
+    <ul>
+      <li>Windows 启动：双击 <span class="code">launch.bat</span></li>
+      <li>macOS 启动：右键打开 <span class="code">launch.command</span></li>
+      <li>查看日志：运行 <span class="code">diagnose.bat</span>（Windows）</li>
+      <li>手动安装 Skill：<span class="code">openclaw skills install &lt;技能名&gt;</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🆘 快速求助</h2>
+    <ul>
+      <li><strong>排障页：</strong><a href="troubleshooting.html">troubleshooting.html</a></li>
+      <li><strong>社区入口：</strong><a href="index.html#community">index.html#community</a></li>
+      <li><strong>邮箱：</strong>hi@useclawstart.com</li>
+    </ul>
+  </div>
+
+  <p class="footer">
+    完整教程：<a href="https://useclawstart.com">useclawstart.com</a><br>
+    最后更新：2026-03-15
+  </p>
+</body>
+</html>
