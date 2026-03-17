@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>按平台选择, OpenLola</title>
+  <meta name="description" content="OpenLola 按平台选择页，帮助 Windows、macOS、Linux 用户按系统和目标选择更合适的 OpenClaw 安装起点。" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="./index.html">OpenLola</a></div>
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./start.html">快速开始</a>
+      <a href="./chooser.html">选路线</a>
+      <a href="./prep.html">安装前准备</a>
+      <a href="./checklist.html">安装检查清单</a>
+      <a href="./download.html">下载与安装</a>
+      <a class="active" href="./platforms.html">按平台选择</a>
+      <a href="./tutorial.html">新手教程</a>
+      <a href="./troubleshooting.html">故障排查</a>
+      <a href="./portable.html">便携版</a>
+      <a href="./advanced.html">进阶方案</a>
+      <a href="./solutions.html">省事方案</a>
+      <a href="./faq.html">常见问题</a>
+      <a href="./glossary.html">术语说明</a>
+      <a href="./updates.html">更新动态</a>
+      <a href="./about.html">关于</a>
+      <a href="./sitemap.html">站点总览</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="release-chip">Platform Routing · 系统差异前置</div>
+      <p class="eyebrow">按平台选择</p>
+      <h1>先按你的系统和目标分流，这比盲点下载有用多了。</h1>
+      <p class="sub">Windows、macOS、Linux 面对的坑位不同，用户目标也不同。有人只想今天先跑通一次，有人需要更稳的首装路径，也有人已经在考虑多机迁移和更省事的长期体验。这个页面的任务，就是把你送到对的下一步。</p>
+      <p class="status-note">一句话建议：先按平台选，再按目标选，不要把所有人都塞进同一条入口里。</p>
+      <div class="actions">
+        <a class="btn primary" href="#platform-cards">按系统找入口</a>
+        <a class="btn secondary" href="#goal-matrix">按目标找下一步</a>
+        <a class="btn secondary" href="./success.html">看安装成功标准</a>
+        <a class="btn secondary" href="./scenarios.html">长期使用怎么选路线</a>
+        <a class="btn secondary" href="./chooser.html">先做 30 秒分流</a>
+        <a class="btn secondary" href="./path.html">看完整使用路径</a>
+      </div>
+    </section>
+
+    <section class="section" id="platform-cards">
+      <h2>先看你的系统，别先看别人的报错</h2>
+      <p class="sub">平台差异不是配角。很多翻车并不神秘，只是你拿错了入口。</p>
+      <div class="grid three">
+        <article class="card accent">
+          <span class="pill">Windows</span>
+          <h3>最常见，也最容易被权限、路径和环境变量绊一下</h3>
+          <p>如果你用的是 Windows，最值钱的不是猛冲安装，而是先把准备动作做干净。这个平台最容易出现的，不是神秘 bug，而是路径、权限、终端和环境没对齐。</p>
+          <ul>
+            <li>第一次安装前，优先看安装前准备和检查清单</li>
+            <li>如果你今天就要装起来，还是先走官方路径</li>
+            <li>一旦出错，别同时换目录、权限和安装方法</li>
+          </ul>
+          <div class="link-list">
+            <a class="text-link" href="./windows.html">进入 Windows 专属入口</a>
+            <a class="text-link" href="./prep.html">先做安装前准备</a>
+            <a class="text-link" href="./checklist.html">再过安装检查清单</a>
+          </div>
+        </article>
+        <article class="card">
+          <span class="pill">macOS</span>
+          <h3>整体更顺一点，但别因为看起来体面就放松警惕</h3>
+          <p>macOS 往往首装体验会更平滑一点，但这不等于可以跳过顺序。权限提示、系统限制、目录选择这些事，照样能把第一次上手变成一次很有艺术感的翻车。</p>
+          <ul>
+            <li>大多数用户可直接按快速开始进入官方路径</li>
+            <li>如果你怕自己漏步骤，先过检查清单更稳</li>
+            <li>已经能跑通一次的人，再考虑迁移和便携</li>
+          </ul>
+          <div class="link-list">
+            <a class="text-link" href="./macos.html">进入 macOS 专属入口</a>
+            <a class="text-link" href="./checklist.html">先核对安装清单</a>
+            <a class="text-link" href="./start.html">再去快速开始</a>
+          </div>
+        </article>
+        <article class="card">
+          <span class="pill">Linux</span>
+          <h3>弹性最大，也最容易对自己的系统做出一些富有创造力的伤害</h3>
+          <p>Linux 用户通常更能接受命令行，但问题在于，你也更容易觉得“这个我自己改一下就行”，然后把简单问题改成悬疑片。第一轮仍然建议先走最短路径，先确认能跑，再谈自定义。</p>
+          <ul>
+            <li>适合直接看下载与安装和官方文档</li>
+            <li>出错时优先保留原始错误，不要急着自创修复流派</li>
+            <li>如果要长期多机使用，再去看便携和进阶方案</li>
+          </ul>
+          <div class="link-list">
+            <a class="text-link" href="./linux.html">进入 Linux 专属入口</a>
+            <a class="text-link" href="./download.html">去下载与安装</a>
+            <a class="text-link" href="./troubleshooting.html">先看排障思路</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt comparison-section" id="goal-matrix">
+      <h2>再按你的目标选下一步，这才像真正的入口</h2>
+      <div class="comparison-grid">
+        <div class="comparison-row comparison-head">
+          <div>你的目标</div>
+          <div>Windows 用户</div>
+          <div>macOS 用户</div>
+          <div>Linux 用户</div>
+        </div>
+        <div class="comparison-row">
+          <div>今天先跑通一次</div>
+          <div><a class="text-link inline-link" href="./prep.html">先准备</a>，再去 <a class="text-link inline-link" href="./start.html">快速开始</a></div>
+          <div>先看 <a class="text-link inline-link" href="./start.html">快速开始</a>，不放心就补 <a class="text-link inline-link" href="./checklist.html">检查清单</a></div>
+          <div>直接去 <a class="text-link inline-link" href="./download.html">下载与安装</a>，再按官方路径首装</div>
+        </div>
+        <div class="comparison-row">
+          <div>我是新手，怕被术语劝退</div>
+          <div>先读 <a class="text-link inline-link" href="./tutorial.html">新手教程</a>，再回来看准备事项</div>
+          <div>先读 <a class="text-link inline-link" href="./tutorial.html">新手教程</a>，再走快速开始</div>
+          <div>先读 <a class="text-link inline-link" href="./tutorial.html">新手教程</a>，别一上来就改系统配置</div>
+        </div>
+        <div class="comparison-row">
+          <div>我已经卡住了</div>
+          <div>先停手，去 <a class="text-link inline-link" href="./troubleshooting.html">故障排查</a> 分层定位</div>
+          <div>先保留报错，再去 <a class="text-link inline-link" href="./troubleshooting.html">故障排查</a></div>
+          <div>先保留原始输出，再去 <a class="text-link inline-link" href="./troubleshooting.html">故障排查</a></div>
+        </div>
+        <div class="comparison-row">
+          <div>我想长期更省事</div>
+          <div>首装跑通后看 <a class="text-link inline-link" href="./portable.html">便携版</a> 和 <a class="text-link inline-link" href="./solutions.html">省事方案</a></div>
+          <div>先稳住现有环境，再看 <a class="text-link inline-link" href="./portable.html">便携版</a></div>
+          <div>确认基础路径稳定后，再看 <a class="text-link inline-link" href="./advanced.html">进阶方案</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>如果你只想看一句平台建议</h2>
+      <div class="grid three">
+        <article class="card accent">
+          <h3>Windows</h3>
+          <p>别嫌准备步骤烦，它们比你后面两小时排错便宜多了。</p>
+        </article>
+        <article class="card">
+          <h3>macOS</h3>
+          <p>别因为第一次顺就开始跳步骤，系统表面温柔，翻脸也很快。</p>
+        </article>
+        <article class="card">
+          <h3>Linux</h3>
+          <p>先按官方路径活下来，再自由发挥。别让自定义早于成功。</p>
+        </article>
+        <article class="card accent">
+          <h3>已经跑通，接下来别再只按平台想</h3>
+          <p>装完之后，平台差异的重要性会慢慢让位给你的真实使用场景。换机、演示、多机切换还是想直接省时间，这些问题更适合去长期场景选择页分流。</p>
+          <a class="text-link" href="./scenarios.html">去长期使用场景选择</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>如果你只想最快找到下一步</h2>
+      <div class="grid three">
+        <article class="card">
+          <h3>Windows 用户</h3>
+          <p>通常最稳的顺序是：安装前准备 → 检查清单 → 快速开始。别跳步骤，后面能少骂两次系统。</p>
+          <div class="link-list">
+            <a class="text-link" href="./prep.html">安装前准备</a>
+            <a class="text-link" href="./checklist.html">安装检查清单</a>
+            <a class="text-link" href="./start.html">快速开始</a>
+          </div>
+        </article>
+        <article class="card accent">
+          <h3>macOS 用户</h3>
+          <p>通常可以直接从检查清单或快速开始进。怕漏步骤就先核对清单，别因为第一次顺就开始飘。</p>
+          <div class="link-list">
+            <a class="text-link" href="./checklist.html">安装检查清单</a>
+            <a class="text-link" href="./start.html">快速开始</a>
+            <a class="text-link" href="./portable.html">后续看便携版</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Linux 用户</h3>
+          <p>通常更适合直接看下载与安装和官方文档，但别过早自定义。先活下来，再发挥创造力。</p>
+          <div class="link-list">
+            <a class="text-link" href="./download.html">下载与安装</a>
+            <a class="text-link" href="https://docs.openclaw.ai" target="_blank" rel="noreferrer">官方文档</a>
+            <a class="text-link" href="./troubleshooting.html">故障排查</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <h2>下一步别乱猜，直接点</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>我还没装，想走最稳的路</h3>
+          <div class="link-list">
+            <a class="text-link" href="./chooser.html">先做 30 秒分流</a>
+            <a class="text-link" href="./start.html">去快速开始</a>
+            <a class="text-link" href="https://docs.openclaw.ai" target="_blank" rel="noreferrer">打开官方文档</a>
+          </div>
+        </article>
+        <article class="card accent">
+          <h3>我已经跑通过一次，想往产品化体验走</h3>
+          <div class="link-list">
+            <a class="text-link" href="./path.html">先看使用路径</a>
+            <a class="text-link" href="./portable.html">看便携版</a>
+            <a class="text-link" href="./solutions.html">看省事方案</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col"><h3>分平台的意义</h3><p>不是为了多做一页，而是让不同系统、不同目标的人少走错入口。入口越准，转化越像产品，不像迷宫。</p></div>
+        <div class="footer-col"><h3>首装链路</h3><div class="link-list"><a class="text-link" href="./chooser.html">选路线</a><a class="text-link" href="./prep.html">安装前准备</a><a class="text-link" href="./checklist.html">安装检查清单</a></div></div>
+        <div class="footer-col"><h3>继续推进</h3><div class="link-list"><a class="text-link" href="./start.html">快速开始</a><a class="text-link" href="./portable.html">便携版</a><a class="text-link" href="./advanced.html">进阶方案</a></div></div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

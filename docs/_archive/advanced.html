@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进阶方案 - OpenClaw</title>
+  <meta name="description" content="OpenClaw 进阶使用方案：多 Agent 协作、企业部署、自定义技能开发、自动化工作流。">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+  <style>
+    .adv-card{background:var(--theme-bg-card);border:1px solid var(--theme-border);border-radius:var(--radius-lg);padding:var(--space-8);margin-bottom:var(--space-6);transition:all var(--dur-normal) var(--ease-out)}
+    .adv-card:hover{box-shadow:var(--theme-shadow-lg);transform:translateY(-2px);border-color:var(--theme-text-muted)}
+    .adv-card .tag{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600;margin-bottom:var(--space-4)}
+    .tag-power{background:var(--brand-50);color:var(--brand-600)}
+    .tag-team{background:#F0FDF4;color:#16A34A}
+    .tag-dev{background:#FFF7ED;color:#EA580C}
+    .tag-biz{background:#FAF5FF;color:#9333EA}
+    .adv-card h3{font-size:20px;font-weight:700;margin-bottom:var(--space-2);color:var(--theme-text)}
+    .adv-card .desc{color:var(--theme-text-secondary);font-size:15px;line-height:1.7;margin-bottom:var(--space-4)}
+    .adv-card ul{color:var(--theme-text);font-size:14px;line-height:2;margin:0 0 0 var(--space-5);padding:0}
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 OpenClaw</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li class="nav-dropdown">
+          <a href="download.html">下载安装</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="download.html">安装版</a></li>
+            <li><a href="portable.html">便携版</a></li>
+            <li><a href="macos.html">macOS 指南</a></li>
+            <li><a href="windows.html">Windows 指南</a></li>
+            <li><a href="linux.html">Linux 指南</a></li>
+          </ul>
+        </li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">使用教程</a></li>
+        <li><a href="troubleshooting.html">故障排查</a></li>
+        <li><a href="advanced.html" class="active">进阶方案</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>进阶方案</h1>
+      <p>解锁全部潜力，从个人助手到团队基础设施</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:var(--content-width);">
+
+      <div class="adv-card">
+        <span class="tag tag-power">⚡ 高级能力</span>
+        <h3>多模型切换与路由</h3>
+        <p class="desc">根据任务类型自动选择最合适的模型。代码任务用编程模型，日常对话用通用模型，翻译用专业模型。</p>
+        <ul>
+          <li>配置多个模型供应商，按场景自动路由</li>
+          <li>设置 fallback 机制，主模型不可用时自动切换</li>
+          <li>按成本和速度优化模型选择策略</li>
+        </ul>
+        <div class="code-block mt-4"><span class="comment"># 在 openclaw.json 中配置模型路由</span>
+{
+  "models": {
+    "default": "anthropic/claude-sonnet",
+    "coding": "volcengine/ark-code-latest",
+    "translation": "deepseek/deepseek-chat"
+  }
+}</div>
+      </div>
+
+      <div class="adv-card">
+        <span class="tag tag-team">🤝 团队协作</span>
+        <h3>多 Agent 协作</h3>
+        <p class="desc">让多个 AI Agent 分工合作，像一个团队一样完成复杂项目。一个负责写代码，一个负责测试，一个负责文档。</p>
+        <ul>
+          <li>定义 Agent 角色和职责</li>
+          <li>Agent 之间可以互相通信和协调</li>
+          <li>任务自动分配和进度追踪</li>
+        </ul>
+        <div class="tip-box mt-4">
+          <strong>💡 实际案例</strong>
+          ClawForge Studio 就是一个多 Agent 开发团队的实践：产品经理 Agent 拆解需求，开发 Agent 写代码，测试 Agent 验证质量，全程自动推进。
+        </div>
+      </div>
+
+      <div class="adv-card">
+        <span class="tag tag-dev">🛠️ 开发者</span>
+        <h3>自定义技能开发</h3>
+        <p class="desc">为 OpenClaw 开发专属技能，扩展它的能力边界。技能就是一个 SKILL.md 文件加上可选的脚本。</p>
+        <ul>
+          <li>用 Markdown 定义技能的行为规则</li>
+          <li>可选：附带 Python / Node.js / Shell 脚本</li>
+          <li>发布到 ClawHub 与社区共享</li>
+        </ul>
+        <div class="code-block mt-4"><span class="comment"># 创建一个新技能</span>
+mkdir ~/.openclaw/workspace/skills/my-skill
+cat > ~/.openclaw/workspace/skills/my-skill/SKILL.md &lt;&lt; 'EOF'
+---
+name: my-skill
+description: 我的自定义技能
+---
+# 技能说明
+当用户要求 XXX 时，执行以下步骤...
+EOF</div>
+      </div>
+
+      <div class="adv-card">
+        <span class="tag tag-power">⚡ 高级能力</span>
+        <h3>自动化工作流</h3>
+        <p class="desc">用定时任务和事件触发器构建自动化工作流。让 AI 在后台持续工作，不需要你手动触发。</p>
+        <ul>
+          <li>定时检查邮件、日历、社交媒体</li>
+          <li>监控服务器状态，异常时自动告警</li>
+          <li>定期整理文件、备份数据、生成报告</li>
+        </ul>
+        <div class="code-block mt-4"><span class="comment"># 每天早上 9 点推送日程摘要</span>
+openclaw cron add \
+  --schedule "0 9 * * *" \
+  --task "检查今天的日历，总结待办事项，推送到 Telegram"
+
+<span class="comment"># 每小时检查服务器状态</span>
+openclaw cron add \
+  --schedule "0 * * * *" \
+  --task "SSH 到服务器检查 CPU 和内存，超过 90% 就告警"</div>
+      </div>
+
+      <div class="adv-card">
+        <span class="tag tag-biz">🏢 企业级</span>
+        <h3>企业部署方案</h3>
+        <p class="desc">在团队或企业环境中部署 OpenClaw，支持多用户、权限管理、审计日志。</p>
+        <ul>
+          <li>多用户独立工作区，数据隔离</li>
+          <li>统一的模型配置和成本管控</li>
+          <li>操作审计日志，满足合规要求</li>
+          <li>私有化部署，数据不出内网</li>
+        </ul>
+        <div class="tip-box mt-4">
+          <strong>💡 需要帮助？</strong>
+          企业部署涉及较多定制化配置。欢迎通过 <a href="https://github.com/openclaw/openclaw/issues">GitHub Issues</a> 提交需求，或加入 <a href="https://discord.com/invite/clawd">Discord</a> 与社区交流。
+        </div>
+      </div>
+
+      <div class="card text-center mt-12" style="padding:var(--space-8);">
+        <h3 class="text-h3" style="margin-bottom:var(--space-2);">准备好了吗？</h3>
+        <p class="text-body mb-4">从下载安装开始，一步步解锁这些高级能力</p>
+        <a href="download.html" class="btn btn-primary">下载 OpenClaw →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>🦞 OpenClaw © 2026</div>
+        <ul class="footer-links">
+          <li><a href="download.html">下载</a></li>
+          <li><a href="start.html">文档</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener">Discord</a></li>
+        </ul>
+        <div style="font-size:13px;">中文 / English</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('openclaw-theme');
+    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('openclaw-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    const header = document.getElementById('siteHeader');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 10); ticking = false; }); ticking = true; }
+    });
+  </script>
+
+</body>
+</html>

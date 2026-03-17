@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下载漏斗复盘面板 - ClawStart</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <style>
+    .dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-5);margin-bottom:var(--space-8)}
+    .metric-card{background:var(--theme-bg-card);border:1px solid var(--theme-border);border-radius:var(--radius-lg);padding:var(--space-6)}
+    .metric-label{font-size:13px;color:var(--theme-text-muted);margin-bottom:var(--space-2)}
+    .metric-value{font-size:28px;font-weight:800;color:var(--theme-text)}
+    .metric-note{font-size:13px;color:var(--theme-text-secondary);margin-top:var(--space-2)}
+    .panel{background:var(--theme-bg-card);border:1px solid var(--theme-border);border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-6)}
+    .panel h2{font-size:20px;font-weight:700;margin-bottom:var(--space-4)}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{padding:12px 0;border-bottom:1px solid var(--theme-border);text-align:left;font-size:14px}
+    .table th{color:var(--theme-text-secondary);font-weight:600}
+    .empty{color:var(--theme-text-secondary);font-size:14px}
+    .toolbar{display:flex;gap:var(--space-4);align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:var(--space-6)}
+    .report-box{background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.22);border-radius:var(--radius-lg);padding:var(--space-6);white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--theme-text)}
+    @media (max-width: 640px){.dashboard-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a href="index.html" class="nav-brand">🦞 ClawStart</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li class="nav-dropdown">
+          <a href="download.html" class="active">下载</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="download.html">下载页</a></li>
+            <li><a href="portable.html">便携版</a></li>
+            <li><a href="macos.html">macOS 指南</a></li>
+            <li><a href="windows.html">Windows 指南</a></li>
+            <li><a href="linux.html">Linux</a></li>
+          </ul>
+        </li>
+        <li><a href="start.html">快速开始</a></li>
+        <li><a href="tutorial.html">教程</a></li>
+        <li><a href="skills-hub.html">Skills Hub</a></li>
+        <li><a href="troubleshooting.html">排障</a></li>
+        <li><a href="resources.html">资源</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+        <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>下载漏斗复盘面板</h1>
+      <p>读取浏览器本地埋点数据，帮助快速复盘当前站点的下载与导流表现。</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="toolbar">
+        <p class="text-body">数据来源：当前浏览器 `localStorage` 中的 `clawstart-analytics-events`。</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
+          <select id="rangeSelect" class="btn btn-outline-dark" style="appearance:auto;">
+            <option value="7d">最近 7 天</option>
+            <option value="30d">最近 30 天</option>
+            <option value="all">全部数据</option>
+          </select>
+          <button class="btn btn-outline-dark" id="copySummaryBtn">复制复盘摘要</button>
+          <button class="btn btn-outline-dark" id="clearEventsBtn">清空本地埋点数据</button>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="metric-card">
+          <div class="metric-label">Page Views</div>
+          <div class="metric-value" id="metricPageViews">0</div>
+          <div class="metric-note">当前浏览器累计页面浏览</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">下载点击</div>
+          <div class="metric-value" id="metricDownloads">0</div>
+          <div class="metric-note">包括首页、下载页、平台页的下载动作</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">快速开始点击</div>
+          <div class="metric-value" id="metricQuickstart">0</div>
+          <div class="metric-note">衡量“下载后继续往下走”的意愿</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">LolaClaw 导流</div>
+          <div class="metric-value" id="metricLolaClaw">0</div>
+          <div class="metric-note">衡量长期承接兴趣</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">私域入口点击</div>
+          <div class="metric-value" id="metricPrivateChannel">0</div>
+          <div class="metric-note">衡量社群、企微、星球等承接意愿</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>本周结论 / 复盘摘要</h2>
+        <p class="text-body" id="reportMeta" style="margin-bottom:var(--space-4);">统计周期与数据覆盖正在计算中...</p>
+        <div class="report-box" id="weeklySummary">正在生成复盘摘要...</div>
+      </div>
+
+      <div class="panel">
+        <h2>核心漏斗</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>事件数</th>
+              <th>相对上一层转化率</th>
+            </tr>
+          </thead>
+          <tbody id="funnelTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>平台点击分布</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>平台</th>
+              <th>事件数</th>
+            </tr>
+          </thead>
+          <tbody id="platformTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>来源位置表现</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>surface</th>
+              <th>事件数</th>
+            </tr>
+          </thead>
+          <tbody id="surfaceTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>最近事件</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>事件</th>
+              <th>页面</th>
+              <th>附加信息</th>
+            </tr>
+          </thead>
+          <tbody id="recentEventsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const STORAGE_KEY = "clawstart-analytics-events";
+
+    function readEvents() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function setText(id, value) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = value;
+    }
+
+    function renderTableRows(containerId, rows, emptyMessage, mapRow) {
+      const body = document.getElementById(containerId);
+      if (!body) return;
+
+      if (!rows.length) {
+        body.innerHTML = `<tr><td colspan="4" class="empty">${emptyMessage}</td></tr>`;
+        return;
+      }
+
+      body.innerHTML = rows.map(mapRow).join("");
+    }
+
+    function percentage(numerator, denominator) {
+      if (!denominator) return "-";
+      return `${Math.round((numerator / denominator) * 100)}%`;
+    }
+
+    function filterEvents(events, range) {
+      if (range === "all") return events;
+      const days = range === "30d" ? 30 : 7;
+      const threshold = Date.now() - days * 24 * 60 * 60 * 1000;
+      return events.filter((event) => new Date(event.ts).getTime() >= threshold);
+    }
+
+    function renderDashboard() {
+      const range = document.getElementById("rangeSelect").value;
+      const events = filterEvents(readEvents(), range);
+      const countBy = (name) => events.filter((event) => event.event === name).length;
+      const formatRange = range === "all" ? "全部数据" : (range === "30d" ? "最近 30 天" : "最近 7 天");
+
+      const pageViews = countBy("page_view");
+      const downloads = countBy("click_download");
+      const quickstart = countBy("click_quickstart");
+      const lolaclaw = countBy("click_lolaclaw");
+      const privateChannel = countBy("click_private_channel");
+      const tutorial = countBy("click_tutorial");
+      const firstEvent = events.length ? events[0].ts : "-";
+      const lastEvent = events.length ? events[events.length - 1].ts : "-";
+      const primaryDiagnosis = downloads === 0
+        ? "先提升下载按钮可见性与入口流量。"
+        : quickstart < downloads * 0.3
+          ? "下载后到快速开始的承接偏弱，优先优化下载页和平台页的下一步提示。"
+          : privateChannel < quickstart * 0.15
+            ? "高意图用户已经在往下走，但私域承接仍偏弱，优先加强下载页和排障页的企微/社群入口。"
+          : lolaclaw < (tutorial || quickstart) * 0.2
+            ? "成功后导流偏弱，优先强化教程页和资源页的 LolaClaw 承接。"
+            : "当前漏斗相对顺畅，可以开始增加更多高意图流量入口。";
+
+      setText("metricPageViews", String(pageViews));
+      setText("metricDownloads", String(downloads));
+      setText("metricQuickstart", String(quickstart));
+      setText("metricLolaClaw", String(lolaclaw));
+      setText("metricPrivateChannel", String(privateChannel));
+      setText("reportMeta", `统计周期：${formatRange} ｜ 样本事件：${events.length} ｜ 首条事件：${firstEvent} ｜ 末条事件：${lastEvent}`);
+
+      const summaryLines = [
+        `【OpenClaw 周报 / 复盘摘要】`,
+        `统计周期：${formatRange}`,
+        `1. 页面浏览 ${pageViews}，下载点击 ${downloads}，下载/浏览转化 ${percentage(downloads, pageViews)}。`,
+        `2. 快速开始点击 ${quickstart}，说明下载后继续往下走的意愿为 ${percentage(quickstart, downloads)}。`,
+        `3. 私域入口点击 ${privateChannel}，说明愿意进入社群/企微承接的用户比例为 ${percentage(privateChannel, quickstart || downloads)}。`,
+        `4. 教程点击 ${tutorial}，说明首次成功后继续学习的意愿为 ${percentage(tutorial, quickstart || downloads)}。`,
+        `5. LolaClaw 导流 ${lolaclaw}，说明升级兴趣为 ${percentage(lolaclaw, tutorial || quickstart)}。`,
+        `6. 当前最该优化的一层：${primaryDiagnosis}`,
+        `7. 下周动作建议：优先围绕最弱一层只做 1-2 个改动，然后继续观察同一批指标。`
+      ];
+      setText("weeklySummary", summaryLines.join("\n"));
+
+      const funnelRows = [
+        { label: "页面浏览", value: pageViews, rate: "-" },
+        { label: "下载点击", value: downloads, rate: percentage(downloads, pageViews) },
+        { label: "快速开始点击", value: quickstart, rate: percentage(quickstart, downloads) },
+        { label: "私域入口点击", value: privateChannel, rate: percentage(privateChannel, quickstart || downloads) },
+        { label: "教程点击", value: tutorial, rate: percentage(tutorial, quickstart || downloads) },
+        { label: "LolaClaw 导流", value: lolaclaw, rate: percentage(lolaclaw, tutorial || quickstart) }
+      ];
+
+      renderTableRows("funnelTableBody", funnelRows, "还没有埋点数据。", function (row) {
+        return `<tr><td>${row.label}</td><td>${row.value}</td><td>${row.rate}</td></tr>`;
+      });
+
+      const platformCounts = {};
+      events.forEach((event) => {
+        const platform = event.props && event.props.platform;
+        if (platform) {
+          platformCounts[platform] = (platformCounts[platform] || 0) + 1;
+        }
+      });
+
+      const platformRows = Object.entries(platformCounts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([platform, total]) => ({ platform, total }));
+
+      renderTableRows("platformTableBody", platformRows, "还没有带平台信息的事件。", function (row) {
+        return `<tr><td>${row.platform}</td><td>${row.total}</td></tr>`;
+      });
+
+      const surfaceCounts = {};
+      events.forEach((event) => {
+        const surface = event.props && event.props.surface;
+        if (surface) {
+          surfaceCounts[surface] = (surfaceCounts[surface] || 0) + 1;
+        }
+      });
+
+      const surfaceRows = Object.entries(surfaceCounts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([surface, total]) => ({ surface, total }));
+
+      renderTableRows("surfaceTableBody", surfaceRows, "还没有带 surface 的事件。", function (row) {
+        return `<tr><td>${row.surface}</td><td>${row.total}</td></tr>`;
+      });
+
+      const recentRows = events.slice(-20).reverse();
+      renderTableRows("recentEventsBody", recentRows, "还没有最近事件。", function (event) {
+        const extra = Object.entries(event.props || {})
+          .map(([key, value]) => `${key}: ${value}`)
+          .join(" | ") || "-";
+
+        return `<tr><td>${event.ts}</td><td>${event.event}</td><td>${event.page || "-"}</td><td>${extra}</td></tr>`;
+      });
+    }
+
+    document.getElementById("clearEventsBtn").addEventListener("click", function () {
+      localStorage.removeItem(STORAGE_KEY);
+      renderDashboard();
+    });
+    document.getElementById("copySummaryBtn").addEventListener("click", async function () {
+      const summary = document.getElementById("weeklySummary").textContent || "";
+      try {
+        await navigator.clipboard.writeText(summary);
+        this.textContent = "已复制摘要";
+        setTimeout(() => {
+          this.textContent = "复制复盘摘要";
+        }, 1500);
+      } catch (error) {
+        this.textContent = "复制失败";
+        setTimeout(() => {
+          this.textContent = "复制复盘摘要";
+        }, 1500);
+      }
+    });
+    document.getElementById("rangeSelect").addEventListener("change", renderDashboard);
+
+    const themeToggle = document.getElementById("themeToggle");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const savedTheme = localStorage.getItem("openclaw-theme");
+    const currentTheme = savedTheme || (prefersDark ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    themeToggle.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      const newTheme = isDark ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("openclaw-theme", newTheme);
+      themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
+    });
+
+    const header = document.getElementById("siteHeader");
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          header.classList.toggle("scrolled", window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    renderDashboard();
+  </script>
+  
+  <!-- 二维码弹窗模板 -->
+  <div class="qr-modal" id="qrModal">
+    <div class="qr-modal-content">
+      <button class="qr-modal-close" id="qrModalClose" aria-label="关闭">×</button>
+      <div class="qr-modal-icon" id="qrModalIcon">💼</div>
+      <h3 class="qr-modal-title" id="qrModalTitle">添加企业微信</h3>
+      <p class="qr-modal-desc" id="qrModalDesc">添加后可获得1对1答疑支持，优先解决安装和配置问题</p>
+      <img src="assets/community/wecom-qr-placeholder.svg" alt="二维码" class="qr-modal-image" id="qrModalImage">
+      <p class="qr-modal-hint" id="qrModalHint">打开微信/QQ扫码即可加入</p>
+    </div>
+  </div>
+
+  <!-- 社区悬浮入口 -->
+  <button class="community-float-button" id="communityFloatBtn" aria-label="用户社区">💬</button>
+  <div class="community-float-panel" id="communityFloatPanel">
+    <div class="community-float-header">
+      <h4>👋 加入用户社区</h4>
+      <button class="community-float-close" id="communityFloatClose" aria-label="关闭">×</button>
+    </div>
+    <ul class="community-float-list">
+      <li class="community-float-item">
+        <a href="index.html#community">
+          <span class="icon">🏠</span>
+          <span>查看所有社区入口</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('wecom', '企业微信', '添加后可获得1对1答疑支持，优先解决安装和配置问题', 'assets/community/wecom-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="funnel_float_panel" data-channel="wecom">
+          <span class="icon">💼</span>
+          <span>加企业微信（1对1答疑）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('qq', 'QQ交流群', '公开讨论社区，用户互助交流，分享使用技巧', 'assets/community/qq-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="funnel_float_panel" data-channel="qq">
+          <span class="icon">🐧</span>
+          <span>QQ交流群（公开讨论）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('wechat', '微信群', '用户实时交流，分享使用经验和案例', 'assets/community/wechat-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="funnel_float_panel" data-channel="wechat">
+          <span class="icon">💬</span>
+          <span>微信群（用户交流）</span>
+        </a>
+      </li>
+      <li class="community-float-item">
+        <a href="#" onclick="showQrModal('planet', '知识星球', '付费会员社区，获取进阶教程、模板和专属资源', 'assets/community/planet-qr-placeholder.svg'); return false;" data-track="click_private_channel" data-surface="funnel_float_panel" data-channel="planet">
+          <span class="icon">🪐</span>
+          <span>知识星球（付费内容）</span>
+        </a>
+      </li>
+    </ul>
+    <div class="community-float-footer">
+      遇到问题优先看 <a href="troubleshooting.html">排障页</a>
+    </div>
+  </div>
+
+  <script src="community.js"></script>
+  <script>
+    
+    // 二维码弹窗逻辑
+    const qrModal = document.getElementById('qrModal');
+    const qrModalClose = document.getElementById('qrModalClose');
+    const qrModalIcon = document.getElementById('qrModalIcon');
+    const qrModalTitle = document.getElementById('qrModalTitle');
+    const qrModalDesc = document.getElementById('qrModalDesc');
+    const qrModalImage = document.getElementById('qrModalImage');
+    const qrModalHint = document.getElementById('qrModalHint');
+
+    const iconMap = {
+      'wecom': '💼',
+      'qq': '🐧',
+      'wechat': '💬',
+      'planet': '🪐'
+    };
+
+    const hintMap = {
+      'wecom': '打开微信扫码添加企业微信',
+      'qq': '打开QQ扫码加入群聊',
+      'wechat': '打开微信扫码加入群聊',
+      'planet': '打开微信扫码加入知识星球'
+    };
+
+    function showQrModal(type, title, desc, image) {
+      const communityEntry = window.CLAWSTART_COMMUNITY && window.CLAWSTART_COMMUNITY.getEntry
+        ? window.CLAWSTART_COMMUNITY.getEntry(type)
+        : { image, fallbackImage: image, hint: hintMap[type] || '扫码即可加入' };
+
+      qrModalIcon.textContent = iconMap[type] || '💬';
+      qrModalTitle.textContent = title;
+      qrModalDesc.textContent = desc;
+      qrModalImage.removeAttribute('data-community-fallback-applied');
+      if (communityEntry.fallbackImage && communityEntry.image && communityEntry.fallbackImage !== communityEntry.image) {
+        qrModalImage.onerror = () => {
+          if (qrModalImage.dataset.communityFallbackApplied === '1') {
+            return;
+          }
+          qrModalImage.dataset.communityFallbackApplied = '1';
+          qrModalImage.src = communityEntry.fallbackImage;
+        };
+      } else {
+        qrModalImage.onerror = null;
+      }
+      qrModalImage.src = communityEntry.image || communityEntry.fallbackImage || image;
+      qrModalHint.textContent = communityEntry.hint || hintMap[type] || '扫码即可加入';
+      qrModal.classList.add('show');
+      communityPanel.classList.remove('show');
+    }
+
+    // 社区悬浮按钮逻辑
+    const communityBtn = document.getElementById('communityFloatBtn');
+    const communityPanel = document.getElementById('communityFloatPanel');
+    const communityClose = document.getElementById('communityFloatClose');
+
+    communityBtn.addEventListener('click', () => {
+      communityPanel.classList.toggle('show');
+    });
+
+    qrModalClose.addEventListener('click', () => {
+      qrModal.classList.remove('show');
+    });
+
+    communityClose.addEventListener('click', () => {
+      communityPanel.classList.remove('show');
+    });
+
+    // 点击页面其他地方关闭面板
+    document.addEventListener('click', (e) => {
+      if (!communityBtn.contains(e.target) && !communityPanel.contains(e.target)) {
+        communityPanel.classList.remove('show');
+      }
+      if (qrModal.classList.contains('show') && e.target === qrModal) {
+        qrModal.classList.remove('show');
+        communityPanel.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>

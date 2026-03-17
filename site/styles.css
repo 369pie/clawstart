@@ -185,7 +185,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -193,7 +192,6 @@ body {
   color: var(--theme-text);
   background: var(--theme-bg);
   line-height: 1.6;
-  overflow-x: hidden;
   transition: background var(--dur-normal) var(--ease-out), color var(--dur-normal) var(--ease-out);
 }
 
@@ -2729,13 +2727,6 @@ code {
     --space-16: 40px;
   }
 
-  /* Prevent any element from causing horizontal scroll */
-  .hero-orb { display: none; }
-
-  .community-hub {
-    padding: var(--space-6);
-  }
-
   .nav-links { display: none; }
   .nav-toggle { display: flex; align-items: center; justify-content: center; }
 
@@ -2918,7 +2909,7 @@ code {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(800px, 100%);
+  width: 800px;
   height: 400px;
   background: radial-gradient(ellipse, rgba(232,90,79,0.025) 0%, transparent 70%);
   pointer-events: none;

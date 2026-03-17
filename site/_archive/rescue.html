@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15 分钟救援清单, OpenLola</title>
+  <meta name="description" content="OpenLola 15 分钟救援清单，帮助第一次安装或使用 OpenClaw 时卡住的用户快速稳住现场、保留证据并回到最小可运行状态。" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="./index.html">OpenLola</a></div>
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./start.html">快速开始</a>
+      <a href="./tutorial.html">新手教程</a>
+      <a href="./troubleshooting.html">故障排查</a>
+      <a class="active" href="./rescue.html">救援清单</a>
+      <a href="./portable.html">便携版</a>
+      <a href="./advanced.html">进阶方案</a>
+      <a href="./faq.html">常见问题</a>
+      <a href="./sitemap.html">站点总览</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">15 分钟救援清单</p>
+      <h1>别先重装，先把现场救回来。</h1>
+      <p class="sub">这页是给已经卡住、心态开始发热的人准备的。目标不是让你彻底理解一切，而是先在 15 分钟内把现场稳住、保住证据、判断问题层级，再把系统拉回最小可运行状态。</p>
+      <p class="status-note">一句话原则：先稳住，再定位，再恢复。乱改配置不算积极，通常只算二次事故。</p>
+      <div class="actions">
+        <a class="btn primary" href="#minute-plan">按 15 分钟流程走</a>
+        <a class="btn secondary" href="./troubleshooting.html">看完整故障排查</a>
+        <a class="btn secondary" href="./success.html">先对照成功标准</a>
+        <a class="btn secondary" href="./start.html">我想回最小首装路径</a>
+      </div>
+    </section>
+
+    <section class="path-strip">
+      <div class="path-strip-head">
+        <p class="eyebrow">这页适合谁</p>
+        <h2>适合已经开始翻车，但还来得及保住现场的人。</h2>
+        <p>如果你只是还没开始装，这页不是第一入口。如果你已经开始乱改三轮了，这页至少还能帮你止血。</p>
+      </div>
+      <div class="path-strip-grid">
+        <article class="path-node">
+          <span class="path-node-label">上一步</span>
+          <h3>首装或首次使用时遇到问题</h3>
+          <p>你可能正卡在启动、路径、模型、网络或权限上，脑子已经开始冒烟。</p>
+          <a class="text-link" href="./tutorial.html">回新手教程补顺序</a>
+        </article>
+        <article class="path-node current">
+          <span class="path-node-label">你在这里</span>
+          <h3>15 分钟先止血</h3>
+          <p>先把问题缩到能判断的范围内，而不是继续放大成技术灾害片。</p>
+        </article>
+        <article class="path-node next">
+          <span class="path-node-label">下一步</span>
+          <h3>回到完整排障或最小首装路径</h3>
+          <p>救援清单不是终点，它的任务只是把你送回正常路线。</p>
+          <div class="link-list">
+            <a class="text-link" href="./troubleshooting.html">去完整排障</a>
+            <a class="text-link" href="./start.html">回快速开始</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="minute-plan">
+      <h2>按时间走，不要临场自由发挥</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-step">0 - 3 分钟</div>
+          <div>
+            <h3>停止随机修改，保住现场</h3>
+            <p>先别继续改目录、改配置、删缓存、重装。你现在最值钱的不是手速，是把证据留下来。</p>
+            <ul class="action-list">
+              <li>截图当前报错或界面状态。</li>
+              <li>复制终端输出或记下日志位置。</li>
+              <li>写下你最后一次修改了什么。</li>
+            </ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-step">3 - 6 分钟</div>
+          <div>
+            <h3>先判断你是哪种卡法</h3>
+            <p>别把所有问题都归类成“它不行”。你现在最需要的是粗分，不是深究。</p>
+            <ul class="action-list">
+              <li>根本启动不了，多半先看环境或路径。</li>
+              <li>能启动但不好使，多半先看网络、模型或权限。</li>
+              <li>本来能用，改完才炸，先回退最近改动。</li>
+            </ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-step">6 - 10 分钟</div>
+          <div>
+            <h3>回到最后一个确定可用的点</h3>
+            <p>这一步很无聊，但比继续硬修有效。你要先把系统拉回一个自己还能描述的状态。</p>
+            <ul class="action-list">
+              <li>回到原来的目录或原来的配置。</li>
+              <li>撤掉你刚刚加上的额外变化。</li>
+              <li>不要同时换安装方式和模型设置。</li>
+            </ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-step">10 - 15 分钟</div>
+          <div>
+            <h3>只测最小路径，确认有没有恢复</h3>
+            <p>不要一恢复一点就立刻测试全套花活。先测最小启动路径，只求它重新活过来。</p>
+            <ul class="action-list">
+              <li>只验证最基础的启动或进入入口。</li>
+              <li>如果恢复了，先停，记下刚才有效的动作。</li>
+              <li>如果还没恢复，带着证据去完整排障页继续。</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt comparison-section">
+      <h2>30 秒判断你该回哪条线</h2>
+      <div class="comparison-grid">
+        <div class="comparison-row comparison-head">
+          <div>你现在的状态</div>
+          <div>先做什么</div>
+          <div>下一步页面</div>
+          <div>暂时别做什么</div>
+        </div>
+        <div class="comparison-row">
+          <div>根本启动不了</div>
+          <div>先保留报错，回最小首装路径</div>
+          <div><a class="text-link" href="./start.html">快速开始</a></div>
+          <div>别直接追高级方案</div>
+        </div>
+        <div class="comparison-row">
+          <div>路径、配置、目录乱了</div>
+          <div>回到最后一个确定可用目录</div>
+          <div><a class="text-link" href="./tutorial.html">新手教程</a></div>
+          <div>别继续换目录</div>
+        </div>
+        <div class="comparison-row">
+          <div>模型、网络、权限不对劲</div>
+          <div>先分层判断，再逐项复测</div>
+          <div><a class="text-link" href="./troubleshooting.html">故障排查</a></div>
+          <div>别一口气改三层</div>
+        </div>
+        <div class="comparison-row">
+          <div>已经恢复能用</div>
+          <div>记录有效做法，别马上再乱改</div>
+          <div><a class="text-link" href="./next.html">接下来</a></div>
+          <div>别假装事故没发生过</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>救援时最该避免的 5 个动作</h2>
+      <div class="grid three">
+        <article class="card"><h3>错误 1，先重装再说</h3><p>重装不是万能药。很多时候它只是帮你把现场证据一起铲平。</p></article>
+        <article class="card"><h3>错误 2，同时改五件事</h3><p>你以为自己在提速，实际是在把故障因果链打成毛线团。</p></article>
+        <article class="card"><h3>错误 3，清空终端和日志</h3><p>证据一没，排障难度直接升天。别让 bug 比线索还好找。</p></article>
+        <article class="card"><h3>错误 4，还没恢复就开始优化体验</h3><p>先把它救活，再谈更省事、更漂亮、更高级。</p></article>
+        <article class="card accent"><h3>错误 5，恢复后不记录</h3><p>下次再炸你还会原样中招。人类最大的循环 bug 就是“这次我肯定记得”。</p></article>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <h2>救援完以后，下一步别乱走</h2>
+      <div class="grid three">
+        <article class="card">
+          <h3>已经恢复了</h3>
+          <p>先去“接下来”页，决定是补稳定、补排障，还是走长期省事方案。</p>
+          <div class="link-list">
+            <a class="text-link" href="./next.html">去接下来</a>
+            <a class="text-link" href="./scenarios.html">如果准备长期用，就去场景分流</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>还没恢复，但已经稳住现场</h3>
+          <p>带着证据去完整排障页，不要重新裸奔。</p>
+          <a class="text-link" href="./troubleshooting.html">去完整排障</a>
+        </article>
+        <article class="card accent">
+          <h3>我其实还没首装成功</h3>
+          <p>那就回快速开始。别在半空里研究高级路线，先落地。</p>
+          <a class="text-link" href="./start.html">回快速开始</a>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col"><h3>这页的任务</h3><p>先止血，再送你回正路。不是让你在慌的时候学成排障大师。</p></div>
+        <div class="footer-col"><h3>回主线</h3><div class="link-list"><a class="text-link" href="./start.html">快速开始</a><a class="text-link" href="./tutorial.html">新手教程</a><a class="text-link" href="./troubleshooting.html">故障排查</a></div></div>
+        <div class="footer-col"><h3>恢复后</h3><div class="link-list"><a class="text-link" href="./next.html">接下来</a><a class="text-link" href="./portable.html">便携版</a><a class="text-link" href="./solutions.html">省事方案</a></div></div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

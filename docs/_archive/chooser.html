@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>选路线, OpenLola</title>
+  <meta name="description" content="用 30 秒判断你现在最适合哪条 OpenClaw 起步路线。" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="./index.html">OpenLola</a></div>
+    <nav>
+      <a href="./index.html">首页</a>
+      <a href="./start.html">快速开始</a>
+      <a class="active" href="./chooser.html">选路线</a>
+      <a href="./download.html">下载与安装</a>
+      <a href="./tutorial.html">新手教程</a>
+      <a href="./troubleshooting.html">故障排查</a>
+      <a href="./portable.html">便携版</a>
+      <a href="./advanced.html">进阶方案</a>
+      <a href="./faq.html">常见问题</a>
+      <a href="./glossary.html">术语说明</a>
+      <a href="./updates.html">更新动态</a>
+      <a href="./about.html">关于</a>
+      <a href="./sitemap.html">站点总览</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">30 秒选路线</p>
+      <h1>别急着点下载，先选对路。</h1>
+      <p class="sub">很多人不是装不上，是一开始就走错了路径。你先看自己更像哪一类，再决定去哪里，会省掉很多没必要的折腾。</p>
+      <p class="status-note">适合第一次来站里、还没搞清楚自己该点哪个的人。</p>
+    </section>
+
+    <section class="section">
+      <h2>先用这三个问题，30 秒把自己分到正确入口</h2>
+      <div class="grid three decision-grid">
+        <article class="card decision-card">
+          <span class="pill">问题 1</span>
+          <h3>你今天最想要的，是不是“先成功跑起来一次”</h3>
+          <p>如果答案是“对，我现在只想先活下来”，那就别再横跳页面了。先去快速开始，跟着最短路径完成第一次安装和启动。</p>
+          <ul>
+            <li>适合想今天就装起来的人</li>
+            <li>适合能接受照着文档复制命令的人</li>
+            <li>目标只有一个，先完成首启</li>
+          </ul>
+          <a class="text-link" href="./start.html">我就要先跑通，去快速开始</a>
+        </article>
+        <article class="card decision-card">
+          <span class="pill">问题 2</span>
+          <h3>你是不是一看到术语、路径、环境变量就开始烦</h3>
+          <p>如果你更需要中文解释和顺序感，而不是立刻开装，那就先去新手教程。先把步骤关系理清，后面很多坑会直接少一半。</p>
+          <ul>
+            <li>适合第一次接触 Agent 的人</li>
+            <li>适合不想一上来被文档轰炸的人</li>
+            <li>适合先理解再动手的人</li>
+          </ul>
+          <a class="text-link" href="./tutorial.html">我想先看中文说明，去新手教程</a>
+        </article>
+        <article class="card decision-card accent">
+          <span class="pill">问题 3</span>
+          <h3>你是不是已经开始装了，但现在更像在灭火</h3>
+          <p>那就别继续乱改。你此刻最值钱的动作不是换方案，而是先判断问题在环境、路径、网络、模型还是权限层。</p>
+          <ul>
+            <li>适合已经遇到报错的人</li>
+            <li>适合启动不了或能启动但不能用的人</li>
+            <li>适合已经有点想骂电脑的人</li>
+          </ul>
+          <a class="text-link" href="./troubleshooting.html">我已经卡住了，去故障排查</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <h2>如果你还在犹豫，直接按结果选，不要按好奇心乱点</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>结果 A，10 分钟内打开官方文档并开始首装</h3>
+          <p>这条路最适合大多数第一次接触 OpenClaw、但能接受复制命令的人。你不需要一下子看懂全部，只需要先跑通一次。</p>
+          <div class="link-list">
+            <a class="text-link" href="./start.html">先看快速开始</a>
+            <a class="text-link" href="./download.html">再看下载与安装</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>结果 B，先把中文顺序理顺，再决定装不装</h3>
+          <p>如果你现在最大的阻力不是技术，而是脑子里一团乱，那先看新手教程最划算。顺序一清楚，后面不会每一步都像猜谜。</p>
+          <div class="link-list">
+            <a class="text-link" href="./tutorial.html">去新手教程</a>
+            <a class="text-link" href="./download.html">看安装路线</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>结果 C，先停手，保留报错，再去排查</h3>
+          <p>如果你已经卡住，最蠢的操作就是继续同时改五个地方。先保留原始报错，再按层排查，别让案发现场被你自己清理掉。</p>
+          <div class="link-list">
+            <a class="text-link" href="./troubleshooting.html">去故障排查</a>
+          </div>
+        </article>
+        <article class="card accent">
+          <h3>结果 D，你已经跑通过一次，接下来想更省事</h3>
+          <p>很好，你终于有资格看便携版、迁移和进阶方案了。还没跑通过的人先别跳关，这不是魂系游戏。</p>
+          <div class="link-list">
+            <a class="text-link" href="./scenarios.html">先按长期场景选</a>
+            <a class="text-link" href="./portable.html">去便携版</a>
+            <a class="text-link" href="./advanced.html">去进阶方案</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>你接下来 10 分钟最该做什么</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>还没开装</h3>
+          <p>按下面顺序走，别左右横跳：</p>
+          <ol class="action-list">
+            <li>打开 <a class="text-link inline-link" href="./start.html">快速开始</a></li>
+            <li>确认自己接受先走官方路径</li>
+            <li>再去官方文档完成第一次安装</li>
+          </ol>
+        </article>
+        <article class="card">
+          <h3>已经出错</h3>
+          <p>按下面顺序收拾现场，别继续加戏：</p>
+          <ol class="action-list">
+            <li>先保留终端报错和日志</li>
+            <li>打开 <a class="text-link inline-link" href="./troubleshooting.html">故障排查</a> 判断层级</li>
+            <li>一次只改一个地方，再验证</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="section alt">
+      <h2>如果你只想用一句话决定，就按这个表走</h2>
+      <div class="comparison-grid">
+        <div class="comparison-row comparison-head">
+          <div>你现在最像哪种人</div>
+          <div>最该去的页</div>
+          <div>先别做什么</div>
+          <div>原因</div>
+        </div>
+        <div class="comparison-row">
+          <div>我今天只想先装起来</div>
+          <div><a class="text-link inline-link" href="./start.html">快速开始</a></div>
+          <div>别继续逛十几个说明页</div>
+          <div>你现在需要的是第一次成功，不是站内观光</div>
+        </div>
+        <div class="comparison-row">
+          <div>我一看到术语就开始烦</div>
+          <div><a class="text-link inline-link" href="./tutorial.html">新手教程</a></div>
+          <div>别硬冲官方文档然后怀疑人生</div>
+          <div>先把顺序理顺，比逞强有用得多</div>
+        </div>
+        <div class="comparison-row">
+          <div>我已经在报错现场了</div>
+          <div><a class="text-link inline-link" href="./rescue.html">救援清单</a> + <a class="text-link inline-link" href="./troubleshooting.html">故障排查</a></div>
+          <div>别同时改五个地方</div>
+          <div>先保住现场，后面才有得修</div>
+        </div>
+        <div class="comparison-row">
+          <div>我已经跑通过，想以后更省事</div>
+          <div><a class="text-link inline-link" href="./scenarios.html">长期场景分流</a></div>
+          <div>别再停在首装入口打转</div>
+          <div>你已经不处在第一阶段了，该走后半程产品路径</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-col"><h3>OpenLola</h3><p>先分流，再承接。用户一进站就知道自己该去哪，转化才不会像丢飞镖。</p></div>
+        <div class="footer-col"><h3>基础入口</h3><div class="link-list"><a class="text-link" href="./start.html">快速开始</a><a class="text-link" href="./download.html">下载与安装</a><a class="text-link" href="./tutorial.html">新手教程</a></div></div>
+        <div class="footer-col"><h3>后续方向</h3><div class="link-list"><a class="text-link" href="./scenarios.html">长期使用场景选择</a><a class="text-link" href="./portable.html">便携版</a><a class="text-link" href="./advanced.html">进阶方案</a></div></div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

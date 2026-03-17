@@ -5,25 +5,25 @@
       image: "assets/community/wecom-qr.png",
       fallbackImage: "assets/community/wecom-qr-placeholder.svg",
       alt: "企业微信二维码预览图",
-      hint: "扫码添加企业微信，适合 1 对 1 分流、拉微信群和复杂问题排查。"
+      hint: "扫码添加企业微信，小助手会为您提供 1 对 1 解答，并可以拉您进入最新交流群。"
     },
     qq: {
       image: "assets/community/qq-qr.png",
       fallbackImage: "assets/community/qq-qr-placeholder.svg",
       alt: "QQ群二维码预览图",
-      hint: "扫码加入 QQ 群，适合公开提问、发截图和集中答疑。"
+      hint: "扫码加入 QQ 交流群，新手朋友们可以在这里自由提问和互相帮助。"
     },
     wechat: {
       image: "assets/community/wechat-qr.png",
       fallbackImage: "assets/community/wechat-qr-placeholder.svg",
       alt: "微信群二维码预览图",
-      hint: "扫码进入微信群，适合高频陪跑；如果微信群二维码常变动，建议优先放企微入口。"
+      hint: "扫码进入微信大群，和大家一起讨论 AI 玩法。如果遇到二维码过期，请先添加企业微信助手。"
     },
     planet: {
       image: "assets/community/planet-qr.png",
       fallbackImage: "assets/community/planet-qr-placeholder.svg",
       alt: "知识星球二维码预览图",
-      hint: "扫码进入知识星球，承接案例、模板、更新和后续转化。"
+      hint: "扫码加入知识星球，获取海量进阶实操案例、专属模板与最新更新动态。"
     }
   };
 
