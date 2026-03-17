@@ -57,6 +57,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
 .provider-card .badge{position:absolute;top:8px;right:8px;background:var(--accent);
   color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600}
 .provider-card .desc{font-size:12px;color:var(--text2);margin-top:6px;line-height:1.4}
+.provider-card.custom-card{border-style:dashed}
+.provider-card.custom-card .name{color:var(--accent)}
 
 /* ── Form elements ── */
 .form-group{margin-top:20px}
@@ -213,6 +215,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
       <div class="step" id="step2">
         <h2 style="font-size:16px;margin-bottom:4px">输入 API Key</h2>
         <p style="font-size:13px;color:var(--text2)" id="step2Desc">请输入你的 API Key</p>
+        <!-- Custom provider name input (only shown for custom providers) -->
+        <div class="form-group" id="customProviderNameGroup" style="display:none">
+          <label>服务商名称</label>
+          <div class="hint">输入自定义名称，英文小写+连字符，例如：my-provider</div>
+          <div class="input-wrap">
+            <input type="text" id="customProviderNameInput" placeholder="例如: my-deepseek-proxy" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+        <!-- Custom baseUrl input (only shown for custom providers) -->
+        <div class="form-group" id="customBaseUrlGroup" style="display:none">
+          <label>接口地址 (Base URL)</label>
+          <div class="hint">服务商的 API 接口地址，OpenAI 兼容格式</div>
+          <div class="input-wrap">
+            <input type="text" id="customBaseUrlInput" placeholder="例如: https://api.example.com/v1" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
         <div class="form-group">
           <label id="keyLabel">API Key</label>
           <div class="hint" id="keyHint"></div>
@@ -339,6 +357,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
   let currentStep = 1;
   let providers = [];
   let selectedProvider = null;
+  let isCustomProvider = false;
   let selectedModel = null;
   let apiKeyValue = '';
   let gatewayWasRunning = false; // track if gateway was running before reconfigure
@@ -357,6 +376,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
   const $btnBack = document.getElementById('btnBack');
   const $footer = document.getElementById('wizardFooter');
   const $toggleVis = document.getElementById('toggleVis');
+  const $customProviderNameGroup = document.getElementById('customProviderNameGroup');
+  const $customProviderNameInput = document.getElementById('customProviderNameInput');
+  const $customBaseUrlGroup = document.getElementById('customBaseUrlGroup');
+  const $customBaseUrlInput = document.getElementById('customBaseUrlInput');
 
   // ── API helpers ──
   async function api(method, path, body) {
@@ -431,7 +454,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
     if (currentStep === 1) {
       $btnNext.disabled = !selectedProvider;
     } else if (currentStep === 2) {
-      $btnNext.disabled = !$keyInput.value.trim();
+      if (isCustomProvider) {
+        const nameVal = $customProviderNameInput.value.trim();
+        const urlVal = $customBaseUrlInput.value.trim();
+        const keyVal = $keyInput.value.trim();
+        $btnNext.disabled = !nameVal || !urlVal || !keyVal;
+      } else {
+        $btnNext.disabled = !$keyInput.value.trim();
+      }
     } else if (currentStep === 3) {
       $btnNext.disabled = !selectedModel && !$customModel.value.trim();
     }
@@ -471,13 +501,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
         '<div class="name">' + esc(p.name) + '</div>' +
         '<div class="name-cn">' + esc(p.nameCn) + '</div>' +
         '<div class="desc">' + esc(p.description) + '</div>';
-      card.addEventListener('click', () => selectProvider(p));
+      card.addEventListener('click', () => selectProvider(p, false));
       $grid.appendChild(card);
     });
+    // Add custom provider card
+    const customCard = document.createElement('div');
+    customCard.className = 'provider-card custom-card';
+    customCard.dataset.id = '__custom__';
+    customCard.innerHTML =
+      '<div class="name">+ 自定义服务商</div>' +
+      '<div class="name-cn">Custom Provider</div>' +
+      '<div class="desc">使用任意支持 OpenAI 兼容 API 的服务商，需提供接口地址和 API Key</div>';
+    customCard.addEventListener('click', () => selectProvider({ id: '__custom__', name: '自定义服务商', nameCn: '自定义服务商' }, true));
+    $grid.appendChild(customCard);
   }
 
-  function selectProvider(p) {
+  function selectProvider(p, custom) {
     selectedProvider = p;
+    isCustomProvider = !!custom;
     selectedModel = null;
     document.querySelectorAll('.provider-card').forEach(c =>
       c.classList.toggle('selected', c.dataset.id === p.id));
@@ -487,11 +528,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
   // ── Step 2: API Key ──
   function setupStep2() {
     if (!selectedProvider) return;
-    $step2Desc.textContent = '请输入 ' + selectedProvider.nameCn + ' 的 API Key';
-    $keyLabel.textContent = selectedProvider.name + ' API Key';
-    $keyHint.textContent = selectedProvider.apiKeyHint || '';
-    $keyLink.href = selectedProvider.apiKeyUrl || '#';
-    $keyLink.style.display = selectedProvider.apiKeyUrl ? '' : 'none';
+    if (isCustomProvider) {
+      $step2Desc.textContent = '配置自定义服务商的连接信息';
+      $customProviderNameGroup.style.display = '';
+      $customBaseUrlGroup.style.display = '';
+      $keyLabel.textContent = 'API Key';
+      $keyHint.textContent = '服务商提供的 API Key';
+      $keyLink.style.display = 'none';
+      // Listen for custom field input to validate
+      $customProviderNameInput.addEventListener('input', validateStep);
+      $customBaseUrlInput.addEventListener('input', validateStep);
+    } else {
+      $step2Desc.textContent = '请输入 ' + selectedProvider.nameCn + ' 的 API Key';
+      $customProviderNameGroup.style.display = 'none';
+      $customBaseUrlGroup.style.display = 'none';
+      $keyLabel.textContent = selectedProvider.name + ' API Key';
+      $keyHint.textContent = selectedProvider.apiKeyHint || '';
+      $keyLink.href = selectedProvider.apiKeyUrl || '#';
+      $keyLink.style.display = selectedProvider.apiKeyUrl ? '' : 'none';
+    }
     $keyInput.value = '';
     hideStatus('step2');
   }
@@ -509,25 +564,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
     if (!selectedProvider) return;
     $modelList.innerHTML = '';
     $customModel.value = '';
+    selectedModel = null;
     const models = selectedProvider.models || [];
-    models.forEach((m, i) => {
-      const opt = document.createElement('div');
-      opt.className = 'model-option' + (m.recommended && i === 0 ? ' selected' : '');
-      opt.dataset.id = m.id;
-      opt.innerHTML =
-        '<div class="radio"></div>' +
-        '<div>' +
-          '<div class="model-name">' + esc(m.name) + '</div>' +
-          '<div class="model-id">' + esc(m.id) + '</div>' +
-        '</div>' +
-        (m.recommended ? '<span class="model-badge">推荐</span>' : '');
-      opt.addEventListener('click', () => {
-        selectModel(m, opt);
-        $customModel.value = '';
+    if (isCustomProvider || models.length === 0) {
+      // Custom provider: only show custom model input, with a more helpful placeholder
+      $customModel.placeholder = isCustomProvider
+        ? '输入模型名称，例如: ' + selectedProvider.id + '/gpt-4o'
+        : '输入完整的模型 ID';
+    } else {
+      $customModel.placeholder = '例如: volcengine-plan/doubao-seed-2.0-code';
+      models.forEach((m, i) => {
+        const opt = document.createElement('div');
+        opt.className = 'model-option' + (m.recommended && i === 0 ? ' selected' : '');
+        opt.dataset.id = m.id;
+        opt.innerHTML =
+          '<div class="radio"></div>' +
+          '<div>' +
+            '<div class="model-name">' + esc(m.name) + '</div>' +
+            '<div class="model-id">' + esc(m.id) + '</div>' +
+          '</div>' +
+          (m.recommended ? '<span class="model-badge">推荐</span>' : '');
+        opt.addEventListener('click', () => {
+          selectModel(m, opt);
+          $customModel.value = '';
+        });
+        $modelList.appendChild(opt);
+        if (m.recommended && i === 0) selectedModel = m;
       });
-      $modelList.appendChild(opt);
-      if (m.recommended && i === 0) selectedModel = m;
-    });
+    }
     $customModel.addEventListener('input', () => {
       if ($customModel.value.trim()) {
         selectedModel = null;
@@ -548,10 +612,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
   // ── Actions ──
   async function saveProviderAndKey() {
     showStatus('step2', '正在保存 API Key...', 'loading');
-    const res = await api('POST', '/api/set-provider', {
-      provider: selectedProvider.id,
+    const payload = {
       apiKey: $keyInput.value.trim(),
-    });
+    };
+    if (isCustomProvider) {
+      const customName = $customProviderNameInput.value.trim();
+      // Sanitize name: lowercase, replace non-alphanumeric with dashes
+      const safeId = customName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      if (!safeId) {
+        showStatus('step2', '服务商名称不合法，请使用英文字母和数字', 'error');
+        return false;
+      }
+      payload.provider = 'custom-' + safeId;
+      payload.baseUrl = $customBaseUrlInput.value.trim();
+      payload.isCustom = true;
+      // Update selectedProvider with the actual ID for step 3
+      selectedProvider = { ...selectedProvider, id: payload.provider, name: customName, nameCn: customName };
+    } else {
+      payload.provider = selectedProvider.id;
+    }
+    const res = await api('POST', '/api/set-provider', payload);
     if (!res.ok) {
       showStatus('step2', res.error || '保存失败', 'error');
       return false;
@@ -713,8 +793,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans S
 
   document.getElementById('btnReconfigure').addEventListener('click', () => {
     selectedProvider = null;
+    isCustomProvider = false;
     selectedModel = null;
     apiKeyValue = '';
+    $customProviderNameInput.value = '';
+    $customBaseUrlInput.value = '';
     showStep(1);
     loadProviders();
   });

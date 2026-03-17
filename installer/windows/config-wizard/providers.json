@@ -3,23 +3,71 @@
     "id": "moonshot",
     "name": "Moonshot AI",
     "nameCn": "月之暗面 · Kimi",
-    "description": "Kimi K2.5 大模型，中文编程和推理能力出色",
+    "description": "Kimi K2.5 多模态旗舰模型，中文编程和推理能力出色",
     "badge": "推荐",
     "apiKeyUrl": "https://platform.moonshot.cn/console/api-keys",
     "apiKeyHint": "sk-... 格式的 API Key",
     "envVar": "MOONSHOT_API_KEY",
     "modelsProviderConfig": {
-      "baseUrl": "https://api.moonshot.ai/v1",
+      "baseUrl": "https://api.moonshot.cn/v1",
       "apiKey": "${MOONSHOT_API_KEY}",
       "api": "openai-completions",
       "models": [
-        { "id": "kimi-k2.5", "name": "Kimi K2.5", "reasoning": false, "input": ["text"], "contextWindow": 256000, "maxTokens": 8192 },
-        { "id": "kimi-k2-thinking", "name": "Kimi K2 Thinking", "reasoning": true, "input": ["text"], "contextWindow": 256000, "maxTokens": 8192 }
+        { "id": "kimi-k2.5", "name": "Kimi K2.5", "reasoning": true, "input": ["text", "image"], "contextWindow": 256000, "maxTokens": 8192 },
+        { "id": "kimi-k2-turbo-preview", "name": "Kimi K2 Turbo Preview", "reasoning": false, "input": ["text"], "contextWindow": 256000, "maxTokens": 8192 },
+        { "id": "kimi-k2-thinking", "name": "Kimi K2 Thinking", "reasoning": true, "input": ["text"], "contextWindow": 256000, "maxTokens": 8192 },
+        { "id": "kimi-k2-thinking-turbo", "name": "Kimi K2 Thinking Turbo", "reasoning": true, "input": ["text"], "contextWindow": 256000, "maxTokens": 8192 }
       ]
     },
     "models": [
-      { "id": "moonshot/kimi-k2.5", "name": "Kimi K2.5", "recommended": true },
-      { "id": "moonshot/kimi-k2-thinking", "name": "Kimi K2 Thinking (深度推理)" }
+      { "id": "moonshot/kimi-k2.5", "name": "Kimi K2.5 (旗舰多模态)", "recommended": true },
+      { "id": "moonshot/kimi-k2-turbo-preview", "name": "Kimi K2 Turbo (高速)" },
+      { "id": "moonshot/kimi-k2-thinking", "name": "Kimi K2 Thinking (深度推理)" },
+      { "id": "moonshot/kimi-k2-thinking-turbo", "name": "Kimi K2 Thinking Turbo (快速推理)" }
+    ]
+  },
+  {
+    "id": "kimi-coding",
+    "name": "Kimi Code",
+    "nameCn": "Kimi Code · 编程会员",
+    "description": "Kimi Code 编程专属订阅，极速响应 100 Tokens/s，高频并发",
+    "badge": "推荐",
+    "apiKeyUrl": "https://www.kimi.com/code/console",
+    "apiKeyHint": "sk-kimi-... 格式的 API Key（需先订阅 Kimi Code 会员）",
+    "envVar": "KIMI_CODING_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.kimi.com/coding/v1",
+      "apiKey": "${KIMI_CODING_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "kimi-for-coding", "name": "Kimi for Coding", "reasoning": true, "input": ["text"], "contextWindow": 262144, "maxTokens": 32768 }
+      ]
+    },
+    "models": [
+      { "id": "kimi-coding/kimi-for-coding", "name": "Kimi for Coding", "recommended": true }
+    ]
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "nameCn": "深度求索 · DeepSeek",
+    "description": "DeepSeek V3.2 大模型，强大的编程和推理能力，性价比极高",
+    "badge": "推荐",
+    "apiKeyUrl": "https://platform.deepseek.com/api_keys",
+    "apiKeyHint": "sk-... 格式的 API Key",
+    "envVar": "DEEPSEEK_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.deepseek.com",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "deepseek-chat", "name": "DeepSeek V3.2 (Chat)", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 8192 },
+        { "id": "deepseek-reasoner", "name": "DeepSeek V3.2 (Reasoner)", "reasoning": true, "input": ["text"], "contextWindow": 128000, "maxTokens": 65536 }
+      ]
+    },
+    "models": [
+      { "id": "deepseek/deepseek-chat", "name": "DeepSeek Chat (V3.2)", "recommended": true },
+      { "id": "deepseek/deepseek-reasoner", "name": "DeepSeek Reasoner (深度推理)" }
     ]
   },
   {
@@ -60,6 +108,95 @@
     ]
   },
   {
+    "id": "tencent-coding-plan",
+    "name": "Tencent Coding Plan",
+    "nameCn": "腾讯云 · Coding Plan",
+    "description": "腾讯云 Coding Plan，支持混元、GLM-5、Kimi、MiniMax 等多种模型",
+    "badge": "推荐",
+    "apiKeyUrl": "https://hunyuan.cloud.tencent.com/#/app/subscription",
+    "apiKeyHint": "sk-sp-... 格式的 API Key（需先订阅 Coding Plan 套餐）",
+    "envVar": "TENCENT_CODING_PLAN_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.lkeap.cloud.tencent.com/coding/v3",
+      "apiKey": "${TENCENT_CODING_PLAN_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "tc-code-latest", "name": "tc-code-latest (Auto)", "contextWindow": 128000, "maxTokens": 32000, "input": ["text"] },
+        { "id": "hunyuan-2.0-instruct", "name": "Hunyuan 2.0 Instruct", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 32000 },
+        { "id": "hunyuan-2.0-thinking", "name": "Hunyuan 2.0 Think", "reasoning": true, "input": ["text"], "contextWindow": 128000, "maxTokens": 32000 },
+        { "id": "hunyuan-t1", "name": "Hunyuan T1", "reasoning": true, "input": ["text"], "contextWindow": 128000, "maxTokens": 32000 },
+        { "id": "hunyuan-turbos", "name": "Hunyuan TurboS", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 32000 },
+        { "id": "glm-5", "name": "GLM-5", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 32000 },
+        { "id": "kimi-k2.5", "name": "Kimi K2.5", "input": ["text", "image"], "contextWindow": 256000, "maxTokens": 32000 },
+        { "id": "minimax-m2.5", "name": "MiniMax M2.5", "reasoning": true, "input": ["text"], "contextWindow": 200000, "maxTokens": 32000 }
+      ]
+    },
+    "models": [
+      { "id": "tencent-coding-plan/tc-code-latest", "name": "Auto (自动选择最佳模型)", "recommended": true },
+      { "id": "tencent-coding-plan/hunyuan-2.0-instruct", "name": "混元 2.0 Instruct" },
+      { "id": "tencent-coding-plan/hunyuan-2.0-thinking", "name": "混元 2.0 Think (深度推理)" },
+      { "id": "tencent-coding-plan/hunyuan-t1", "name": "混元 T1" },
+      { "id": "tencent-coding-plan/hunyuan-turbos", "name": "混元 TurboS (高速)" },
+      { "id": "tencent-coding-plan/glm-5", "name": "GLM-5" },
+      { "id": "tencent-coding-plan/kimi-k2.5", "name": "Kimi K2.5" },
+      { "id": "tencent-coding-plan/minimax-m2.5", "name": "MiniMax M2.5" }
+    ]
+  },
+  {
+    "id": "dashscope",
+    "name": "Alibaba Cloud Bailian",
+    "nameCn": "阿里云百炼 · 通义千问",
+    "description": "通义千问 Qwen 系列大模型，阿里云百炼平台提供",
+    "apiKeyUrl": "https://bailian.console.aliyun.com/?apiKey=1",
+    "apiKeyHint": "sk-... 格式的 API Key",
+    "envVar": "DASHSCOPE_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKey": "${DASHSCOPE_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "qwen3.5", "name": "Qwen3.5", "reasoning": true, "input": ["text"], "contextWindow": 131072, "maxTokens": 16384 },
+        { "id": "qwen-max", "name": "Qwen Max", "reasoning": false, "input": ["text"], "contextWindow": 131072, "maxTokens": 16384 },
+        { "id": "qwen-plus", "name": "Qwen Plus", "reasoning": false, "input": ["text"], "contextWindow": 131072, "maxTokens": 16384 },
+        { "id": "qwen-turbo", "name": "Qwen Turbo", "reasoning": false, "input": ["text"], "contextWindow": 131072, "maxTokens": 16384 },
+        { "id": "qwen-coder-plus", "name": "Qwen Coder Plus", "reasoning": false, "input": ["text"], "contextWindow": 131072, "maxTokens": 16384 }
+      ]
+    },
+    "models": [
+      { "id": "dashscope/qwen3.5", "name": "Qwen3.5 (旗舰混合思考)", "recommended": true },
+      { "id": "dashscope/qwen-max", "name": "Qwen Max" },
+      { "id": "dashscope/qwen-plus", "name": "Qwen Plus (均衡)" },
+      { "id": "dashscope/qwen-turbo", "name": "Qwen Turbo (高速)" },
+      { "id": "dashscope/qwen-coder-plus", "name": "Qwen Coder Plus (编程)" }
+    ]
+  },
+  {
+    "id": "zai",
+    "name": "ZhipuAI",
+    "nameCn": "智谱AI · GLM",
+    "description": "智谱清言，GLM 系列大模型，国内老牌 AI 厂商",
+    "apiKeyUrl": "https://bigmodel.cn/usercenter/proj-mgmt/apikeys",
+    "apiKeyHint": "API Key",
+    "envVar": "ZAI_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
+      "apiKey": "${ZAI_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "glm-5", "name": "GLM-5", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 4096 },
+        { "id": "glm-4.7", "name": "GLM-4.7", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 4096 },
+        { "id": "glm-4-plus", "name": "GLM-4 Plus", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 4096 },
+        { "id": "glm-4-flash-250414", "name": "GLM-4 Flash", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 4096 }
+      ]
+    },
+    "models": [
+      { "id": "zai/glm-5", "name": "GLM-5 (旗舰)", "recommended": true },
+      { "id": "zai/glm-4.7", "name": "GLM-4.7" },
+      { "id": "zai/glm-4-plus", "name": "GLM-4 Plus" },
+      { "id": "zai/glm-4-flash-250414", "name": "GLM-4 Flash (高速)" }
+    ]
+  },
+  {
     "id": "minimax",
     "name": "MiniMax",
     "nameCn": "MiniMax · 海螺AI",
@@ -85,25 +222,50 @@
     "id": "qianfan",
     "name": "Qianfan",
     "nameCn": "百度千帆",
-    "description": "百度千帆平台，支持 DeepSeek 等主流开源模型",
+    "description": "百度千帆平台，支持文心一言、DeepSeek 等主流模型",
     "apiKeyUrl": "https://console.bce.baidu.com/qianfan/ais/console/apiKey",
     "apiKeyHint": "bce-v3/ALTAK-... 格式的 API Key",
     "envVar": "QIANFAN_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://qianfan.baidubce.com/v2",
+      "apiKey": "${QIANFAN_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "deepseek-v3", "name": "DeepSeek V3", "reasoning": false, "input": ["text"], "contextWindow": 65536, "maxTokens": 8192 },
+        { "id": "deepseek-r1", "name": "DeepSeek R1", "reasoning": true, "input": ["text"], "contextWindow": 65536, "maxTokens": 8192 },
+        { "id": "ernie-x1-turbo-32k", "name": "ERNIE X1 Turbo 32K", "reasoning": true, "input": ["text"], "contextWindow": 32768, "maxTokens": 8192 }
+      ]
+    },
     "models": [
-      { "id": "qianfan/deepseek-v3.2", "name": "DeepSeek V3.2", "recommended": true }
+      { "id": "qianfan/deepseek-v3", "name": "DeepSeek V3 (via 千帆)", "recommended": true },
+      { "id": "qianfan/deepseek-r1", "name": "DeepSeek R1 (深度推理)" },
+      { "id": "qianfan/ernie-x1-turbo-32k", "name": "ERNIE X1 Turbo 32K" }
     ]
   },
   {
-    "id": "zai",
-    "name": "Z.AI",
-    "nameCn": "智谱AI · GLM",
-    "description": "智谱清言，GLM 系列大模型，国内老牌 AI 厂商",
-    "apiKeyUrl": "https://bigmodel.cn/usercenter/proj-mgmt/apikeys",
-    "apiKeyHint": "API Key",
-    "envVar": "ZAI_API_KEY",
+    "id": "siliconflow",
+    "name": "SiliconFlow",
+    "nameCn": "硅基流动 · SiliconFlow",
+    "description": "国产模型聚合平台，一个 Key 访问 DeepSeek、Qwen、GLM 等多种模型",
+    "apiKeyUrl": "https://cloud.siliconflow.cn/account/ak",
+    "apiKeyHint": "sk-... 格式的 API Key",
+    "envVar": "SILICONFLOW_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.siliconflow.cn/v1",
+      "apiKey": "${SILICONFLOW_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "Pro/deepseek-ai/DeepSeek-V3", "name": "DeepSeek V3", "reasoning": false, "input": ["text"], "contextWindow": 65536, "maxTokens": 8192 },
+        { "id": "Pro/deepseek-ai/DeepSeek-R1", "name": "DeepSeek R1", "reasoning": true, "input": ["text"], "contextWindow": 65536, "maxTokens": 8192 },
+        { "id": "Pro/Qwen/Qwen3-235B-A22B", "name": "Qwen3 235B", "reasoning": true, "input": ["text"], "contextWindow": 131072, "maxTokens": 8192 },
+        { "id": "Pro/THUDM/GLM-4.7", "name": "GLM-4.7", "reasoning": false, "input": ["text"], "contextWindow": 128000, "maxTokens": 4096 }
+      ]
+    },
     "models": [
-      { "id": "zai/glm-5", "name": "GLM-5", "recommended": true },
-      { "id": "zai/glm-4.7", "name": "GLM-4.7" }
+      { "id": "siliconflow/Pro/deepseek-ai/DeepSeek-V3", "name": "DeepSeek V3 (via 硅基)", "recommended": true },
+      { "id": "siliconflow/Pro/deepseek-ai/DeepSeek-R1", "name": "DeepSeek R1 (via 硅基)" },
+      { "id": "siliconflow/Pro/Qwen/Qwen3-235B-A22B", "name": "Qwen3 235B (via 硅基)" },
+      { "id": "siliconflow/Pro/THUDM/GLM-4.7", "name": "GLM-4.7 (via 硅基)" }
     ]
   },
   {
@@ -114,8 +276,20 @@
     "apiKeyUrl": "https://platform.openai.com/api-keys",
     "apiKeyHint": "sk-... 格式的 API Key",
     "envVar": "OPENAI_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKey": "${OPENAI_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "o3", "name": "o3", "reasoning": true, "input": ["text", "image"], "contextWindow": 200000, "maxTokens": 100000 },
+        { "id": "gpt-4.1", "name": "GPT-4.1", "reasoning": false, "input": ["text", "image"], "contextWindow": 1047576, "maxTokens": 32768 },
+        { "id": "o4-mini", "name": "o4-mini", "reasoning": true, "input": ["text", "image"], "contextWindow": 200000, "maxTokens": 100000 }
+      ]
+    },
     "models": [
-      { "id": "openai/gpt-5.4", "name": "GPT-5.4", "recommended": true }
+      { "id": "openai/o3", "name": "o3 (旗舰推理)", "recommended": true },
+      { "id": "openai/gpt-4.1", "name": "GPT-4.1" },
+      { "id": "openai/o4-mini", "name": "o4-mini (快速推理)" }
     ]
   },
   {
@@ -126,8 +300,18 @@
     "apiKeyUrl": "https://console.anthropic.com/settings/keys",
     "apiKeyHint": "sk-ant-... 格式的 API Key",
     "envVar": "ANTHROPIC_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://api.anthropic.com",
+      "apiKey": "${ANTHROPIC_API_KEY}",
+      "api": "anthropic-messages",
+      "models": [
+        { "id": "claude-sonnet-4-5-20250514", "name": "Claude Sonnet 4.5", "reasoning": true, "input": ["text", "image"], "contextWindow": 200000, "maxTokens": 16384 },
+        { "id": "claude-opus-4-0-20250415", "name": "Claude Opus 4", "reasoning": false, "input": ["text", "image"], "contextWindow": 200000, "maxTokens": 32000 }
+      ]
+    },
     "models": [
-      { "id": "anthropic/claude-opus-4-6", "name": "Claude Opus 4.6", "recommended": true }
+      { "id": "anthropic/claude-sonnet-4-5-20250514", "name": "Claude Sonnet 4.5 (推荐)", "recommended": true },
+      { "id": "anthropic/claude-opus-4-0-20250415", "name": "Claude Opus 4" }
     ]
   },
   {
@@ -138,8 +322,20 @@
     "apiKeyUrl": "https://openrouter.ai/keys",
     "apiKeyHint": "sk-or-... 格式的 API Key",
     "envVar": "OPENROUTER_API_KEY",
+    "modelsProviderConfig": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKey": "${OPENROUTER_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "anthropic/claude-sonnet-4-5", "name": "Claude Sonnet 4.5", "reasoning": true, "input": ["text", "image"], "contextWindow": 200000, "maxTokens": 16384 },
+        { "id": "openai/o3", "name": "o3", "reasoning": true, "input": ["text"], "contextWindow": 200000, "maxTokens": 100000 },
+        { "id": "google/gemini-2.5-pro", "name": "Gemini 2.5 Pro", "reasoning": true, "input": ["text", "image"], "contextWindow": 1048576, "maxTokens": 65536 }
+      ]
+    },
     "models": [
-      { "id": "openrouter/anthropic/claude-sonnet-4-5", "name": "Claude Sonnet 4.5 (via OpenRouter)", "recommended": true }
+      { "id": "openrouter/anthropic/claude-sonnet-4-5", "name": "Claude Sonnet 4.5 (via OpenRouter)", "recommended": true },
+      { "id": "openrouter/openai/o3", "name": "o3 (via OpenRouter)" },
+      { "id": "openrouter/google/gemini-2.5-pro", "name": "Gemini 2.5 Pro (via OpenRouter)" }
     ]
   }
 ]

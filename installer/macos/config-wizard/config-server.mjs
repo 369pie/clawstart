@@ -85,28 +85,88 @@ function lookupProvider(providerId) {
 async function handleSetProvider(body) {
   const provider = typeof body.provider === "string" ? body.provider.trim() : "";
   const apiKey = typeof body.apiKey === "string" ? body.apiKey.trim() : "";
+  const baseUrl = typeof body.baseUrl === "string" ? body.baseUrl.trim() : "";
+  const isCustom = !!body.isCustom;
+
   if (!provider || !/^[a-zA-Z0-9._-]+$/.test(provider)) {
     return { ok: false, error: "provider 名称不合法" };
   }
   if (!apiKey) {
     return { ok: false, error: "API Key 不能为空" };
   }
+  if (isCustom && !baseUrl) {
+    return { ok: false, error: "自定义服务商需要提供接口地址 (baseUrl)" };
+  }
 
   const providerInfo = lookupProvider(provider);
   const profileId = `${provider}:default`;
 
   const config = readJsonSafe(CONFIG_FILE) || {};
-  const nextConfig = ensureProviderAuthProfileConfig(config, provider, profileId);
 
-  if (providerInfo?.envVar) {
-    if (!nextConfig.env) nextConfig.env = {};
-    nextConfig.env[providerInfo.envVar] = apiKey;
+  // ── Clean up previous provider data on re-configuration ──
+  // Collect all known env var names from providers.json
+  const allKnownEnvVars = new Set();
+  try {
+    const allProviders = JSON.parse(readFileSync(join(__dirname, "providers.json"), "utf8"));
+    for (const p of allProviders) {
+      if (p.envVar) allKnownEnvVars.add(p.envVar);
+    }
+  } catch {}
+  // Also collect any CUSTOM_*_API_KEY env vars from previous custom providers
+  if (config.env) {
+    for (const k of Object.keys(config.env)) {
+      if (/^CUSTOM_.*_API_KEY$/.test(k)) allKnownEnvVars.add(k);
+    }
+  }
+  // Remove all old provider env vars
+  if (config.env) {
+    for (const envKey of allKnownEnvVars) {
+      delete config.env[envKey];
+    }
+  }
+  // Remove all old auth profiles (provider:default pattern)
+  if (config.auth?.profiles) {
+    for (const key of Object.keys(config.auth.profiles)) {
+      if (key.endsWith(":default")) {
+        delete config.auth.profiles[key];
+      }
+    }
+  }
+  // Remove all old models.providers entries
+  if (config.models?.providers) {
+    delete config.models.providers;
+  }
+  // Remove old agents.defaults.models entries
+  if (config.agents?.defaults?.models) {
+    delete config.agents.defaults.models;
   }
 
-  if (providerInfo?.modelsProviderConfig) {
+  const nextConfig = ensureProviderAuthProfileConfig(config, provider, profileId);
+
+  if (isCustom) {
+    // Custom provider: use CUSTOM_{PROVIDER_ID}_API_KEY as env var name
+    const envVarName = "CUSTOM_" + provider.toUpperCase().replace(/[^A-Z0-9]/g, "_") + "_API_KEY";
+    if (!nextConfig.env) nextConfig.env = {};
+    nextConfig.env[envVarName] = apiKey;
+    // Write models.providers config for the custom provider
     if (!nextConfig.models) nextConfig.models = {};
     if (!nextConfig.models.providers) nextConfig.models.providers = {};
-    nextConfig.models.providers[provider] = providerInfo.modelsProviderConfig;
+    nextConfig.models.providers[provider] = {
+      baseUrl: baseUrl,
+      apiKey: "${" + envVarName + "}",
+      api: "openai-completions",
+      models: [],
+    };
+  } else {
+    if (providerInfo?.envVar) {
+      if (!nextConfig.env) nextConfig.env = {};
+      nextConfig.env[providerInfo.envVar] = apiKey;
+    }
+    if (providerInfo?.modelsProviderConfig) {
+      if (!nextConfig.models) nextConfig.models = {};
+      if (!nextConfig.models.providers) nextConfig.models.providers = {};
+      nextConfig.models.providers[provider] = providerInfo.modelsProviderConfig;
+    }
   }
 
   // Ensure a gateway auth token exists
@@ -121,11 +181,20 @@ async function handleSetProvider(body) {
   // Write auth-profiles.json
   const authPath = getAuthProfilesPath(nextConfig);
   const existing = readJsonSafe(authPath) || {};
+  // Clean up old profiles as well
+  const cleanedProfiles = {};
+  if (existing.profiles) {
+    for (const [k, v] of Object.entries(existing.profiles)) {
+      if (!k.endsWith(":default")) {
+        cleanedProfiles[k] = v;
+      }
+    }
+  }
   const nextAuth = {
     ...existing,
     version: typeof existing.version === "number" ? existing.version : 1,
     profiles: {
-      ...(existing.profiles || {}),
+      ...cleanedProfiles,
       [profileId]: { type: "api_key", provider, key: apiKey },
     },
   };
@@ -207,11 +276,26 @@ function handleGetStatus() {
   const hasEnv = hasConfig && config?.env && Object.keys(config.env).length > 0;
   const currentModel = config?.agents?.defaults?.model?.primary || null;
   let currentProvider = null;
-  if (hasEnv) {
+  // First try to detect from auth.profiles (most reliable — directly set by wizard)
+  if (config?.auth?.profiles) {
+    for (const [key, profile] of Object.entries(config.auth.profiles)) {
+      if (key.endsWith(":default") && profile.provider) {
+        currentProvider = profile.provider;
+        break;
+      }
+    }
+  }
+  // Fallback: detect from env keys
+  if (!currentProvider && hasEnv) {
     const envKeys = Object.keys(config.env);
-    const providerMap = { MOONSHOT_API_KEY: "moonshot", VOLCANO_ENGINE_API_KEY: "volcengine-plan", MINIMAX_API_KEY: "minimax", QIANFAN_API_KEY: "qianfan", ZAI_API_KEY: "zai", OPENAI_API_KEY: "openai", ANTHROPIC_API_KEY: "anthropic", OPENROUTER_API_KEY: "openrouter" };
+    const providerMap = { MOONSHOT_API_KEY: "moonshot", KIMI_CODING_API_KEY: "kimi-coding", DEEPSEEK_API_KEY: "deepseek", VOLCANO_ENGINE_API_KEY: "volcengine-plan", TENCENT_CODING_PLAN_API_KEY: "tencent-coding-plan", DASHSCOPE_API_KEY: "dashscope", MINIMAX_API_KEY: "minimax", QIANFAN_API_KEY: "qianfan", ZAI_API_KEY: "zai", SILICONFLOW_API_KEY: "siliconflow", OPENAI_API_KEY: "openai", ANTHROPIC_API_KEY: "anthropic", OPENROUTER_API_KEY: "openrouter" };
     for (const k of envKeys) {
       if (providerMap[k]) { currentProvider = providerMap[k]; break; }
+      // Detect custom providers: CUSTOM_xxx_API_KEY → extract provider name from models.providers
+      if (/^CUSTOM_.*_API_KEY$/.test(k) && config.models?.providers) {
+        const customIds = Object.keys(config.models.providers);
+        if (customIds.length > 0) { currentProvider = customIds[0] + " (自定义)"; break; }
+      }
     }
   }
   const gatewayToken = config?.gateway?.auth?.token || null;
